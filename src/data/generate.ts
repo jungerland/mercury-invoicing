@@ -2,7 +2,7 @@
 // a bank feed of incoming payments, and the ground truth for each payment.
 // Deterministic (seeded) so eval numbers are reproducible.
 //
-// Usage: node src/data/generate.ts [seed]
+// Usage: [DATA_DIR=data] node src/data/generate.ts [seed]
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import type { Customer, GroundTruth, Invoice, Payment, Rail, Scenario } from "../types.ts";
@@ -285,11 +285,12 @@ const dates = payments.map((x) => x.date).sort();
 const feed = order.map((i, k) => ({ ...payments[i], id: `pay_${String(k + 1).padStart(3, "0")}`, date: dates[k] }));
 const feedTruth = order.map((i, k) => ({ ...truth[i], payment_id: feed[k].id }));
 
-mkdirSync("data", { recursive: true });
-writeFileSync("data/customers.json", JSON.stringify(customers, null, 2));
-writeFileSync("data/invoices.json", JSON.stringify(invoices, null, 2));
-writeFileSync("data/payments.json", JSON.stringify(feed, null, 2));
-writeFileSync("data/ground_truth.json", JSON.stringify(feedTruth, null, 2));
+const DIR = process.env.DATA_DIR ?? "data";
+mkdirSync(DIR, { recursive: true });
+writeFileSync(`${DIR}/customers.json`, JSON.stringify(customers, null, 2));
+writeFileSync(`${DIR}/invoices.json`, JSON.stringify(invoices, null, 2));
+writeFileSync(`${DIR}/payments.json`, JSON.stringify(feed, null, 2));
+writeFileSync(`${DIR}/ground_truth.json`, JSON.stringify(feedTruth, null, 2));
 
 const byScenario = feedTruth.reduce<Record<string, number>>((m, t) => ((m[t.scenario] = (m[t.scenario] ?? 0) + 1), m), {});
 console.log(`seed=${seed} customers=${customers.length} open_invoices=${invoices.length} payments=${feed.length}`);

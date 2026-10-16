@@ -2,3 +2,4 @@ node_modules/
 .DS_Store
 .env
 results/agent_cache.json
+results/*/agent_cache.json
