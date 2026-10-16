@@ -1,0 +1,354 @@
+<title>Payment Auto-Match</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a single working column like a bookkeeping screen. Summary band, the one decision (threshold), then the queue. */
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --ink: #142030;
+  --muted: #5a6779;
+  --line: #dde2ea;
+  --accent: #2b5a8e;
+  --accent-soft: #e6eef8;
+  --ok: #1b7650;
+  --ok-soft: #e3f3ea;
+  --warn: #865500;
+  --warn-soft: #fbf0d9;
+  --bad: #b3261e;
+  --bad-soft: #fbe5e3;
+  --idle: #5b6676;
+  --idle-soft: #eceff3;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-num: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e131a; --surface: #151c26; --ink: #e5eaf1; --muted: #93a0b2; --line: #263140;
+    --accent: #84aee0; --accent-soft: #1b2a3d; --ok: #55c08f; --ok-soft: #13291f; --warn: #e3a943; --warn-soft: #2e2412;
+    --bad: #f2776c; --bad-soft: #351816; --idle: #95a0ae; --idle-soft: #1d2530; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e131a; --surface: #151c26; --ink: #e5eaf1; --muted: #93a0b2; --line: #263140;
+  --accent: #84aee0; --accent-soft: #1b2a3d; --ok: #55c08f; --ok-soft: #13291f; --warn: #e3a943; --warn-soft: #2e2412;
+  --bad: #f2776c; --bad-soft: #351816; --idle: #95a0ae; --idle-soft: #1d2530; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--font-ui); }
+.wrap { max-width: 1080px; margin: 0 auto; padding-block: 40px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 40px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font-size: 2rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; }
+h2 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; }
+.eyebrow { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.lede { font-size: 1.05rem; color: var(--muted); max-width: 62ch; }
+.mono { font-family: var(--font-mono); }
+.num { font-variant-numeric: tabular-nums; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+header { display: grid; gap: 12px; }
+
+/* Summary band */
+.compare { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden; }
+.col { padding: 20px 22px; display: grid; gap: 14px; align-content: start; }
+.col + .col { border-left: 1px solid var(--line); }
+.col.agent { background: var(--accent-soft); }
+.col h3 { font-size: 0.85rem; font-weight: 600; }
+.col h3 small { display: block; font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+.metric { display: grid; gap: 2px; }
+.metric b { font: 600 1.9rem/1 var(--font-num); font-variant-numeric: tabular-nums; }
+.metric span { font-size: 0.78rem; color: var(--muted); }
+.metric.bad b { color: var(--bad); }
+
+/* Threshold control */
+.control { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 32px; align-items: center; padding: 20px 22px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.control p { color: var(--muted); font-size: 0.9rem; max-width: 60ch; }
+.slider { display: grid; gap: 6px; min-width: 260px; }
+.slider-row { display: flex; align-items: center; gap: 12px; }
+.slider input[type=range] { flex: 1; accent-color: var(--accent); }
+.slider output { font: 600 1.4rem/1 var(--font-num); font-variant-numeric: tabular-nums; min-width: 3.2ch; text-align: right; }
+.toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--muted); cursor: pointer; }
+.toggle input { accent-color: var(--accent); }
+
+/* Pipeline */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.steps li { counter-increment: step; padding: 16px; border-top: 2px solid var(--line); display: grid; gap: 6px; align-content: start; }
+.steps li.model { border-top-color: var(--accent); }
+.steps li::before { content: counter(step); font: 600 0.8rem var(--font-mono); color: var(--muted); }
+.steps h3 { font-size: 0.95rem; }
+.steps .who { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
+.steps p { font-size: 0.86rem; color: var(--muted); }
+
+/* Queue */
+.queue-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); }
+.tab { border: 0; background: none; padding: 8px 12px; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; color: var(--muted); font-weight: 500; font-size: 0.9rem; }
+.tab[aria-selected=true] { color: var(--ink); border-bottom-color: var(--accent); }
+.tab .count { font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 400; margin-left: 4px; }
+.list { display: grid; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden; }
+.row { border-top: 1px solid var(--line); }
+.row:first-child { border-top: 0; }
+.row > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 5.2rem minmax(0, 1.5fr) 7.5rem minmax(0, 1.4fr) 8.6rem; gap: 14px; align-items: center; padding: 12px 16px; }
+.row > summary::-webkit-details-marker { display: none; }
+.row > summary:hover { background: var(--bg); }
+.date { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.who-paid { min-width: 0; display: grid; gap: 2px; }
+.cp { font: 500 0.82rem var(--font-mono); overflow-wrap: anywhere; }
+.memo { font: 0.76rem var(--font-mono); color: var(--muted); overflow-wrap: anywhere; }
+.rail { font: 500 0.66rem var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; margin-right: 6px; }
+.amt { font: 500 0.92rem var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; }
+.match { min-width: 0; font-size: 0.86rem; display: grid; gap: 2px; }
+.match .inv { font-family: var(--font-mono); font-size: 0.8rem; }
+.match .cust { color: var(--muted); font-size: 0.8rem; overflow-wrap: anywhere; }
+.state { display: grid; gap: 6px; justify-items: start; }
+.pill { font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.auto { color: var(--ok); background: var(--ok-soft); }
+.pill.review { color: var(--warn); background: var(--warn-soft); }
+.pill.left { color: var(--idle); background: var(--idle-soft); }
+.pill.confirmed { color: var(--accent); background: var(--accent-soft); }
+.meter { width: 100%; height: 4px; background: var(--idle-soft); border-radius: 2px; position: relative; }
+.meter i { position: absolute; inset: 0 auto 0 0; border-radius: 2px; background: var(--idle); }
+.meter.pass i { background: var(--accent); }
+.meter .bar { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); opacity: 0.55; }
+.conf { font: 0.7rem var(--font-mono); color: var(--muted); }
+.grade { font-size: 0.7rem; font-weight: 600; }
+.grade.ok { color: var(--ok); } .grade.bad { color: var(--bad); } .grade.meh { color: var(--muted); }
+.detail { padding: 4px 16px 18px calc(5.2rem + 30px); display: grid; gap: 12px; font-size: 0.88rem; }
+.detail .why { max-width: 70ch; }
+.kv { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 4px 12px; font-size: 0.82rem; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { border: 1px solid var(--line); background: var(--surface); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.84rem; font-weight: 500; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.btn:hover { border-color: var(--accent); }
+.empty { padding: 28px 16px; color: var(--muted); text-align: center; }
+
+/* Findings */
+.findings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
+.finding { display: grid; gap: 4px; padding-top: 12px; border-top: 1px solid var(--line); }
+.finding h3 { font-size: 0.95rem; }
+.finding p { color: var(--muted); font-size: 0.9rem; }
+footer { color: var(--muted); font-size: 0.8rem; display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 16px; }
+
+@media (max-width: 820px) {
+  .compare { grid-template-columns: 1fr; }
+  .col + .col { border-left: 0; border-top: 1px solid var(--line); }
+  .col { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .col h3 { grid-column: 1 / -1; }
+  .metric b { font-size: 1.5rem; }
+  .control { grid-template-columns: 1fr; }
+  .slider { min-width: 0; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .findings { grid-template-columns: 1fr; }
+  .row > summary { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "who amt" "match state" "date state"; gap: 6px 12px; }
+  .who-paid { grid-area: who; } .amt { grid-area: amt; } .match { grid-area: match; } .state { grid-area: state; justify-items: end; min-width: 6.5rem; } .date { grid-area: date; }
+  .detail { padding-left: 16px; }
+  .kv { grid-template-columns: 1fr; }
+  .kv dt { margin-top: 6px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .metric b, .pill { transition: color 0.15s ease, background-color 0.15s ease; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Prototype · Getting paid</span>
+    <h1>Payment Auto-Match</h1>
+    <p class="lede">An agent that matches incoming bank payments to open invoices, applies the ones it can prove, and hands you a short, explained queue for the rest. Every number below comes from a recorded eval run you can scrub through.</p>
+  </header>
+
+  <section aria-labelledby="h-compare" style="display:grid;gap:14px">
+    <h2 id="h-compare" class="eyebrow" style="font-size:0.72rem">One day of deposits: <span id="n-pay"></span> payments, <span id="n-inv"></span> open invoices</h2>
+    <div class="compare" id="compare"></div>
+  </section>
+
+  <section class="control" aria-labelledby="h-th">
+    <div style="display:grid;gap:6px;min-width:0">
+      <h2 id="h-th">Auto-apply bar</h2>
+      <p>How sure the agent must be before money moves onto an invoice without a person looking. This is a product decision. Lower it and more payments reconcile themselves; the code guardrails still have to agree either way.</p>
+    </div>
+    <div class="slider">
+      <div class="slider-row">
+        <input type="range" id="th" min="0.5" max="0.99" step="0.01" value="0.9" aria-label="Auto-apply confidence threshold">
+        <output id="th-out" for="th">0.90</output>
+      </div>
+      <label class="toggle"><input type="checkbox" id="guard" checked> Code guardrails on</label>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-how" style="display:grid;gap:14px">
+    <h2 id="h-how">How a payment flows</h2>
+    <ol class="steps">
+      <li><span class="who">Code</span><h3>Gather evidence</h3><p>Recover invoice numbers from messy memos, match the payer against names this customer has paid from before, find exact amounts and invoice combinations that sum to the deposit.</p></li>
+      <li class="model"><span class="who">Model</span><h3>Propose</h3><p>Decide what the payment is: which invoices, any fee or partial, a calibrated confidence, and one sentence a business owner can read.</p></li>
+      <li><span class="who">Code</span><h3>Decide</h3><p>Auto-apply only if amounts reconcile to the cent, one customer, two independent signals (payer and reference or amount), and no partials or overpayments.</p></li>
+      <li><span class="who">Product</span><h3>Act</h3><p>Apply and log it, or put it in the queue with the suggested match and the reason it stopped.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-queue" style="display:grid;gap:12px">
+    <div class="queue-head">
+      <h2 id="h-queue">Today's deposits</h2>
+      <label class="toggle"><input type="checkbox" id="key" checked> Show answer key</label>
+    </div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section aria-labelledby="h-find" style="display:grid;gap:14px">
+    <h2 id="h-find">What the eval says</h2>
+    <div class="findings" id="findings"></div>
+  </section>
+
+  <footer>
+    <p>Synthetic data: 30 fictional businesses across tech, professional services and real estate, with payments written to stress the cases that break rules (mangled memos, wire fees, batch payments, parent-company payers, look-alike amounts, refunds and transfers). Real bank feeds are messier; the next step is shadow mode on real traffic.</p>
+    <p>Built by Jay Ungerland as a working demo for an invoicing product role. Not affiliated with or endorsed by any bank or fintech company. Model: Claude Opus 5.5. Run date <span id="gen"></span>.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const MIN = { correct_auto: 0, review_good: 0.25, review_shortlist: 1, review_none: 3, skipped: 3, wrong_auto: 20 };
+const MANUAL_MIN = 3;
+const $ = (id) => document.getElementById(id);
+const usd = (n) => n.toLocaleString("en-US", { style: "currency", currency: "USD" });
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const confirmed = new Set();
+let tab = "review";
+
+const sameSet = (a, b) => a.length === b.length && [...a].sort().join() === [...b].sort().join();
+
+function actionAt(r, th, guard) {
+  const p = r.proposal;
+  if (p.decision === "not_invoice_payment") return p.confidence >= th ? "leave_unmatched" : "review";
+  if (p.decision === "unsure" || !p.allocations.length || p.confidence < th) return "review";
+  return !guard || r.guardrails_ok ? "auto_apply" : "review";
+}
+function outcome(r, action) {
+  const p = r.proposal, t = r.truth;
+  const ids = p.allocations.map((a) => a.id);
+  const right = t.ideal === "no_invoice" ? p.decision === "not_invoice_payment" : sameSet(ids, t.invoice_ids);
+  if (action === "auto_apply") return t.ideal !== "no_invoice" && right && p.residual === t.residual ? "correct_auto" : "wrong_auto";
+  if (action === "leave_unmatched") return t.ideal === "no_invoice" ? "correct_auto" : "skipped";
+  if (right) return "review_good";
+  const short = new Set([...ids, ...p.alternatives.map((a) => a.id)]);
+  return t.invoice_ids.length && t.invoice_ids.every((id) => short.has(id)) ? "review_shortlist" : "review_none";
+}
+function tally(outcomes) {
+  const c = { correct_auto: 0, wrong_auto: 0, skipped: 0, review_good: 0, review_shortlist: 0, review_none: 0 };
+  outcomes.forEach((o) => c[o]++);
+  const minutes = Object.keys(c).reduce((s, k) => s + c[k] * MIN[k], 0);
+  return { c, minutes, hands: c.correct_auto / outcomes.length, queue: c.review_good + c.review_shortlist + c.review_none };
+}
+const rulesOutcome = (o) => ({ review_good_suggestion: "review_good", review_no_good_suggestion: "review_none", review_shortlist: "review_shortlist" })[o] ?? o;
+
+function fmtHours(m) { return m < 60 ? `${Math.round(m)} min` : `${(m / 60).toFixed(1)} h`; }
+
+function renderCompare(agent) {
+  const n = DATA.rows.length;
+  const rules = tally(DATA.rows.map((r) => rulesOutcome(r.rules.outcome)));
+  const col = (title, sub, t, cls = "") => `
+    <div class="col ${cls}">
+      <h3>${title}<small>${sub}</small></h3>
+      <div class="metric"><b>${Math.round(t.hands * 100)}%</b><span>reconciled with no one touching it</span></div>
+      <div class="metric ${t.c.wrong_auto ? "bad" : ""}"><b>${t.c.wrong_auto}</b><span>applied to the wrong invoice</span></div>
+      <div class="metric"><b>${fmtHours(t.minutes)}</b><span>of someone's time</span></div>
+    </div>`;
+  $("compare").innerHTML =
+    col("By hand", "Status quo", { hands: 0, c: { wrong_auto: 0 }, minutes: n * MANUAL_MIN }) +
+    col("Rules engine", "Exact reference or exact amount from a known payer", rules) +
+    col("Agent + guardrails", `At the current bar of ${(+$("th").value).toFixed(2)}${$("guard").checked ? "" : ", guardrails off"}`, agent, "agent");
+}
+
+const PILL = { auto_apply: ["auto", "Auto-applied"], review: ["review", "Needs review"], leave_unmatched: ["left", "Not an invoice payment"] };
+const GRADE = {
+  correct_auto: ["ok", "Correct, hands-off"], wrong_auto: ["bad", "Wrong auto-apply"], skipped: ["bad", "Missed"],
+  review_good: ["ok", "Right suggestion"], review_shortlist: ["ok", "Right shortlist"], review_none: ["meh", "No useful suggestion"],
+};
+const SCEN = { clean: "Clean reference", no_memo: "No memo", garbled_memo: "Mangled reference", wire_fee: "Wire fee deducted", multi_invoice: "Pays several invoices", partial: "Partial payment", different_payer: "Paid by another entity", ambiguous: "Look-alike amount, no payer", overpayment: "Overpaid", wrong_reference: "Memo cites the wrong invoice", not_invoice: "Not an invoice payment" };
+
+function rowHtml(r, action, oc, th) {
+  const p = r.proposal;
+  const isConfirmed = confirmed.has(r.id);
+  const [pc, pl] = isConfirmed ? ["confirmed", "Confirmed by you"] : PILL[action];
+  const showKey = $("key").checked;
+  const [gc, gl] = GRADE[oc];
+  const match = p.decision === "not_invoice_payment"
+    ? `<span class="cust">Refund, payout, interest or transfer</span>`
+    : p.allocations.length
+      ? `<span class="inv">${p.allocations.map((a) => esc(a.number)).join(" + ")}</span><span class="cust">${esc(p.allocations[0].customer)}${p.residual !== "none" ? ` · ${esc(p.residual.replace("_", " "))}` : ""}</span>`
+      : `<span class="cust">${p.alternatives.length} possible invoices</span>`;
+  const pass = p.confidence >= th;
+  const alts = p.alternatives.length ? p.alternatives.map((a) => `${esc(a.number)} · ${esc(a.customer)} · ${usd(a.amount)}`).join("<br>") : "None";
+  return `<details class="row" data-id="${r.id}">
+    <summary>
+      <span class="date">${r.date.slice(5).replace("-", "/")}</span>
+      <span class="who-paid"><span class="cp"><span class="rail">${r.rail}</span>${esc(r.counterparty)}</span><span class="memo">${r.memo ? esc(r.memo) : "no memo"}</span></span>
+      <span class="amt">${usd(r.amount)}</span>
+      <span class="match">${match}</span>
+      <span class="state">
+        <span class="pill ${pc}">${pl}</span>
+        <span class="meter ${pass ? "pass" : ""}" title="Confidence ${p.confidence.toFixed(2)}"><i style="width:${p.confidence * 100}%"></i><span class="bar" style="left:${th * 100}%"></span></span>
+        <span class="conf">conf ${p.confidence.toFixed(2)}</span>
+        ${showKey ? `<span class="grade ${gc}">${gl}</span>` : ""}
+      </span>
+    </summary>
+    <div class="detail">
+      <p class="why">${esc(p.reasoning)}</p>
+      <dl class="kv">
+        <dt>Why it ${action === "auto_apply" ? "went through" : action === "review" ? "stopped" : "was left alone"}</dt>
+        <dd>${action === "auto_apply" ? (p.residual === "processing_fee" ? `Every check passed; the ${usd(p.allocations.reduce((s, a) => s + a.amount, 0) - r.amount)} shortfall is booked as a bank fee.` : "Every check passed.") : action === "leave_unmatched" ? "The agent is confident this is not a customer paying an invoice." : p.decision === "unsure" ? "The agent could not narrow it to one answer." : p.confidence < th ? `Confidence ${p.confidence.toFixed(2)} is under the bar of ${th.toFixed(2)}.` : esc(r.guardrail_reason ?? "Guardrail")}</dd>
+        <dt>Also worth a look</dt><dd>${alts}</dd>
+        ${showKey ? `<dt>Answer key</dt><dd>${esc(SCEN[r.truth.scenario])}. ${esc(r.truth.note)}</dd><dt>Rules engine</dt><dd>${r.rules.action === "auto_apply" ? "Auto-applied" : r.rules.action === "review" ? "Sent to review" : "Left alone"}</dd>` : ""}
+      </dl>
+      ${action === "review" && !isConfirmed && p.allocations.length ? `<div class="actions"><button class="btn primary" data-confirm="${r.id}">Apply ${p.allocations.length > 1 ? "these invoices" : esc(p.allocations[0].number)}</button></div>` : ""}
+    </div>
+  </details>`;
+}
+
+function render() {
+  const th = +$("th").value, guard = $("guard").checked;
+  $("th-out").textContent = th.toFixed(2);
+  const open = new Set([...document.querySelectorAll(".row[open]")].map((d) => d.dataset.id));
+  const rows = DATA.rows.map((r) => { const action = actionAt(r, th, guard); return { r, action, oc: outcome(r, action) }; });
+  renderCompare(tally(rows.map((x) => x.oc)));
+
+  const groups = { review: rows.filter((x) => x.action === "review" && !confirmed.has(x.r.id)), auto: rows.filter((x) => x.action === "auto_apply"), left: rows.filter((x) => x.action === "leave_unmatched"), all: rows };
+  if (confirmed.size) groups.review.push(...rows.filter((x) => x.action === "review" && confirmed.has(x.r.id)));
+  const labels = { review: "Needs review", auto: "Auto-applied", left: "Not invoice payments", all: "All" };
+  $("tabs").innerHTML = Object.keys(labels).map((k) => `<button class="tab" role="tab" aria-selected="${k === tab}" data-tab="${k}">${labels[k]}<span class="count">${k === "review" ? groups.review.length - confirmed.size : groups[k].length}</span></button>`).join("");
+  const list = groups[tab];
+  $("list").innerHTML = list.length ? list.map((x) => rowHtml(x.r, x.action, x.oc, th)).join("") : `<p class="empty">Nothing here at this bar.</p>`;
+  document.querySelectorAll(".row").forEach((d) => open.has(d.dataset.id) && (d.open = true));
+}
+
+function renderFindings() {
+  const s7 = DATA.seed7;
+  const items = [
+    ["The agent wins on the long tail, not the easy cases", "Rules already handle clean references and known payers. The agent adds wire fees (8 of 8 auto-applied, rules sent all 8 to review), batch payments, and spotting refunds and transfers whose amounts collide with real invoices."],
+    ["Zero wrong auto-applies, on two datasets", `The first dataset is the one shown. A second, generated from a different seed: rules ${Math.round(s7.rules.autoRate * 100)}% hands-off, agent ${Math.round(s7.agent.autoRate * 100)}%, still no wrong auto-applies. Zero errors in 125 auto-applies still only bounds the true error rate below about 2.4% (95% confidence), not at zero. Shadow mode on real traffic is how you earn the next decimal.`],
+    ["Confidence is cautious, which is the safe direction", "Every proposal the agent rated 0.70 or higher was exactly right on both datasets. It hedges on batch payments with no memo and on processor payouts. The bar can probably come down once real data confirms it."],
+    ["Guardrails are insurance, and I measured the premium", "Turn them off with the toggle above. Hands-off rises 3 to 5 points at a 0.90 bar and 12 to 14 at 0.50, mostly partials and overpayments that I route to people on purpose in v1, because the customer has a real choice to make (keep the credit or refund it). At the 0.50 bar on the second dataset they also blocked one wrong match."],
+    ["It is cheap enough to run on every deposit", "About $0.017 and 5 seconds per payment with Claude Opus 5.5, before prompt caching. Code does every sum, so the model never does arithmetic."],
+    ["What I would not build yet", "Auto-sending payment reminders, partial-payment plans, and a learning loop from reviewer corrections. Each is valuable, but matching has to be trusted first, and reviewer corrections are the training data for all three."],
+  ];
+  $("findings").innerHTML = items.map(([h, p]) => `<div class="finding"><h3>${h}</h3><p>${p}</p></div>`).join("");
+}
+
+$("n-pay").textContent = DATA.rows.length;
+$("n-inv").textContent = DATA.invoices;
+$("gen").textContent = DATA.generated;
+["th", "guard", "key"].forEach((id) => $(id).addEventListener("input", render));
+$("tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) { tab = b.dataset.tab; render(); } });
+$("list").addEventListener("click", (e) => { const b = e.target.closest("[data-confirm]"); if (b) { confirmed.add(b.dataset.confirm); render(); } });
+renderFindings();
+render();
+</script>

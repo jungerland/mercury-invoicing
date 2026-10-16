@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "ui/template.html"
+        ],
+        "createdAt": "2026-10-16T04:38:16.846Z",
+        "reason": "Claude: static scanner pairs dark-theme tokens with light-theme surfaces; every same-theme token pair computed at >= 5.05:1 on 2026-10-15"
+      }
+    ]
+  }
+}
