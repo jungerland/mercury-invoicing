@@ -1,0 +1,762 @@
+[
+  {
+    "id": "pay_001",
+    "date": "2026-10-02",
+    "amount": 23799.99,
+    "rail": "ach",
+    "counterparty": "REDWOOD ROW REALTY",
+    "memo": "AP PAYMENT"
+  },
+  {
+    "id": "pay_002",
+    "date": "2026-10-03",
+    "amount": 4553,
+    "rail": "wire",
+    "counterparty": "LUMEN ARC SOFTWARE",
+    "memo": "INV-1056"
+  },
+  {
+    "id": "pay_003",
+    "date": "2026-10-04",
+    "amount": 14811,
+    "rail": "card",
+    "counterparty": "NWR HOLDINGS LLC",
+    "memo": ""
+  },
+  {
+    "id": "pay_004",
+    "date": "2026-10-05",
+    "amount": 1312.75,
+    "rail": "ach",
+    "counterparty": "POLARIS PAYROLL",
+    "memo": "INV-1164 partial"
+  },
+  {
+    "id": "pay_005",
+    "date": "2026-10-05",
+    "amount": 1200,
+    "rail": "ach",
+    "counterparty": "MOBILE DEPOSIT",
+    "memo": ""
+  },
+  {
+    "id": "pay_006",
+    "date": "2026-10-05",
+    "amount": 3158.4,
+    "rail": "wire",
+    "counterparty": "SUMMIT RIDGE ENGINEER",
+    "memo": "INVOICE 1152 SUMMIT RIDGE"
+  },
+  {
+    "id": "pay_007",
+    "date": "2026-10-05",
+    "amount": 2540.6,
+    "rail": "ach",
+    "counterparty": "IRONBARK CAPITAL ADV",
+    "memo": "INV-1092 1 of 2"
+  },
+  {
+    "id": "pay_008",
+    "date": "2026-10-05",
+    "amount": 2035.4,
+    "rail": "ach",
+    "counterparty": "LUMEN ARC SOFTWARE",
+    "memo": "VENDOR PMT"
+  },
+  {
+    "id": "pay_009",
+    "date": "2026-10-06",
+    "amount": 1200,
+    "rail": "ach",
+    "counterparty": "ACH CREDIT",
+    "memo": ""
+  },
+  {
+    "id": "pay_010",
+    "date": "2026-10-06",
+    "amount": 14188,
+    "rail": "card",
+    "counterparty": "SUMMIT RIDGE ENGINEER",
+    "memo": "Invoice INV-1151"
+  },
+  {
+    "id": "pay_011",
+    "date": "2026-10-06",
+    "amount": 9955,
+    "rail": "wire",
+    "counterparty": "COPPERLINE PROP MGMT",
+    "memo": "INVOICE 1020 COPPERLINE P"
+  },
+  {
+    "id": "pay_012",
+    "date": "2026-10-07",
+    "amount": 14515.4,
+    "rail": "wire",
+    "counterparty": "THISTLE PINE DESIGN",
+    "memo": "Invoice INV-1142"
+  },
+  {
+    "id": "pay_013",
+    "date": "2026-10-08",
+    "amount": 12336.4,
+    "rail": "ach",
+    "counterparty": "VANTAGE POINT CONSUL",
+    "memo": "INV-1126"
+  },
+  {
+    "id": "pay_014",
+    "date": "2026-10-08",
+    "amount": 5448,
+    "rail": "wire",
+    "counterparty": "COBALT FREIGHT SYS",
+    "memo": "/RFB/INV-1136"
+  },
+  {
+    "id": "pay_015",
+    "date": "2026-10-08",
+    "amount": 7500,
+    "rail": "ach",
+    "counterparty": "ACH CREDIT",
+    "memo": ""
+  },
+  {
+    "id": "pay_016",
+    "date": "2026-10-08",
+    "amount": 412.5,
+    "rail": "ach",
+    "counterparty": "AMAZON WEB SERVICES",
+    "memo": "AWS REFUND CREDIT"
+  },
+  {
+    "id": "pay_017",
+    "date": "2026-10-09",
+    "amount": 9140.5,
+    "rail": "wire",
+    "counterparty": "THISTLE PINE DESIGN",
+    "memo": "INV-1145"
+  },
+  {
+    "id": "pay_018",
+    "date": "2026-10-09",
+    "amount": 7628.25,
+    "rail": "wire",
+    "counterparty": "VANTAGE POINT CONSUL",
+    "memo": "RE: 1128 services"
+  },
+  {
+    "id": "pay_019",
+    "date": "2026-10-09",
+    "amount": 2500,
+    "rail": "ach",
+    "counterparty": "ACME BUILDERS SUPPLY",
+    "memo": "INV-1072"
+  },
+  {
+    "id": "pay_020",
+    "date": "2026-10-10",
+    "amount": 22663.5,
+    "rail": "card",
+    "counterparty": "PRIYA RAMAN",
+    "memo": "ref 1123"
+  },
+  {
+    "id": "pay_021",
+    "date": "2026-10-11",
+    "amount": 5024.25,
+    "rail": "card",
+    "counterparty": "TIDEWATER LOGISTICS",
+    "memo": "PMT INV-1048"
+  },
+  {
+    "id": "pay_022",
+    "date": "2026-10-12",
+    "amount": 1346.25,
+    "rail": "ach",
+    "counterparty": "POLARIS PAYROLL",
+    "memo": "deposit INV-1159"
+  },
+  {
+    "id": "pay_023",
+    "date": "2026-10-12",
+    "amount": 2610.5,
+    "rail": "ach",
+    "counterparty": "COPPERLINE PROP MGMT",
+    "memo": "INV1021"
+  },
+  {
+    "id": "pay_024",
+    "date": "2026-10-13",
+    "amount": 42720.39,
+    "rail": "check",
+    "counterparty": "HERON BAY HOSPITALITY",
+    "memo": "3 INVOICES"
+  },
+  {
+    "id": "pay_025",
+    "date": "2026-10-14",
+    "amount": 2500,
+    "rail": "check",
+    "counterparty": "NWR HOLDINGS LLC",
+    "memo": "ref 1006"
+  },
+  {
+    "id": "pay_026",
+    "date": "2026-10-15",
+    "amount": 10000,
+    "rail": "ach",
+    "counterparty": "TRANSFER FROM CHECKING 4471",
+    "memo": "INTERNAL TRANSFER"
+  },
+  {
+    "id": "pay_027",
+    "date": "2026-10-15",
+    "amount": 3184.22,
+    "rail": "ach",
+    "counterparty": "STRIPE TRANSFER",
+    "memo": "STRIPE PAYOUT ST-8XK2"
+  },
+  {
+    "id": "pay_028",
+    "date": "2026-10-16",
+    "amount": 26367.4,
+    "rail": "ach",
+    "counterparty": "TIDEWATER LOGISTICS",
+    "memo": "INV-1045, INV-1044, INV-1046"
+  },
+  {
+    "id": "pay_029",
+    "date": "2026-10-17",
+    "amount": 22375,
+    "rail": "ach",
+    "counterparty": "GLASSWING INTERACTIV",
+    "memo": ""
+  },
+  {
+    "id": "pay_030",
+    "date": "2026-10-18",
+    "amount": 11619.5,
+    "rail": "card",
+    "counterparty": "GLASSWING INTERACTIV",
+    "memo": "INV-1096 PAYMENT"
+  },
+  {
+    "id": "pay_031",
+    "date": "2026-10-18",
+    "amount": 7500,
+    "rail": "wire",
+    "counterparty": "TIDEWATER LOGISTICS",
+    "memo": "INV-1050 PAYMENT"
+  },
+  {
+    "id": "pay_032",
+    "date": "2026-10-19",
+    "amount": 2235,
+    "rail": "ach",
+    "counterparty": "POLARIS PAYROLL",
+    "memo": "VENDOR PMT"
+  },
+  {
+    "id": "pay_033",
+    "date": "2026-10-20",
+    "amount": 10807.25,
+    "rail": "ach",
+    "counterparty": "TIDEWATER LOGISTICS",
+    "memo": "INV-1047"
+  },
+  {
+    "id": "pay_034",
+    "date": "2026-10-21",
+    "amount": 22686.25,
+    "rail": "ach",
+    "counterparty": "VANTAGE POINT CONSUL",
+    "memo": "AP PAYMENT"
+  },
+  {
+    "id": "pay_035",
+    "date": "2026-10-22",
+    "amount": 6076.4,
+    "rail": "ach",
+    "counterparty": "ACME BUILDERS SUPPLY",
+    "memo": "INV-1078"
+  },
+  {
+    "id": "pay_036",
+    "date": "2026-10-22",
+    "amount": 9557.99,
+    "rail": "ach",
+    "counterparty": "THISTLE PINE DESIGN",
+    "memo": "VENDOR PMT"
+  },
+  {
+    "id": "pay_037",
+    "date": "2026-10-22",
+    "amount": 60510.49,
+    "rail": "wire",
+    "counterparty": "ACME ANALYTICS LLC",
+    "memo": ""
+  },
+  {
+    "id": "pay_038",
+    "date": "2026-10-23",
+    "amount": 15366.4,
+    "rail": "wire",
+    "counterparty": "KESTREL FIELD SVCS",
+    "memo": "INV-1109"
+  },
+  {
+    "id": "pay_039",
+    "date": "2026-10-23",
+    "amount": 2697.75,
+    "rail": "ach",
+    "counterparty": "IRONBARK CAPITAL ADV",
+    "memo": "INV-1089 1 of 2"
+  },
+  {
+    "id": "pay_040",
+    "date": "2026-10-23",
+    "amount": 10116.7,
+    "rail": "ach",
+    "counterparty": "OSTARA HEALTH TECH",
+    "memo": "INV-1037"
+  },
+  {
+    "id": "pay_041",
+    "date": "2026-10-23",
+    "amount": 15144.4,
+    "rail": "wire",
+    "counterparty": "NORTHWIND ROBOTICS IN",
+    "memo": "RE: 1002 services"
+  },
+  {
+    "id": "pay_042",
+    "date": "2026-10-24",
+    "amount": 10000,
+    "rail": "ach",
+    "counterparty": "ORCHARD LANE HOMES",
+    "memo": "INV-1124"
+  },
+  {
+    "id": "pay_043",
+    "date": "2026-10-24",
+    "amount": 20509.4,
+    "rail": "ach",
+    "counterparty": "WREN STREET VENTURES",
+    "memo": "INV-1153"
+  },
+  {
+    "id": "pay_044",
+    "date": "2026-10-24",
+    "amount": 5318.5,
+    "rail": "check",
+    "counterparty": "RRR ESCROW TRUST ACCT",
+    "memo": ""
+  },
+  {
+    "id": "pay_045",
+    "date": "2026-10-25",
+    "amount": 5746,
+    "rail": "ach",
+    "counterparty": "POLARIS PAYROLL",
+    "memo": "INV-1160 PAYMENT"
+  },
+  {
+    "id": "pay_046",
+    "date": "2026-10-26",
+    "amount": 38519.99,
+    "rail": "ach",
+    "counterparty": "NORTHWIND ROBOTICS IN",
+    "memo": ""
+  },
+  {
+    "id": "pay_047",
+    "date": "2026-10-27",
+    "amount": 16321,
+    "rail": "ach",
+    "counterparty": "SALTMARSH COFFEE",
+    "memo": "Invoice INV-1083"
+  },
+  {
+    "id": "pay_048",
+    "date": "2026-10-27",
+    "amount": 21409.5,
+    "rail": "ach",
+    "counterparty": "COPPERLINE PROP MGMT",
+    "memo": "AP PAYMENT"
+  },
+  {
+    "id": "pay_049",
+    "date": "2026-10-28",
+    "amount": 34121.25,
+    "rail": "ach",
+    "counterparty": "QUILLON RECRUITING",
+    "memo": ""
+  },
+  {
+    "id": "pay_050",
+    "date": "2026-10-29",
+    "amount": 15305.99,
+    "rail": "ach",
+    "counterparty": "PEREGRINE ANALYTICS",
+    "memo": "Invoice INV-1063"
+  },
+  {
+    "id": "pay_051",
+    "date": "2026-10-29",
+    "amount": 1200,
+    "rail": "wire",
+    "counterparty": "IRONBARK CAPITAL ADV",
+    "memo": "INV-1088"
+  },
+  {
+    "id": "pay_052",
+    "date": "2026-10-30",
+    "amount": 6186.25,
+    "rail": "ach",
+    "counterparty": "HALCYON DATA LABS",
+    "memo": "INV-1009"
+  },
+  {
+    "id": "pay_053",
+    "date": "2026-10-31",
+    "amount": 32047.4,
+    "rail": "check",
+    "counterparty": "SALTMARSH COFFEE",
+    "memo": "SEPT INVOICES"
+  },
+  {
+    "id": "pay_054",
+    "date": "2026-11-01",
+    "amount": 4610.99,
+    "rail": "wire",
+    "counterparty": "COPPERLINE PROP MGMT",
+    "memo": "COPPERLINE INV 1022 SEP"
+  },
+  {
+    "id": "pay_055",
+    "date": "2026-11-01",
+    "amount": 26863.98,
+    "rail": "check",
+    "counterparty": "STARLING DENTAL",
+    "memo": "BATCH PAYMENT"
+  },
+  {
+    "id": "pay_056",
+    "date": "2026-11-02",
+    "amount": 2974.99,
+    "rail": "ach",
+    "counterparty": "ACME BUILDERS SUPPLY",
+    "memo": "inv 1076"
+  },
+  {
+    "id": "pay_057",
+    "date": "2026-11-02",
+    "amount": 2787.2,
+    "rail": "ach",
+    "counterparty": "BRIGHTPATH LEGAL GRP",
+    "memo": "INV-1015 1 of 2"
+  },
+  {
+    "id": "pay_058",
+    "date": "2026-11-03",
+    "amount": 10000,
+    "rail": "ach",
+    "counterparty": "BILL.COM PAYABLES",
+    "memo": "INV-1011"
+  },
+  {
+    "id": "pay_059",
+    "date": "2026-11-04",
+    "amount": 6312,
+    "rail": "ach",
+    "counterparty": "KESTREL FIELD SVCS",
+    "memo": "VENDOR PMT"
+  },
+  {
+    "id": "pay_060",
+    "date": "2026-11-04",
+    "amount": 13865.25,
+    "rail": "ach",
+    "counterparty": "MERIDIAN YARD",
+    "memo": "INV-1117, INV-1112"
+  },
+  {
+    "id": "pay_061",
+    "date": "2026-11-04",
+    "amount": 1200,
+    "rail": "ach",
+    "counterparty": "ACH CREDIT",
+    "memo": ""
+  },
+  {
+    "id": "pay_062",
+    "date": "2026-11-05",
+    "amount": 1726.25,
+    "rail": "check",
+    "counterparty": "GLASSWING INTERACTIV",
+    "memo": "INV-1099"
+  },
+  {
+    "id": "pay_063",
+    "date": "2026-11-06",
+    "amount": 1756.99,
+    "rail": "ach",
+    "counterparty": "BLUEFIN BIOSCIENCES",
+    "memo": "PMT INV-1118"
+  },
+  {
+    "id": "pay_064",
+    "date": "2026-11-07",
+    "amount": 5401.5,
+    "rail": "check",
+    "counterparty": "OSTARA HEALTH TECH",
+    "memo": "INV-1035"
+  },
+  {
+    "id": "pay_065",
+    "date": "2026-11-07",
+    "amount": 1200,
+    "rail": "card",
+    "counterparty": "DANA OKAFOR",
+    "memo": ""
+  },
+  {
+    "id": "pay_066",
+    "date": "2026-11-07",
+    "amount": 11017,
+    "rail": "ach",
+    "counterparty": "HALCYON DATA LABS",
+    "memo": "invoice #1o08"
+  },
+  {
+    "id": "pay_067",
+    "date": "2026-11-07",
+    "amount": 19556.5,
+    "rail": "wire",
+    "counterparty": "OSTARA HEALTH TECH",
+    "memo": "RE: 1036 services"
+  },
+  {
+    "id": "pay_068",
+    "date": "2026-11-07",
+    "amount": 16313,
+    "rail": "ach",
+    "counterparty": "IRONBARK CAPITAL ADV",
+    "memo": "INV-1090"
+  },
+  {
+    "id": "pay_069",
+    "date": "2026-11-08",
+    "amount": 5000,
+    "rail": "ach",
+    "counterparty": "MOBILE DEPOSIT",
+    "memo": ""
+  },
+  {
+    "id": "pay_070",
+    "date": "2026-11-09",
+    "amount": 4484,
+    "rail": "ach",
+    "counterparty": "COBALT FREIGHT SYS",
+    "memo": ""
+  },
+  {
+    "id": "pay_071",
+    "date": "2026-11-09",
+    "amount": 20762.5,
+    "rail": "wire",
+    "counterparty": "QUILLON RECRUITING",
+    "memo": "INV1087"
+  },
+  {
+    "id": "pay_072",
+    "date": "2026-11-10",
+    "amount": 10880,
+    "rail": "wire",
+    "counterparty": "VANTAGE POINT CONSUL",
+    "memo": "/RFB/INV-1130"
+  },
+  {
+    "id": "pay_073",
+    "date": "2026-11-10",
+    "amount": 487.99,
+    "rail": "card",
+    "counterparty": "GW MEDIA HOLDINGS",
+    "memo": ""
+  },
+  {
+    "id": "pay_074",
+    "date": "2026-11-11",
+    "amount": 2500,
+    "rail": "ach",
+    "counterparty": "GUSTO",
+    "memo": "PAYROLL REVERSAL"
+  },
+  {
+    "id": "pay_075",
+    "date": "2026-11-11",
+    "amount": 23734,
+    "rail": "ach",
+    "counterparty": "VANTAGE POINT CONSUL",
+    "memo": "INV-1127 PAYMENT"
+  },
+  {
+    "id": "pay_076",
+    "date": "2026-11-11",
+    "amount": 2409.25,
+    "rail": "check",
+    "counterparty": "MERIDIAN YARD",
+    "memo": "INV-1113"
+  },
+  {
+    "id": "pay_077",
+    "date": "2026-11-11",
+    "amount": 15339,
+    "rail": "wire",
+    "counterparty": "POLARIS PAYROLL",
+    "memo": "INV-1161"
+  },
+  {
+    "id": "pay_078",
+    "date": "2026-11-12",
+    "amount": 10454,
+    "rail": "ach",
+    "counterparty": "IRONBARK CAPITAL ADV",
+    "memo": "AP PAYMENT"
+  },
+  {
+    "id": "pay_079",
+    "date": "2026-11-13",
+    "amount": 16077.4,
+    "rail": "card",
+    "counterparty": "STARLING DENTAL",
+    "memo": "Invoice INV-1103"
+  },
+  {
+    "id": "pay_080",
+    "date": "2026-11-13",
+    "amount": 7816,
+    "rail": "ach",
+    "counterparty": "OSTARA HEALTH TECH",
+    "memo": "INV-1034"
+  },
+  {
+    "id": "pay_081",
+    "date": "2026-11-13",
+    "amount": 1157.99,
+    "rail": "ach",
+    "counterparty": "SQUARE INC PAYOUT",
+    "memo": ""
+  },
+  {
+    "id": "pay_082",
+    "date": "2026-11-13",
+    "amount": 1250,
+    "rail": "ach",
+    "counterparty": "IRS TREAS 310",
+    "memo": "TAX REF"
+  },
+  {
+    "id": "pay_083",
+    "date": "2026-11-13",
+    "amount": 4502,
+    "rail": "ach",
+    "counterparty": "HERON BAY HOSPITALITY",
+    "memo": "INV-1141"
+  },
+  {
+    "id": "pay_084",
+    "date": "2026-11-14",
+    "amount": 1668.25,
+    "rail": "wire",
+    "counterparty": "GLASSWING INTERACTIV",
+    "memo": "in v-1095"
+  },
+  {
+    "id": "pay_085",
+    "date": "2026-11-14",
+    "amount": 22620,
+    "rail": "wire",
+    "counterparty": "COPPERLINE PROP MGMT",
+    "memo": "SEPT INVOICES"
+  },
+  {
+    "id": "pay_086",
+    "date": "2026-11-14",
+    "amount": 21659.4,
+    "rail": "ach",
+    "counterparty": "THISTLE PINE DESIGN",
+    "memo": "PAYMENT"
+  },
+  {
+    "id": "pay_087",
+    "date": "2026-11-14",
+    "amount": 15392.4,
+    "rail": "ach",
+    "counterparty": "FERNCLIFF STUDIO",
+    "memo": "INV1026"
+  },
+  {
+    "id": "pay_088",
+    "date": "2026-11-14",
+    "amount": 20652.4,
+    "rail": "wire",
+    "counterparty": "MARROW FINCH ARCH",
+    "memo": "/RFB/INV-1060"
+  },
+  {
+    "id": "pay_089",
+    "date": "2026-11-14",
+    "amount": 9853,
+    "rail": "ach",
+    "counterparty": "WREN STREET VENTURES",
+    "memo": "INV-1153"
+  },
+  {
+    "id": "pay_090",
+    "date": "2026-11-14",
+    "amount": 12400.4,
+    "rail": "ach",
+    "counterparty": "ORCHARD LANE HOMES",
+    "memo": "VENDOR PMT"
+  },
+  {
+    "id": "pay_091",
+    "date": "2026-11-14",
+    "amount": 9805.5,
+    "rail": "wire",
+    "counterparty": "JUNIPER AND VALE CPA",
+    "memo": "PMT INV-1031"
+  },
+  {
+    "id": "pay_092",
+    "date": "2026-11-15",
+    "amount": 38.91,
+    "rail": "ach",
+    "counterparty": "INTEREST PAYMENT",
+    "memo": "INTEREST PAID SEP"
+  },
+  {
+    "id": "pay_093",
+    "date": "2026-11-16",
+    "amount": 2500,
+    "rail": "ach",
+    "counterparty": "REDWOOD ROW REALTY",
+    "memo": "INV-1040 PAYMENT"
+  },
+  {
+    "id": "pay_094",
+    "date": "2026-11-17",
+    "amount": 20684.4,
+    "rail": "wire",
+    "counterparty": "REDWOOD ROW REALTY",
+    "memo": "PMT INV-1039"
+  },
+  {
+    "id": "pay_095",
+    "date": "2026-11-17",
+    "amount": 1200,
+    "rail": "ach",
+    "counterparty": "LUMENARC INC",
+    "memo": ""
+  }
+]

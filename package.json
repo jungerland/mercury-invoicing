@@ -1,0 +1,19 @@
+{
+  "name": "invoice-matcher",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "An agent that matches incoming payments to open invoices, with an eval against a rules baseline.",
+  "scripts": {
+    "generate": "node src/data/generate.ts",
+    "eval": "node src/eval.ts",
+    "ui": "node src/build-ui.ts"
+  },
+  "engines": {
+    "node": ">=23.6"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0",
+    "zod": "^4.6.7"
+  }
+}
