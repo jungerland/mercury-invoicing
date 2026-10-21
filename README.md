@@ -1,6 +1,6 @@
 # Grit Remover: An unapplied cash resolver agent
 
-An agent that matches the incoming payments Mercury's built-in matching leaves behind, the grit in the system. It applies the matches it can prove and gives a person a short, explained queue for everything else.
+An agent that matches the incoming payments Mercury's built-in matching leaves behind: the grit in the system. It applies the matches it can prove and gives a person a short, explained queue for everything else.
 
 Built as a working demo for a Senior PM, Invoicing role. The goal it answers comes from the job posting: incoming payments should "match themselves to the right invoice without anyone lifting a finger," using AI "without chasing hype."
 
