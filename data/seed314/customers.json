@@ -1,0 +1,220 @@
+[
+  {
+    "id": "cus_001",
+    "name": "Northwind Robotics, Inc.",
+    "aliases": [
+      "NORTHWIND ROBOTICS IN",
+      "NWR HOLDINGS LLC"
+    ]
+  },
+  {
+    "id": "cus_002",
+    "name": "Halcyon Data Labs LLC",
+    "aliases": [
+      "HALCYON DATA LABS"
+    ]
+  },
+  {
+    "id": "cus_003",
+    "name": "Brightpath Legal Group PC",
+    "aliases": [
+      "BRIGHTPATH LEGAL GRP",
+      "BILL.COM PAYABLES"
+    ]
+  },
+  {
+    "id": "cus_004",
+    "name": "Copperline Property Management",
+    "aliases": [
+      "COPPERLINE PROP MGMT"
+    ]
+  },
+  {
+    "id": "cus_005",
+    "name": "Ferncliff Studio",
+    "aliases": [
+      "FERNCLIFF STUDIO",
+      "DANA OKAFOR"
+    ]
+  },
+  {
+    "id": "cus_006",
+    "name": "Juniper & Vale CPAs",
+    "aliases": [
+      "JUNIPER AND VALE CPA"
+    ]
+  },
+  {
+    "id": "cus_007",
+    "name": "Ostara Health Technologies",
+    "aliases": [
+      "OSTARA HEALTH TECH"
+    ]
+  },
+  {
+    "id": "cus_008",
+    "name": "Redwood Row Realty",
+    "aliases": [
+      "REDWOOD ROW REALTY",
+      "RRR ESCROW TRUST ACCT"
+    ]
+  },
+  {
+    "id": "cus_009",
+    "name": "Tidewater Logistics Co.",
+    "aliases": [
+      "TIDEWATER LOGISTICS"
+    ]
+  },
+  {
+    "id": "cus_010",
+    "name": "Lumen Arc Software",
+    "aliases": [
+      "LUMEN ARC SOFTWARE",
+      "LUMENARC INC"
+    ]
+  },
+  {
+    "id": "cus_011",
+    "name": "Marrow & Finch Architects",
+    "aliases": [
+      "MARROW FINCH ARCH"
+    ]
+  },
+  {
+    "id": "cus_012",
+    "name": "Peregrine Analytics",
+    "aliases": [
+      "PEREGRINE ANALYTICS"
+    ]
+  },
+  {
+    "id": "cus_013",
+    "name": "Acme Analytics LLC",
+    "aliases": [
+      "ACME ANALYTICS LLC"
+    ]
+  },
+  {
+    "id": "cus_014",
+    "name": "Acme Builders Supply",
+    "aliases": [
+      "ACME BUILDERS SUPPLY"
+    ]
+  },
+  {
+    "id": "cus_015",
+    "name": "Saltmarsh Coffee Roasters",
+    "aliases": [
+      "SALTMARSH COFFEE",
+      "SQUARE INC PAYOUT"
+    ]
+  },
+  {
+    "id": "cus_016",
+    "name": "Quillon Recruiting Partners",
+    "aliases": [
+      "QUILLON RECRUITING"
+    ]
+  },
+  {
+    "id": "cus_017",
+    "name": "Ironbark Capital Advisors",
+    "aliases": [
+      "IRONBARK CAPITAL ADV"
+    ]
+  },
+  {
+    "id": "cus_018",
+    "name": "Glasswing Interactive",
+    "aliases": [
+      "GLASSWING INTERACTIV",
+      "GW MEDIA HOLDINGS"
+    ]
+  },
+  {
+    "id": "cus_019",
+    "name": "Starling Dental Partners",
+    "aliases": [
+      "STARLING DENTAL"
+    ]
+  },
+  {
+    "id": "cus_020",
+    "name": "Kestrel Field Services",
+    "aliases": [
+      "KESTREL FIELD SVCS"
+    ]
+  },
+  {
+    "id": "cus_021",
+    "name": "Meridian Yard Coworking",
+    "aliases": [
+      "MERIDIAN YARD"
+    ]
+  },
+  {
+    "id": "cus_022",
+    "name": "Bluefin Biosciences",
+    "aliases": [
+      "BLUEFIN BIOSCIENCES"
+    ]
+  },
+  {
+    "id": "cus_023",
+    "name": "Orchard Lane Homes",
+    "aliases": [
+      "ORCHARD LANE HOMES",
+      "PRIYA RAMAN"
+    ]
+  },
+  {
+    "id": "cus_024",
+    "name": "Vantage Point Consulting",
+    "aliases": [
+      "VANTAGE POINT CONSUL"
+    ]
+  },
+  {
+    "id": "cus_025",
+    "name": "Cobalt Freight Systems",
+    "aliases": [
+      "COBALT FREIGHT SYS"
+    ]
+  },
+  {
+    "id": "cus_026",
+    "name": "Heron Bay Hospitality",
+    "aliases": [
+      "HERON BAY HOSPITALITY"
+    ]
+  },
+  {
+    "id": "cus_027",
+    "name": "Thistle & Pine Design",
+    "aliases": [
+      "THISTLE PINE DESIGN"
+    ]
+  },
+  {
+    "id": "cus_028",
+    "name": "Summit Ridge Engineering",
+    "aliases": [
+      "SUMMIT RIDGE ENGINEER"
+    ]
+  },
+  {
+    "id": "cus_029",
+    "name": "Wren Street Ventures",
+    "aliases": [
+      "WREN STREET VENTURES"
+    ]
+  },
+  {
+    "id": "cus_030",
+    "name": "Polaris Payroll Partners",
+    "aliases": [
+      "POLARIS PAYROLL"
+    ]
+  }
+]
