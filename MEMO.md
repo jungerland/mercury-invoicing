@@ -22,7 +22,7 @@ Small business owners live and die by cash flow, and a payment that arrived but 
 
 ## What I built
 
-A working prototype (live demo, code, eval). Code gathers evidence, a model proposes a match with a confidence and a plain-language reason, and code decides whether money moves. I measured it against two baselines on three synthetic datasets of 99 payments each. The third was generated after the agent was finished, to check it wasn't tuned to the first two:
+A working prototype with an eval. Try the [interactive demo](https://claude.ai/artifact/W5w7goumjU1Hdasa35nqAR). Code gathers evidence, a model proposes a match with a confidence and a plain-language reason, and code decides whether money moves. I measured it against two baselines on three synthetic datasets of 99 payments each. The third was generated after the agent was finished, to check it wasn't tuned to the first two:
 
 - **Built-in matching:** virtual account number plus exact amount, as Mercury documents it.
 - **Rules baseline:** one I built for comparison. It uses the same evidence as the agent but only takes exact matches.
