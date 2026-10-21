@@ -8,7 +8,7 @@ const same = (a: number, b: number) => Math.round(a * 100) === Math.round(b * 10
 
 export function rulesMatch(p: Payment, ev: Evidence): Proposal {
   const base = { payment_id: p.id, residual: "none" as const, alternatives: [] as string[] };
-  const strong = ev.payers.filter((m) => m.strength === "alias").map((m) => m.customer_id);
+  const strong = ev.payers.filter((m) => m.strength === "alias" || m.strength === "virtual_account").map((m) => m.customer_id);
 
   // R1: memo references an invoice and the amount matches it exactly.
   const ref = ev.referenced.find((i) => same(i.amount, p.amount));

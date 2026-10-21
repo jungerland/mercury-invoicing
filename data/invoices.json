@@ -1474,5 +1474,41 @@
     "issued": "2026-09-26",
     "due": "2026-10-11",
     "status": "open"
+  },
+  {
+    "id": "inv_1165",
+    "number": "INV-1165",
+    "customer_id": "cus_023",
+    "amount": 12400.4,
+    "issued": "2026-09-27",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1166",
+    "number": "INV-1166",
+    "customer_id": "cus_029",
+    "amount": 20509.4,
+    "issued": "2026-09-19",
+    "due": "2026-10-19",
+    "status": "open"
+  },
+  {
+    "id": "inv_1167",
+    "number": "INV-1167",
+    "customer_id": "cus_005",
+    "amount": 1200,
+    "issued": "2026-09-13",
+    "due": "2026-10-13",
+    "status": "open"
+  },
+  {
+    "id": "inv_1168",
+    "number": "INV-1168",
+    "customer_id": "cus_001",
+    "amount": 2500,
+    "issued": "2026-09-08",
+    "due": "2026-10-08",
+    "status": "open"
   }
 ]

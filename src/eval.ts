@@ -1,5 +1,5 @@
-// Runs the rules baseline and the agent over the bank feed, applies the same
-// policy to both, and scores against ground truth.
+// Runs the built-in virtual-account matching, the rules baseline and the agent over
+// the bank feed, applies the same policy to all three, and scores against ground truth.
 //
 // Usage: [DATA_DIR=data RESULTS_DIR=results] node src/eval.ts [--limit N] [--concurrency N] [--rules-only]
 // Agent responses are cached in $RESULTS_DIR/agent_cache.json; delete it to re-run.
@@ -9,6 +9,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { agentMatch, buildPrompt, SYSTEM } from "./match/agent.ts";
 import { gatherEvidence, type Evidence } from "./match/candidates.ts";
 import { decide, DEFAULT_THRESHOLD } from "./match/policy.ts";
+import { builtinMatch } from "./match/builtin.ts";
 import { rulesMatch } from "./match/rules.ts";
 import { backend, MODEL } from "./llm.ts";
 import type { Action, Customer, GroundTruth, Invoice, Payment, Proposal } from "./types.ts";
@@ -129,11 +130,18 @@ const actionsFor = (props: Map<string, Proposal>, threshold: number): Action[] =
   });
 
 // ---- main ----
+const builtinProps = new Map(payments.map((p) => [p.id, builtinMatch(p, invoices)]));
 const rulesProps = new Map(payments.map((p) => [p.id, rulesMatch(p, evidence.get(p.id)!)]));
 const agentProps = RULES_ONLY ? new Map<string, Proposal>() : await runAgent();
 
+// Built-in matching has no review step and no guardrails: it applies what it matches and nothing else.
+const builtinActions: Action[] = payments.map((p) => {
+  const prop = builtinProps.get(p.id)!;
+  return { payment_id: p.id, action: prop.decision === "match" ? "auto_apply" : "leave_unmatched", proposal: prop, why: prop.reasoning };
+});
 const rulesActions = actionsFor(rulesProps, DEFAULT_THRESHOLD);
 const agentActions = actionsFor(agentProps, DEFAULT_THRESHOLD);
+const builtinScore = score(builtinActions);
 const rulesScore = score(rulesActions);
 const agentScore = score(agentActions);
 
@@ -183,19 +191,22 @@ ${payments.length} incoming payments against ${invoices.length} open invoices ac
 | Matcher | Hands-off | Wrong auto-applies | Review queue | ...correct suggestion | ...correct shortlist | Silently skipped | Human time |
 |---|---|---|---|---|---|---|---|
 | Status quo (all manual) | 0% | 0 | ${payments.length} | 0 | 0 | 0 | ${hrs(payments.length * MANUAL_MINUTES)} |
+${row("Built-in: virtual account + exact amount", builtinScore)}
 ${row("Rules baseline", rulesScore)}
 ${RULES_ONLY ? "" : row("Agent + policy", agentScore)}
 
+- **Built-in** follows Mercury's API docs: a transfer to a customer's virtual account number is marked paid on an exact-amount match. Anything it doesn't match waits until someone finds it ("silently skipped").
 - **Hands-off**: handled correctly with no human touch (auto-applied, or correctly left alone because it wasn't an invoice payment).
 - **Wrong auto-applies**: money put on the wrong invoice without a human seeing it. The number that has to stay at zero.
 - **Human time** assumes ${MANUAL_MINUTES} min to match a payment by hand, ${MINUTES.review_good_suggestion} min to confirm a correct suggestion, ${MINUTES.review_shortlist} min to pick from a shortlist, ${MINUTES.wrong_auto} min to unwind a wrong auto-apply. These are guesses to make the trade-off concrete, not measurements.
 ${RULES_ONLY ? "" : `- Of the ${payments.filter((p) => truth.get(p.id)!.ideal === "auto").length} payments a careful human would apply without hesitation, rules handle ${pct(rulesScore.idealAutoCoverage)} and the agent handles ${pct(agentScore.idealAutoCoverage)}.`}
+- ${payments.filter((p) => p.virtual_account).length} of ${payments.length} payments were sent to a customer's virtual account number. That share is an assumption; real traffic decides how much built-in matching covers.
 
 ## By scenario
 
-| Scenario | Count | Rules | Agent |
-|---|---|---|---|
-${scenarios.map((sc) => `| ${sc} | ${payments.filter((p) => truth.get(p.id)!.scenario === sc).length} | ${byScenario(rulesActions, sc)} | ${RULES_ONLY ? "-" : byScenario(agentActions, sc)} |`).join("\n")}
+| Scenario | Count | To virtual account | Built-in | Rules | Agent |
+|---|---|---|---|---|---|
+${scenarios.map((sc) => `| ${sc} | ${payments.filter((p) => truth.get(p.id)!.scenario === sc).length} | ${payments.filter((p) => truth.get(p.id)!.scenario === sc && p.virtual_account).length} | ${byScenario(builtinActions, sc)} | ${byScenario(rulesActions, sc)} | ${RULES_ONLY ? "-" : byScenario(agentActions, sc)} |`).join("\n")}
 
 ${RULES_ONLY ? "" : `## Threshold sweep (agent)
 
@@ -238,11 +249,13 @@ writeFileSync(
       model: MODEL,
       threshold: DEFAULT_THRESHOLD,
       generated: new Date().toISOString(),
+      builtin: builtinScore,
       rules: rulesScore,
       agent: RULES_ONLY ? null : agentScore,
       sweep,
       actions: agentActions.map((a) => ({ ...a, outcome: outcome(a, truth.get(a.payment_id)!), truth: truth.get(a.payment_id) })),
       rulesActions: rulesActions.map((a) => ({ ...a, outcome: outcome(a, truth.get(a.payment_id)!) })),
+      builtinActions: builtinActions.map((a) => ({ ...a, outcome: outcome(a, truth.get(a.payment_id)!) })),
     },
     null,
     2,

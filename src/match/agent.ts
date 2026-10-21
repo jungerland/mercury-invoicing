@@ -17,7 +17,7 @@ export const ProposalSchema = z.object({
 
 export const SYSTEM = `You reconcile incoming bank payments against a small business's open invoices.
 
-For each payment you get the bank-feed record, candidate open invoices, the customers they belong to (with names we've previously seen those customers pay from), and evidence computed by code: invoice numbers recovered from the memo, payer-name matches, exact-amount matches, and same-customer invoice combinations that sum to the payment. Trust the computed sums; don't redo arithmetic.
+For each payment you get the bank-feed record (including which account number it was sent to), candidate open invoices, the customers they belong to (with names we've previously seen those customers pay from), and evidence computed by code: invoice numbers recovered from the memo, payer-name matches, exact-amount matches, and same-customer invoice combinations that sum to the payment. Trust the computed sums; don't redo arithmetic.
 
 Propose what this payment is:
 - "match": it pays one or more invoices. Give each allocation (invoice_id and the amount applied). Allocations should add up to the payment amount.
@@ -49,6 +49,7 @@ export function buildPrompt(p: Payment, ev: Evidence, customers: Customer[]): st
     `rail: ${p.rail}`,
     `counterparty (bank feed): ${p.counterparty}`,
     `memo: ${p.memo ? JSON.stringify(p.memo) : "(empty)"}`,
+    `sent to: ${p.virtual_account ? `the virtual account number assigned only to ${p.virtual_account}, so the payer is that customer` : "the business's main account number (does not identify the payer)"}`,
     ``,
     `CUSTOMERS`,
     ...(custs.length ? custs.map((c) => `${c.id} | ${c.name} | previously paid from: ${c.aliases.join("; ")}`) : ["(none)"]),
@@ -58,7 +59,7 @@ export function buildPrompt(p: Payment, ev: Evidence, customers: Customer[]): st
     ``,
     `EVIDENCE`,
     `invoice numbers recovered from memo: ${ev.referenced.map((i) => i.number).join(", ") || "none"}`,
-    `payer matches: ${ev.payers.map((m) => `${m.customer_id} (${m.strength === "alias" ? "exact match to a known payer name" : "shares a word with the customer name"})`).join(", ") || "none"}`,
+    `payer matches: ${ev.payers.map((m) => `${m.customer_id} (${m.strength === "virtual_account" ? "paid to this customer's virtual account" : m.strength === "alias" ? "exact match to a known payer name" : "shares a word with the customer name"})`).join(", ") || "none"}`,
     `open invoices at exactly this amount: ${ev.exact_amount.map((i) => `${i.number} (${i.customer_id})`).join(", ") || "none"}`,
     `invoices exceeding the payment by $50 or less: ${ev.near_amount.map((i) => `${i.number} (+$${(i.amount - p.amount).toFixed(2)})`).join(", ") || "none"}`,
     `same-customer invoice combinations that fit: ${ev.combos.map((c) => `[${c.invoice_ids.join(" + ")}] = $${c.total.toFixed(2)}${c.shortfall ? ` (short $${c.shortfall.toFixed(2)})` : ""}`).join("; ") || "none"}`,

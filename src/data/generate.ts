@@ -93,6 +93,18 @@ for (const c of customers) {
   }
 }
 
+// A few customers get two open invoices at the same amount (a repeated retainer).
+// Mercury's API docs warn these "look identical when payment arrives."
+const twins: [Invoice, Invoice][] = [];
+for (const c of [...customers].sort(() => rand() - 0.5).slice(0, 4)) {
+  const a = pick(invoices.filter((i) => i.customer_id === c.id));
+  const issued = int(0, 30);
+  const b: Invoice = { ...a, id: `inv_${invoiceSeq}`, number: `INV-${invoiceSeq}`, issued: isoDay(issued), due: isoDay(issued + 30) };
+  invoiceSeq++;
+  invoices.push(b);
+  twins.push(a.due <= b.due ? [a, b] : [b, a]);
+}
+
 const used = new Set<string>();
 const customerOf = (inv: Invoice) => customers.find((c) => c.id === inv.customer_id)!;
 const amountCount = (amt: number) => invoices.filter((i) => i.amount === amt).length;
@@ -110,6 +122,11 @@ const unique = (i: Invoice) => amountCount(i.amount) === 1;
 const bankName = (c: Customer) => c.aliases[0];
 const digits = (inv: Invoice) => inv.number.slice(4);
 
+// Share of invoice payments sent to the customer's virtual account number rather than
+// the main account number. Unknown in reality; Mercury knows it. An assumption here.
+const VIRTUAL_SHARE = 0.55;
+const via = (c: Customer) => (rand() < VIRTUAL_SHARE ? c.id : null);
+
 const payments: Payment[] = [];
 const truth: GroundTruth[] = [];
 let paySeq = 1;
@@ -119,14 +136,32 @@ function addPayment(
   scenario: Scenario,
   p: { amount: number; rail: Rail; counterparty: string; memo: string },
   t: Omit<GroundTruth, "payment_id" | "scenario">,
+  virtual_account: string | null = null,
 ) {
   const id = `pay_${String(paySeq++).padStart(3, "0")}`;
   dayCursor += rand() < 0.5 ? 0 : 1;
-  payments.push({ id, date: isoDay(dayCursor), ...p, amount: money(p.amount) });
+  payments.push({ id, date: isoDay(dayCursor), ...p, amount: money(p.amount), virtual_account });
   truth.push({ payment_id: id, scenario, ...t });
 }
 
 // Scarce scenarios first, so their eligible invoices aren't consumed by easy ones.
+
+// 12. Two open invoices for one customer at the same amount, paid to that customer's virtual account.
+for (const [older, newer] of twins) {
+  const c = customerOf(older);
+  used.add(older.id);
+  used.add(newer.id);
+  const withRef = rand() < 0.5;
+  const target = withRef ? pick([older, newer]) : older;
+  addPayment(
+    "twin_amount",
+    { amount: target.amount, rail: "ach", counterparty: bankName(c), memo: withRef ? target.number : pick(["", "PAYMENT"]) },
+    withRef
+      ? { ideal: "auto", allocations: [{ invoice_id: target.id, amount: target.amount }], residual: "none", note: `Two open invoices for ${c.name} at this amount; the memo says which.` }
+      : { ideal: "review", allocations: [{ invoice_id: target.id, amount: target.amount }], residual: "none", note: `Two open invoices for ${c.name} at exactly this amount, and nothing says which. Suggest the older one; a person confirms.` },
+    c.id,
+  );
+}
 
 // 7. Paid from a different entity: parent company, founder's personal account, AP platform, or processor payout.
 const differentPayerCustomers = customers.filter((c) => c.aliases.length > 1);
@@ -139,6 +174,7 @@ for (let k = 0; k < 9; k++) {
     "different_payer",
     { amount: inv.amount, rail: pick(["ach", "card", "check"]), counterparty: alias, memo: withRef ? pick([inv.number, `ref ${digits(inv)}`]) : "" },
     { ideal: withRef || invoices.filter((j) => j.customer_id === c.id && j.amount === inv.amount).length === 1 ? "auto" : "review", allocations: [{ invoice_id: inv.id, amount: inv.amount }], residual: "none", note: `Paid by "${alias}", a payer previously seen paying for ${c.name}.` },
+    via(c),
   );
 }
 
@@ -162,6 +198,7 @@ for (let k = 0; k < 4; k++) {
     "wrong_reference",
     { amount: real.amount, rail: "ach", counterparty: bankName(c), memo: decoy.number },
     { ideal: "review", allocations: [{ invoice_id: real.id, amount: real.amount }], residual: "none", note: `Memo cites ${decoy.number} but the amount exactly matches ${real.number}. Likely a customer typo, but a human should confirm.` },
+    via(c),
   );
 }
 
@@ -179,6 +216,7 @@ for (let k = 0; k < 9; k++) {
     "multi_invoice",
     { amount: total, rail: pick(["ach", "wire", "check"]), counterparty: bankName(c), memo: listed ? group.map((g) => g.number).join(", ") : pick(["", "SEPT INVOICES", "BATCH PAYMENT", `${group.length} INVOICES`]) },
     { ideal: "auto", allocations: group.map((g) => ({ invoice_id: g.id, amount: g.amount })), residual: "none", note: `Pays ${group.length} invoices in full${listed ? "; memo lists them" : "; memo does not list them, only the sum fits"}.` },
+    via(c),
   );
 }
 
@@ -191,6 +229,7 @@ for (let k = 0; k < 8; k++) {
     "wire_fee",
     { amount: inv.amount - fee, rail: "wire", counterparty: bankName(c), memo: pick([inv.number, `/RFB/${inv.number}`, `INVOICE ${digits(inv)} ${c.name.toUpperCase().slice(0, 12)}`]) },
     { ideal: "auto", allocations: [{ invoice_id: inv.id, amount: money(inv.amount - fee) }], residual: "processing_fee", note: `Short by $${fee}, a typical wire fee. Apply and write off the fee.` },
+    via(c),
   );
 }
 
@@ -204,6 +243,7 @@ for (let k = 0; k < 6; k++) {
     "partial",
     { amount: amt, rail: "ach", counterparty: bankName(c), memo: pick([`${inv.number} partial`, `${inv.number} 1 of 2`, `deposit ${inv.number}`, inv.number]) },
     { ideal: "review", allocations: [{ invoice_id: inv.id, amount: amt }], residual: "partial", note: "Partial payment. Right invoice is clear, but the user should confirm the remaining balance stays open." },
+    via(c),
   );
 }
 
@@ -216,6 +256,7 @@ for (let k = 0; k < 4; k++) {
     "overpayment",
     { amount: inv.amount + extra, rail: pick(["ach", "check"]), counterparty: bankName(c), memo: inv.number },
     { ideal: "review", allocations: [{ invoice_id: inv.id, amount: inv.amount }], residual: "overpayment", note: "Pays the invoice plus extra. The user decides between a credit and a refund." },
+    via(c),
   );
 }
 
@@ -236,6 +277,7 @@ for (let k = 0; k < 10; k++) {
     "garbled_memo",
     { amount: inv.amount, rail: pick(["ach", "wire"]), counterparty: bankName(c), memo },
     { ideal: "auto", allocations: [{ invoice_id: inv.id, amount: inv.amount }], residual: "none", note: "Reference is malformed but recoverable; amount matches exactly." },
+    via(c),
   );
 }
 
@@ -247,6 +289,7 @@ for (let k = 0; k < 12; k++) {
     "no_memo",
     { amount: inv.amount, rail: "ach", counterparty: bankName(c), memo: pick(["", "PAYMENT", "AP PAYMENT", "VENDOR PMT"]) },
     { ideal: "auto", allocations: [{ invoice_id: inv.id, amount: inv.amount }], residual: "none", note: "No reference, but amount is unique among open invoices and the payer is known." },
+    via(c),
   );
 }
 
@@ -258,6 +301,7 @@ for (let k = 0; k < 22; k++) {
     "clean",
     { amount: inv.amount, rail: pick(["ach", "ach", "wire", "card"]), counterparty: bankName(c), memo: pick([inv.number, `${inv.number} PAYMENT`, `Invoice ${inv.number}`, `PMT ${inv.number}`]) },
     { ideal: "auto", allocations: [{ invoice_id: inv.id, amount: inv.amount }], residual: "none", note: "Reference and amount both match." },
+    via(c),
   );
 }
 

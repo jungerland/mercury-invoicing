@@ -23,6 +23,7 @@ export type Payment = {
   rail: Rail;
   counterparty: string; // as it shows on the bank feed
   memo: string;
+  virtual_account: string | null; // customer id whose virtual account number received it; null = main account number
 };
 
 export type Allocation = { invoice_id: string; amount: number };
@@ -46,6 +47,7 @@ export type Scenario =
   | "ambiguous"
   | "overpayment"
   | "wrong_reference"
+  | "twin_amount"
   | "not_invoice";
 
 export type GroundTruth = {

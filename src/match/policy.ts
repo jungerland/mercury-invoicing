@@ -5,10 +5,12 @@
 //   1. The matcher is confident (>= threshold).
 //   2. The allocation reconciles in code: invoices exist, belong to one customer,
 //      and sum to the payment exactly, or exceed it by a plausible bank fee.
-//   3. Two independent signals: identity (known payer OR a memo reference to one
-//      of the invoices) plus amount (exact or fee-adjusted).
+//   3. Two independent signals: identity (the customer's virtual account, a known
+//      payer, OR a memo reference to one of the invoices) plus amount (exact or fee-adjusted).
 //   4. The residual is "none" or "processing_fee". Partials, short-pays and
 //      overpayments always go to a human in v1.
+//   5. Nothing else fits as well: no unreferenced twin invoice at the same amount,
+//      and no second invoice combination that sums to the payment.
 
 import type { Action, Invoice, Payment, Proposal } from "../types.ts";
 import { FEE_TOLERANCE, type Evidence } from "./candidates.ts";
@@ -38,12 +40,17 @@ export function decide(p: Payment, prop: Proposal, ev: Evidence, invoices: Invoi
   if (prop.residual !== "none" && prop.residual !== "processing_fee") return act("review", `Residual "${prop.residual}" needs a human.`);
 
   const customer = matched[0].customer_id;
-  const knownPayer = ev.payers.some((m) => m.strength === "alias" && m.customer_id === customer);
+  const knownPayer = ev.payers.some((m) => (m.strength === "alias" || m.strength === "virtual_account") && m.customer_id === customer);
   const memoRef = ev.referenced.some((r) => matched.some((m) => m.id === r.id));
   if (!knownPayer && !memoRef) return act("review", "No identity signal: payer unknown and memo cites none of these invoices.");
 
   const conflicting = ev.referenced.filter((r) => r.customer_id === customer && !matched.some((m) => m.id === r.id));
   if (conflicting.length) return act("review", `Memo cites ${conflicting.map((r) => r.number).join(", ")}, which is not in the allocation.`);
+
+  if (matched.length === 1 && !memoRef) {
+    const twins = invoices.filter((i) => i.customer_id === customer && cents(i.amount) === cents(matched[0].amount));
+    if (twins.length > 1) return act("review", `${twins.length} open invoices for this customer at this amount, and the memo doesn't say which.`);
+  }
 
   if (matched.length > 1 && !memoRef) {
     const fits = ev.combos.filter((c) => cents(c.total) - cents(p.amount) === gap);

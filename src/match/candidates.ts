@@ -5,7 +5,7 @@ import type { Customer, Invoice, Payment } from "../types.ts";
 
 export const FEE_TOLERANCE = 50; // max shortfall we'll treat as a bank/wire fee
 
-export type PayerMatch = { customer_id: string; strength: "alias" | "name_token" };
+export type PayerMatch = { customer_id: string; strength: "virtual_account" | "alias" | "name_token" };
 
 export type Combo = { invoice_ids: string[]; total: number; shortfall: number };
 
@@ -64,7 +64,11 @@ function subsetsSumming(invs: Invoice[], target: number): Combo[] {
 export function gatherEvidence(p: Payment, customers: Customer[], invoices: Invoice[]): Evidence {
   const refs = new Set(referencedNumbers(p.memo));
   const referenced = invoices.filter((i) => refs.has(i.number.slice(4)));
-  const payers = payerMatches(p.counterparty, customers);
+  // A deposit to a customer's virtual account number identifies that customer for certain.
+  const byName = payerMatches(p.counterparty, customers);
+  const payers: PayerMatch[] = p.virtual_account
+    ? [{ customer_id: p.virtual_account, strength: "virtual_account" }, ...byName.filter((m) => m.customer_id !== p.virtual_account)]
+    : byName;
   const amt = cents(p.amount);
   const exact_amount = invoices.filter((i) => cents(i.amount) === amt);
   const near_amount = invoices.filter((i) => {

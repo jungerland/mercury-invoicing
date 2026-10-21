@@ -1,604 +1,163 @@
 {
   "pay_002": {
-    "key": "4b9091b6a44a8a57",
+    "key": "77e14c30ec1b275b",
     "proposal": {
       "payment_id": "pay_002",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1056",
-          "amount": 4553
-        }
-      ],
-      "residual": "processing_fee",
-      "confidence": 0.93,
-      "reasoning": "The wire came from a known Lumen Arc Software account and the memo cites INV-1056. It is exactly $20 short of that invoice, which fits a typical wire fee.",
-      "alternatives": []
-    },
-    "costUsd": 0.02434,
-    "ms": 3663
-  },
-  "pay_001": {
-    "key": "595f29e1d5d171f3",
-    "proposal": {
-      "payment_id": "pay_001",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1041",
-          "amount": 23799.99
+          "invoice_id": "inv_1134",
+          "amount": 847
         }
       ],
       "residual": "none",
       "confidence": 0.9,
-      "reasoning": "The payment came from Redwood Row Realty, which is a name we've seen them pay from before. It matches INV-1041 to the cent ($23,799.99), and no other single invoice or combination of their invoices adds up to this amount. The memo doesn't give an invoice number, and INV-1039 is due sooner, but an exact cent match like this points strongly to INV-1041.",
+      "reasoning": "The payment arrived at Cobalt Freight Systems' own virtual account, from the name they've paid from before. It is exactly $847.00, the amount of INV-1134, and no other open invoice or combination of invoices adds up to it.",
+      "alternatives": []
+    },
+    "costUsd": 0.026608,
+    "ms": 4913
+  },
+  "pay_001": {
+    "key": "e2e51c350743bd32",
+    "proposal": {
+      "payment_id": "pay_001",
+      "decision": "unsure",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.2,
+      "reasoning": "This $7,500 transfer has no memo and a generic payer name (\"ONLINE TRANSFER\"). Four different customers each have an open invoice for exactly $7,500, so nothing points to one customer. INV-1005 (Northwind) is due the same day the money arrived, which is a weak hint but not enough to post it without someone checking.",
       "alternatives": [
-        "inv_1039"
+        "inv_1005",
+        "inv_1135",
+        "inv_1050",
+        "inv_1105"
       ]
     },
-    "costUsd": 0.025736000000000002,
-    "ms": 4132
+    "costUsd": 0.027964,
+    "ms": 4846
   },
   "pay_003": {
-    "key": "7604e7416341fbd5",
+    "key": "dd779d5b86e8b44f",
     "proposal": {
       "payment_id": "pay_003",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1004",
-          "amount": 14811
+          "invoice_id": "inv_1067",
+          "amount": 6114.8
+        }
+      ],
+      "residual": "partial",
+      "confidence": 0.85,
+      "reasoning": "The payment came from PEREGRINE ANALYTICS, a name this customer has paid from before. The memo \"INV-1067 1 of 2\" names their open invoice INV-1067 and says this is the first of two installments. The $6,114.80 is about 40% of the $15,286.99 total, so $9,172.19 stays open for the second payment. Note: the automatic memo reader missed this invoice number, but the memo states it clearly.",
+      "alternatives": [
+        "inv_1063",
+        "inv_1064"
+      ]
+    },
+    "costUsd": 0.032584,
+    "ms": 5932
+  },
+  "pay_005": {
+    "key": "d530532f804442a3",
+    "proposal": {
+      "payment_id": "pay_005",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1088",
+          "amount": 1200
+        },
+        {
+          "invoice_id": "inv_1089",
+          "amount": 5395.5
+        },
+        {
+          "invoice_id": "inv_1090",
+          "amount": 16313
+        },
+        {
+          "invoice_id": "inv_1091",
+          "amount": 5235.25
         }
       ],
       "residual": "none",
-      "confidence": 0.9,
-      "reasoning": "The payer, NWR HOLDINGS LLC, is a name Northwind Robotics has paid from before, and the $14,811.00 exactly matches their open invoice INV-1004. The memo is empty, so no invoice number confirms it, but none of Northwind's other open invoices or combinations fit this amount.",
+      "confidence": 0.8,
+      "reasoning": "The payment came from Ironbark Capital Advisors' known bank name, and only one mix of their open invoices adds up to exactly $28,143.75: INV-1088, INV-1089, INV-1090 and INV-1091. There's no memo, though, and this mix skips the overdue INV-1093 but includes INV-1090, which isn't due until November. That's an odd choice, so it's worth a quick check with the customer.",
       "alternatives": [
-        "inv_1032",
-        "inv_1014"
+        "inv_1092",
+        "inv_1093"
       ]
     },
-    "costUsd": 0.027016,
-    "ms": 4388
-  },
-  "pay_005": {
-    "key": "58f98ba67418f4bd",
-    "proposal": {
-      "payment_id": "pay_005",
-      "decision": "unsure",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.1,
-      "reasoning": "This is a $1,200 mobile check deposit with no memo and no payer name, and seven open invoices from seven different customers are each exactly $1,200. Nothing points to one customer, so someone needs to check the check image or the deposit slip to see who wrote it.",
-      "alternatives": [
-        "inv_1007",
-        "inv_1016",
-        "inv_1025",
-        "inv_1053",
-        "inv_1059",
-        "inv_1088",
-        "inv_1094"
-      ]
-    },
-    "costUsd": 0.028007999999999998,
-    "ms": 4921
+    "costUsd": 0.03166,
+    "ms": 5851
   },
   "pay_004": {
-    "key": "2ab0e4fe35667bf5",
+    "key": "61d0509061559c8b",
     "proposal": {
       "payment_id": "pay_004",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1164",
-          "amount": 1312.75
+          "invoice_id": "inv_1082",
+          "amount": 12047.4
         }
       ],
-      "residual": "partial",
-      "confidence": 0.93,
-      "reasoning": "The memo names INV-1164 and says \"partial\", and the payer is the known account for Polaris Payroll Partners. $1,312.75 is exactly one quarter of the $5,251.00 invoice, which looks like a planned installment, so $3,938.25 stays open.",
-      "alternatives": []
+      "residual": "none",
+      "confidence": 0.92,
+      "reasoning": "This payment went to the account number set up only for Saltmarsh Coffee Roasters, and they've paid through Square payouts before. The amount matches overdue invoice INV-1082 exactly, to the cent. The \"payout\" label normally points to a processor payout rather than a customer payment, but here it's a known way this customer pays.",
+      "alternatives": [
+        "inv_1080"
+      ]
     },
-    "costUsd": 0.02642,
-    "ms": 4985
+    "costUsd": 0.030600000000000002,
+    "ms": 5907
   },
   "pay_010": {
-    "key": "863e1cd3fc0e2b9a",
+    "key": "9ac29198dd9906e5",
     "proposal": {
       "payment_id": "pay_010",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1151",
-          "amount": 14188
+          "invoice_id": "inv_1108",
+          "amount": 2500
         }
       ],
       "residual": "none",
-      "confidence": 0.98,
-      "reasoning": "The memo names INV-1151, the payer is Summit Ridge Engineering's known bank name, and the $14,188.00 payment is exactly what INV-1151 is for.",
+      "confidence": 0.97,
+      "reasoning": "The wire went to Kestrel Field Services' own virtual account, came from their usual bank name, and the memo cites INV-1108, which is their open invoice for exactly $2,500.00. Other customers have invoices for $2,500 too, but nothing ties this payment to any of them.",
       "alternatives": []
     },
-    "costUsd": 0.013533,
-    "ms": 3474
+    "costUsd": 0.022303000000000003,
+    "ms": 4199
   },
   "pay_008": {
-    "key": "6182a13bbc9879e5",
+    "key": "2a90fd3881785cd2",
     "proposal": {
       "payment_id": "pay_008",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1052",
-          "amount": 2035.4
+          "invoice_id": "inv_1012",
+          "amount": 2476.4
         }
       ],
       "residual": "none",
-      "confidence": 0.93,
-      "reasoning": "The payer, LUMEN ARC SOFTWARE, is a name Lumen Arc Software has paid from before, and INV-1052 is their only open invoice for exactly $2,035.40. The memo \"VENDOR PMT\" is a generic accounts-payable label and names no invoice.",
+      "confidence": 0.96,
+      "reasoning": "The memo \"ref 1012\" points to INV-1012, the amount is exactly that invoice's $2,476.40, and Brightpath Legal has paid through BILL.COM PAYABLES before. The many $2,500 invoices that are $23.60 higher are just coincidence: $23.60 isn't a typical round wire fee, and nothing else ties the payment to them.",
       "alternatives": [
-        "inv_1053",
-        "inv_1056"
+        "inv_1013"
       ]
     },
-    "costUsd": 0.014832999999999999,
-    "ms": 3766
+    "costUsd": 0.024387,
+    "ms": 5322
   },
   "pay_006": {
-    "key": "234a15ba420b0dff",
+    "key": "fdd75cbc36c7ab86",
     "proposal": {
       "payment_id": "pay_006",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1152",
-          "amount": 3158.4
-        }
-      ],
-      "residual": "processing_fee",
-      "confidence": 0.93,
-      "reasoning": "The memo cites INV-1152 and the payer is Summit Ridge Engineering's known bank name. The wire came in $25.00 under the invoice, a round amount that looks like a bank wire fee.",
-      "alternatives": [
-        "inv_1148"
-      ]
-    },
-    "costUsd": 0.014016999999999998,
-    "ms": 4231
-  },
-  "pay_009": {
-    "key": "da4342e0ff9fd9c8",
-    "proposal": {
-      "payment_id": "pay_009",
-      "decision": "unsure",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.1,
-      "reasoning": "The $1,200 ACH shows only the generic name \"ACH CREDIT\" and has no memo, and seven open invoices from seven different customers are each exactly $1,200. Nothing points to one customer over the others, so a person needs to check the bank's ACH details (originator name or company ID) or ask the customers.",
-      "alternatives": [
-        "inv_1007",
-        "inv_1016",
-        "inv_1025",
-        "inv_1053",
-        "inv_1059",
-        "inv_1088",
-        "inv_1094"
-      ]
-    },
-    "costUsd": 0.017805,
-    "ms": 4883
-  },
-  "pay_011": {
-    "key": "026c5d8d053876f9",
-    "proposal": {
-      "payment_id": "pay_011",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1020",
-          "amount": 9955
-        }
-      ],
-      "residual": "processing_fee",
-      "confidence": 0.9,
-      "reasoning": "The wire came from Copperline Property Management under the bank name they've paid from before, and the memo names invoice 1020. It is $45 short of the $10,000 invoice, which looks like a normal wire fee.",
-      "alternatives": [
-        "inv_1018",
-        "inv_1021"
-      ]
-    },
-    "costUsd": 0.021913000000000002,
-    "ms": 5057
-  },
-  "pay_007": {
-    "key": "19f729d1fc6118fa",
-    "proposal": {
-      "payment_id": "pay_007",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1092",
-          "amount": 2540.6
-        }
-      ],
-      "residual": "partial",
-      "confidence": 0.8,
-      "reasoning": "The memo says \"INV-1092 1 of 2\" and the payment comes from Ironbark's usual bank account, so this is the first of two installments on INV-1092. $2,540.60 is exactly 40% of the $6,351.50 invoice, which leaves $3,810.90 open. Note that the memo cites INV-1092 even though the automated evidence didn't pick it up, and the split isn't 50/50, so please confirm that a 40/60 split was agreed.",
-      "alternatives": [
-        "inv_1093",
-        "inv_1088"
-      ]
-    },
-    "costUsd": 0.019021000000000003,
-    "ms": 5890
-  },
-  "pay_012": {
-    "key": "4c38b401250f50f4",
-    "proposal": {
-      "payment_id": "pay_012",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1142",
-          "amount": 14515.4
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.98,
-      "reasoning": "The memo cites INV-1142, the payer is Thistle & Pine Design's known bank name, and the amount equals INV-1142 exactly.",
-      "alternatives": []
-    },
-    "costUsd": 0.014384999999999998,
-    "ms": 3246
-  },
-  "pay_013": {
-    "key": "8456bb54940105f1",
-    "proposal": {
-      "payment_id": "pay_013",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1126",
-          "amount": 12336.4
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.98,
-      "reasoning": "The memo cites INV-1126, the payment amount matches that invoice exactly, and the payer name is Vantage Point Consulting's known bank name.",
-      "alternatives": []
-    },
-    "costUsd": 0.013253,
-    "ms": 3156
-  },
-  "pay_014": {
-    "key": "fa62c5c047e2a6b8",
-    "proposal": {
-      "payment_id": "pay_014",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1136",
-          "amount": 5448
-        }
-      ],
-      "residual": "processing_fee",
-      "confidence": 0.93,
-      "reasoning": "The wire came from Cobalt Freight Systems' known bank name, and the memo cites INV-1136. It is $30 less than that invoice, a round amount that looks like a typical wire fee.",
-      "alternatives": []
-    },
-    "costUsd": 0.013933000000000001,
-    "ms": 4045
-  },
-  "pay_015": {
-    "key": "4de029c22b4ebfc9",
-    "proposal": {
-      "payment_id": "pay_015",
-      "decision": "unsure",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.2,
-      "reasoning": "Four open invoices from four different customers are each exactly $7,500, and the payment has no memo and no identifiable payer name (\"ACH CREDIT\"). Nothing points to one customer over another, so a person needs to check the ACH details or ask the customers before this is applied.",
-      "alternatives": [
-        "inv_1005",
-        "inv_1050",
-        "inv_1105",
-        "inv_1135"
-      ]
-    },
-    "costUsd": 0.014973,
-    "ms": 3624
-  },
-  "pay_016": {
-    "key": "4f3e80133a8a4e6c",
-    "proposal": {
-      "payment_id": "pay_016",
-      "decision": "not_invoice_payment",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "This is a refund credit from Amazon Web Services, a vendor, not a customer paying an invoice. The memo says \"AWS REFUND CREDIT\", and no customer or open invoice matches the payer or the amount.",
-      "alternatives": []
-    },
-    "costUsd": 0.011493,
-    "ms": 3943
-  },
-  "pay_017": {
-    "key": "ef925facdd20c0e9",
-    "proposal": {
-      "payment_id": "pay_017",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1145",
-          "amount": 9140.5
-        }
-      ],
-      "residual": "processing_fee",
-      "confidence": 0.93,
-      "reasoning": "The wire came from Thistle & Pine Design's known bank name, and the memo cites INV-1145. It is exactly $35.00 short of that invoice, which fits a typical wire fee.",
-      "alternatives": []
-    },
-    "costUsd": 0.013913,
-    "ms": 4330
-  },
-  "pay_018": {
-    "key": "c04acf9294a2a48d",
-    "proposal": {
-      "payment_id": "pay_018",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1128",
-          "amount": 7628.25
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo names invoice 1128, the payer is Vantage Point Consulting's usual bank account, and the payment is exactly the $7,628.25 owed on INV-1128.",
-      "alternatives": []
-    },
-    "costUsd": 0.013457,
-    "ms": 4005
-  },
-  "pay_021": {
-    "key": "8d8e933c51b06d28",
-    "proposal": {
-      "payment_id": "pay_021",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1048",
-          "amount": 5024.25
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.98,
-      "reasoning": "The memo cites INV-1048, the payer name matches Tidewater Logistics, and the $5,024.25 amount equals INV-1048 exactly. All three signals agree.",
-      "alternatives": []
-    },
-    "costUsd": 0.014041,
-    "ms": 3234
-  },
-  "pay_020": {
-    "key": "1fc068d828da9b61",
-    "proposal": {
-      "payment_id": "pay_020",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1123",
-          "amount": 22663.5
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1123, the amount matches INV-1123 exactly, and Orchard Lane Homes has paid from PRIYA RAMAN before. All three point to the same invoice.",
-      "alternatives": [
-        "inv_1129"
-      ]
-    },
-    "costUsd": 0.014113,
-    "ms": 3867
-  },
-  "pay_019": {
-    "key": "46d5f88d1a92e2ce",
-    "proposal": {
-      "payment_id": "pay_019",
-      "decision": "unsure",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.5,
-      "reasoning": "The payer is clearly Acme Builders Supply, and the memo says INV-1072. But INV-1072 is for $2,400, and this payment is $2,500, which exactly matches their other invoice INV-1077. INV-1077 is overdue, and its number is one digit off from the one in the memo. So this could be INV-1072 with a $100 overpayment, or INV-1077 with a typo in the memo. Please confirm with the customer which invoice they meant to pay.",
-      "alternatives": [
-        "inv_1077",
-        "inv_1072"
-      ]
-    },
-    "costUsd": 0.025384999999999998,
-    "ms": 5407
-  },
-  "pay_022": {
-    "key": "d76e77eab6e1d658",
-    "proposal": {
-      "payment_id": "pay_022",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1159",
-          "amount": 1346.25
-        }
-      ],
-      "residual": "partial",
-      "confidence": 0.9,
-      "reasoning": "The memo says \"deposit INV-1159,\" and the payer is Polaris Payroll Partners, a known customer. $1,346.25 is exactly 25% of the $5,385.00 invoice, so this looks like a planned deposit, and $4,038.75 stays open.",
-      "alternatives": []
-    },
-    "costUsd": 0.015989,
-    "ms": 4101
-  },
-  "pay_023": {
-    "key": "8d197f241cfb355d",
-    "proposal": {
-      "payment_id": "pay_023",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1021",
-          "amount": 2610.5
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.98,
-      "reasoning": "The memo cites INV-1021, the payer is Copperline's known bank name, and the amount exactly equals INV-1021's $2,610.50 balance.",
-      "alternatives": []
-    },
-    "costUsd": 0.013845,
-    "ms": 3406
-  },
-  "pay_024": {
-    "key": "b074a1d41d211960",
-    "proposal": {
-      "payment_id": "pay_024",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1137",
-          "amount": 11440.99
-        },
-        {
-          "invoice_id": "inv_1138",
-          "amount": 21279.4
-        },
-        {
-          "invoice_id": "inv_1139",
-          "amount": 10000
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.9,
-      "reasoning": "Heron Bay Hospitality paid from its usual account with the memo \"3 INVOICES.\" INV-1137, INV-1138 and INV-1139 add up to exactly $42,720.39, and it's the only set of their invoices that does.",
-      "alternatives": [
-        "inv_1140",
-        "inv_1141"
-      ]
-    },
-    "costUsd": 0.015097,
-    "ms": 3979
-  },
-  "pay_025": {
-    "key": "fc00603b1809004e",
-    "proposal": {
-      "payment_id": "pay_025",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1006",
-          "amount": 2500
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.95,
-      "reasoning": "The memo says \"ref 1006\", which matches INV-1006. The payer, NWR HOLDINGS LLC, is a name Northwind Robotics has paid from before, and the $2,500.00 equals that invoice exactly. Seven other customers also have open $2,500 invoices, but the memo and payer both point only to Northwind.",
-      "alternatives": []
-    },
-    "costUsd": 0.019981000000000002,
-    "ms": 3970
-  },
-  "pay_026": {
-    "key": "ebbfe67ac9c0dc6b",
-    "proposal": {
-      "payment_id": "pay_026",
-      "decision": "not_invoice_payment",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.95,
-      "reasoning": "This is a transfer between the business's own accounts (\"TRANSFER FROM CHECKING 4471\", memo \"INTERNAL TRANSFER\"), not a customer payment. Eight open invoices happen to be exactly $10,000, but no invoice number or known payer name points to any of them.",
-      "alternatives": []
-    },
-    "costUsd": 0.017525000000000002,
-    "ms": 3658
-  },
-  "pay_027": {
-    "key": "9d17b9e65175d103",
-    "proposal": {
-      "payment_id": "pay_027",
-      "decision": "not_invoice_payment",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.9,
-      "reasoning": "This is a Stripe payout (memo \"STRIPE PAYOUT ST-8XK2\"). It's a batch of card payments Stripe has already settled, not one customer paying an invoice, and it doesn't match any open invoice or known customer. Check the Stripe payout report to see which charges it includes.",
-      "alternatives": []
-    },
-    "costUsd": 0.012093,
-    "ms": 4574
-  },
-  "pay_028": {
-    "key": "cd0354f6ff373a6f",
-    "proposal": {
-      "payment_id": "pay_028",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1044",
-          "amount": 5000
-        },
-        {
-          "invoice_id": "inv_1045",
-          "amount": 17542.4
-        },
-        {
-          "invoice_id": "inv_1046",
-          "amount": 3825
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The payment came from Tidewater Logistics' usual bank account. The memo lists INV-1044, INV-1045 and INV-1046, and those three invoices add up to exactly $26,367.40.",
-      "alternatives": []
-    },
-    "costUsd": 0.015685,
-    "ms": 4358
-  },
-  "pay_030": {
-    "key": "0bdd524233d2fbf1",
-    "proposal": {
-      "payment_id": "pay_030",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1096",
-          "amount": 11619.5
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo names INV-1096, the payment of $11,619.50 is exactly what INV-1096 is for, and the payer name matches one Glasswing Interactive has used before.",
-      "alternatives": []
-    },
-    "costUsd": 0.013837,
-    "ms": 3301
-  },
-  "pay_031": {
-    "key": "33d5d22b2e505d36",
-    "proposal": {
-      "payment_id": "pay_031",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1050",
-          "amount": 7500
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1050, the payer name exactly matches Tidewater Logistics' known bank name, and $7,500.00 is exactly the INV-1050 amount. Three other customers also have $7,500 invoices open, but neither the payer nor the memo points to any of them.",
-      "alternatives": []
-    },
-    "costUsd": 0.017001000000000002,
-    "ms": 4258
-  },
-  "pay_029": {
-    "key": "8290e68f5785e788",
-    "proposal": {
-      "payment_id": "pay_029",
       "decision": "match",
       "allocations": [
         {
@@ -607,139 +166,176 @@
         }
       ],
       "residual": "none",
-      "confidence": 0.9,
-      "reasoning": "The payment comes from Glasswing Interactive's known bank name and is for exactly $22,375.00, the full amount of INV-1098 and the only open invoice at that amount. The memo is empty, and no mix of Glasswing's other open invoices adds up to this payment.",
-      "alternatives": [
-        "inv_1096",
-        "inv_1097",
-        "inv_1099",
-        "inv_1095",
-        "inv_1094"
-      ]
-    },
-    "costUsd": 0.021913,
-    "ms": 7009
-  },
-  "pay_033": {
-    "key": "1466bc91ffdb8639",
-    "proposal": {
-      "payment_id": "pay_033",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1047",
-          "amount": 10807.25
-        }
-      ],
-      "residual": "none",
       "confidence": 0.97,
-      "reasoning": "The memo cites INV-1047, the payer is Tidewater Logistics' known bank name, and the amount equals INV-1047 exactly. This payment arrived ahead of other Tidewater invoices that are already overdue, but every signal points to INV-1047.",
+      "reasoning": "The payment went to Glasswing Interactive's own virtual account, the memo \"#1o98\" is a typo for INV-1098, and the amount matches INV-1098 to the cent.",
       "alternatives": []
     },
-    "costUsd": 0.014565,
-    "ms": 3887
+    "costUsd": 0.02648,
+    "ms": 4593
   },
-  "pay_032": {
-    "key": "b20545fe5452fb85",
+  "pay_009": {
+    "key": "2567dd6412ab973e",
     "proposal": {
-      "payment_id": "pay_032",
+      "payment_id": "pay_009",
+      "decision": "not_invoice_payment",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.95,
+      "reasoning": "This is a Stripe payout (memo \"STRIPE PAYOUT ST-8XK2\"). Stripe sends card sales in batches with its fees already taken out, so this deposit isn't one customer paying one invoice. No open invoice matches the amount or any customer either.",
+      "alternatives": []
+    },
+    "costUsd": 0.013831,
+    "ms": 3810
+  },
+  "pay_011": {
+    "key": "8384748c1c57c503",
+    "proposal": {
+      "payment_id": "pay_011",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1163",
-          "amount": 2235
+          "invoice_id": "inv_1079",
+          "amount": 1157.99
+        },
+        {
+          "invoice_id": "inv_1081",
+          "amount": 10000
         }
       ],
       "residual": "none",
       "confidence": 0.88,
-      "reasoning": "The payer, POLARIS PAYROLL, is a name Polaris Payroll Partners has paid from before, and INV-1163 is their only open invoice for exactly $2,235.00. The memo \"VENDOR PMT\" fits a customer paying us as their vendor. The word \"payroll\" comes from the customer's name, so this isn't a payroll reversal. The payment is dated 2026-10-19, which is after today (2026-10-15), so check that the bank record is correct.",
+      "reasoning": "The payment came from a known Saltmarsh Coffee payer name. The memo lists INV-1081 and INV-1079, and those two invoices add up to exactly $11,157.99. Note that INV-1080 is also $10,000 and is overdue, so INV-1079 + INV-1080 fits the amount equally well. I followed the memo.",
       "alternatives": [
-        "inv_1160",
-        "inv_1164",
-        "inv_1162"
+        "inv_1080"
       ]
     },
-    "costUsd": 0.018785,
-    "ms": 5268
+    "costUsd": 0.025058999999999998,
+    "ms": 7531
   },
-  "pay_034": {
-    "key": "906819a0e396ae06",
+  "pay_007": {
+    "key": "0cde54e1bcc0ae05",
     "proposal": {
-      "payment_id": "pay_034",
+      "payment_id": "pay_007",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1041",
+          "amount": 23799.99
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The payment came into Redwood Row Realty's own virtual account, the memo says INV-1041, and the amount matches INV-1041 to the cent. It pays that invoice in full.",
+      "alternatives": []
+    },
+    "costUsd": 0.015879,
+    "ms": 3816
+  },
+  "pay_012": {
+    "key": "8d2876117caa7724",
+    "proposal": {
+      "payment_id": "pay_012",
+      "decision": "unsure",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.2,
+      "reasoning": "This $7,500 ACH has a generic sender name (\"ACH CREDIT\") and no memo, so nothing identifies who paid it. Four open invoices from four different customers are each exactly $7,500 (INV-1005, INV-1050, INV-1105, INV-1135), and their due dates don't clearly favor one, so a person should confirm the payer with the bank or the customers.",
+      "alternatives": [
+        "inv_1005",
+        "inv_1050",
+        "inv_1105",
+        "inv_1135"
+      ]
+    },
+    "costUsd": 0.017651,
+    "ms": 4048
+  },
+  "pay_013": {
+    "key": "ea888f1ee114d88a",
+    "proposal": {
+      "payment_id": "pay_013",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1005",
+          "amount": 7500
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.9,
+      "reasoning": "Northwind Robotics has paid from the name \"NWR HOLDINGS LLC\" before. INV-1005 is the only open Northwind invoice for exactly $7,500, and it was due 2026-10-01, so this payment is 8 days late. Three other customers also have $7,500 invoices open, but nothing links this payment to them.",
+      "alternatives": [
+        "inv_1050",
+        "inv_1135",
+        "inv_1105"
+      ]
+    },
+    "costUsd": 0.022959,
+    "ms": 5873
+  },
+  "pay_014": {
+    "key": "5bfcb47512ded366",
+    "proposal": {
+      "payment_id": "pay_014",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1118",
+          "amount": 1756.99
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The payment came into Bluefin Biosciences' own virtual account, the memo says INV-1118, and the amount is exactly what INV-1118 is for. That invoice is paid in full.",
+      "alternatives": []
+    },
+    "costUsd": 0.015303,
+    "ms": 3648
+  },
+  "pay_015": {
+    "key": "a035259a14d13ea7",
+    "proposal": {
+      "payment_id": "pay_015",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1093",
+          "amount": 10454
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The payment went to Ironbark Capital Advisors' own virtual account, the memo cites INV-1093, and the amount matches that invoice's $10,454.00 exactly.",
+      "alternatives": []
+    },
+    "costUsd": 0.015867,
+    "ms": 4174
+  },
+  "pay_016": {
+    "key": "70d996669172a1b5",
+    "proposal": {
+      "payment_id": "pay_016",
       "decision": "match",
       "allocations": [
         {
           "invoice_id": "inv_1129",
-          "amount": 22686.25
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.93,
-      "reasoning": "The payer is Vantage Point Consulting's known bank name, and the payment exactly equals INV-1129 ($22,686.25). No other invoice or invoice combination fits.",
-      "alternatives": [
-        "inv_1128",
-        "inv_1126"
-      ]
-    },
-    "costUsd": 0.013725000000000001,
-    "ms": 4178
-  },
-  "pay_038": {
-    "key": "1ddc0ab98b88b929",
-    "proposal": {
-      "payment_id": "pay_038",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1109",
-          "amount": 15366.4
+          "amount": 22666.25
         }
       ],
       "residual": "processing_fee",
-      "confidence": 0.93,
-      "reasoning": "The wire came from Kestrel Field Services under a name they've paid from before, and the memo cites INV-1109. It is exactly $30 short of that invoice, which fits a typical wire fee.",
-      "alternatives": [
-        "inv_1026"
-      ]
+      "confidence": 0.94,
+      "reasoning": "The wire went to Vantage Point Consulting's own virtual account, and the memo names INV-1129. The payment is exactly $20 short of that invoice, which fits a typical wire fee.",
+      "alternatives": []
     },
-    "costUsd": 0.015045,
-    "ms": 3395
+    "costUsd": 0.015627000000000002,
+    "ms": 3760
   },
-  "pay_036": {
-    "key": "ce23a67d0714c8a7",
+  "pay_017": {
+    "key": "3b2b74f31aff1ea8",
     "proposal": {
-      "payment_id": "pay_036",
+      "payment_id": "pay_017",
       "decision": "match",
       "allocations": [
-        {
-          "invoice_id": "inv_1144",
-          "amount": 9557.99
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.93,
-      "reasoning": "The payer name matches the name Thistle & Pine Design has paid from before, and the amount equals INV-1144 to the cent. The \"VENDOR PMT\" memo is the generic label their payables system puts on payments to suppliers like you, so it doesn't change the match.",
-      "alternatives": [
-        "inv_1145"
-      ]
-    },
-    "costUsd": 0.015477000000000001,
-    "ms": 4780
-  },
-  "pay_037": {
-    "key": "78c3c51629779e36",
-    "proposal": {
-      "payment_id": "pay_037",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1068",
-          "amount": 21701.25
-        },
-        {
-          "invoice_id": "inv_1069",
-          "amount": 21480.99
-        },
         {
           "invoice_id": "inv_1070",
           "amount": 17328.25
@@ -747,143 +343,236 @@
       ],
       "residual": "none",
       "confidence": 0.95,
-      "reasoning": "The wire came from ACME ANALYTICS LLC, a name Acme Analytics has paid from before. The amount exactly equals the total of their three overdue or due invoices, INV-1068, INV-1069 and INV-1070. Their newer $2,500 invoice INV-1071 is not due until later and stays open.",
-      "alternatives": [
-        "inv_1071"
-      ]
-    },
-    "costUsd": 0.019753,
-    "ms": 4393
-  },
-  "pay_040": {
-    "key": "1588c9918c8dfdc2",
-    "proposal": {
-      "payment_id": "pay_040",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1037",
-          "amount": 10116.7
-        }
-      ],
-      "residual": "partial",
-      "confidence": 0.9,
-      "reasoning": "The payment came from Ostara's usual bank name, the memo cites INV-1037, and $10,116.70 is exactly half of that invoice's $20,233.40. That looks like a planned 50% installment, so $10,116.70 stays open on INV-1037.",
-      "alternatives": [
-        "inv_1034",
-        "inv_1035",
-        "inv_1036"
-      ]
-    },
-    "costUsd": 0.014741,
-    "ms": 4502
-  },
-  "pay_039": {
-    "key": "96ff4f129e61a7fe",
-    "proposal": {
-      "payment_id": "pay_039",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1089",
-          "amount": 2697.75
-        }
-      ],
-      "residual": "partial",
-      "confidence": 0.9,
-      "reasoning": "The memo says \"INV-1089 1 of 2\", and $2,697.75 is exactly half of INV-1089's $5,395.50. The payer is the known bank name for Ironbark Capital Advisors. This is the first of two installments, so the other $2,697.75 stays open.",
+      "reasoning": "The payment went to the virtual account that belongs only to Acme Analytics LLC, and the sender name matches theirs. The amount exactly equals their oldest overdue invoice, INV-1070 ($17,328.25), so it pays that invoice in full.",
       "alternatives": []
     },
-    "costUsd": 0.016441,
-    "ms": 5190
+    "costUsd": 0.020287,
+    "ms": 3542
   },
-  "pay_041": {
-    "key": "baac6ac7caead791",
+  "pay_018": {
+    "key": "04c518c6b9c19578",
     "proposal": {
-      "payment_id": "pay_041",
+      "payment_id": "pay_018",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1002",
-          "amount": 15144.4
+          "invoice_id": "inv_1097",
+          "amount": 487.99
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.93,
+      "reasoning": "The payment went to Glasswing Interactive's own virtual account from a name they've paid from before, and $487.99 exactly matches their overdue invoice INV-1097. No other invoice or combination of invoices fits this amount.",
+      "alternatives": []
+    },
+    "costUsd": 0.016083,
+    "ms": 4018
+  },
+  "pay_021": {
+    "key": "3f9dd2703bb9ee5d",
+    "proposal": {
+      "payment_id": "pay_021",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1052",
+          "amount": 2035.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "Lumen Arc Software sent this to its own virtual account. The memo says INV-1052, and the amount matches INV-1052 to the cent ($2,035.40).",
+      "alternatives": []
+    },
+    "costUsd": 0.015839,
+    "ms": 4166
+  },
+  "pay_020": {
+    "key": "300f85358933eb32",
+    "proposal": {
+      "payment_id": "pay_020",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1124",
+          "amount": 23501.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The memo cites INV-1124, the amount matches that invoice exactly ($23,501.40), and the payer name matches Orchard Lane Homes, the customer on that invoice.",
+      "alternatives": []
+    },
+    "costUsd": 0.015503,
+    "ms": 3124
+  },
+  "pay_019": {
+    "key": "90aed0d576b57fdc",
+    "proposal": {
+      "payment_id": "pay_019",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1063",
+          "amount": 7653
+        }
+      ],
+      "residual": "partial",
+      "confidence": 0.85,
+      "reasoning": "The payment was sent to Peregrine Analytics' own virtual account, and the memo cites INV-1063. $7,653.00 is almost exactly half of that invoice's $15,305.99, which looks like a planned installment, so about $7,652.99 stays open.",
+      "alternatives": [
+        "inv_1064"
+      ]
+    },
+    "costUsd": 0.020587,
+    "ms": 6439
+  },
+  "pay_022": {
+    "key": "ef424b6a0dd20532",
+    "proposal": {
+      "payment_id": "pay_022",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1094",
+          "amount": 1200
         }
       ],
       "residual": "none",
       "confidence": 0.97,
-      "reasoning": "The memo cites invoice 1002, the payer is a known Northwind Robotics account, and the payment of $15,144.40 exactly matches INV-1002.",
+      "reasoning": "The memo names INV-1094, and the payer name matches what Glasswing Interactive has paid from before. INV-1094 is Glasswing's invoice and it's for exactly $1,200.00. Several other customers have $1,200 invoices open, but the memo and the payer both point to Glasswing.",
       "alternatives": []
     },
-    "costUsd": 0.013793,
-    "ms": 3271
+    "costUsd": 0.021271,
+    "ms": 4037
   },
-  "pay_035": {
-    "key": "e61fa8e6d33874a9",
+  "pay_023": {
+    "key": "089033e162433331",
     "proposal": {
-      "payment_id": "pay_035",
+      "payment_id": "pay_023",
+      "decision": "not_invoice_payment",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.9,
+      "reasoning": "The bank shows this as \"TRANSFER FROM CHECKING 4471\" with the memo \"INTERNAL TRANSFER\", so it looks like the business moving its own money between accounts, not a customer payment. Eight open invoices from seven customers are each exactly $10,000, but the round amount is a coincidence: no payer name or invoice number ties it to any of them.",
+      "alternatives": [
+        "inv_1011",
+        "inv_1020",
+        "inv_1023",
+        "inv_1080",
+        "inv_1081",
+        "inv_1122",
+        "inv_1139",
+        "inv_1153"
+      ]
+    },
+    "costUsd": 0.021063,
+    "ms": 3958
+  },
+  "pay_024": {
+    "key": "d334666081956d10",
+    "proposal": {
+      "payment_id": "pay_024",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1078",
-          "amount": 5826.4
+          "invoice_id": "inv_1024",
+          "amount": 21331
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.95,
+      "reasoning": "The payment went to Ferncliff Studio's own virtual account, came from a name they've paid from before (Dana Okafor), and is exactly the amount of INV-1024 ($21,331.00). Ferncliff has older overdue invoices, but no other invoice or combination matches this amount.",
+      "alternatives": [
+        "inv_1026",
+        "inv_1027"
+      ]
+    },
+    "costUsd": 0.018735,
+    "ms": 5883
+  },
+  "pay_025": {
+    "key": "c083d79027b95f2b",
+    "proposal": {
+      "payment_id": "pay_025",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1080",
+          "amount": 10000
         }
       ],
       "residual": "overpayment",
-      "confidence": 0.8,
-      "reasoning": "The payment came from ACME BUILDERS SUPPLY, the exact name this customer has paid from before, and the memo cites INV-1078, which is their open invoice for $5,826.40. They paid $250.00 more than that, and no other open invoice or combination accounts for the extra, so a reviewer should decide whether to hold the $250 as a credit or refund it.",
-      "alternatives": []
-    },
-    "costUsd": 0.031224999999999996,
-    "ms": 12662
-  },
-  "pay_045": {
-    "key": "42d26f05e02958d1",
-    "proposal": {
-      "payment_id": "pay_045",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1160",
-          "amount": 5746
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.96,
-      "reasoning": "The memo names INV-1160, the amount matches that invoice exactly, and the payer is a known payer name for the customer Polaris Payroll Partners. \"Payroll\" is part of the customer's name, so this isn't a payroll reversal. One thing to check: the payment is dated 2026-10-25, which is after today (2026-10-15), so confirm the bank-feed date is correct.",
-      "alternatives": []
-    },
-    "costUsd": 0.018449,
-    "ms": 5622
-  },
-  "pay_046": {
-    "key": "fbe8d368ccca01d1",
-    "proposal": {
-      "payment_id": "pay_046",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1001",
-          "amount": 20519.99
-        },
-        {
-          "invoice_id": "inv_1003",
-          "amount": 18000
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.88,
-      "reasoning": "The payment came from a bank name Northwind Robotics has paid from before. INV-1001 ($20,519.99) and INV-1003 ($18,000.00) add up to exactly $38,519.99, and no other combination of their open invoices does. There's no memo to confirm it, but the exact total points clearly to these two.",
+      "confidence": 0.7,
+      "reasoning": "The payment went to Saltmarsh Coffee's own virtual account and the memo cites INV-1080. That invoice is $10,000, so this $11,000 payment leaves $1,000 extra, which should stay as a credit until someone confirms where Saltmarsh meant it to go. INV-1008 is only $17 off the amount, but it belongs to a different customer (Halcyon Data Labs), so it doesn't fit.",
       "alternatives": [
-        "inv_1002",
-        "inv_1005"
+        "inv_1081",
+        "inv_1079",
+        "inv_1082",
+        "inv_1083"
       ]
     },
-    "costUsd": 0.016457,
-    "ms": 4630
+    "costUsd": 0.024259000000000003,
+    "ms": 6643
   },
-  "pay_044": {
-    "key": "2b90f2de6c4cd32f",
+  "pay_026": {
+    "key": "d20f97fdcfa76304",
     "proposal": {
-      "payment_id": "pay_044",
+      "payment_id": "pay_026",
+      "decision": "not_invoice_payment",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.95,
+      "reasoning": "This deposit came from Gusto, the payroll provider, with the memo \"PAYROLL REVERSAL.\" That means it's payroll money coming back to the business, not a customer paying an invoice. Nine open invoices are also for $2,500, but that's a coincidence. None of them is from a customer who has paid from a Gusto account.",
+      "alternatives": []
+    },
+    "costUsd": 0.020311000000000003,
+    "ms": 4039
+  },
+  "pay_027": {
+    "key": "ec5ab0f58a06f8d8",
+    "proposal": {
+      "payment_id": "pay_027",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1114",
+          "amount": 20102.5
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.6,
+      "reasoning": "The payer, MERIDIAN YARD, is a known name for Meridian Yard Coworking, and the amount exactly matches their overdue invoice INV-1114. The memo cites INV-1112 ($11,365.25), which is probably a typo, so please confirm which invoice the customer meant.",
+      "alternatives": [
+        "inv_1112"
+      ]
+    },
+    "costUsd": 0.027723,
+    "ms": 8598
+  },
+  "pay_028": {
+    "key": "b15f8e719b39b98d",
+    "proposal": {
+      "payment_id": "pay_028",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1087",
+          "amount": 20762.5
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The memo cites INV-1087 and the amount matches that invoice exactly. The payment also came into Quillon Recruiting's own virtual account from their usual bank name.",
+      "alternatives": []
+    },
+    "costUsd": 0.015119,
+    "ms": 3004
+  },
+  "pay_030": {
+    "key": "91b4b9d976f85efe",
+    "proposal": {
+      "payment_id": "pay_030",
       "decision": "match",
       "allocations": [
         {
@@ -893,253 +582,196 @@
       ],
       "residual": "none",
       "confidence": 0.9,
-      "reasoning": "The check came from RRR ESCROW TRUST ACCT, an account Redwood Row Realty has paid from before. It is for exactly $5,318.50, the amount on INV-1038, and no other invoice or combination of invoices matches. There was no memo, and Redwood Row has several older invoices still open, so it's possible this was meant for a different one.",
+      "reasoning": "The payer, REDWOOD ROW REALTY, matches a name this customer has paid from before, and the payment equals INV-1038 to the cent. It's the only open invoice at this amount, and no combination of invoices adds up to it. The memo doesn't name an invoice, and INV-1038 isn't due until Nov 1 while other invoices from this customer are overdue, so the confidence is a little lower.",
       "alternatives": [
-        "inv_1043",
-        "inv_1040",
-        "inv_1039"
+        "inv_1039",
+        "inv_1040"
       ]
     },
-    "costUsd": 0.017693,
-    "ms": 6750
+    "costUsd": 0.017483,
+    "ms": 4480
   },
-  "pay_047": {
-    "key": "0aa81fc9a9e9f1a1",
+  "pay_031": {
+    "key": "81594e2f687bfc4a",
     "proposal": {
-      "payment_id": "pay_047",
+      "payment_id": "pay_031",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1083",
-          "amount": 16321
+          "invoice_id": "inv_1136",
+          "amount": 2739
+        }
+      ],
+      "residual": "partial",
+      "confidence": 0.95,
+      "reasoning": "The payment went to Cobalt Freight's own virtual account, and the memo says \"INV-1136 partial\". $2,739.00 is exactly half of the $5,478.00 invoice, so this looks like a planned installment, and $2,739.00 stays open on INV-1136.",
+      "alternatives": []
+    },
+    "costUsd": 0.017835,
+    "ms": 4206
+  },
+  "pay_029": {
+    "key": "afcc390e410e6191",
+    "proposal": {
+      "payment_id": "pay_029",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1168",
+          "amount": 2500
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.55,
+      "reasoning": "The payment went to Northwind Robotics' own virtual account, so it's clearly from them. However, they have two open $2,500 invoices and the memo is blank. I applied it to INV-1168 because it's the older one and already overdue (due Oct 8). INV-1006 (due Oct 25) fits the amount just as well, so a person should confirm which one they meant.",
+      "alternatives": [
+        "inv_1006"
+      ]
+    },
+    "costUsd": 0.028247,
+    "ms": 7089
+  },
+  "pay_033": {
+    "key": "aad8bdd316983fad",
+    "proposal": {
+      "payment_id": "pay_033",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1051",
+          "amount": 10718
         }
       ],
       "residual": "none",
       "confidence": 0.98,
-      "reasoning": "The memo cites INV-1083, the amount matches that invoice to the cent, and the payer is Saltmarsh Coffee's known bank name.",
+      "reasoning": "The memo names INV-1051, the payment amount matches that invoice exactly, and the wire came from a name Lumen Arc Software has paid from before.",
       "alternatives": []
     },
-    "costUsd": 0.013385000000000001,
-    "ms": 3390
+    "costUsd": 0.015623,
+    "ms": 4264
   },
-  "pay_043": {
-    "key": "43997b237f8a6a9b",
+  "pay_032": {
+    "key": "0f4e0cdd63834666",
     "proposal": {
-      "payment_id": "pay_043",
+      "payment_id": "pay_032",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1158",
-          "amount": 20509.4
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.6,
-      "reasoning": "The payer is certainly Wren Street Ventures, and $20,509.40 matches their open invoice INV-1158 to the cent. However, the memo cites INV-1153 ($10,000), so it may be a typo or the customer may have intended INV-1153. Confirm with the customer before posting.",
-      "alternatives": [
-        "inv_1153"
-      ]
-    },
-    "costUsd": 0.030405,
-    "ms": 10448
-  },
-  "pay_050": {
-    "key": "eda27936615e4c63",
-    "proposal": {
-      "payment_id": "pay_050",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1063",
-          "amount": 15305.99
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1063, the payer name matches Peregrine Analytics exactly, and the payment is exactly the $15,305.99 owed on that invoice.",
-      "alternatives": []
-    },
-    "costUsd": 0.015933000000000003,
-    "ms": 4093
-  },
-  "pay_042": {
-    "key": "847ae65fddfd03f6",
-    "proposal": {
-      "payment_id": "pay_042",
-      "decision": "unsure",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.45,
-      "reasoning": "This payment is clearly from Orchard Lane Homes, but the memo cites INV-1124 ($23,501.40), while the $10,000.00 amount exactly matches their INV-1122, due the day before. It's either a partial payment on INV-1124 or full payment of INV-1122 with a typo in the memo, so someone should confirm with the customer before applying it.",
-      "alternatives": [
-        "inv_1124",
-        "inv_1122"
-      ]
-    },
-    "costUsd": 0.035852999999999996,
-    "ms": 12772
-  },
-  "pay_049": {
-    "key": "867633d94e66bd49",
-    "proposal": {
-      "payment_id": "pay_049",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1084",
-          "amount": 14626.25
-        },
-        {
-          "invoice_id": "inv_1085",
-          "amount": 17985
-        },
-        {
-          "invoice_id": "inv_1086",
-          "amount": 1510
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.86,
-      "reasoning": "The payer name exactly matches Quillon Recruiting Partners, a known payer. The payment equals INV-1084 + INV-1085 + INV-1086 to the cent, and no other combination of their invoices fits. The oldest overdue invoice, INV-1087, isn't covered and is still open, so it may be on hold or disputed.",
-      "alternatives": [
-        "inv_1087"
-      ]
-    },
-    "costUsd": 0.016297,
-    "ms": 5951
-  },
-  "pay_051": {
-    "key": "843cc9ef068950e1",
-    "proposal": {
-      "payment_id": "pay_051",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1088",
+          "invoice_id": "inv_1053",
           "amount": 1200
         }
       ],
       "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1088, the payer name exactly matches Ironbark Capital Advisors (the invoice's customer), and the $1,200.00 amount pays it in full. Several other customers have $1,200 invoices, but the memo and payer both point only to this one.",
-      "alternatives": []
-    },
-    "costUsd": 0.018737,
-    "ms": 4032
-  },
-  "pay_052": {
-    "key": "83254d5eaa6f5332",
-    "proposal": {
-      "payment_id": "pay_052",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1009",
-          "amount": 6186.25
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1009, the payer is Halcyon Data Labs' known bank name, and the amount equals INV-1009 exactly ($6,186.25).",
-      "alternatives": []
-    },
-    "costUsd": 0.013061,
-    "ms": 3372
-  },
-  "pay_048": {
-    "key": "56f2384afce77bff",
-    "proposal": {
-      "payment_id": "pay_048",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1019",
-          "amount": 21409.5
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.85,
-      "reasoning": "The payer name matches a name Copperline has paid from before, and the amount is exactly what INV-1019 is for. INV-1017 + INV-1018 together would leave an unexplained $10.50 gap on an ACH payment, so the exact match fits better.",
+      "confidence": 0.93,
+      "reasoning": "The check went to the virtual account that belongs only to Lumen Arc Software, and the payer name LUMENARC INC is one they've used before. INV-1053 is their only open invoice for exactly $1,200.00, so the amount points to it. Seven other customers also have $1,200 invoices, but they don't fit this payer.",
       "alternatives": [
-        "inv_1017",
-        "inv_1018"
+        "inv_1052",
+        "inv_1056"
       ]
     },
-    "costUsd": 0.022001,
-    "ms": 7934
+    "costUsd": 0.021627,
+    "ms": 5428
   },
-  "pay_056": {
-    "key": "3646b9fd7d2f573a",
+  "pay_034": {
+    "key": "9653c1ee7cd5a029",
     "proposal": {
-      "payment_id": "pay_056",
+      "payment_id": "pay_034",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1076",
-          "amount": 2974.99
+          "invoice_id": "inv_1008",
+          "amount": 2754.25
         }
       ],
-      "residual": "none",
-      "confidence": 0.98,
-      "reasoning": "The memo cites INV-1076, the amount exactly matches that invoice's $2,974.99, and the payer name matches Acme Builders Supply's known bank name.",
-      "alternatives": []
+      "residual": "partial",
+      "confidence": 0.75,
+      "reasoning": "The payment was sent to the virtual account number that belongs only to Halcyon Data Labs. Its memo says \"INV-1008 1 of 2\", so it's an installment on INV-1008. INV-1074 is for exactly the same amount, but it belongs to Acme Builders Supply, so the match is a coincidence. One thing doesn't add up: $2,754.25 is a quarter of INV-1008's $11,017.00, not half as \"1 of 2\" suggests, so someone should confirm the payment plan with Halcyon.",
+      "alternatives": [
+        "inv_1074",
+        "inv_1009",
+        "inv_1010"
+      ]
     },
-    "costUsd": 0.015512999999999999,
-    "ms": 3142
+    "costUsd": 0.022015,
+    "ms": 5653
   },
-  "pay_054": {
-    "key": "4be46ee75bc53b92",
+  "pay_038": {
+    "key": "f860c23307fba8f5",
     "proposal": {
-      "payment_id": "pay_054",
+      "payment_id": "pay_038",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1022",
-          "amount": 4610.99
+          "invoice_id": "inv_1140",
+          "amount": 9919.5
+        }
+      ],
+      "residual": "processing_fee",
+      "confidence": 0.93,
+      "reasoning": "The wire came into Heron Bay Hospitality's own virtual account and the memo cites invoice 1140. It is $45.00 short of INV-1140's $9,964.50, a round amount that fits a typical wire fee.",
+      "alternatives": []
+    },
+    "costUsd": 0.021270999999999998,
+    "ms": 6216
+  },
+  "pay_036": {
+    "key": "adb7414d0b5c1302",
+    "proposal": {
+      "payment_id": "pay_036",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1013",
+          "amount": 2500
         }
       ],
       "residual": "none",
       "confidence": 0.97,
-      "reasoning": "The memo names INV-1022 and the amount ($4,610.99) matches it to the cent. The payment also came from Copperline's known bank name, so it pays that invoice in full.",
+      "reasoning": "The payment arrived in Brightpath Legal Group's own virtual account, the sender name matches what they've paid from before, and the memo says INV-1013. That invoice is Brightpath's and is for exactly $2,500.00. Other customers also have $2,500 invoices, but nothing ties this payment to any of them.",
       "alternatives": []
     },
-    "costUsd": 0.015401000000000001,
-    "ms": 4896
+    "costUsd": 0.021983,
+    "ms": 3626
   },
-  "pay_053": {
-    "key": "682a3416a0b45e36",
+  "pay_037": {
+    "key": "7369a34a4368cf75",
     "proposal": {
-      "payment_id": "pay_053",
+      "payment_id": "pay_037",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1080",
-          "amount": 10000
-        },
-        {
-          "invoice_id": "inv_1081",
-          "amount": 10000
-        },
-        {
-          "invoice_id": "inv_1082",
-          "amount": 12047.4
+          "invoice_id": "inv_1144",
+          "amount": 9557.99
         }
       ],
       "residual": "none",
-      "confidence": 0.86,
-      "reasoning": "The check came from SALTMARSH COFFEE, a name this customer has paid from before. Of their open invoices, INV-1080, INV-1081 and INV-1082 are the only combination that adds up to exactly $32,047.40. The memo \"SEPT INVOICES\" doesn't give invoice numbers, and the invoice dates shown here can't confirm that these three were billed in September.",
+      "confidence": 0.55,
+      "reasoning": "Thistle & Pine paid $9,557.99, exactly the amount of INV-1144, but the memo says INV-1142 ($14,515.40). The exact match suggests a memo typo, but it could also be a partial payment on INV-1142, so please confirm.",
       "alternatives": [
-        "inv_1079",
-        "inv_1083"
+        "inv_1142"
       ]
     },
-    "costUsd": 0.018465000000000002,
-    "ms": 5604
+    "costUsd": 0.028911000000000003,
+    "ms": 9961
   },
-  "pay_055": {
-    "key": "5a308c098d5524f0",
+  "pay_040": {
+    "key": "353682614f6436ab",
     "proposal": {
-      "payment_id": "pay_055",
+      "payment_id": "pay_040",
+      "decision": "not_invoice_payment",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "This deposit is a federal tax refund from the IRS (\"IRS TREAS 310\", memo \"TAX REF\"), not a customer paying an invoice. Also, no open invoices or known customers match it.",
+      "alternatives": []
+    },
+    "costUsd": 0.013250999999999999,
+    "ms": 3925
+  },
+  "pay_039": {
+    "key": "a55cd403f0d0fa4a",
+    "proposal": {
+      "payment_id": "pay_039",
       "decision": "match",
       "allocations": [
         {
@@ -1153,433 +785,7 @@
         {
           "invoice_id": "inv_1102",
           "amount": 11888.99
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.86,
-      "reasoning": "The check came from STARLING DENTAL, a name Starling Dental Partners has paid from before. Its amount exactly equals the only combination of their open invoices that fits: INV-1100 + INV-1101 + INV-1102. The memo says \"BATCH PAYMENT\" but lists no invoice numbers, and the payment skips their oldest overdue invoice (INV-1104), so a quick check against their remittance advice is worthwhile.",
-      "alternatives": [
-        "inv_1104",
-        "inv_1103"
-      ]
-    },
-    "costUsd": 0.017544999999999998,
-    "ms": 5298
-  },
-  "pay_058": {
-    "key": "bc540a3b5b7908e2",
-    "proposal": {
-      "payment_id": "pay_058",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1011",
-          "amount": 10000
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.93,
-      "reasoning": "The memo cites INV-1011, and the amount matches it exactly. Brightpath Legal has paid us through BILL.COM PAYABLES before, so all three signals agree. Seven other customers also have $10,000 invoices open. Bill.com is a shared payment service that other companies use too, but the memo is what decides it.",
-      "alternatives": [
-        "inv_1020",
-        "inv_1023",
-        "inv_1080",
-        "inv_1081",
-        "inv_1122",
-        "inv_1139",
-        "inv_1153"
-      ]
-    },
-    "costUsd": 0.021733,
-    "ms": 4685
-  },
-  "pay_059": {
-    "key": "fe20a6c6f8d32d4c",
-    "proposal": {
-      "payment_id": "pay_059",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1107",
-          "amount": 6312
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.93,
-      "reasoning": "The payment came from KESTREL FIELD SVCS, a name Kestrel Field Services has paid from before, and it's exactly $6,312.00, the amount of their open invoice INV-1107. \"VENDOR PMT\" is the label their system uses when it pays a supplier, so it fits a customer paying us. INV-1092 is close in amount, but it belongs to Ironbark, a different customer, so it doesn't apply.",
-      "alternatives": [
-        "inv_1092"
-      ]
-    },
-    "costUsd": 0.018841,
-    "ms": 5339
-  },
-  "pay_061": {
-    "key": "ea3571ae80616b53",
-    "proposal": {
-      "payment_id": "pay_061",
-      "decision": "unsure",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.1,
-      "reasoning": "The $1,200.00 ACH has no memo and only a generic payer name (\"ACH CREDIT\"), and seven different customers each have an open $1,200.00 invoice. Nothing points to one of them, so a person needs to check the bank's ACH details (originator name or ID) before it's applied.",
-      "alternatives": [
-        "inv_1007",
-        "inv_1016",
-        "inv_1025",
-        "inv_1053",
-        "inv_1059",
-        "inv_1088",
-        "inv_1094"
-      ]
-    },
-    "costUsd": 0.017725,
-    "ms": 4283
-  },
-  "pay_057": {
-    "key": "a795906dfef53af6",
-    "proposal": {
-      "payment_id": "pay_057",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1015",
-          "amount": 2787.2
-        }
-      ],
-      "residual": "partial",
-      "confidence": 0.8,
-      "reasoning": "The payer exactly matches Brightpath Legal Group's known bank name, and the memo \"INV-1015 1 of 2\" marks this as the first of two installments on INV-1015 ($6,967.99). After this payment, $4,180.79 stays open on that invoice. The automated check found no invoice numbers in the memo even though it plainly cites INV-1015, so the memo should be checked by hand.",
-      "alternatives": [
-        "inv_1012",
-        "inv_1013"
-      ]
-    },
-    "costUsd": 0.024569,
-    "ms": 8111
-  },
-  "pay_060": {
-    "key": "de19e2cb0dbfb42d",
-    "proposal": {
-      "payment_id": "pay_060",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1112",
-          "amount": 11365.25
         },
-        {
-          "invoice_id": "inv_1117",
-          "amount": 2500
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "Meridian Yard Coworking paid from its usual bank name, and the memo lists INV-1117 and INV-1112. Those two invoices add up to exactly the payment amount.",
-      "alternatives": []
-    },
-    "costUsd": 0.015697000000000003,
-    "ms": 4556
-  },
-  "pay_063": {
-    "key": "1ed124cd9e82ccf4",
-    "proposal": {
-      "payment_id": "pay_063",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1118",
-          "amount": 1756.99
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.98,
-      "reasoning": "The payment came from Bluefin Biosciences' known bank name, and the memo cites INV-1118. The amount, $1,756.99, is exactly what that invoice is for.",
-      "alternatives": []
-    },
-    "costUsd": 0.013181,
-    "ms": 3495
-  },
-  "pay_067": {
-    "key": "dfc33692bdd2f870",
-    "proposal": {
-      "payment_id": "pay_067",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1036",
-          "amount": 19556.5
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites invoice 1036, the payer is Ostara Health Technologies' known bank name, and the amount exactly matches INV-1036 ($19,556.50).",
-      "alternatives": []
-    },
-    "costUsd": 0.013153,
-    "ms": 3726
-  },
-  "pay_062": {
-    "key": "f15605d4d717fe8d",
-    "proposal": {
-      "payment_id": "pay_062",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1099",
-          "amount": 1476.25
-        }
-      ],
-      "residual": "overpayment",
-      "confidence": 0.72,
-      "reasoning": "The check comes from Glasswing Interactive's usual bank name and the memo says INV-1099, so it pays INV-1099 ($1,476.25). It is exactly $250.00 more than the invoice, which could be a late fee, a deposit or a mistake, so a person should decide how to use the extra $250.",
-      "alternatives": [
-        "inv_1097",
-        "inv_1094",
-        "inv_1095"
-      ]
-    },
-    "costUsd": 0.022397,
-    "ms": 7486
-  },
-  "pay_068": {
-    "key": "b4835c3f4f39905b",
-    "proposal": {
-      "payment_id": "pay_068",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1090",
-          "amount": 16313
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1090, the payer is Ironbark Capital Advisors' known bank name, and the amount is exactly the $16,313.00 owed on INV-1090.",
-      "alternatives": []
-    },
-    "costUsd": 0.014597,
-    "ms": 3387
-  },
-  "pay_066": {
-    "key": "ffb4072a950762e0",
-    "proposal": {
-      "payment_id": "pay_066",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1008",
-          "amount": 11017
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The payer is a known name for Halcyon Data Labs, and the memo \"#1o08\" is clearly INV-1008 with a typo (letter o instead of zero). The payment of $11,017.00 is exactly what INV-1008 is for.",
-      "alternatives": []
-    },
-    "costUsd": 0.013557,
-    "ms": 4427
-  },
-  "pay_065": {
-    "key": "d0022dad3c8c233d",
-    "proposal": {
-      "payment_id": "pay_065",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1025",
-          "amount": 1200
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.85,
-      "reasoning": "Ferncliff Studio has paid from the name DANA OKAFOR before. Its invoice INV-1025 is for exactly $1,200 and is its only open invoice at that amount. Six other customers also have open $1,200 invoices, so the payer name is what decides this one, and the memo is empty.",
-      "alternatives": [
-        "inv_1007",
-        "inv_1016",
-        "inv_1053",
-        "inv_1059",
-        "inv_1088",
-        "inv_1094"
-      ]
-    },
-    "costUsd": 0.021377,
-    "ms": 5000
-  },
-  "pay_070": {
-    "key": "7116f87bd1778ce5",
-    "proposal": {
-      "payment_id": "pay_070",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1133",
-          "amount": 4484
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.9,
-      "reasoning": "The payer, COBALT FREIGHT SYS, is a name Cobalt Freight Systems has paid from before. The $4,484.00 matches their invoice INV-1133 exactly. The memo is empty, but no other Cobalt invoice or combination of invoices adds up to this amount.",
-      "alternatives": [
-        "inv_1141"
-      ]
-    },
-    "costUsd": 0.015225000000000002,
-    "ms": 3725
-  },
-  "pay_069": {
-    "key": "0050d04492a1469e",
-    "proposal": {
-      "payment_id": "pay_069",
-      "decision": "unsure",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.15,
-      "reasoning": "This $5,000 mobile deposit has no memo and no payer name, and three open invoices from three different customers are each exactly $5,000 (INV-1044, INV-1066, INV-1155). Nothing points to one of them, so someone needs to check the deposited check image or remittance to see who paid.",
-      "alternatives": [
-        "inv_1044",
-        "inv_1066",
-        "inv_1155",
-        "inv_1048"
-      ]
-    },
-    "costUsd": 0.014705000000000003,
-    "ms": 3855
-  },
-  "pay_071": {
-    "key": "a10e965976fba17d",
-    "proposal": {
-      "payment_id": "pay_071",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1087",
-          "amount": 20762.5
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1087, the amount matches that invoice exactly ($20,762.50), and the payer is Quillon Recruiting's known bank name.",
-      "alternatives": []
-    },
-    "costUsd": 0.012985,
-    "ms": 3577
-  },
-  "pay_073": {
-    "key": "d1735ffadfb79aae",
-    "proposal": {
-      "payment_id": "pay_073",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1097",
-          "amount": 487.99
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.94,
-      "reasoning": "GW MEDIA HOLDINGS is a name Glasswing Interactive has paid from before. The $487.99 payment matches their open invoice INV-1097 to the cent, and no other invoice or combination of invoices adds up to this amount.",
-      "alternatives": []
-    },
-    "costUsd": 0.014205,
-    "ms": 3737
-  },
-  "pay_064": {
-    "key": "d4cd6e402ba7806d",
-    "proposal": {
-      "payment_id": "pay_064",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1035",
-          "amount": 5401.5
-        }
-      ],
-      "residual": "overpayment",
-      "confidence": 0.82,
-      "reasoning": "The check comes from Ostara's known payer name and the memo cites INV-1035, but it is $100.00 more than that invoice ($5,301.50). The extra may be a late fee, since the invoice was due 2026-10-12; otherwise it should be kept as a credit or refunded. The payment date (2026-11-07) is after today's date, so check whether it's a post-dated check or a date error.",
-      "alternatives": []
-    },
-    "costUsd": 0.027333,
-    "ms": 9509
-  },
-  "pay_072": {
-    "key": "9cb267c5e6383383",
-    "proposal": {
-      "payment_id": "pay_072",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1130",
-          "amount": 10880
-        }
-      ],
-      "residual": "processing_fee",
-      "confidence": 0.9,
-      "reasoning": "The wire memo cites INV-1130 and the payer name matches Vantage Point Consulting's known name exactly. The payment is $45 short of the invoice, which fits a typical wire or intermediary bank fee.",
-      "alternatives": []
-    },
-    "costUsd": 0.015121,
-    "ms": 5194
-  },
-  "pay_074": {
-    "key": "6bfceb559b1db959",
-    "proposal": {
-      "payment_id": "pay_074",
-      "decision": "not_invoice_payment",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.95,
-      "reasoning": "This deposit came from Gusto, the payroll provider, and the memo says \"PAYROLL REVERSAL,\" so it's payroll money coming back to you, not a customer paying an invoice. Eight different customers have open invoices for exactly $2,500, but that's a coincidence, and nothing links this payment to any of them.",
-      "alternatives": []
-    },
-    "costUsd": 0.017929,
-    "ms": 4092
-  },
-  "pay_077": {
-    "key": "48b7809411ef41dc",
-    "proposal": {
-      "payment_id": "pay_077",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1161",
-          "amount": 15339
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1161, the amount matches that invoice exactly ($15,339.00), and the payer name matches what Polaris Payroll Partners has paid from before. The word \"PAYROLL\" is part of the customer's name, so this is not a payroll reversal.",
-      "alternatives": []
-    },
-    "costUsd": 0.015393,
-    "ms": 3853
-  },
-  "pay_078": {
-    "key": "0c9df2bd5201ae2b",
-    "proposal": {
-      "payment_id": "pay_078",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1093",
-          "amount": 10454
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.93,
-      "reasoning": "The payment came from Ironbark Capital Advisors' known bank name, and it matches the full amount of INV-1093 ($10,454.00) to the cent. No other single invoice or combination of their invoices adds up to this amount.",
-      "alternatives": []
-    },
-    "costUsd": 0.014065000000000001,
-    "ms": 3946
-  },
-  "pay_079": {
-    "key": "d42a9ba8be7aae83",
-    "proposal": {
-      "payment_id": "pay_079",
-      "decision": "match",
-      "allocations": [
         {
           "invoice_id": "inv_1103",
           "amount": 16077.4
@@ -1587,209 +793,18 @@
       ],
       "residual": "none",
       "confidence": 0.97,
-      "reasoning": "The memo cites INV-1103, the amount matches that invoice exactly, and the payer name STARLING DENTAL is a known name for Starling Dental Partners.",
-      "alternatives": []
-    },
-    "costUsd": 0.013288999999999999,
-    "ms": 3542
-  },
-  "pay_075": {
-    "key": "231d89ba9721686d",
-    "proposal": {
-      "payment_id": "pay_075",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1127",
-          "amount": 23734
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.98,
-      "reasoning": "The memo cites INV-1127, the payer is Vantage Point Consulting's known bank name, and the amount matches INV-1127 exactly at $23,734.00.",
-      "alternatives": []
-    },
-    "costUsd": 0.013429,
-    "ms": 5575
-  },
-  "pay_080": {
-    "key": "edae1b1c9f37be5b",
-    "proposal": {
-      "payment_id": "pay_080",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1034",
-          "amount": 7816
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.98,
-      "reasoning": "The memo cites INV-1034, the payer is Ostara Health Technologies' known bank name, and the $7,816.00 amount exactly equals INV-1034.",
-      "alternatives": []
-    },
-    "costUsd": 0.013049000000000002,
-    "ms": 3682
-  },
-  "pay_083": {
-    "key": "c5005d358a2f48de",
-    "proposal": {
-      "payment_id": "pay_083",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1141",
-          "amount": 4502
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo names INV-1141, the payer is Heron Bay Hospitality's known bank name, and the $4,502.00 payment is exactly that invoice's amount.",
-      "alternatives": []
-    },
-    "costUsd": 0.013421,
-    "ms": 3721
-  },
-  "pay_082": {
-    "key": "dda3d113c230dc48",
-    "proposal": {
-      "payment_id": "pay_082",
-      "decision": "not_invoice_payment",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "This is a federal tax refund. The payer is \"IRS TREAS 310\" (the US Treasury) and the memo says \"TAX REF\". It doesn't come from a customer, and no open invoice matches it.",
-      "alternatives": []
-    },
-    "costUsd": 0.011333,
-    "ms": 5012
-  },
-  "pay_076": {
-    "key": "b3e70354fd0beac0",
-    "proposal": {
-      "payment_id": "pay_076",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1113",
-          "amount": 2159.25
-        }
-      ],
-      "residual": "overpayment",
-      "confidence": 0.6,
-      "reasoning": "The check memo names INV-1113 and the payer is Meridian Yard's known bank name, so this pays INV-1113 ($2,159.25). The check is $250.00 more than that invoice, and nothing explains the extra, so a reviewer should decide whether to apply it to another open Meridian invoice or hold it as a credit.",
+      "reasoning": "The wire came into Starling Dental's own virtual account, and its memo names INV-1100, INV-1101, INV-1102 and INV-1103. Those four invoices add up to exactly $42,941.38. INV-1104 ($22,996.99, overdue) wasn't mentioned and stays open.",
       "alternatives": [
-        "inv_1117",
-        "inv_1115"
+        "inv_1104"
       ]
     },
-    "costUsd": 0.029049,
-    "ms": 10733
+    "costUsd": 0.018155,
+    "ms": 3960
   },
-  "pay_084": {
-    "key": "c19335239864f050",
+  "pay_041": {
+    "key": "d94ade1215b36216",
     "proposal": {
-      "payment_id": "pay_084",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1095",
-          "amount": 1668.25
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1095, the amount matches INV-1095 exactly at $1,668.25, and the payer is a known Glasswing Interactive account name. Every signal points to this one invoice.",
-      "alternatives": []
-    },
-    "costUsd": 0.014165,
-    "ms": 6099
-  },
-  "pay_081": {
-    "key": "9799e79b5cddcc98",
-    "proposal": {
-      "payment_id": "pay_081",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1079",
-          "amount": 1157.99
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.8,
-      "reasoning": "\"SQUARE INC PAYOUT\" is a name Saltmarsh Coffee Roasters has paid from before, and the payment equals their invoice INV-1079 to the cent ($1157.99). Square payouts can also be the business's own card-sales deposits, so a quick check that this payout came from a Square invoice payment is worthwhile.",
-      "alternatives": []
-    },
-    "costUsd": 0.024709,
-    "ms": 6879
-  },
-  "pay_086": {
-    "key": "d7334acdc2d5fd7f",
-    "proposal": {
-      "payment_id": "pay_086",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1143",
-          "amount": 21659.4
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.95,
-      "reasoning": "The payer, THISTLE PINE DESIGN, is a name Thistle & Pine Design has paid from before, and the payment exactly matches their invoice INV-1143 ($21,659.40), which is also their oldest open invoice. Acme's INV-1068 is close in amount, but it belongs to a different customer, so it's very unlikely to be the one being paid.",
-      "alternatives": [
-        "inv_1068"
-      ]
-    },
-    "costUsd": 0.015761,
-    "ms": 4368
-  },
-  "pay_087": {
-    "key": "b9723fb18a89d5cf",
-    "proposal": {
-      "payment_id": "pay_087",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1026",
-          "amount": 15392.4
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo cites INV-1026, the payer is Ferncliff Studio's known bank name, and the amount equals INV-1026 exactly. The Kestrel invoice that is $4 higher belongs to a different customer and is a coincidence.",
-      "alternatives": []
-    },
-    "costUsd": 0.014573,
-    "ms": 3594
-  },
-  "pay_088": {
-    "key": "c079539d39e91c65",
-    "proposal": {
-      "payment_id": "pay_088",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1060",
-          "amount": 20652.4
-        }
-      ],
-      "residual": "processing_fee",
-      "confidence": 0.9,
-      "reasoning": "The wire came from Marrow & Finch Architects' usual bank name, and the memo cites INV-1060. It is $45.00 short of that invoice, which looks like a wire or intermediary bank fee.",
-      "alternatives": [
-        "inv_1010",
-        "inv_1039"
-      ]
-    },
-    "costUsd": 0.015469,
-    "ms": 4072
-  },
-  "pay_085": {
-    "key": "53fec84c9be6295d",
-    "proposal": {
-      "payment_id": "pay_085",
+      "payment_id": "pay_041",
       "decision": "match",
       "allocations": [
         {
@@ -1801,155 +816,1246 @@
           "amount": 14052.5
         },
         {
-          "invoice_id": "inv_1018",
-          "amount": 7367.5
+          "invoice_id": "inv_1022",
+          "amount": 4610.99
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.85,
+      "reasoning": "The check came from Copperline Property Management's known account name. Three of Copperline's open invoices (INV-1016, INV-1017 and INV-1022) add up to exactly $19,863.49, which fits the \"BATCH PAYMENT\" memo. Bluefin's INV-1119 is $31.01 more than the payment, but it belongs to a different customer and is paid from a different name, so it doesn't fit.",
+      "alternatives": [
+        "inv_1119",
+        "inv_1019",
+        "inv_1021"
+      ]
+    },
+    "costUsd": 0.022195,
+    "ms": 6658
+  },
+  "pay_035": {
+    "key": "2351546fe308500b",
+    "proposal": {
+      "payment_id": "pay_035",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1130",
+          "amount": 10925
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The wire came into Vantage Point Consulting's own virtual account, and its memo names INV-1130. The amount is exactly the $10,925.00 that INV-1130 is for, so all three signals point to the same invoice.",
+      "alternatives": [
+        "inv_1128",
+        "inv_1126",
+        "inv_1129",
+        "inv_1127"
+      ]
+    },
+    "costUsd": 0.016311,
+    "ms": 7952
+  },
+  "pay_045": {
+    "key": "e64e0369e0176bbe",
+    "proposal": {
+      "payment_id": "pay_045",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1057",
+          "amount": 16174.25
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The memo names INV-1057, the payer name matches how Marrow & Finch Architects has paid before, and the $16,174.25 payment is exactly what INV-1057 is for. All three signals point to the same invoice.",
+      "alternatives": []
+    },
+    "costUsd": 0.016687,
+    "ms": 3665
+  },
+  "pay_046": {
+    "key": "6ef4095c60bd4871",
+    "proposal": {
+      "payment_id": "pay_046",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1092",
+          "amount": 6351.5
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.96,
+      "reasoning": "The memo \"#1o92\" is a typo for INV-1092 (a letter o in place of a zero). The payment amount exactly equals INV-1092's $6,351.50, and the payer is Ironbark Capital Advisors' known bank name.",
+      "alternatives": []
+    },
+    "costUsd": 0.016167,
+    "ms": 4446
+  },
+  "pay_044": {
+    "key": "169c17abc5bf7f32",
+    "proposal": {
+      "payment_id": "pay_044",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1026",
+          "amount": 15392.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "Ferncliff Studio's own virtual account received this payment, the memo names INV-1026, and the amount matches INV-1026 to the cent. Kestrel's INV-1109 is close in amount but belongs to a different customer.",
+      "alternatives": []
+    },
+    "costUsd": 0.016863,
+    "ms": 8250
+  },
+  "pay_047": {
+    "key": "72f374fb7cc91754",
+    "proposal": {
+      "payment_id": "pay_047",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1116",
+          "amount": 15274.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The wire came into Meridian Yard Coworking's own virtual account, and the memo names INV-1116. The amount equals that invoice to the cent, so all three signals agree. The Peregrine invoices close in amount belong to a different customer and don't apply.",
+      "alternatives": []
+    },
+    "costUsd": 0.017359,
+    "ms": 6142
+  },
+  "pay_043": {
+    "key": "8e2207bf48e820b1",
+    "proposal": {
+      "payment_id": "pay_043",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1072",
+          "amount": 2400
+        },
+        {
+          "invoice_id": "inv_1073",
+          "amount": 20604.25
+        },
+        {
+          "invoice_id": "inv_1076",
+          "amount": 2974.99
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The check came from ACME BUILDERS SUPPLY, which is a name this customer has paid from before. The memo lists INV-1072, INV-1073 and INV-1076, all Acme Builders Supply invoices, and together they add up to exactly $25,979.24.",
+      "alternatives": []
+    },
+    "costUsd": 0.020215,
+    "ms": 4551
+  },
+  "pay_050": {
+    "key": "96792d78c0dfc442",
+    "proposal": {
+      "payment_id": "pay_050",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1011",
+          "amount": 10000
+        }
+      ],
+      "residual": "overpayment",
+      "confidence": 0.75,
+      "reasoning": "The check came into Brightpath Legal's own virtual account and the memo names INV-1011, so it pays that $10,000.00 invoice. They sent $250.00 more than the invoice amount, and no other open invoice explains the extra, so it should be kept as a credit or refunded after someone checks with the customer. It might be a late fee they added themselves, since the check came 2 days after the due date.",
+      "alternatives": [
+        "inv_1013",
+        "inv_1012"
+      ]
+    },
+    "costUsd": 0.022810999999999998,
+    "ms": 8588
+  },
+  "pay_042": {
+    "key": "8882ab302ea6d77a",
+    "proposal": {
+      "payment_id": "pay_042",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1095",
+          "amount": 1668.25
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.93,
+      "reasoning": "The payment came from GLASSWING INTERACTIV, a name Glasswing Interactive has paid from before, and it exactly matches the amount of their invoice INV-1095 ($1,668.25). The only other combination that comes close (INV-1094 + INV-1097) is $19.74 off, so it fits much worse.",
+      "alternatives": [
+        "inv_1094",
+        "inv_1097"
+      ]
+    },
+    "costUsd": 0.017147,
+    "ms": 4577
+  },
+  "pay_049": {
+    "key": "9d563b15fda326cc",
+    "proposal": {
+      "payment_id": "pay_049",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1034",
+          "amount": 7816
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The memo cites INV-1034, the payment amount matches that invoice exactly ($7,816.00), and the payer name matches Ostara Health Technologies' known bank name. Note: the payment is dated 2026-10-23, which is after today's date (2026-10-20), so check that the feed date is correct.",
+      "alternatives": []
+    },
+    "costUsd": 0.015887000000000002,
+    "ms": 4710
+  },
+  "pay_051": {
+    "key": "a3ac7e01ad092e40",
+    "proposal": {
+      "payment_id": "pay_051",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1025",
+          "amount": 1200
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.95,
+      "reasoning": "The payment went to Ferncliff Studio's own virtual account, the payer name is one they've paid from before, and the memo cites INV-1025, which is exactly $1,200.00. Ferncliff also has INV-1167 open for the same amount, but the memo points to INV-1025.",
+      "alternatives": [
+        "inv_1167"
+      ]
+    },
+    "costUsd": 0.022663000000000003,
+    "ms": 5471
+  },
+  "pay_052": {
+    "key": "a4c5649a4c5f9520",
+    "proposal": {
+      "payment_id": "pay_052",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1153",
+          "amount": 9985
+        }
+      ],
+      "residual": "processing_fee",
+      "confidence": 0.93,
+      "reasoning": "The wire came from Wren Street Ventures, a payer name we already know, and its memo names INV-1153, which is a $10,000 invoice for Wren Street. The $15 shortfall is a small round amount, which is typical of a bank wire fee.",
+      "alternatives": []
+    },
+    "costUsd": 0.021503,
+    "ms": 3487
+  },
+  "pay_048": {
+    "key": "5b2183263e61b359",
+    "proposal": {
+      "payment_id": "pay_048",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1027",
+          "amount": 11946
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.55,
+      "reasoning": "The money went to Ferncliff Studio's own account number, so the payer is certain. The memo says INV-1023 ($10,000), but the $11,946 paid exactly matches INV-1027, which differs by one digit, so the memo is probably a typo. Please confirm with the customer before posting, because the alternative is paying INV-1023 with $1,946 extra.",
+      "alternatives": [
+        "inv_1023"
+      ]
+    },
+    "costUsd": 0.023162999999999996,
+    "ms": 7137
+  },
+  "pay_056": {
+    "key": "0f86e54ac5b6801c",
+    "proposal": {
+      "payment_id": "pay_056",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1122",
+          "amount": 10000
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.95,
+      "reasoning": "Orchard Lane Homes has paid from the name PRIYA RAMAN before, the memo \"ref 1122\" points to INV-1122, and INV-1122 is an Orchard Lane invoice for exactly $10,000. Seven other customers also have $10,000 invoices open, but the payer name and memo both point only to INV-1122.",
+      "alternatives": []
+    },
+    "costUsd": 0.023046999999999998,
+    "ms": 5522
+  },
+  "pay_054": {
+    "key": "44efacb8df3887fd",
+    "proposal": {
+      "payment_id": "pay_054",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1060",
+          "amount": 20697.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.93,
+      "reasoning": "The payer name matches the name Marrow & Finch Architects has paid from before, and the payment equals INV-1060 to the cent. No other invoice or combination of invoices adds up to this amount. The memo just says \"PAYMENT\" and doesn't name an invoice, which is why confidence is below certain.",
+      "alternatives": [
+        "inv_1057",
+        "inv_1058",
+        "inv_1061"
+      ]
+    },
+    "costUsd": 0.016483,
+    "ms": 3463
+  },
+  "pay_053": {
+    "key": "d18b4eb809e0ece9",
+    "proposal": {
+      "payment_id": "pay_053",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1142",
+          "amount": 14515.4
+        },
+        {
+          "invoice_id": "inv_1143",
+          "amount": 21659.4
+        },
+        {
+          "invoice_id": "inv_1145",
+          "amount": 9175.5
+        },
+        {
+          "invoice_id": "inv_1146",
+          "amount": 6024.25
         }
       ],
       "residual": "none",
       "confidence": 0.86,
-      "reasoning": "The payer name matches a name Copperline Property Management has paid from before, and INV-1016, INV-1017 and INV-1018 add up to exactly $22,620.00. No other combination of Copperline's invoices fits, and the plural memo \"SEPT INVOICES\" fits several invoices, though nothing in the memo confirms these three are September's.",
+      "reasoning": "The payment went to Thistle & Pine Design's own virtual account, and INV-1142, INV-1143, INV-1145 and INV-1146 are the only combination of their open invoices that adds up to exactly $51,374.55. The memo says \"SEPT INVOICES\" but doesn't list invoice numbers, so it's worth checking that these four were the ones issued in September.",
       "alternatives": [
-        "inv_1123",
-        "inv_1019",
-        "inv_1020",
-        "inv_1021",
-        "inv_1022"
+        "inv_1144",
+        "inv_1147"
       ]
     },
-    "costUsd": 0.022040999999999998,
-    "ms": 7570
+    "costUsd": 0.021099,
+    "ms": 5967
+  },
+  "pay_055": {
+    "key": "f24f69a29b1dc24c",
+    "proposal": {
+      "payment_id": "pay_055",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1033",
+          "amount": 7416
+        }
+      ],
+      "residual": "processing_fee",
+      "confidence": 0.9,
+      "reasoning": "The wire came from Juniper & Vale CPAs' known account and the memo cites INV-1033. It is $35.00 short of that invoice, which is a typical wire fee.",
+      "alternatives": []
+    },
+    "costUsd": 0.017223,
+    "ms": 4950
+  },
+  "pay_058": {
+    "key": "9c0ac82cbacfa43d",
+    "proposal": {
+      "payment_id": "pay_058",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1151",
+          "amount": 14143
+        }
+      ],
+      "residual": "processing_fee",
+      "confidence": 0.88,
+      "reasoning": "This wire came into Summit Ridge Engineering's own virtual account, and its memo names INV-1151. It is $45.00 less than that invoice, a round shortfall that looks like a wire or intermediary bank fee.",
+      "alternatives": []
+    },
+    "costUsd": 0.017103,
+    "ms": 4807
+  },
+  "pay_059": {
+    "key": "a08f8f77e30c486e",
+    "proposal": {
+      "payment_id": "pay_059",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1121",
+          "amount": 10197.25
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The memo cites INV-1121, the payment equals that invoice's $10,197.25 exactly, and it came from Bluefin Biosciences' known paying account.",
+      "alternatives": []
+    },
+    "costUsd": 0.015055,
+    "ms": 3965
+  },
+  "pay_061": {
+    "key": "7234b016c45de5b9",
+    "proposal": {
+      "payment_id": "pay_061",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1047",
+          "amount": 2701.81
+        }
+      ],
+      "residual": "partial",
+      "confidence": 0.9,
+      "reasoning": "Tidewater Logistics sent this to its own virtual account, and the memo says \"INV-1047 partial\". So this is a planned partial payment of $2,701.81 toward INV-1047, which leaves $8,105.44 still open on that invoice.",
+      "alternatives": [
+        "inv_1044",
+        "inv_1046",
+        "inv_1050",
+        "inv_1049",
+        "inv_1048"
+      ]
+    },
+    "costUsd": 0.017067,
+    "ms": 3924
+  },
+  "pay_057": {
+    "key": "b3c0f9ea6895b352",
+    "proposal": {
+      "payment_id": "pay_057",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1036",
+          "amount": 19556.5
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The payment came into Ostara Health Technologies' own virtual account. The memo \"#1o36\" is a typo for INV-1036, and the amount matches INV-1036 exactly at $19,556.50.",
+      "alternatives": []
+    },
+    "costUsd": 0.015331000000000001,
+    "ms": 4124
+  },
+  "pay_060": {
+    "key": "61cd23421034f7ae",
+    "proposal": {
+      "payment_id": "pay_060",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1112",
+          "amount": 11365.25
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.93,
+      "reasoning": "The payment came into Meridian Yard Coworking's own virtual account from their usual bank name. It matches INV-1112 ($11,365.25) to the cent, and that is the only open invoice at that amount. The memo just says \"VENDOR PMT\" and gives no invoice number, but nothing points to a different invoice.",
+      "alternatives": []
+    },
+    "costUsd": 0.016583,
+    "ms": 4265
+  },
+  "pay_063": {
+    "key": "ab1ab99434dcf488",
+    "proposal": {
+      "payment_id": "pay_063",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1115",
+          "amount": 4658.99
+        }
+      ],
+      "residual": "processing_fee",
+      "confidence": 0.9,
+      "reasoning": "The wire came into Meridian Yard Coworking's own virtual account, and the memo names INV-1115. It is exactly $20.00 short of that invoice, which fits a normal wire fee.",
+      "alternatives": [
+        "inv_1113",
+        "inv_1117"
+      ]
+    },
+    "costUsd": 0.016335000000000002,
+    "ms": 3919
+  },
+  "pay_067": {
+    "key": "b5139547887f5c90",
+    "proposal": {
+      "payment_id": "pay_067",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1001",
+          "amount": 20519.99
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.96,
+      "reasoning": "The check went to Northwind Robotics' own virtual account, came from NWR HOLDINGS LLC (a name they've paid from before), cites INV-1001 in the memo, and is exactly INV-1001's $20,519.99. One thing to check: the payment is dated 2026-11-03, which is after today (2026-10-20), so confirm this isn't a post-dated or pending check before marking the invoice paid.",
+      "alternatives": []
+    },
+    "costUsd": 0.019051,
+    "ms": 5344
+  },
+  "pay_062": {
+    "key": "f626512e3b789970",
+    "proposal": {
+      "payment_id": "pay_062",
+      "decision": "unsure",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.1,
+      "reasoning": "This $10,000 ACH has no memo and a generic payer name (\"ACH CREDIT\"). Eight open invoices from seven different customers are exactly $10,000, so nothing shows which customer sent it. A person should check the bank's ACH details (originator name or company ID) or ask the customers before applying it.",
+      "alternatives": [
+        "inv_1011",
+        "inv_1020",
+        "inv_1023",
+        "inv_1080",
+        "inv_1081",
+        "inv_1122",
+        "inv_1139",
+        "inv_1153"
+      ]
+    },
+    "costUsd": 0.020411,
+    "ms": 3701
+  },
+  "pay_068": {
+    "key": "b47d700b6f847dc7",
+    "proposal": {
+      "payment_id": "pay_068",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1009",
+          "amount": 6186.25
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.96,
+      "reasoning": "The payment went to Halcyon Data Labs' own virtual account, the memo cites INV-1009, and the $6,186.25 amount is exactly what INV-1009 is for, so it is paid in full. The only oddity is that the payment is dated 2026-11-03, after today's date, which may be a feed or data-entry problem.",
+      "alternatives": []
+    },
+    "costUsd": 0.020447,
+    "ms": 5994
+  },
+  "pay_066": {
+    "key": "7ec52cce3ac636e7",
+    "proposal": {
+      "payment_id": "pay_066",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1068",
+          "amount": 21701.25
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The wire went to Acme Analytics LLC's own virtual account, the memo says \"inv 1068\", and the amount equals INV-1068 ($21,701.25) exactly. All three signals point to the same invoice.",
+      "alternatives": []
+    },
+    "costUsd": 0.020035,
+    "ms": 4801
+  },
+  "pay_065": {
+    "key": "4180b840904faeaa",
+    "proposal": {
+      "payment_id": "pay_065",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1166",
+          "amount": 20509.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.9,
+      "reasoning": "The payment went to Wren Street Ventures' own virtual account, the memo says INV-1166, and the amount matches that invoice exactly. INV-1158 is an older invoice for the same amount and is also still open, so the customer may have meant to pay that one first. That's worth checking with them, but the memo clearly names INV-1166.",
+      "alternatives": [
+        "inv_1158"
+      ]
+    },
+    "costUsd": 0.019795,
+    "ms": 5942
+  },
+  "pay_070": {
+    "key": "10d910ffbaeaa6e9",
+    "proposal": {
+      "payment_id": "pay_070",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1141",
+          "amount": 4467
+        }
+      ],
+      "residual": "processing_fee",
+      "confidence": 0.88,
+      "reasoning": "The memo names INV-1141 and the payer is Heron Bay Hospitality, a name we've seen them pay from before. The wire came in $35 under the $4,502 invoice, which looks like a normal wire fee.",
+      "alternatives": [
+        "inv_1133"
+      ]
+    },
+    "costUsd": 0.017719000000000002,
+    "ms": 4500
+  },
+  "pay_069": {
+    "key": "e90ffd2f9327750b",
+    "proposal": {
+      "payment_id": "pay_069",
+      "decision": "not_invoice_payment",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "This is a refund credit from Amazon Web Services, a vendor, as the memo \"AWS REFUND CREDIT\" says. It's not a customer paying an invoice, and no open invoice or known customer matches it.",
+      "alternatives": []
+    },
+    "costUsd": 0.013411,
+    "ms": 4044
+  },
+  "pay_071": {
+    "key": "b639f8224f51b042",
+    "proposal": {
+      "payment_id": "pay_071",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1157",
+          "amount": 3337
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The payment came into Wren Street Ventures' own virtual account, the memo names INV-1157, and the amount is exactly that invoice's $3,337.00. Wren Street still has older overdue invoices open, but nothing points to this payment being meant for any of them.",
+      "alternatives": []
+    },
+    "costUsd": 0.016575,
+    "ms": 5089
+  },
+  "pay_073": {
+    "key": "fc3cb21a94d277c5",
+    "proposal": {
+      "payment_id": "pay_073",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1160",
+          "amount": 5746
+        },
+        {
+          "invoice_id": "inv_1161",
+          "amount": 15339
+        },
+        {
+          "invoice_id": "inv_1163",
+          "amount": 2235
+        },
+        {
+          "invoice_id": "inv_1164",
+          "amount": 5251
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.9,
+      "reasoning": "The check is from POLARIS PAYROLL, a name customer Polaris Payroll Partners has paid from before. The memo says \"4 INVOICES\", and the only combination of their open invoices that adds up to exactly $28,571.00 is four invoices: INV-1160, INV-1161, INV-1163 and INV-1164.",
+      "alternatives": [
+        "inv_1159",
+        "inv_1162"
+      ]
+    },
+    "costUsd": 0.020663,
+    "ms": 5410
+  },
+  "pay_064": {
+    "key": "c55ed9b487f1c801",
+    "proposal": {
+      "payment_id": "pay_064",
+      "decision": "unsure",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.1,
+      "reasoning": "This $5,000 mobile deposit came with no memo and no payer name. Three open invoices from three different customers are exactly $5,000 (Tidewater INV-1044, Peregrine INV-1066, Wren Street INV-1155), so nothing here tells us which customer sent it. Please check the deposited check image to see who wrote it.",
+      "alternatives": [
+        "inv_1044",
+        "inv_1066",
+        "inv_1155",
+        "inv_1048"
+      ]
+    },
+    "costUsd": 0.016923,
+    "ms": 4823
+  },
+  "pay_072": {
+    "key": "ab28fb4fbce58bd6",
+    "proposal": {
+      "payment_id": "pay_072",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1015",
+          "amount": 6967.99
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.95,
+      "reasoning": "The payment came into Brightpath Legal's own virtual account from a name they've paid from before, and it exactly matches INV-1015 ($6,967.99) to the cent. No other open invoice or combination of invoices fits.",
+      "alternatives": []
+    },
+    "costUsd": 0.015883,
+    "ms": 4953
+  },
+  "pay_074": {
+    "key": "535f41498ec8c6c8",
+    "proposal": {
+      "payment_id": "pay_074",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1069",
+          "amount": 21730.99
+        }
+      ],
+      "residual": "overpayment",
+      "confidence": 0.7,
+      "reasoning": "The payment came into Acme Analytics LLC's own virtual account, and the memo names INV-1069. But the payment is exactly $250.00 more than that invoice ($21,480.99). The invoice was past due, so the extra $250 could be a late fee, or it could be meant as a credit or for another invoice. A person should decide where the $250 goes.",
+      "alternatives": [
+        "inv_1071",
+        "inv_1068"
+      ]
+    },
+    "costUsd": 0.027826999999999998,
+    "ms": 15963
+  },
+  "pay_077": {
+    "key": "74d5e801f3e9476f",
+    "proposal": {
+      "payment_id": "pay_077",
+      "decision": "unsure",
+      "allocations": [],
+      "residual": "none",
+      "confidence": 0.1,
+      "reasoning": "Three open invoices from three different customers (INV-1044, INV-1066, INV-1155) are each exactly $5,000. The payer name is just \"PAYMENTS\" and the memo is empty, so nothing shows who sent the money. A person should confirm the sender with the bank or the customers before this is applied.",
+      "alternatives": [
+        "inv_1044",
+        "inv_1066",
+        "inv_1155",
+        "inv_1048"
+      ]
+    },
+    "costUsd": 0.016743,
+    "ms": 4476
+  },
+  "pay_078": {
+    "key": "6ab736c91d992d90",
+    "proposal": {
+      "payment_id": "pay_078",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1028",
+          "amount": 6901.5
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The memo cites INV-1028, the amount exactly equals INV-1028's $6,901.50, and the wire came into Juniper & Vale's dedicated account from their usual payer name.",
+      "alternatives": []
+    },
+    "costUsd": 0.015847,
+    "ms": 3426
+  },
+  "pay_079": {
+    "key": "9147dcb3e264c481",
+    "proposal": {
+      "payment_id": "pay_079",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1165",
+          "amount": 12400.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.9,
+      "reasoning": "Orchard Lane Homes paid into its own virtual account, and the memo names INV-1165, which matches the amount exactly. Their older invoice INV-1125 is for the same amount and is still open, but the memo points clearly to INV-1165.",
+      "alternatives": [
+        "inv_1125"
+      ]
+    },
+    "costUsd": 0.017987000000000003,
+    "ms": 5417
+  },
+  "pay_075": {
+    "key": "a8c6a2c91f471f7f",
+    "proposal": {
+      "payment_id": "pay_075",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1054",
+          "amount": 16985.25
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The payment came into Lumen Arc Software's own virtual account, the memo cites INV-1054, and the amount exactly matches INV-1054's $16,985.25 balance.",
+      "alternatives": []
+    },
+    "costUsd": 0.015859,
+    "ms": 3621
+  },
+  "pay_080": {
+    "key": "817a09980a1313e7",
+    "proposal": {
+      "payment_id": "pay_080",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1137",
+          "amount": 11440.99
+        }
+      ],
+      "residual": "overpayment",
+      "confidence": 0.75,
+      "reasoning": "The check came into Heron Bay Hospitality's own virtual account and the memo names INV-1137, so it pays that invoice. But it's $250.00 more than the $11,440.99 owed. A round $250 on an invoice that was overdue (due Sept 18) could be a late fee, or it could be a credit; someone should decide where the extra $250 goes.",
+      "alternatives": [
+        "inv_1141",
+        "inv_1139"
+      ]
+    },
+    "costUsd": 0.025451,
+    "ms": 8487
+  },
+  "pay_083": {
+    "key": "e9a19b6212402577",
+    "proposal": {
+      "payment_id": "pay_083",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1133",
+          "amount": 4484
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.95,
+      "reasoning": "The payment came in to Cobalt Freight Systems' own virtual account, and the amount matches Cobalt's open invoice INV-1133 exactly ($4,484.00). The memo says only \"AP PAYMENT\", but no other Cobalt invoice or combination of invoices matches this amount.",
+      "alternatives": []
+    },
+    "costUsd": 0.017239,
+    "ms": 3942
+  },
+  "pay_082": {
+    "key": "bc57b87f198725cd",
+    "proposal": {
+      "payment_id": "pay_082",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1084",
+          "amount": 14626.25
+        },
+        {
+          "invoice_id": "inv_1085",
+          "amount": 17985
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.86,
+      "reasoning": "The wire came from QUILLON RECRUITING, a name this customer has paid from before. The amount exactly equals INV-1084 plus INV-1085, and no other combination of their open invoices adds up to it. There's no memo, and the oldest invoice (INV-1087) wasn't paid, so a quick check is worthwhile.",
+      "alternatives": [
+        "inv_1087",
+        "inv_1086"
+      ]
+    },
+    "costUsd": 0.017939,
+    "ms": 5417
+  },
+  "pay_076": {
+    "key": "fb140a0c7cba97f5",
+    "proposal": {
+      "payment_id": "pay_076",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1127",
+          "amount": 23734
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.65,
+      "reasoning": "The payment came from Vantage Point Consulting and is exactly the amount of INV-1127. The memo says INV-1126, which is probably a typo for the next number, because applying it to INV-1126 would leave an overpayment that fits nothing else.",
+      "alternatives": [
+        "inv_1126"
+      ]
+    },
+    "costUsd": 0.026359,
+    "ms": 8525
+  },
+  "pay_084": {
+    "key": "3e6844b243017537",
+    "proposal": {
+      "payment_id": "pay_084",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1159",
+          "amount": 5385
+        },
+        {
+          "invoice_id": "inv_1162",
+          "amount": 747.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.8,
+      "reasoning": "The payment came into Polaris Payroll Partners' own virtual account, from the name they've paid from before. INV-1159 and INV-1162 together come to exactly $6,132.40, and no other combination of their invoices does. The memo says \"SEPT INVOICES\" but doesn't list any invoice numbers. INV-1159 isn't due until Nov 11, so it may not be a September invoice, which is why I'm only fairly confident.",
+      "alternatives": [
+        "inv_1160",
+        "inv_1164",
+        "inv_1163"
+      ]
+    },
+    "costUsd": 0.022203,
+    "ms": 8919
+  },
+  "pay_081": {
+    "key": "6c588a2703848945",
+    "proposal": {
+      "payment_id": "pay_081",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1123",
+          "amount": 22643.5
+        }
+      ],
+      "residual": "processing_fee",
+      "confidence": 0.93,
+      "reasoning": "The wire came in to Orchard Lane Homes' own virtual account, and the memo cites INV-1123. It is exactly $20.00 short of that invoice, which looks like a normal wire fee.",
+      "alternatives": [
+        "inv_1129"
+      ]
+    },
+    "costUsd": 0.016615,
+    "ms": 3633
+  },
+  "pay_086": {
+    "key": "3c6930fa4e95acca",
+    "proposal": {
+      "payment_id": "pay_086",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1119",
+          "amount": 19894.5
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.93,
+      "reasoning": "The payment came from Bluefin Biosciences, a name they've paid from before, and it exactly matches their open invoice INV-1119 ($19,894.50). No other invoice or combination of invoices adds up to this amount. The memo \"VENDOR PMT\" is a generic label, not a sign that this is a refund or transfer.",
+      "alternatives": []
+    },
+    "costUsd": 0.017467000000000003,
+    "ms": 4426
+  },
+  "pay_087": {
+    "key": "4997d6f821b8b7ea",
+    "proposal": {
+      "payment_id": "pay_087",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1030",
+          "amount": 7303.5
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.9,
+      "reasoning": "The payer name matches a name Juniper & Vale CPAs has paid from before, and INV-1030 is their only open invoice for exactly $7,303.50. The memo is empty and they have several other open invoices, but none of those match the amount alone or in combination.",
+      "alternatives": [
+        "inv_1028",
+        "inv_1033"
+      ]
+    },
+    "costUsd": 0.016359,
+    "ms": 4600
+  },
+  "pay_088": {
+    "key": "3d0cc310c774e060",
+    "proposal": {
+      "payment_id": "pay_088",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1032",
+          "amount": 14817.25
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The payment went to Juniper & Vale's own virtual account, came from their usual bank name, says \"1032\" in the memo, and is exactly the amount of INV-1032. All of these point to the same invoice.",
+      "alternatives": []
+    },
+    "costUsd": 0.016819,
+    "ms": 3873
+  },
+  "pay_085": {
+    "key": "bce49436510134c1",
+    "proposal": {
+      "payment_id": "pay_085",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1003",
+          "amount": 18000
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The memo names INV-1003, and the payment amount is exactly the $18,000.00 that invoice is for. It came from NORTHWIND ROBOTICS IN, a name Northwind Robotics has paid from before, so everything points to the same invoice.",
+      "alternatives": []
+    },
+    "costUsd": 0.017679,
+    "ms": 4626
   },
   "pay_090": {
-    "key": "8573e0647732ef05",
+    "key": "744d5f2210132da4",
     "proposal": {
       "payment_id": "pay_090",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1125",
-          "amount": 12400.4
+          "invoice_id": "inv_1078",
+          "amount": 5826.4
         }
       ],
       "residual": "none",
-      "confidence": 0.93,
-      "reasoning": "The payment came from Orchard Lane Homes, a name this customer has paid from before, and it exactly matches the to-the-cent amount of their open invoice INV-1125 ($12,400.40). The memo says only \"VENDOR PMT\" and gives no invoice number, but no other invoice or combination fits.",
+      "confidence": 0.97,
+      "reasoning": "The memo cites INV-1078, the amount matches that invoice to the cent, and the payer name is exactly the name Acme Builders Supply has paid from before. Acme Analytics only shares the word \"Acme\", so it isn't a real match.",
       "alternatives": []
     },
-    "costUsd": 0.014049000000000002,
-    "ms": 4391
+    "costUsd": 0.017955,
+    "ms": 4174
   },
   "pay_091": {
-    "key": "415e414430f6f84c",
+    "key": "80b726f53c9194a6",
     "proposal": {
       "payment_id": "pay_091",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1031",
-          "amount": 9805.5
+          "invoice_id": "inv_1044",
+          "amount": 5000
         }
       ],
       "residual": "none",
       "confidence": 0.97,
-      "reasoning": "The memo cites INV-1031, the payer is Juniper & Vale's known bank name, and the amount exactly matches INV-1031's $9,805.50, so all three signals agree.",
-      "alternatives": []
-    },
-    "costUsd": 0.014457000000000001,
-    "ms": 3606
-  },
-  "pay_089": {
-    "key": "91e7747392a97a9a",
-    "proposal": {
-      "payment_id": "pay_089",
-      "decision": "unsure",
-      "allocations": [],
-      "residual": "none",
-      "confidence": 0.4,
-      "reasoning": "This payment is from Wren Street Ventures, but the evidence points two ways. The memo says INV-1153 ($10,000), and the amount ($9,853) is $147 short of that, which is too much to be a normal wire fee. The amount exactly equals INV-1156, which is due the same day as the payment, so the memo may be wrong. A person should confirm with the customer which invoice this pays.",
+      "reasoning": "The memo cites INV-1044, the payer name matches how Tidewater Logistics has paid before, and the $5,000.00 matches INV-1044's amount exactly. Two other customers also have $5,000 invoices, but the memo and payer both point to Tidewater.",
       "alternatives": [
-        "inv_1156",
-        "inv_1153"
+        "inv_1048"
       ]
     },
-    "costUsd": 0.017025,
-    "ms": 5605
+    "costUsd": 0.019727,
+    "ms": 6742
+  },
+  "pay_089": {
+    "key": "426dcae958e770cf",
+    "proposal": {
+      "payment_id": "pay_089",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1062",
+          "amount": 13286.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The memo names INV-1062, and the amount matches that invoice exactly ($13,286.40). The payer name also matches the one Peregrine Analytics has paid from before, so all three signals agree.",
+      "alternatives": []
+    },
+    "costUsd": 0.018651,
+    "ms": 5095
   },
   "pay_092": {
-    "key": "f98f64749ea16124",
+    "key": "c2e9f405377f8cda",
     "proposal": {
       "payment_id": "pay_092",
       "decision": "not_invoice_payment",
       "allocations": [],
       "residual": "none",
       "confidence": 0.97,
-      "reasoning": "This is bank interest: the sender is \"INTEREST PAYMENT\" and the memo says \"INTEREST PAID SEP\". It isn't from a customer, and no open invoices or known payers match it.",
+      "reasoning": "This is a bank interest payment: the sender is \"INTEREST PAYMENT\" and the memo says \"INTEREST PAID SEP.\" No customer or open invoice matches it.",
       "alternatives": []
     },
-    "costUsd": 0.011349,
-    "ms": 3374
+    "costUsd": 0.013147,
+    "ms": 6033
   },
   "pay_094": {
-    "key": "842510e8896ec5f6",
+    "key": "52a56634f1118a54",
     "proposal": {
       "payment_id": "pay_094",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1039",
-          "amount": 20684.4
-        }
-      ],
-      "residual": "none",
-      "confidence": 0.97,
-      "reasoning": "The memo names INV-1039, and the payer is Redwood Row Realty, a name this customer has paid from before. The amount is exactly what INV-1039 is for.",
-      "alternatives": []
-    },
-    "costUsd": 0.014457000000000001,
-    "ms": 3313
-  },
-  "pay_093": {
-    "key": "fd2169f744affdb1",
-    "proposal": {
-      "payment_id": "pay_093",
-      "decision": "match",
-      "allocations": [
-        {
-          "invoice_id": "inv_1040",
+          "invoice_id": "inv_1071",
           "amount": 2500
         }
       ],
       "residual": "none",
       "confidence": 0.97,
-      "reasoning": "The memo cites INV-1040, the payer is Redwood Row Realty (a name they have paid from before), and the $2,500.00 amount matches INV-1040 exactly. Seven other customers also have $2,500 invoices open, but the memo and payer name both point to INV-1040.",
+      "reasoning": "The memo cites INV-1071, the sender is ACME ANALYTICS LLC, which matches a name Acme Analytics has paid from before, and the $2,500.00 is exactly what INV-1071 is for. Eight other invoices are also for $2,500, but the invoice number and the payer name both point only to this one.",
+      "alternatives": [
+        "inv_1077"
+      ]
+    },
+    "costUsd": 0.027123,
+    "ms": 4114
+  },
+  "pay_093": {
+    "key": "c7d8f53e52cd4a27",
+    "proposal": {
+      "payment_id": "pay_093",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1042",
+          "amount": 14546.5
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.9,
+      "reasoning": "The payment arrived in Redwood Row Realty's own virtual account, from an account name they've paid from before (RRR Escrow Trust Acct). It's for exactly $14,546.50, and INV-1042 is the only open invoice at that amount. The memo is empty, and a card payment from an escrow trust account is a bit unusual, so it's worth a quick look.",
       "alternatives": []
     },
-    "costUsd": 0.019725,
-    "ms": 4042
+    "costUsd": 0.018778999999999997,
+    "ms": 6548
   },
   "pay_095": {
-    "key": "79b35845beae6333",
+    "key": "028a5e0dee2d6046",
     "proposal": {
       "payment_id": "pay_095",
       "decision": "match",
       "allocations": [
         {
-          "invoice_id": "inv_1053",
-          "amount": 1200
+          "invoice_id": "inv_1149",
+          "amount": 18471.25
         }
       ],
       "residual": "none",
-      "confidence": 0.88,
-      "reasoning": "The payer name LUMENARC INC is one Lumen Arc Software has paid from before, and INV-1053 is that customer's only open invoice for exactly $1,200.00. Six other customers also have $1,200 invoices, but the payer name ties this payment to Lumen Arc.",
+      "confidence": 0.93,
+      "reasoning": "The payment went to the account number used only by Summit Ridge Engineering. It equals INV-1149 to the cent, and no other invoice or combination of invoices matches. The memo is empty, so the amount is the only thing linking it to INV-1149.",
       "alternatives": [
-        "inv_1007",
-        "inv_1016",
-        "inv_1025",
-        "inv_1059",
-        "inv_1088",
-        "inv_1094"
+        "inv_1150",
+        "inv_1148"
       ]
     },
-    "costUsd": 0.022065,
-    "ms": 10590
+    "costUsd": 0.017459000000000002,
+    "ms": 4934
+  },
+  "pay_096": {
+    "key": "6287aa3675b9b797",
+    "proposal": {
+      "payment_id": "pay_096",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1064",
+          "amount": 7880.4
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.98,
+      "reasoning": "The memo cites INV-1064, the amount exactly equals that invoice's $7,880.40 balance, and the sender is Peregrine Analytics' known paying account. All three signals agree.",
+      "alternatives": []
+    },
+    "costUsd": 0.017379000000000002,
+    "ms": 3712
+  },
+  "pay_098": {
+    "key": "6a2b0bfcdc8e95e9",
+    "proposal": {
+      "payment_id": "pay_098",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1096",
+          "amount": 11619.5
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The check went to Glasswing Interactive's own virtual account, came from a name they've paid from before (GW MEDIA HOLDINGS), and the memo says INV-1096. It's also exactly the amount of INV-1096.",
+      "alternatives": []
+    },
+    "costUsd": 0.016155,
+    "ms": 4241
+  },
+  "pay_099": {
+    "key": "8c69a14157ad1469",
+    "proposal": {
+      "payment_id": "pay_099",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1004",
+          "amount": 14811
+        }
+      ],
+      "residual": "none",
+      "confidence": 0.97,
+      "reasoning": "The memo cites INV-1004, the payer name matches a name Northwind Robotics has paid from before, and the amount equals INV-1004 to the cent. The near-miss invoices for Brightpath and Juniper & Vale come from customers with no link to this payer.",
+      "alternatives": []
+    },
+    "costUsd": 0.019319,
+    "ms": 4175
+  },
+  "pay_097": {
+    "key": "9b68302d7ffc4845",
+    "proposal": {
+      "payment_id": "pay_097",
+      "decision": "match",
+      "allocations": [
+        {
+          "invoice_id": "inv_1037",
+          "amount": 8093.36
+        }
+      ],
+      "residual": "partial",
+      "confidence": 0.85,
+      "reasoning": "The payment went to Ostara Health's own virtual account, and the memo names INV-1037. The amount is exactly 40% of that $20,233.40 invoice, so this looks like a planned installment, and $12,140.04 stays open. INV-1106 is close in amount, but it belongs to Kestrel Field Services, so it's only a coincidence.",
+      "alternatives": [
+        "inv_1034",
+        "inv_1035",
+        "inv_1036"
+      ]
+    },
+    "costUsd": 0.019899,
+    "ms": 5305
   }
 }
