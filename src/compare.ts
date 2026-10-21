@@ -68,13 +68,15 @@ for (const s of SEEDS) {
 // leave alone) or passes it on; the last step's answer goes to review if nothing settled it.
 // A model step may carry its own bar, e.g. "haiku@0.8".
 type Step = "builtin" | "rules" | Model | `${Model}@${number}`;
-type Result = { n: number; counts: Record<Outcome, number>; minutes: number; calls: Partial<Record<Model, number>>; cost: number };
+type Result = { n: number; counts: Record<Outcome, number>; minutes: number; calls: Partial<Record<Model, number>>; cost: number; maxCost: number };
 
 function run(steps: Step[], th = DEFAULT_THRESHOLD, guardrails = true, only = pays): Result {
   const counts = Object.fromEntries(Object.keys(MINUTES).map((k) => [k, 0])) as Record<Outcome, number>;
   const calls: Result["calls"] = {};
   let cost = 0;
+  let maxCost = 0;
   for (const x of only) {
+    const before = cost;
     let last: Action | undefined;
     for (const step of steps) {
       let a: Action;
@@ -97,9 +99,10 @@ function run(steps: Step[], th = DEFAULT_THRESHOLD, guardrails = true, only = pa
       if (a.action !== "review") { last = a; break; }
     }
     counts[outcome(last!, x.t)]++;
+    maxCost = Math.max(maxCost, cost - before);
   }
   const minutes = (Object.keys(counts) as Outcome[]).reduce((s, k) => s + counts[k] * MINUTES[k], 0);
-  return { n: only.length, counts, minutes, calls, cost };
+  return { n: only.length, counts, minutes, calls, cost, maxCost };
 }
 const naive = (id: string, prop: Proposal, th: number): Action => ({
   payment_id: id,
@@ -171,4 +174,15 @@ ${models.map((m) => `| ${m} | ${calibration(m).join(" | ")} |`).join("\n")}
 `;
 
 writeFileSync(`results/models/report${args.length ? `-${args.join("-")}` : ""}.md`, report);
+
+// The setups the demo page's cost panel offers, summarized per incoming payment.
+if (!args.length) {
+  const PANEL: Step[][] = [["builtin"], ["opus"], ["builtin", "opus"], ["builtin", "rules", "opus"], ["builtin", "rules", "sonnet"], ["builtin", "rules", "haiku@0.8"], ["builtin", "rules", "haiku@0.8", "opus"]];
+  const out = PANEL.map((steps) => {
+    const r = run(steps);
+    const share = Object.fromEntries((Object.entries(r.calls) as [Model, number][]).map(([m, c]) => [m, c / r.n]));
+    return { key: steps.join(","), handsOff: r.counts.correct_auto / r.n, wrong: r.counts.wrong_auto, minutes: r.minutes / r.n, cost: r.cost / r.n, maxCost: r.maxCost, share };
+  });
+  writeFileSync("results/models/strategies.json", JSON.stringify(out, null, 2));
+}
 console.log(report);

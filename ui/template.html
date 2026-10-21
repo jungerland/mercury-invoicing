@@ -225,13 +225,19 @@ footer { color: var(--muted); font-size: 0.8rem; display: grid; gap: 6px; border
     <h2 id="h-cost">What it costs to run</h2>
     <div class="control">
       <div style="display:grid;gap:6px;min-width:0">
-        <p>Model cost is measured, not guessed: token counts from all 297 agent calls across the three test sets, priced at list rates, with the instructions every call shares cached. Time saved uses the eval's time assumptions and compares the agent with built-in matching alone, at the 0.90 bar.</p>
+        <p>Measured, not guessed. Each setup below was run on the same 297 payments across three test sets, and its token counts are priced at list rates, with the instructions every call shares cached. A setup tries each step in order and stops at the first one that settles the payment. Time saved compares each setup with built-in matching alone, using the eval's time assumptions.</p>
       </div>
       <div class="cost-inputs">
         <label class="field">Incoming payments a month <input type="number" id="c-vol" min="1" step="50" value="500"></label>
-        <label class="field">Model <select id="c-model"><option value="claude-opus-5-5">Claude Opus 5.5 (tested)</option><option value="claude-sonnet-5-5">Claude Sonnet 5.5 (estimate)</option><option value="claude-haiku-5-5">Claude Haiku 5.5 (estimate)</option></select></label>
+        <label class="field">Setup <select id="c-setup">
+          <option value="builtin,rules,haiku@0.8,opus" selected>Built-in, rules, Haiku, then Opus (recommended)</option>
+          <option value="builtin,rules,opus">Built-in, rules, then Opus</option>
+          <option value="builtin,opus">Built-in, then Opus</option>
+          <option value="opus">Opus on every payment</option>
+          <option value="builtin,rules,sonnet">Built-in, rules, then Sonnet</option>
+          <option value="builtin,rules,haiku@0.8">Built-in, rules, then Haiku only</option>
+        </select></label>
         <label class="field">Bookkeeper's time, $ per hour <input type="number" id="c-rate" min="0" step="5" value="50"></label>
-        <label class="toggle switch"><input type="checkbox" role="switch" id="c-skip" checked> Skip payments built-in matching already applied</label>
       </div>
     </div>
     <div class="compare" id="cost-out"></div>
@@ -364,24 +370,25 @@ function render() {
 function renderCost() {
   const vol = Math.max(0, +$("c-vol").value || 0);
   const rate = Math.max(0, +$("c-rate").value || 0);
-  const model = $("c-model").value;
-  const p = DATA.prices[model];
-  const sent = DATA.calls.filter((c) => !$("c-skip").checked || !c.builtin);
-  const costs = sent.map((c) => (c.input * p.input + c.cache_read * p.cache_read + c.output * p.output) / 1e6);
-  const avg = costs.reduce((s, c) => s + c, 0) / costs.length;
-  const share = sent.length / DATA.calls.length;
-  const monthly = vol * share * avg;
-  const m = DATA.minutes.reduce((a, s) => ({ n: a.n + s.n, saved: a.saved + s.builtin - s.agent }), { n: 0, saved: 0 });
-  const hours = (vol * m.saved) / m.n / 60;
-  const usd = (x) => x < 1 ? `$${x.toFixed(x < 0.1 ? 3 : 2)}` : `$${Math.round(x).toLocaleString("en-US")}`;
+  const key = $("c-setup").value;
+  const st = DATA.strategies.find((x) => x.key === key);
+  const base = DATA.strategies.find((x) => x.key === "builtin");
+  const monthly = vol * st.cost;
+  const hours = (vol * (base.minutes - st.minutes)) / 60;
+  const usd = (x) => x < 1 ? `$${x.toFixed(x < 0.01 ? 4 : x < 0.1 ? 3 : 2)}` : `$${Math.round(x).toLocaleString("en-US")}`;
+  const names = { opus: "Opus", sonnet: "Sonnet", haiku: "Haiku" };
+  const sent = Object.entries(st.share).map(([m, s]) => `${names[m]} sees ${Math.round(s * 100)}%`).join(", ");
   const col = (title, sub, metrics, cls = "") => `<div class="col ${cls}"><h3>${title}<small>${sub}</small></h3>${metrics.map(([b, s]) => `<div class="metric"><b>${b}</b><span>${s}</span></div>`).join("")}</div>`;
   $("cost-out").innerHTML =
-    col("Model cost", `${Math.round(share * 100)}% of payments go to the agent`, [[usd(monthly), "a month"], [usd(avg), `per payment sent; the most any single one cost was ${usd(Math.max(...costs))}`]]) +
-    col("Time saved", "Compared with built-in matching alone", [[`${hours.toFixed(1)} h`, "a month"], [usd(hours * rate), `of bookkeeper time at $${rate} an hour`]]) +
+    col("Model cost", `Of all incoming payments: ${sent}`, [[usd(monthly), "a month"], [usd(st.cost), `per incoming payment; the most any single one cost was ${usd(st.maxCost)}`]]) +
+    col("Time saved", `${Math.round(st.handsOff * 100)}% hands-off with ${st.wrong ? st.wrong + " wrong" : "no wrong"} matches, against ${Math.round(base.handsOff * 100)}% for built-in matching alone`, [[`${hours.toFixed(1)} h`, "a month"], [usd(hours * rate), `of bookkeeper time at $${rate} an hour`]]) +
     col("Return", "Time saved per dollar of model cost", [[monthly ? `${Math.round((hours * rate) / monthly).toLocaleString("en-US")}×` : "-", "value of time saved, divided by model cost"]], "agent");
-  $("c-note").textContent = model === "claude-opus-5-5"
-    ? "Only Claude Opus 5.5 was tested. Costs exclude retries and fallbacks."
-    : "Estimate only: this reuses Claude Opus 5.5's token counts at this model's prices. Its accuracy wasn't tested, and its token use, especially thinking, will differ.";
+  const notes = {
+    "builtin,rules,haiku@0.8,opus": "Haiku settles what it can at a 0.80 bar, because its confidence runs low: from 0.70 to 0.89 it was right on 111 of 111 proposals. Anything it isn't sure of goes to Opus. I picked that bar after seeing these results, so I tested it on a fourth set generated afterward: 78% hands-off, no wrong matches, $0.0041 per payment.",
+    "builtin,rules,haiku@0.8": "The cheapest setup, but Haiku leaves 9 of 297 payments in the queue with no useful suggestion, so someone has to find those by hand. Sending them on to Opus fixes that for about a third of a cent per payment.",
+    "builtin,rules,sonnet": "Sonnet matched Opus within about a point on every test set, at under half the price.",
+  };
+  $("c-note").textContent = (notes[key] ?? "") + " Costs exclude retries and fallbacks.";
 }
 
 function renderFindings() {
@@ -389,7 +396,7 @@ function renderFindings() {
   const pct = (m) => Math.round(m.autoRate * 100);
   const items = [
     ["Virtual account numbers handle the easy part", "Built-in matching handled 40% of this day's deposits with no one touching it (34% and 31% on the other two test sets), with no errors. It never matched a wire fee, partial, overpayment, batch payment or same-amount pair, or any payment sent to the main account number. Nothing flags those: 59 of 99 deposits here sit unmatched until someone notices."],
-    ["The agent takes the rest from 40% to 71%", "With the same evidence, the agent handled 71% with no one touching it (78% and 70% on the other two sets), and nothing went unnoticed: whatever it didn't apply landed in the queue with a suggestion. It applied 20 of 24 wire-fee payments across all three sets, where built-in matching and the rules baseline applied none. The rules baseline I built for comparison reached 59 to 61%. It costs about two cents and 5 seconds per payment."],
+    ["The agent takes the rest from 40% to 71%", "With the same evidence, the agent handled 71% with no one touching it (78% and 70% on the other two sets), and nothing went unnoticed: whatever it didn't apply landed in the queue with a suggestion. It applied 20 of 24 wire-fee payments across all three sets, where built-in matching and the rules baseline applied none. The rules baseline I built for comparison reached 59 to 61%. Opus on every payment costs about 1.4 cents and 5 seconds each. Letting rules and the cheaper Haiku go first brings that to about 0.4 cents, with no loss (see the cost section below)."],
     ["No wrong matches, on three separate test sets", `The page shows the first test set. I generated a second with different customers, invoices and payments, and the results held: built-in matching handled ${pct(s7.builtin)}% on its own, rules ${pct(s7.rules)}%, the agent ${pct(s7.agent)}%. Then, with the agent finished, I generated a third set I had never looked at and ran it without changing anything: built-in ${pct(s99.builtin)}%, rules ${pct(s99.rules)}%, the agent ${pct(s99.agent)}%. None of them put money on the wrong invoice, and running all three sets a second time moved the agent's numbers by a point at most. That's 198 automatic matches by the agent without an error. It doesn't prove the error rate is zero, only that it's likely below about 1.5%. Showing the under-0.1% you'd want in production takes about 3,000 error-free matches, which is what a trial run on real payments is for.`],
     ["Confidence is cautious, which is the safe direction", "Every proposal the agent made at 0.70 or above was exactly right, on all three sets. It hedged where it should: on batch payments with no memo, and on the same-amount pairs where nothing says which invoice was paid (0.50 to 0.55). Its one wrong proposal in 276 was one of those: a batch payment where either of two $10,000 invoices fit. It picked the older one at 0.55, said why, and named the right one as the alternative. At a 0.80 bar it reaches 78 to 80% on all three sets, with no errors. The bar can probably come down once real data confirms it."],
     ["Guardrails cost a little, and they earn it","The guardrails are code checks that must pass before money moves, however confident the agent is. Turn off the \"Code guardrails on\" switch under the Auto-apply bar slider to see what they cost: at the 0.90 bar, 2 to 6 more payments out of every 100 would go through on their own. Those are partial payments, which I send to a person on purpose so the customer confirms what stays open. On the third set they earned their keep: at a 0.50 bar, the batch-payment guess above would have gone onto the wrong invoice without them. The code saw that two combinations of invoices fit the amount and sent it to a person instead. That's the case real bank traffic will bring more of."],
@@ -407,5 +414,5 @@ $("list").addEventListener("click", (e) => { const b = e.target.closest("[data-c
 renderFindings();
 render();
 renderCost();
-["c-vol", "c-rate", "c-model", "c-skip"].forEach((id) => $(id).addEventListener("input", renderCost));
+["c-vol", "c-rate", "c-setup"].forEach((id) => $(id).addEventListener("input", renderCost));
 </script>
