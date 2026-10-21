@@ -9,7 +9,7 @@
 | Status quo (all manual) | 0% | 0 | 99 | 0 | 0 | 0 | 5.0 h |
 | Built-in: virtual account + exact amount | 34% | 0 | 0 | 0 | 0 | 65 | 3.3 h |
 | Rules baseline | 60% | 0 | 40 | 20 | 0 | 0 | 1.1 h |
-| Agent + policy | 78% | 0 | 22 | 14 | 8 | 0 | 0.2 h |
+| Agent + policy | 78% | 0 | 22 | 16 | 6 | 0 | 0.2 h |
 
 - **Built-in** follows Mercury's API docs: a transfer to a customer's virtual account number is marked paid on an exact-amount match. Anything it doesn't match waits until someone finds it ("silently skipped").
 - **Hands-off**: handled correctly with no human touch (auto-applied, or correctly left alone because it wasn't an invoice payment).
@@ -24,13 +24,13 @@
 |---|---|---|---|---|---|
 | clean | 22 | 10 | 9/22 auto | 22/22 auto | 22/22 auto |
 | not_invoice | 6 | 0 | 6/6 auto | 3/6 auto | 6/6 auto |
-| no_memo | 12 | 7 | 7/12 auto | 12/12 auto | 11/12 auto, 1 review (good guess) |
+| no_memo | 12 | 7 | 7/12 auto | 12/12 auto | 12/12 auto |
 | garbled_memo | 10 | 4 | 4/10 auto | 10/10 auto | 10/10 auto |
 | different_payer | 9 | 5 | 5/9 auto | 9/9 auto | 9/9 auto |
-| wire_fee | 8 | 4 | 0/8 auto | 0/8 auto, 8 review (good guess) | 8/8 auto |
+| wire_fee | 8 | 4 | 0/8 auto | 0/8 auto, 8 review (good guess) | 7/8 auto, 1 review (good guess) |
 | ambiguous | 5 | 0 | 0/5 auto | 0/5 auto | 0/5 auto, 5 review (shortlist) |
 | twin_amount | 4 | 4 | 0/4 auto | 3/4 auto | 3/4 auto, 1 review (shortlist) |
-| wrong_reference | 4 | 3 | 3/4 auto | 0/4 auto, 4 review (good guess) | 0/4 auto, 2 review (good guess), 2 review (shortlist) |
+| wrong_reference | 4 | 3 | 3/4 auto | 0/4 auto, 4 review (good guess) | 0/4 auto, 4 review (good guess) |
 | partial | 6 | 6 | 0/6 auto | 0/6 auto, 4 review (good guess) | 0/6 auto, 6 review (good guess) |
 | overpayment | 4 | 3 | 0/4 auto | 0/4 auto, 4 review (good guess) | 0/4 auto, 4 review (good guess) |
 | multi_invoice | 9 | 6 | 0/9 auto | 0/9 auto | 8/9 auto, 1 review (good guess) |
@@ -41,13 +41,13 @@ Where to set the auto-apply bar is a product decision, not a model setting. Lowe
 
 | Threshold | Hands-off | Wrong auto-applies | Review queue | Human time | Without guardrails: hands-off / wrong |
 |---|---|---|---|---|---|
-| 0.5 | 80% | 0 | 20 | 0.2 h | 92% / 0 |
-| 0.7 | 80% | 0 | 20 | 0.2 h | 88% / 0 |
+| 0.5 | 80% | 0 | 20 | 0.2 h | 94% / 0 |
+| 0.7 | 80% | 0 | 20 | 0.2 h | 89% / 0 |
 | 0.8 | 80% | 0 | 20 | 0.2 h | 87% / 0 |
 | 0.85 | 79% | 0 | 21 | 0.2 h | 85% / 0 |
-| 0.9 | 78% | 0 | 22 | 0.2 h | 83% / 0 |
-| 0.95 | 59% | 0 | 41 | 0.3 h | 61% / 0 |
-| 0.98 | 12% | 0 | 87 | 0.5 h | 12% / 0 |
+| 0.9 | 78% | 0 | 22 | 0.2 h | 84% / 0 |
+| 0.95 | 58% | 0 | 42 | 0.3 h | 60% / 0 |
+| 0.98 | 8% | 0 | 91 | 0.5 h | 8% / 0 |
 
 "Without guardrails" trusts the model's decision whenever its confidence clears the bar, skipping the code checks in `policy.ts` (amounts reconcile, one customer, two independent signals, no partials or overpayments).
 
@@ -57,10 +57,10 @@ Is the agent's confidence trustworthy? For each band, how often its proposed all
 
 | Confidence | Proposals | Exactly right |
 |---|---|---|
-| < 0.70 | 4 | 100% |
+| < 0.70 | 5 | 100% |
 | 0.70 - 0.89 | 5 | 100% |
-| 0.90 - 0.94 | 22 | 100% |
-| >= 0.95 | 60 | 100% |
+| 0.90 - 0.94 | 24 | 100% |
+| >= 0.95 | 59 | 100% |
 
 ## Agent errors and near misses
 
@@ -68,4 +68,5 @@ None.
 
 ## Cost and latency
 
-99 agent calls, $1.84 total at list price ($0.019 per payment), average 4.9 s per call.
+99 agent calls, $1.92 total at list price ($0.019 per payment), average 4.9 s per call.
+Average tokens per call: 2 input, 1,521 written to cache, 1,355 read from cache, 349 output (including thinking).

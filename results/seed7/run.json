@@ -1,7 +1,7 @@
 {
   "model": "claude-opus-5-5",
   "threshold": 0.9,
-  "generated": "2026-10-21T02:36:05.434Z",
+  "generated": "2026-10-21T05:21:20.602Z",
   "builtin": {
     "n": 99,
     "counts": {
@@ -38,11 +38,11 @@
       "correct_auto": 77,
       "wrong_auto": 0,
       "skipped": 0,
-      "review_good_suggestion": 14,
-      "review_shortlist": 8,
+      "review_good_suggestion": 16,
+      "review_shortlist": 6,
       "review_no_good_suggestion": 0
     },
-    "minutes": 11.5,
+    "minutes": 10,
     "autoRate": 0.7777777777777778,
     "autoPrecision": 1,
     "idealAutoCoverage": 0.9726027397260274
@@ -56,11 +56,11 @@
           "correct_auto": 79,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 12,
-          "review_shortlist": 8,
+          "review_good_suggestion": 14,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 11,
+        "minutes": 9.5,
         "autoRate": 0.797979797979798,
         "autoPrecision": 1,
         "idealAutoCoverage": 1
@@ -68,15 +68,15 @@
       "naive": {
         "n": 99,
         "counts": {
-          "correct_auto": 91,
+          "correct_auto": 93,
           "wrong_auto": 0,
           "skipped": 0,
           "review_good_suggestion": 0,
-          "review_shortlist": 8,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 8,
-        "autoRate": 0.9191919191919192,
+        "minutes": 6,
+        "autoRate": 0.9393939393939394,
         "autoPrecision": 1,
         "idealAutoCoverage": 1
       }
@@ -89,11 +89,11 @@
           "correct_auto": 79,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 12,
-          "review_shortlist": 8,
+          "review_good_suggestion": 14,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 11,
+        "minutes": 9.5,
         "autoRate": 0.797979797979798,
         "autoPrecision": 1,
         "idealAutoCoverage": 1
@@ -101,15 +101,15 @@
       "naive": {
         "n": 99,
         "counts": {
-          "correct_auto": 87,
+          "correct_auto": 88,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 4,
-          "review_shortlist": 8,
+          "review_good_suggestion": 5,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 9,
-        "autoRate": 0.8787878787878788,
+        "minutes": 7.25,
+        "autoRate": 0.8888888888888888,
         "autoPrecision": 1,
         "idealAutoCoverage": 1
       }
@@ -122,11 +122,11 @@
           "correct_auto": 79,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 12,
-          "review_shortlist": 8,
+          "review_good_suggestion": 14,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 11,
+        "minutes": 9.5,
         "autoRate": 0.797979797979798,
         "autoPrecision": 1,
         "idealAutoCoverage": 1
@@ -137,11 +137,11 @@
           "correct_auto": 86,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 5,
-          "review_shortlist": 8,
+          "review_good_suggestion": 7,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 9.25,
+        "minutes": 7.75,
         "autoRate": 0.8686868686868687,
         "autoPrecision": 1,
         "idealAutoCoverage": 1
@@ -155,11 +155,11 @@
           "correct_auto": 78,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 13,
-          "review_shortlist": 8,
+          "review_good_suggestion": 15,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 11.25,
+        "minutes": 9.75,
         "autoRate": 0.7878787878787878,
         "autoPrecision": 1,
         "idealAutoCoverage": 0.9863013698630136
@@ -170,11 +170,11 @@
           "correct_auto": 84,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 7,
-          "review_shortlist": 8,
+          "review_good_suggestion": 9,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 9.75,
+        "minutes": 8.25,
         "autoRate": 0.8484848484848485,
         "autoPrecision": 1,
         "idealAutoCoverage": 0.9863013698630136
@@ -188,11 +188,11 @@
           "correct_auto": 77,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 14,
-          "review_shortlist": 8,
+          "review_good_suggestion": 16,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 11.5,
+        "minutes": 10,
         "autoRate": 0.7777777777777778,
         "autoPrecision": 1,
         "idealAutoCoverage": 0.9726027397260274
@@ -200,15 +200,15 @@
       "naive": {
         "n": 99,
         "counts": {
-          "correct_auto": 82,
+          "correct_auto": 83,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 9,
-          "review_shortlist": 8,
+          "review_good_suggestion": 10,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 10.25,
-        "autoRate": 0.8282828282828283,
+        "minutes": 8.5,
+        "autoRate": 0.8383838383838383,
         "autoPrecision": 1,
         "idealAutoCoverage": 0.9726027397260274
       }
@@ -218,30 +218,30 @@
       "s": {
         "n": 99,
         "counts": {
-          "correct_auto": 58,
+          "correct_auto": 57,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 33,
-          "review_shortlist": 8,
+          "review_good_suggestion": 36,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 16.25,
-        "autoRate": 0.5858585858585859,
+        "minutes": 15,
+        "autoRate": 0.5757575757575758,
         "autoPrecision": 1,
         "idealAutoCoverage": 0.726027397260274
       },
       "naive": {
         "n": 99,
         "counts": {
-          "correct_auto": 60,
+          "correct_auto": 59,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 31,
-          "review_shortlist": 8,
+          "review_good_suggestion": 34,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 15.75,
-        "autoRate": 0.6060606060606061,
+        "minutes": 14.5,
+        "autoRate": 0.5959595959595959,
         "autoPrecision": 1,
         "idealAutoCoverage": 0.726027397260274
       }
@@ -251,32 +251,32 @@
       "s": {
         "n": 99,
         "counts": {
-          "correct_auto": 12,
+          "correct_auto": 8,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 79,
-          "review_shortlist": 8,
+          "review_good_suggestion": 85,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 27.75,
-        "autoRate": 0.12121212121212122,
+        "minutes": 27.25,
+        "autoRate": 0.08080808080808081,
         "autoPrecision": 1,
-        "idealAutoCoverage": 0.1643835616438356
+        "idealAutoCoverage": 0.1095890410958904
       },
       "naive": {
         "n": 99,
         "counts": {
-          "correct_auto": 12,
+          "correct_auto": 8,
           "wrong_auto": 0,
           "skipped": 0,
-          "review_good_suggestion": 79,
-          "review_shortlist": 8,
+          "review_good_suggestion": 85,
+          "review_shortlist": 6,
           "review_no_good_suggestion": 0
         },
-        "minutes": 27.75,
-        "autoRate": 0.12121212121212122,
+        "minutes": 27.25,
+        "autoRate": 0.08080808080808081,
         "autoPrecision": 1,
-        "idealAutoCoverage": 0.1643835616438356
+        "idealAutoCoverage": 0.1095890410958904
       }
     }
   ],
@@ -295,7 +295,7 @@
         ],
         "residual": "none",
         "confidence": 0.98,
-        "reasoning": "The payment came into Bluefin Biosciences' own virtual account, the memo cites INV-1114, and the $19,515.00 amount matches that invoice exactly.",
+        "reasoning": "The payment came into Bluefin Biosciences' own virtual account, and the memo names INV-1114. The amount, $19,515.00, is exactly what INV-1114 is for, so all three signals point to the same invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -328,7 +328,7 @@
         ],
         "residual": "none",
         "confidence": 0.98,
-        "reasoning": "The memo cites INV-1109, the amount matches that invoice exactly ($4,619.50), and the payer name MERIDIAN YARD is a known payer for Meridian Yard Coworking.",
+        "reasoning": "The memo cites INV-1109, the payment matches that invoice's $4,619.50 exactly, and the payer name matches the name Meridian Yard Coworking has paid from before.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -356,8 +356,10 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "This is a federal tax refund: it came from \"IRS TREAS 310\" with the memo \"TAX REF\". It is not a customer paying an invoice. Its amount is $21 less than INV-1056, but that is a coincidence, since nothing links it to Marrow & Finch Architects.",
-        "alternatives": []
+        "reasoning": "This deposit is a federal tax refund. The sender is \"IRS TREAS 310\" and the memo says \"TAX REF,\" so it isn't a customer payment. The amount is $21 under Marrow & Finch's INV-1056, but that's just a coincidence, and nothing links this money to that customer.",
+        "alternatives": [
+          "inv_1056"
+        ]
       },
       "why": "Confidently not an invoice payment.",
       "outcome": "correct_auto",
@@ -378,8 +380,8 @@
         "decision": "not_invoice_payment",
         "allocations": [],
         "residual": "none",
-        "confidence": 0.95,
-        "reasoning": "This is a Stripe payout (\"STRIPE PAYOUT ST-8XK2\"), meaning Stripe is sending the business money it already collected on its behalf. It isn't a single customer paying an invoice, and no open invoice, customer or amount matches it.",
+        "confidence": 0.93,
+        "reasoning": "This is a Stripe payout, meaning Stripe sending the business's batched card sales to its bank account, not a customer paying an invoice. No open invoice matches the amount, the memo, or the payer.",
         "alternatives": []
       },
       "why": "Confidently not an invoice payment.",
@@ -407,8 +409,10 @@
         ],
         "residual": "none",
         "confidence": 0.93,
-        "reasoning": "Wren Street Ventures paid from the account name we've seen them use before. The $13,620.00 matches only one open invoice, INV-1149, which was overdue. The memo doesn't give an invoice number, but no other invoice or combination of invoices adds up to this amount.",
-        "alternatives": []
+        "reasoning": "The payment came from Wren Street Ventures, a payer name we already know, and it equals INV-1149 ($13,620.00) to the cent. INV-1149 is also one of this customer's oldest past-due invoices. The memo doesn't name an invoice, but no other invoice or combination of invoices matches this amount.",
+        "alternatives": [
+          "inv_1154"
+        ]
       },
       "why": "Auto-applied.",
       "outcome": "correct_auto",
@@ -440,7 +444,7 @@
         ],
         "residual": "none",
         "confidence": 0.98,
-        "reasoning": "The memo cites INV-1113, the payer is Bluefin Biosciences' known account name, and the amount matches INV-1113's $2,107.99 exactly.",
+        "reasoning": "The memo names INV-1113, the payment is for exactly that invoice's $2,107.99, and it came from Bluefin Biosciences under a name they've paid from before. All three signals agree.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -472,8 +476,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.95,
-        "reasoning": "The payer is Tidewater Logistics, a name this customer has paid from before, and the amount exactly matches their invoice INV-1046 to the cent. INV-1046 is also their overdue invoice (due Sept 20), so it makes sense that this is the one they paid first.",
+        "confidence": 0.93,
+        "reasoning": "The payment came from TIDEWATER LOGISTICS, a name Tidewater Logistics Co. has paid from before, and it exactly matches the $21,358.40 on INV-1046, which is their oldest bill and past due. There's no memo, but no other invoice or combination of invoices fits this amount.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -505,8 +509,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.9,
-        "reasoning": "The payment went to the virtual account that belongs only to Acme Builders Supply, and it exactly matches their invoice INV-1069 ($17,184.00). INV-1072 is $27.25 higher, but that gap isn't a round amount like a typical wire fee, so the exact match is the better fit.",
+        "confidence": 0.93,
+        "reasoning": "The payment went to Acme Builders Supply's own virtual account, and it equals INV-1069 to the cent. INV-1072 is $27.25 higher, but that gap isn't a round amount, so it doesn't look like a bank fee.",
         "alternatives": [
           "inv_1072"
         ]
@@ -540,8 +544,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.96,
-        "reasoning": "The memo cites INV-1161, the amount is exactly $11,007.00, and the payer name matches Polaris Payroll Partners, a known customer. \"Payroll\" is part of this customer's name, so this isn't a payroll reversal.",
+        "confidence": 0.97,
+        "reasoning": "The memo cites INV-1161, the amount matches it exactly at $11,007.00, and the sender name matches the name Polaris Payroll Partners has paid from before. \"Payroll\" is part of this customer's name, so this isn't a payroll reversal.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -569,7 +573,7 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.9,
-        "reasoning": "This looks like money moved between the business's own accounts: the bank feed shows \"TRANSFER FROM CHECKING 4471\" with the memo \"INTERNAL TRANSFER\", and the sender doesn't match any customer's usual payer name. Seven open invoices from five customers are exactly $10,000, but that's a common round number, so the amount alone doesn't point to any one of them.",
+        "reasoning": "The bank feed shows \"TRANSFER FROM CHECKING 4471\" with the memo \"INTERNAL TRANSFER\", which looks like the business moving its own money between accounts, not a customer paying. Seven open invoices from five customers happen to be exactly $10,000, but none of those customers has ever paid under this name, so the matching amount is a coincidence and not evidence.",
         "alternatives": [
           "inv_1009",
           "inv_1012",
@@ -605,7 +609,7 @@
         ],
         "residual": "none",
         "confidence": 0.98,
-        "reasoning": "The payment came into Glasswing Interactive's own virtual account from a name they've paid from before. The memo cites invoice 1090, and the amount matches INV-1090 exactly.",
+        "reasoning": "The payment went to Glasswing Interactive's own virtual account, and the memo names invoice 1090. The amount, $14,895.00, is exactly what INV-1090 is for.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -637,8 +641,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.98,
-        "reasoning": "The memo cites invoice 1151, the payer is Wren Street Ventures' known bank name, and the amount equals INV-1151 exactly.",
+        "confidence": 0.97,
+        "reasoning": "The memo cites invoice 1151, the payer name exactly matches Wren Street Ventures, and the payment equals INV-1151's $11,445.50 to the cent.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -671,7 +675,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites INV-1001, the payer name exactly matches Northwind Robotics' known bank name, and the $1,200.00 amount equals INV-1001 exactly. Other customers have $1,200 invoices too, but neither the memo nor the payer name points to them.",
+        "reasoning": "The memo says INV-1001, and the payment came from NORTHWIND ROBOTICS IN, a name Northwind Robotics has paid from before. The $1,200.00 matches that invoice exactly. Three other customers also have $1,200 invoices open, but the memo and the payer name both point to Northwind.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -704,7 +708,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites INV-1122, the payer name matches how Vantage Point Consulting has paid before, and the amount equals INV-1122 to the cent. INV-1092 is close in amount but belongs to a different customer (Glasswing), so nothing points to it.",
+        "reasoning": "The memo cites INV-1122, the payer name matches Vantage Point Consulting exactly, and the payment equals the INV-1122 balance of $22,428.00 to the cent. Glasswing's INV-1092 is only close in amount, and nothing else points to it.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -737,7 +741,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites INV-1126, the payer is Vantage Point Consulting's known bank name, and $7,209.00 is exactly what INV-1126 is for. The 'SEP' in the memo probably means September services. It doesn't conflict with anything.",
+        "reasoning": "The memo names INV-1126, the payment of $7,209.00 matches that invoice exactly, and the sender name matches the name Vantage Point Consulting has paid from before. \"SEP\" most likely means the September billing period.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -769,8 +773,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.98,
-        "reasoning": "The payment went to Northwind Robotics' own virtual account from a name they've paid from before (NWR Holdings LLC). The memo says \"ref 1004,\" and the amount matches INV-1004 exactly.",
+        "confidence": 0.97,
+        "reasoning": "The payment went to Northwind Robotics' own virtual account from a name they've paid from before (NWR HOLDINGS LLC). The memo says \"ref 1004\" and the amount is exactly INV-1004's $7,320.25.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -802,8 +806,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.97,
-        "reasoning": "The memo cites invoice 1041, and the $6,527.00 payment is exactly what INV-1041 is for. The money arrived in Redwood Row Realty's dedicated account from their escrow account, which they've paid from before.",
+        "confidence": 0.96,
+        "reasoning": "The payment went to Redwood Row Realty's own virtual account and came from their escrow account, which they've paid from before. The memo says \"ref 1041\" and the amount exactly matches INV-1041 ($6,527.00).",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -835,8 +839,8 @@
           }
         ],
         "residual": "processing_fee",
-        "confidence": 0.95,
-        "reasoning": "The wire memo cites INV-1145 and comes from Summit Ridge Engineering's known account name. It is exactly $20.00 short of the invoice, which is typical of a wire or intermediary bank fee.",
+        "confidence": 0.94,
+        "reasoning": "The wire memo names INV-1145, and the payer name matches Summit Ridge Engineering exactly. The payment came in $20.00 under the invoice amount, which looks like a normal wire fee taken by a bank along the way.",
         "alternatives": []
       },
       "why": "Auto-applied; $20.00 written off as bank fee.",
@@ -869,8 +873,10 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "Three signals agree: the memo names invoice 1034, the payer is Ostara Health Tech (a name this customer has paid from before), and the $10,544.50 matches INV-1034 to the cent. INV-1018 is only $3.75 more, but it belongs to a different customer, Copperline, so it's not a real candidate.",
-        "alternatives": []
+        "reasoning": "Three things point to the same invoice. The memo cites invoice 1034, the payer name matches how Ostara Health Technologies has paid before, and the amount equals INV-1034 to the cent. INV-1018 is only $3.75 off, but it belongs to a different customer (Copperline) and nothing else links this payment to it.",
+        "alternatives": [
+          "inv_1018"
+        ]
       },
       "why": "Auto-applied.",
       "outcome": "correct_auto",
@@ -890,7 +896,7 @@
     },
     {
       "payment_id": "pay_020",
-      "action": "auto_apply",
+      "action": "review",
       "proposal": {
         "payment_id": "pay_020",
         "decision": "match",
@@ -901,12 +907,15 @@
           }
         ],
         "residual": "processing_fee",
-        "confidence": 0.9,
-        "reasoning": "Heron Bay Hospitality is a payer we already know, and the memo names invoice 1132. The wire came in exactly $45.00 under that invoice, which is a typical wire or intermediary bank fee.",
-        "alternatives": []
+        "confidence": 0.88,
+        "reasoning": "The wire came from Heron Bay Hospitality's usual account, and the memo names invoice 1132. It is $45.00 less than INV-1132, a round amount that fits a typical wire or intermediary bank fee.",
+        "alternatives": [
+          "inv_1133",
+          "inv_1138"
+        ]
       },
-      "why": "Auto-applied; $45.00 written off as bank fee.",
-      "outcome": "correct_auto",
+      "why": "Confidence 0.88 below 0.9.",
+      "outcome": "review_good_suggestion",
       "truth": {
         "payment_id": "pay_020",
         "scenario": "wire_fee",
@@ -935,7 +944,7 @@
         ],
         "residual": "none",
         "confidence": 0.95,
-        "reasoning": "The payment went to Ferncliff Studio's dedicated virtual account from DANA OKAFOR, a name they've paid from before. It is exactly $19,992.00, which matches INV-1022, and no other invoice or combination fits that amount.",
+        "reasoning": "The payment went to Ferncliff Studio's own virtual account, from a name they've paid from before (Dana Okafor). The amount equals INV-1022 ($19,992.00) to the cent, and it's the only open invoice at that amount.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -963,7 +972,7 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.05,
-        "reasoning": "This $7,500 transfer came in with a generic \"ONLINE TRANSFER\" sender name and no memo. Eleven open invoices from ten different customers are for exactly $7,500, so nothing tells us who paid. A person should confirm the payer, for example from a remittance email or by asking the customers, before it's recorded.",
+        "reasoning": "The $7,500 transfer came in with a generic payer name (\"ONLINE TRANSFER\"), no memo, and to the main account, so nothing tells us who sent it. Eleven open invoices from ten customers are all exactly $7,500, so the amount alone can't pick one. A person needs to confirm the sender with the bank or the customer before this is applied.",
         "alternatives": [
           "inv_1014",
           "inv_1030",
@@ -1008,7 +1017,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites invoice 1053, the payer name matches a name Lumen Arc Software has paid from before, and the $2,344.00 is exactly what INV-1053 is for.",
+        "reasoning": "The memo cites invoice 1053, the payment is exactly $2,344.00 (the amount INV-1053 is open for), and it came from LUMEN ARC SOFTWARE, a name Lumen Arc Software has paid from before. All three signals point to the same invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -1041,7 +1050,7 @@
         ],
         "residual": "processing_fee",
         "confidence": 0.93,
-        "reasoning": "This wire came from Acme Builders Supply's own virtual account, and the memo names INV-1068. It is $20.00 less than that invoice, which fits a normal wire fee. The similar-sounding Acme Analytics isn't involved.",
+        "reasoning": "The wire came into Acme Builders Supply's own virtual account, and the memo names INV-1068. It is $20.00 short of that invoice, which fits a typical wire fee.",
         "alternatives": []
       },
       "why": "Auto-applied; $20.00 written off as bank fee.",
@@ -1074,7 +1083,7 @@
         ],
         "residual": "none",
         "confidence": 0.93,
-        "reasoning": "The wire came into Brightpath Legal Group's own virtual account, its memo names INV-1009, and the amount matches that invoice exactly. Brightpath has two other open $10,000 invoices, but the memo picks out INV-1009.",
+        "reasoning": "The wire came into Brightpath Legal Group's own virtual account from a name they've paid from before, and the memo says INV-1009, which is a $10,000.00 Brightpath invoice. Brightpath has two other open $10,000 invoices (INV-1012 and INV-1163), but the memo clearly names INV-1009.",
         "alternatives": [
           "inv_1012",
           "inv_1163"
@@ -1110,7 +1119,7 @@
         ],
         "residual": "none",
         "confidence": 0.93,
-        "reasoning": "The payment went to Ostara's own virtual account, and the memo cites INV-1165, which matches the amount exactly. INV-1033 is for the same amount, but the memo points to INV-1165, which is also due sooner.",
+        "reasoning": "The payment came into Ostara Health Technologies' own virtual account, and the memo names INV-1165, which matches the $2,288.00 amount exactly. INV-1033 is for the same amount, but the memo points clearly to INV-1165, which is also due sooner.",
         "alternatives": [
           "inv_1033"
         ]
@@ -1145,7 +1154,7 @@
         ],
         "residual": "none",
         "confidence": 0.6,
-        "reasoning": "The payment came to Acme Builders Supply's own account number, and it exactly matches their overdue invoice INV-1071 ($15,964.25). The memo says INV-1068, but that invoice is only $6,105.50, so the memo is probably a typo. Please check with the customer.",
+        "reasoning": "Acme Builders Supply paid into its own account number, and the amount exactly matches its overdue INV-1071. The memo says INV-1068, but that invoice is only $6,105.50, so the memo probably has the wrong number. A reviewer should confirm.",
         "alternatives": [
           "inv_1068"
         ]
@@ -1175,7 +1184,7 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.05,
-        "reasoning": "Nothing in this $7,500 ACH tells us who sent it: the payer name is just \"ONLINE TRANSFER\", the memo is empty, and it went to the main account. Eleven open invoices from ten different customers are all exactly $7,500, so the amount can't pick one, and a human should confirm the payer with the bank or the customer.",
+        "reasoning": "This $7,500 transfer came with no memo and only a generic \"ONLINE TRANSFER\" sender name, and it went to the main account, so nothing in the payment says who sent it. Eleven open invoices from ten different customers are all exactly $7,500, so a person needs to confirm the payer (for example, from the bank's transfer details or by asking customers) before it's applied.",
         "alternatives": [
           "inv_1014",
           "inv_1030",
@@ -1219,13 +1228,9 @@
           }
         ],
         "residual": "partial",
-        "confidence": 0.93,
-        "reasoning": "The payment arrived in Kestrel Field Services' own virtual account, and the memo says \"INV-1103 partial,\" so this $5,000 counts as a partial payment on their $10,000 invoice INV-1103 and leaves $5,000 open. Five other customers have open $5,000 invoices, but those are just amount coincidences, since the payer and memo both point to Kestrel.",
-        "alternatives": [
-          "inv_1100",
-          "inv_1102",
-          "inv_1101"
-        ]
+        "confidence": 0.95,
+        "reasoning": "This payment went to the virtual account that belongs only to Kestrel Field Services, and the memo says \"INV-1103 partial\". So it is a planned half payment of their $10,000 invoice, and $5,000 is still open. Other customers have $5,000 invoices, but those amounts matching is a coincidence because the account and memo both point to Kestrel.",
+        "alternatives": []
       },
       "why": "Residual \"partial\" needs a human.",
       "outcome": "review_good_suggestion",
@@ -1256,11 +1261,9 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.95,
-        "reasoning": "The payment went to Lumen Arc Software's own virtual account, and the payer name matches theirs. The amount, $19,137.99, is exactly what their invoice INV-1052 is for.",
-        "alternatives": [
-          "inv_1154"
-        ]
+        "confidence": 0.96,
+        "reasoning": "The payment went to Lumen Arc Software's own virtual account and is exactly $19,137.99, the amount of their overdue invoice INV-1052. One thing to check: the payment is dated Oct 23, which is after today (Oct 20), so it may still be pending.",
+        "alternatives": []
       },
       "why": "Auto-applied.",
       "outcome": "correct_auto",
@@ -1292,7 +1295,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo names INV-1042, the payer is a known Tidewater Logistics account, and the $23,121.00 payment matches that invoice exactly. Nothing points anywhere else.",
+        "reasoning": "The memo cites INV-1042, the amount ($23,121.00) matches that invoice exactly, and the payer name matches Tidewater Logistics, who has paid us before. All three signals agree.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -1313,7 +1316,7 @@
     },
     {
       "payment_id": "pay_032",
-      "action": "review",
+      "action": "auto_apply",
       "proposal": {
         "payment_id": "pay_032",
         "decision": "match",
@@ -1324,15 +1327,15 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.88,
-        "reasoning": "The payment came from Tidewater Logistics under the name they've paid from before, and it exactly matches INV-1047 ($12,763.50). No other invoice or combination of invoices adds up to this amount. The memo doesn't name an invoice, and older Tidewater invoices are still open (INV-1046 and INV-1045 are past due), so the payment applies to their newest invoice first.",
+        "confidence": 0.9,
+        "reasoning": "The payer, TIDEWATER LOGISTICS, matches a name Tidewater Logistics Co. has paid from before, and the $12,763.50 payment is exactly the amount of INV-1047, the only open invoice at that amount. The memo cites no invoice number, and Tidewater has older invoices still open, including overdue INV-1046 and INV-1045. Still, no other invoice or combination of invoices adds up to this amount.",
         "alternatives": [
           "inv_1046",
           "inv_1045"
         ]
       },
-      "why": "Confidence 0.88 below 0.9.",
-      "outcome": "review_good_suggestion",
+      "why": "Auto-applied.",
+      "outcome": "correct_auto",
       "truth": {
         "payment_id": "pay_032",
         "scenario": "no_memo",
@@ -1361,8 +1364,12 @@
         ],
         "residual": "none",
         "confidence": 0.95,
-        "reasoning": "This payment went to Saltmarsh Coffee Roasters' own account number, the memo says \"ref 1074\", and the amount matches INV-1074 exactly. Saltmarsh has paid us through Square before, so the \"SQUARE INC PAYOUT\" name doesn't mean this is a Square payout to us.",
-        "alternatives": []
+        "reasoning": "This payment pays INV-1074 in full. It came into the account number given only to Saltmarsh Coffee Roasters, the memo says \"ref 1074\", and the amount is exactly what INV-1074 is for. \"SQUARE INC PAYOUT\" can look like a processor payout to us, but Saltmarsh has paid from that name before, so it fits how this customer pays.",
+        "alternatives": [
+          "inv_1075",
+          "inv_1076",
+          "inv_1078"
+        ]
       },
       "why": "Auto-applied.",
       "outcome": "correct_auto",
@@ -1389,19 +1396,19 @@
         "allocations": [
           {
             "invoice_id": "inv_1082",
-            "amount": 20680.99
+            "amount": 22749.09
           }
         ],
         "residual": "overpayment",
-        "confidence": 0.6,
-        "reasoning": "Quillon Recruiting sent this to its own virtual account with memo \"INV-1082\", but paid $22,749.09 against a $20,680.99 invoice. The extra $2,068.10 is exactly 10% of the invoice. That looks like a late fee they added themselves, since the invoice was due Oct 5 and is about 20 days late, so I applied the invoice amount and left the excess as an overpayment for review.",
+        "confidence": 0.72,
+        "reasoning": "The payment went to Quillon Recruiting's own virtual account and the memo cites INV-1082, so this is Quillon paying INV-1082. They paid $2,068.10 more than the $20,680.99 owed, which is almost exactly 10% of the invoice and may be a late fee, since the invoice was due Oct 5 and paid Oct 25. Before booking the extra as a late fee or a credit, confirm with the customer.",
         "alternatives": [
-          "inv_1079",
           "inv_1080",
-          "inv_1081"
+          "inv_1081",
+          "inv_1079"
         ]
       },
-      "why": "Confidence 0.60 below 0.9.",
+      "why": "Confidence 0.72 below 0.9.",
       "outcome": "review_good_suggestion",
       "truth": {
         "payment_id": "pay_034",
@@ -1426,7 +1433,7 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.5,
-        "reasoning": "The payment came from Halcyon Data Labs to its own account, so the customer is clear. But two of its open invoices, INV-1164 (overdue since Oct 6) and INV-1007 (due Nov 4), are both exactly $16,450.40, and the memo just says \"PAYMENT\". The overdue INV-1164 is the more likely target, but a person should confirm. They should also check whether the two invoices are duplicates.",
+        "reasoning": "This payment is definitely from Halcyon Data Labs because it came into their dedicated account. But two of their open invoices are for exactly $16,450.40: INV-1164, which is overdue, and INV-1007, which isn't due until Nov 4. The memo just says \"PAYMENT,\" so nothing tells us which one they meant. The matching amounts and very different invoice numbers suggest INV-1164 might be a duplicate of INV-1007, so check that before applying the payment.",
         "alternatives": [
           "inv_1164",
           "inv_1007"
@@ -1462,7 +1469,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The payment came into Lumen Arc Software's own virtual account, the memo names INV-1051, and $1,200.00 is exactly what INV-1051 is for. The three other $1,200 invoices belong to different customers, so they don't apply.",
+        "reasoning": "The payment came into Lumen Arc Software's own virtual account and the memo names INV-1051, a $1,200.00 Lumen Arc invoice, so it pays that invoice in full. Other customers have invoices for the same amount, but the account and the memo both point to Lumen Arc.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -1495,7 +1502,7 @@
         ],
         "residual": "processing_fee",
         "confidence": 0.9,
-        "reasoning": "The memo cites INV-1157, and the sender matches the name Polaris Payroll Partners has paid from before. The wire is $35.00 short of the invoice, which fits a typical wire fee. The word \"payroll\" in the sender's name is just this customer's company name, so this is not a payroll reversal.",
+        "reasoning": "The wire came from POLARIS PAYROLL, a name Polaris Payroll Partners has paid from before, so this is a customer payment and not a payroll reversal. The memo cites INV-1157, and the payment is $35 short of that invoice, which fits a typical wire fee.",
         "alternatives": []
       },
       "why": "Auto-applied; $35.00 written off as bank fee.",
@@ -1528,7 +1535,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites INV-1140, and the payer name THISTLE PINE DESIGN matches the name Thistle & Pine Design has paid from before. The $7,500.00 is exactly that invoice's amount, and it's due on the payment date. Ten other customers also have $7,500 invoices open, but the memo and the payer name both point to this one.",
+        "reasoning": "The memo names INV-1140, the payer name exactly matches the name Thistle & Pine Design has paid from before, and the $7,500.00 payment equals that invoice exactly. Ten other customers also have open $7,500 invoices, but the memo and payer both point only to this one.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -1556,18 +1563,17 @@
         "allocations": [
           {
             "invoice_id": "inv_1011",
-            "amount": 3675
+            "amount": 4042.5
           }
         ],
         "residual": "overpayment",
         "confidence": 0.72,
-        "reasoning": "The check comes from Brightpath Legal's usual bank name, and the memo says INV-1011, which is a Brightpath invoice for $3,675.00. The check is $367.50 over that, exactly 10% of the invoice. That could be added tax, a mistaken fee, or money meant for another Brightpath invoice, so a person should decide whether to hold it as a credit or apply it somewhere else.",
+        "reasoning": "The check comes from a name Brightpath Legal has paid from before, and the memo says INV-1011, so it belongs on INV-1011 ($3,675.00). They paid $367.50 more than that, which is exactly 10% of the invoice. Someone should decide whether to keep that extra as a credit or put it toward one of Brightpath's overdue invoices.",
         "alternatives": [
-          "inv_1010",
           "inv_1009",
           "inv_1012",
           "inv_1163",
-          "inv_1003"
+          "inv_1010"
         ]
       },
       "why": "Confidence 0.72 below 0.9.",
@@ -1600,7 +1606,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo refers to invoice 1032 (with a typo, \"1o32\"), the payer is Ostara Health Technologies under a name they've paid from before, and the amount equals INV-1032 exactly.",
+        "reasoning": "The memo \"#1o32\" is a typo for INV-1032 (the letter o in place of a zero). The payment matches that invoice's $10,127.25 to the cent, and it came from Ostara's usual bank name.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -1633,7 +1639,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo names INV-1098, the payer is Starling Dental, a name we already know for this customer, and the amount equals INV-1098 to the cent. Starling has other open invoices, but none of them match the memo or the amount.",
+        "reasoning": "The memo cites INV-1098, the amount matches INV-1098 to the cent, and the payer name STARLING DENTAL is the name Starling Dental Partners has paid from before. All three signals agree.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -1674,7 +1680,7 @@
         ],
         "residual": "none",
         "confidence": 0.98,
-        "reasoning": "Redwood Row Realty paid into its own virtual account. The memo lists INV-1036, INV-1037 and INV-1038, and those three invoices add up to exactly $54,435.90.",
+        "reasoning": "The payment came into Redwood Row Realty's own virtual account, and the memo names INV-1036, INV-1037 and INV-1038. Those three invoices add up to exactly $54,435.90.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -1715,7 +1721,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The check memo says INV-1118, the amount is exactly the $4,393.00 owed on it, and Priya Raman is a name Orchard Lane Homes has paid from before. All three point to the same invoice. One thing to check: the payment is dated 2026-10-31, which is after today, so confirm the feed date is right.",
+        "reasoning": "The check memo cites INV-1118, and the payment exactly matches its $4,393.00 balance. The payer, Priya Raman, has paid for Orchard Lane Homes before, and Orchard Lane Homes is the customer on that invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -1748,7 +1754,7 @@
         ],
         "residual": "processing_fee",
         "confidence": 0.93,
-        "reasoning": "The memo cites INV-1079 and the payer is Quillon Recruiting, a known payer name. This wire is exactly $20 short of the invoice, which fits a normal wire fee.",
+        "reasoning": "The memo cites INV-1079, the wire came from Quillon Recruiting's known account name, and the payment is exactly $20 short of the invoice, which fits a typical wire fee.",
         "alternatives": []
       },
       "why": "Auto-applied; $20.00 written off as bank fee.",
@@ -1789,7 +1795,7 @@
         ],
         "residual": "none",
         "confidence": 0.8,
-        "reasoning": "This check went to the virtual account that belongs only to Polaris Payroll Partners, so we know who paid. INV-1155, INV-1156 and INV-1158 add up to exactly $38,563.50, and no other combination of their open invoices matches. The memo is blank, though, and the payment skips older overdue invoices (INV-1157, INV-1161) while covering INV-1156, which isn't due yet, so a quick check of the remittance is worthwhile.",
+        "reasoning": "This check went to the virtual account that belongs only to Polaris Payroll Partners, and the only combination of their open invoices that adds up to exactly $38,563.50 is INV-1155 + INV-1156 + INV-1158. The memo is empty, though, and this combination leaves older invoices (INV-1157, INV-1161) unpaid while covering INV-1156, which isn't due yet, so it's worth a quick look at the check stub.",
         "alternatives": [
           "inv_1157",
           "inv_1161",
@@ -1846,8 +1852,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.98,
-        "reasoning": "The payment went to Juniper & Vale's own virtual account. The memo lists INV-1024, INV-1025, INV-1026 and INV-1029, and those four invoices add up to exactly $33,968.65.",
+        "confidence": 0.97,
+        "reasoning": "The payment came into Juniper & Vale's own virtual account and its memo lists INV-1029, INV-1024, INV-1025 and INV-1026. Those four invoices add up to exactly $33,968.65, so they are all paid in full.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -1904,7 +1910,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The check went to Copperline's own virtual account, and its memo lists INV-1013, 1014, 1015 and 1016. Those four invoices add up to exactly $60,724.24.",
+        "reasoning": "Copperline sent this check to its own virtual account. The memo lists INV-1013, 1014, 1015 and 1016, and those four invoices add up to exactly $60,724.24.",
         "alternatives": [
           "inv_1017"
         ]
@@ -1950,12 +1956,10 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.92,
-        "reasoning": "The payment came from MARROW FINCH ARCH, a name Marrow & Finch Architects has paid from before, and $1,271.00 exactly matches their invoice INV-1056. No other invoice or combination of invoices fits that amount. The memo was empty, though, and this customer has older overdue invoices, so it's worth a quick check that they meant this one.",
+        "confidence": 0.9,
+        "reasoning": "The payment came from MARROW FINCH ARCH, the name Marrow & Finch Architects has paid from before, and it exactly matches the $1,271.00 on INV-1056. The memo is empty, so the amount is the only link to a specific invoice. Marrow & Finch also has older overdue invoices, but none of them matches this amount.",
         "alternatives": [
-          "inv_1058",
-          "inv_1059",
-          "inv_1055"
+          "inv_1058"
         ]
       },
       "why": "Auto-applied.",
@@ -1988,7 +1992,7 @@
         ],
         "residual": "none",
         "confidence": 0.98,
-        "reasoning": "The payment went to Tidewater Logistics' own virtual account, the memo says INV-1044, and the amount is exactly that invoice's $15,068.25 balance. All three signals agree.",
+        "reasoning": "The payment came into Tidewater Logistics' own virtual account, and the memo says INV-1044. It's also exactly $15,068.25, the amount of INV-1044, so all three signals agree.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2033,7 +2037,7 @@
         ],
         "residual": "none",
         "confidence": 0.9,
-        "reasoning": "The check came from SALTMARSH COFFEE, a name Saltmarsh Coffee Roasters has paid from before. It exactly equals their four oldest open invoices (INV-1075 through INV-1078), which were all due by the payment date. INV-1074, their newest invoice, stays open.",
+        "reasoning": "The check came from SALTMARSH COFFEE, a name Saltmarsh Coffee Roasters has paid from before. The amount exactly equals their four older open invoices together (INV-1075, 1076, 1077 and 1078), and that is the only combination that fits. The newest invoice, INV-1074, isn't included in that total and stays open.",
         "alternatives": [
           "inv_1074"
         ]
@@ -2080,7 +2084,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites INV-1073, the amount matches that invoice exactly ($1,886.99), and the payer name exactly matches Acme Builders Supply, the customer it belongs to. The similar-sounding Acme Analytics LLC has no invoice that fits.",
+        "reasoning": "The memo cites INV-1073, the amount is exactly that invoice's $1,886.99, and the sender name exactly matches the name Acme Builders Supply has paid from before. Acme Analytics only shares the word \"Acme\" and has no matching invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2108,7 +2112,7 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "This $38.91 deposit is labeled \"INTEREST PAYMENT\" with the memo \"INTEREST PAID SEP\", so it's bank interest, not a customer paying an invoice. No open invoices or known customers match it.",
+        "reasoning": "This is the bank paying interest. The counterparty is \"INTEREST PAYMENT\" and the memo says \"INTEREST PAID SEP\". It isn't a customer paying, and no open invoice is anywhere near $38.91.",
         "alternatives": []
       },
       "why": "Confidently not an invoice payment.",
@@ -2136,7 +2140,7 @@
         ],
         "residual": "none",
         "confidence": 0.95,
-        "reasoning": "The payment arrived in Wren Street Ventures' own virtual account and matches open invoice INV-1153 to the cent ($7,837.99). No other invoice or combination of invoices adds up to this amount.",
+        "reasoning": "The payment arrived in the virtual account assigned only to Wren Street Ventures. It matches INV-1153 to the cent ($7,837.99), and no other open invoice or combination of invoices adds up to that amount.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2169,7 +2173,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "This payment pays INV-1095 in full. Everything points to the same invoice: the memo names INV-1095, the money went to the account number only Starling Dental Partners uses, the sender name matches what they've paid from before, and the $10,000.00 equals the invoice exactly. Six other customers' invoices are also $10,000, but nothing ties this payment to any of them. One thing to check: the payment is dated 2026-11-05, which is after today's date (2026-10-20), so the bank feed date may be wrong.",
+        "reasoning": "The money arrived in Starling Dental Partners' own virtual account, the memo names INV-1095, and that invoice belongs to Starling for exactly $10,000. Other customers have invoices for the same amount, but the account and the memo both point to Starling.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2202,7 +2206,7 @@
         ],
         "residual": "none",
         "confidence": 0.6,
-        "reasoning": "The payer is clearly Vantage Point Consulting. The payment of $21,205.40 exactly matches INV-1123, but the memo says INV-1121, which is only $5,000.00. The most likely explanation is a typo in the memo. Because the memo and the amount disagree, someone should confirm with the customer before closing the invoice.",
+        "reasoning": "Vantage Point Consulting is clearly the payer, and $21,205.40 matches INV-1123 to the cent. The memo says INV-1121, but that invoice is only $5,000, so the memo is probably a typo for 1123. Since the memo and the amount disagree, a person should confirm which invoice this pays.",
         "alternatives": [
           "inv_1121"
         ]
@@ -2237,7 +2241,7 @@
         ],
         "residual": "partial",
         "confidence": 0.9,
-        "reasoning": "The payment arrived at Vantage Point Consulting's own virtual account, and the memo says \"deposit INV-1125\". The amount is 25% of that $10,092.25 invoice, so this looks like a planned deposit and the remaining $7,569.19 stays open.",
+        "reasoning": "The payment went to Vantage Point Consulting's own virtual account, and the memo says \"deposit INV-1125\". $2,523.06 is exactly 25% of that $10,092.25 invoice, so this looks like a planned deposit, and the remaining $7,569.19 stays open. INV-1040 is only $13.93 away in amount, but it belongs to Redwood Row Realty, a different customer, so the close amount is just a coincidence.",
         "alternatives": [
           "inv_1040"
         ]
@@ -2263,18 +2267,25 @@
       "action": "review",
       "proposal": {
         "payment_id": "pay_057",
-        "decision": "unsure",
-        "allocations": [],
+        "decision": "match",
+        "allocations": [
+          {
+            "invoice_id": "inv_1087",
+            "amount": 10000
+          }
+        ],
         "residual": "none",
-        "confidence": 0.5,
-        "reasoning": "The payment came into Ironbark Capital Advisors' own virtual account, so we know who paid. But the memo names INV-1083 ($5,200.40), while the $10,000.00 amount exactly matches a different Ironbark invoice, INV-1087. Most likely the memo has a typo (1083 vs 1087), but it could also be an overpayment on INV-1083, so someone should check before we apply it.",
+        "confidence": 0.55,
+        "reasoning": "The payment came into Ironbark Capital Advisors' own virtual account, so we know who paid. But the memo says INV-1083 ($5,200.40), while the $10,000.00 amount exactly matches their invoice INV-1087. The memo is probably a typo (1083 vs 1087), but a person should check this before posting, since it could also be an overpayment on INV-1083.",
         "alternatives": [
-          "inv_1087",
-          "inv_1083"
+          "inv_1083",
+          "inv_1086",
+          "inv_1085",
+          "inv_1084"
         ]
       },
-      "why": "Matcher unsure.",
-      "outcome": "review_shortlist",
+      "why": "Confidence 0.55 below 0.9.",
+      "outcome": "review_good_suggestion",
       "truth": {
         "payment_id": "pay_057",
         "scenario": "wrong_reference",
@@ -2302,8 +2313,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.93,
-        "reasoning": "The payment went to Brightpath Legal Group's own account number, and the memo names INV-1163, which is exactly $10,000.00. Brightpath also has two older $10,000 invoices open (INV-1012 and INV-1009), but the memo clearly points to INV-1163.",
+        "confidence": 0.92,
+        "reasoning": "The payment came into Brightpath Legal Group's own virtual account, the memo says INV-1163, and the $10,000.00 is exactly what that invoice is for. Brightpath also has two older $10,000 invoices still open (INV-1012 and INV-1009), but the memo names INV-1163 specifically, so this payment goes there.",
         "alternatives": [
           "inv_1012",
           "inv_1009"
@@ -2338,8 +2349,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.98,
-        "reasoning": "Halcyon Data Labs sent the payment to its own virtual account number. The memo cites INV-1006, and the amount exactly matches that invoice's $18,380.00, so it pays INV-1006 in full.",
+        "confidence": 0.97,
+        "reasoning": "The payment went to Halcyon Data Labs' own virtual account, the memo names INV-1006, and the amount matches INV-1006 exactly ($18,380.00). The other close amounts belong to different customers and don't fit.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2371,8 +2382,8 @@
           }
         ],
         "residual": "partial",
-        "confidence": 0.95,
-        "reasoning": "The payment went to Acme Builders Supply's own virtual account, and the memo says \"INV-1070 partial.\" The amount is about half of INV-1070's $9,644.99, so about $4,822.49 stays open on that invoice.",
+        "confidence": 0.94,
+        "reasoning": "This came into Acme Builders Supply's own virtual account, and the memo says \"INV-1070 partial\". The $4,822.50 is about half of INV-1070's $9,644.99, so it's a deliberate installment and the rest of INV-1070 stays open.",
         "alternatives": []
       },
       "why": "Residual \"partial\" needs a human.",
@@ -2405,7 +2416,7 @@
         ],
         "residual": "none",
         "confidence": 0.93,
-        "reasoning": "This payment came into Lumen Arc Software's own virtual account, and it equals INV-1049 to the cent ($8,271.40). It is the only open invoice at that amount, and no combination of their other invoices adds up to it. The memo just says \"AP PAYMENT\" and doesn't name an invoice. Lumen Arc still has older overdue invoices, but the exact amount points clearly to INV-1049.",
+        "reasoning": "The payment came into Lumen Arc Software's own virtual account, from a name they've paid from before. It equals INV-1049 to the cent ($8,271.40), and no other invoice or combination of invoices adds up to that amount. Lumen Arc has several older invoices that are overdue, but the exact match makes INV-1049 the clear fit, even though the memo doesn't name an invoice.",
         "alternatives": [
           "inv_1052",
           "inv_1054"
@@ -2436,7 +2447,7 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.1,
-        "reasoning": "This $2,500 mobile deposit has no memo and no payer name. Six open invoices from five different customers are for exactly $2,500, so nothing points to one of them. Someone needs to look at the deposited check image to see who it's from before we apply it.",
+        "reasoning": "This $2,500 mobile deposit has no memo and no payer name, and six open invoices from five different customers are for exactly $2,500, so there's no way to tell who sent it. Please check the deposited check image or ask the likely customers before applying it.",
         "alternatives": [
           "inv_1028",
           "inv_1050",
@@ -2481,7 +2492,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo names INV-1055 and INV-1059, and those two invoices add up to exactly $6,436.24. The payer is Marrow & Finch Architects' known bank name.",
+        "reasoning": "The memo lists INV-1059 and INV-1055, and those two invoices add up to exactly $6,436.24. The payment came from MARROW FINCH ARCH, a name Marrow & Finch Architects has paid from before.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2518,7 +2529,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The payment went to Glasswing Interactive's own virtual account, the memo says 1093, and $766.00 is exactly what INV-1093 is for. All three signals agree, so this pays INV-1093 in full.",
+        "reasoning": "The payment came into Glasswing Interactive's own virtual account, the memo names invoice 1093, and the amount is exactly the $766.00 owed on INV-1093.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2550,8 +2561,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.93,
-        "reasoning": "The payer is Ironbark Capital Advisors, using the same bank name they've paid from before. The amount exactly matches INV-1083 ($5,200.40), and it's the only open invoice at that amount.",
+        "confidence": 0.95,
+        "reasoning": "The payer, IRONBARK CAPITAL ADV, is a name Ironbark Capital Advisors has paid from before, and $5,200.40 exactly matches their open invoice INV-1083. No other invoice or combination of invoices fits this amount.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2584,11 +2595,11 @@
         ],
         "residual": "overpayment",
         "confidence": 0.6,
-        "reasoning": "The check came from Thistle & Pine, was sent to their own account number, and the memo says INV-1141. But it is $2,225.85 more than that invoice, which is exactly 10% extra. Since INV-1141 was about two months overdue, the customer may have added a late fee or interest, or added tax by mistake. The extra $2,225.85 doesn't match any other open invoice, so it should stay as unapplied credit until someone confirms with the customer what it's for.",
+        "reasoning": "This check went to the account number assigned only to Thistle & Pine, and the memo names INV-1141, so that invoice is fully paid. The check is $2,225.85 more than the invoice, which is exactly 10% of it. That could be a late fee or tax they added themselves, or a mistake, and the extra doesn't fit any other open invoice, so someone should decide whether to hold it as a credit, refund it or apply it elsewhere.",
         "alternatives": [
-          "inv_1142",
           "inv_1139",
-          "inv_1140"
+          "inv_1140",
+          "inv_1142"
         ]
       },
       "why": "Confidence 0.60 below 0.9.",
@@ -2620,8 +2631,8 @@
           }
         ],
         "residual": "partial",
-        "confidence": 0.9,
-        "reasoning": "Kestrel Field Services sent this payment to their own virtual account. The memo reads \"INV-1100 1 of 2\", and $3,750 is exactly half of INV-1100's $7,500, so this looks like the first of two planned payments. That leaves $3,750 open on INV-1100. The automatic memo check didn't pick up the invoice number, but the memo names it directly.",
+        "confidence": 0.92,
+        "reasoning": "The payment went to Kestrel Field Services' own account number, and the memo says \"INV-1100 1 of 2\". $3,750 is exactly half of INV-1100's $7,500, so this looks like the first of two planned payments, and $3,750 stays open.",
         "alternatives": [
           "inv_1099"
         ]
@@ -2664,7 +2675,7 @@
         ],
         "residual": "none",
         "confidence": 0.98,
-        "reasoning": "Ferncliff Studio paid from a name we already know, and the memo lists INV-1019, INV-1020 and INV-1021. Those three invoices add up to exactly $8,319.65.",
+        "reasoning": "The payment came from Ferncliff Studio, a name we already know, and the memo lists INV-1019, INV-1020 and INV-1021. Those three invoices add up to exactly $8,319.65, so they are paid in full.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2699,8 +2710,8 @@
         "decision": "not_invoice_payment",
         "allocations": [],
         "residual": "none",
-        "confidence": 0.96,
-        "reasoning": "This is a refund or credit from Amazon Web Services, which is a vendor, not a customer. The memo says \"AWS REFUND CREDIT\", and no open invoice, customer, or amount matches it.",
+        "confidence": 0.97,
+        "reasoning": "This is a refund credit from Amazon Web Services, which is a vendor, not a customer. The memo says \"AWS REFUND CREDIT\", and no customer, payer name or open invoice matches it. It should be booked as a vendor refund against AWS expenses, not as invoice income.",
         "alternatives": []
       },
       "why": "Confidently not an invoice payment.",
@@ -2728,7 +2739,7 @@
         ],
         "residual": "processing_fee",
         "confidence": 0.93,
-        "reasoning": "The wire came into Vantage Point Consulting's own virtual account, and the memo names INV-1124. It is exactly $30 short of that invoice, which fits a normal wire fee.",
+        "reasoning": "The wire came into Vantage Point Consulting's own virtual account and its memo names INV-1124. It is exactly $30 short of that invoice, which fits a typical wire fee.",
         "alternatives": []
       },
       "why": "Auto-applied; $30.00 written off as bank fee.",
@@ -2760,8 +2771,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.98,
-        "reasoning": "The payment came into Glasswing Interactive's own virtual account, the memo names INV-1088, and the amount matches INV-1088 to the cent.",
+        "confidence": 0.97,
+        "reasoning": "The wire went to Glasswing Interactive's own virtual account, and the memo names INV-1088. The amount is exactly the $14,772.50 owed on that invoice, so all three signals point to the same invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2794,7 +2805,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites INV-1054, the payer name LUMENARC INC is one Lumen Arc Software has paid from before, and the $6,818.50 matches that invoice to the cent.",
+        "reasoning": "The memo cites INV-1054, the amount exactly equals INV-1054's $6,818.50, and LUMENARC INC is a known payer name for Lumen Arc Software.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2827,7 +2838,7 @@
         ],
         "residual": "partial",
         "confidence": 0.95,
-        "reasoning": "The money went to Halcyon Data Labs' own virtual account, and the memo says \"INV-1005 partial\". $2,451 is exactly half of the $4,902 invoice, so this looks like a planned installment, and $2,451 is still open.",
+        "reasoning": "This payment came into Halcyon Data Labs' own virtual account, and the memo says \"INV-1005 partial.\" $2,451 is exactly half of INV-1005's $4,902, which looks like a planned installment, so $2,451 is still open on INV-1005.",
         "alternatives": []
       },
       "why": "Residual \"partial\" needs a human.",
@@ -2859,8 +2870,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.93,
-        "reasoning": "The payment came into Ironbark Capital Advisors' own virtual account and is exactly the $2,632.00 owed on INV-1086. No other invoice or combination of invoices adds up to that amount.",
+        "confidence": 0.95,
+        "reasoning": "The payment came into the virtual account that belongs only to Ironbark Capital Advisors, and the payer name matches the one they've used before. The $2,632.00 equals INV-1086 exactly, and none of their other open invoices or combinations fit that amount.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -2884,18 +2895,22 @@
       "action": "review",
       "proposal": {
         "payment_id": "pay_075",
-        "decision": "unsure",
-        "allocations": [],
+        "decision": "match",
+        "allocations": [
+          {
+            "invoice_id": "inv_1159",
+            "amount": 4887.99
+          }
+        ],
         "residual": "none",
-        "confidence": 0.45,
-        "reasoning": "The payment definitely came from Polaris Payroll Partners, because it went to their dedicated account. But the evidence points two ways: the memo says INV-1155 ($19,719.00), while the amount matches INV-1159 ($4,887.99) to the cent. This is probably a memo typo for INV-1159, but it could also be a deliberate partial payment on INV-1155, so a person should confirm with the customer before applying it.",
+        "confidence": 0.6,
+        "reasoning": "The payment came to Polaris Payroll Partners' own virtual account, so we know who paid. The amount, $4,887.99, matches their invoice INV-1159 to the cent. The memo says INV-1155, a $19,719.00 invoice, so this could instead be a partial payment on that one, or the memo could have a 5/9 typo. A reviewer should confirm which invoice it is before posting.",
         "alternatives": [
-          "inv_1159",
           "inv_1155"
         ]
       },
-      "why": "Matcher unsure.",
-      "outcome": "review_shortlist",
+      "why": "Confidence 0.60 below 0.9.",
+      "outcome": "review_good_suggestion",
       "truth": {
         "payment_id": "pay_075",
         "scenario": "wrong_reference",
@@ -2924,8 +2939,10 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo names INV-1091, the payer is Glasswing Interactive's known bank name, and the amount matches INV-1091 to the cent. Saltmarsh's INV-1076 differs by only $3, but nothing else points to it.",
-        "alternatives": []
+        "reasoning": "The memo names INV-1091, the payer GLASSWING INTERACTIV is a name Glasswing Interactive has paid from before, and the amount is exactly what INV-1091 is for. Saltmarsh's INV-1076 is only $3 different, but it belongs to another customer and nothing else points to it.",
+        "alternatives": [
+          "inv_1076"
+        ]
       },
       "why": "Auto-applied.",
       "outcome": "correct_auto",
@@ -2956,8 +2973,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.95,
-        "reasoning": "The payment went to Peregrine Analytics' own virtual account, came from their usual bank name, and the memo cites INV-1061. It pays that $2,500 invoice in full. Peregrine also has INV-1162 open for the same amount, but the memo points to 1061.",
+        "confidence": 0.93,
+        "reasoning": "The money went to Peregrine Analytics' own virtual account, and the memo names INV-1061, which is exactly $2,500.00. Peregrine has another open invoice at the same amount (INV-1162, which is due earlier), but the memo specifically names INV-1061.",
         "alternatives": [
           "inv_1162"
         ]
@@ -2987,7 +3004,7 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.1,
-        "reasoning": "Five different customers each have an open $5,000 invoice. The payer shows only as a generic \"PAYMENTS\" with no memo, so nothing tells us which customer sent it. Someone needs to check the ACH originator details or ask the customers before this is applied.",
+        "reasoning": "This $5,000 ACH came from a generic sender (\"PAYMENTS\") with no memo, into the main account, so nothing identifies who paid. Five open invoices from five different customers are each exactly $5,000, and none of them stands out.",
         "alternatives": [
           "inv_1027",
           "inv_1065",
@@ -3026,9 +3043,10 @@
         ],
         "residual": "overpayment",
         "confidence": 0.8,
-        "reasoning": "The payment came into the account number used only by Northwind Robotics, from the name they've paid from before, and the memo says INV-1003. They paid $4,180.99 against a $4,080.99 invoice, so there's an extra $100. That could be a late fee they added themselves, since the invoice was due Oct 2, or a typo. The $100 should be held as a credit or refunded after someone checks with Northwind.",
+        "reasoning": "The payment came into Northwind Robotics' own virtual account and the memo cites INV-1003, so it pays INV-1003 ($4,080.99). They sent exactly $100.00 more than the invoice, possibly a late fee since it was paid about six weeks after the due date, so the extra $100 needs a decision: credit, refund or apply. Also, the payment is dated 2026-11-16, which is after today's date (2026-10-20), so check the bank-feed date before posting.",
         "alternatives": [
-          "inv_1001"
+          "inv_1001",
+          "inv_1004"
         ]
       },
       "why": "Confidence 0.80 below 0.9.",
@@ -3061,7 +3079,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "Juniper & Vale CPAs sent this payment to their own virtual account. The memo says INV-1027, which is their $5,000.00 invoice, so the amount matches exactly. Four other customers also have $5,000 invoices open, but the account and the memo both point to Juniper & Vale.",
+        "reasoning": "The payment came into Juniper & Vale's own virtual account, and the memo names INV-1027, which is their $5,000.00 invoice, paid in full. Other customers also have open $5,000 invoices, but they're ruled out because the money came into this customer's account and the memo names this invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3105,8 +3123,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.97,
-        "reasoning": "The wire went to Acme Analytics LLC's own virtual account, came from the bank name they've paid from before, and the memo lists all four of their open invoices. Those four invoices add up to exactly $51,950.98.",
+        "confidence": 0.98,
+        "reasoning": "The wire came into Acme Analytics LLC's own virtual account, from the name they've paid from before. The memo lists all four of their open invoices (INV-1064 through INV-1067), and those four add up to exactly $51,950.98.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3151,7 +3169,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The payment went to Tidewater Logistics' own virtual account number. The memo cites INV-1043, and the amount matches that invoice to the cent, so all three signals point to the same invoice. Acme's INV-1070 is $14 more than the payment, but it belongs to a different customer, so it doesn't fit.",
+        "reasoning": "The payment came in to Tidewater Logistics' own virtual account, and the memo names INV-1043. The amount also exactly matches INV-1043's $9,630.99, so all three signals point to the same invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3179,7 +3197,7 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.95,
-        "reasoning": "This is a payroll reversal from Gusto, the payroll provider, not a customer paying an invoice. Six open invoices happen to be $2,500, but that's a coincidence: the payer doesn't match any customer and the memo names no invoice.",
+        "reasoning": "The money came from Gusto, the payroll provider, and the memo says \"PAYROLL REVERSAL,\" so this is payroll money coming back, not a customer paying an invoice. Six open invoices are also for $2,500, but that's a coincidence: the payer doesn't match any customer and the memo names no invoice.",
         "alternatives": []
       },
       "why": "Confidently not an invoice payment.",
@@ -3201,10 +3219,6 @@
         "decision": "match",
         "allocations": [
           {
-            "invoice_id": "inv_1110",
-            "amount": 10434.4
-          },
-          {
             "invoice_id": "inv_1105",
             "amount": 22206.5
           },
@@ -3215,11 +3229,15 @@
           {
             "invoice_id": "inv_1107",
             "amount": 8535.99
+          },
+          {
+            "invoice_id": "inv_1110",
+            "amount": 10434.4
           }
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The payment went to Meridian Yard Coworking's own virtual account. The memo lists INV-1110, INV-1105, INV-1106 and INV-1107, and those four invoices add up to exactly $51,006.89.",
+        "reasoning": "The wire came into Meridian Yard Coworking's own virtual account. Its memo lists INV-1110, INV-1105, INV-1106 and INV-1107, and those four invoices add up to exactly $51,006.89.",
         "alternatives": [
           "inv_1108",
           "inv_1109"
@@ -3267,7 +3285,7 @@
         ],
         "residual": "none",
         "confidence": 0.93,
-        "reasoning": "The payment went to Wren Street Ventures' own virtual account, and its amount exactly matches their invoice INV-1152 ($18,549.50). No other invoice or combination of invoices adds up to this amount, even though the customer has several older invoices still open.",
+        "reasoning": "The payment went to Wren Street Ventures' own virtual account, and it equals INV-1152 ($18,549.50) to the cent. No other invoice or combination of invoices adds up to this amount. The memo is empty, so the amount is the only thing linking it to this invoice, and the customer has several older invoices still open.",
         "alternatives": [
           "inv_1149",
           "inv_1154"
@@ -3303,7 +3321,7 @@
         ],
         "residual": "none",
         "confidence": 0.95,
-        "reasoning": "The payment went to Peregrine Analytics' own virtual account, and the bank feed shows the name they've paid from before. It's exactly $13,985.99, the amount of their open invoice INV-1062.",
+        "reasoning": "The payment came into Peregrine Analytics' own virtual account from the name they've paid from before, and it exactly matches their open invoice INV-1062 ($13,985.99), which is also their oldest overdue one. The memo has no invoice number, but no other invoice or combination of invoices adds up to this amount.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3335,8 +3353,8 @@
           }
         ],
         "residual": "processing_fee",
-        "confidence": 0.92,
-        "reasoning": "The wire came into Ostara's own virtual account, and the memo names INV-1035. It's exactly $45.00 short of that invoice, a round amount that looks like a typical wire or intermediary bank fee.",
+        "confidence": 0.9,
+        "reasoning": "The wire came into Ostara's own virtual account, and the memo names INV-1035. It's exactly $45.00 short of that invoice, which looks like a typical wire or intermediary bank fee.",
         "alternatives": []
       },
       "why": "Auto-applied; $45.00 written off as bank fee.",
@@ -3369,7 +3387,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites invoice 1002, the payer NWR HOLDINGS LLC is a name Northwind Robotics has paid from before, and the amount matches INV-1002 exactly.",
+        "reasoning": "The check came from NWR HOLDINGS LLC, a name Northwind Robotics has paid from before. Its memo says \"ref 1002\", and the amount is exactly INV-1002's $11,403.00, so the name, memo and amount all point to the same invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3402,7 +3420,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The payment came into Starling Dental's own virtual account, the memo names INV-1097, and the amount matches that invoice exactly. All three point to the same invoice.",
+        "reasoning": "The payment arrived in Starling Dental's own virtual account, the memo names INV-1097, and the amount equals that invoice to the cent.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3435,7 +3453,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites INV-1127, the amount is exactly that invoice's $12,084.25, and the money arrived at Vantage Point Consulting's own virtual account. Every signal points to the same invoice.",
+        "reasoning": "The wire landed in the virtual account that belongs only to Vantage Point Consulting. The memo says INV1127, and the amount equals INV-1127 to the cent, so it pays that invoice in full.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3467,8 +3485,8 @@
           }
         ],
         "residual": "processing_fee",
-        "confidence": 0.93,
-        "reasoning": "This payment went to Summit Ridge Engineering's own virtual account, and the memo cites INV-1144, which is a $7,500 Summit Ridge invoice. The $30 shortfall is a round amount that fits a typical wire fee.",
+        "confidence": 0.95,
+        "reasoning": "The wire came into Summit Ridge Engineering's own virtual account, and the memo names invoice 1144, which is their $7,500 invoice. It arrived $30 short, which looks like a normal wire fee.",
         "alternatives": []
       },
       "why": "Auto-applied; $30.00 written off as bank fee.",
@@ -3501,7 +3519,7 @@
         ],
         "residual": "none",
         "confidence": 0.96,
-        "reasoning": "The memo cites INV-1160, the amount matches that invoice to the cent, and the payer is Polaris Payroll Partners, a known customer who has paid from this name before. The word \"payroll\" in the name doesn't make this a payroll reversal, because Polaris Payroll is an existing customer.",
+        "reasoning": "The memo cites INV-1160, the amount matches that invoice to the cent, and the payer name is one Polaris Payroll Partners has paid from before. \"Payroll\" here is the customer's name, not a payroll reversal.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3534,7 +3552,7 @@
         ],
         "residual": "none",
         "confidence": 0.95,
-        "reasoning": "The check went to Glasswing Interactive's own virtual account, came from a payer name they've used before (GW MEDIA HOLDINGS), and is for exactly the amount of their open invoice INV-1089 ($16,013.99).",
+        "reasoning": "The check went to the account number reserved for Glasswing Interactive, and the payer name GW MEDIA HOLDINGS is one they've paid from before. The amount exactly matches Glasswing's invoice INV-1089 ($16,013.99). Kestrel's INV-1101 is close in amount, but it belongs to a different customer.",
         "alternatives": [
           "inv_1101"
         ]
@@ -3569,7 +3587,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The payment came into Meridian Yard Coworking's own virtual account, the memo says INV1108, and the amount is exactly what INV-1108 is for. All three point to the same invoice.",
+        "reasoning": "The payment went to Meridian Yard Coworking's own virtual account, the memo says INV-1108, and the amount is exactly what INV-1108 is for. All three point to the same invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3602,7 +3620,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo names INV-1048, the payment is exactly the $21,828.00 owed on it, and it came from the name Tidewater Logistics has paid from before.",
+        "reasoning": "The memo names INV-1048, the payment equals that invoice's $21,828.00 to the cent, and the sender is Tidewater Logistics' known bank name. All three point to the same invoice.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3630,7 +3648,7 @@
         "allocations": [],
         "residual": "none",
         "confidence": 0.2,
-        "reasoning": "Four open invoices from four different customers are each exactly $1,200. The payer is shown only as a generic \"PAYMENTS\" sender with no memo, so nothing points to one customer over the others. A person should check the ACH details or ask the customers before this payment is applied.",
+        "reasoning": "The $1,200.00 payment matches four open invoices from four different customers exactly. The memo is empty and the sender name is a generic \"PAYMENTS\" that we haven't seen any of these customers use, so nothing shows which customer paid.",
         "alternatives": [
           "inv_1001",
           "inv_1029",
@@ -3668,7 +3686,7 @@
         ],
         "residual": "none",
         "confidence": 0.97,
-        "reasoning": "The memo cites INV-1130, and the payer name matches Cobalt Freight Systems' known bank name exactly. The $2,500.00 paid is exactly what INV-1130 is for. Several other customers have $2,500 invoices too, but the memo and the payer both point to Cobalt.",
+        "reasoning": "The memo cites INV-1130, the payer name exactly matches Cobalt Freight Systems' known bank name, and the $2,500.00 payment equals that invoice's balance to the cent. Several other customers have $2,500 invoices too, but the memo and payer name both point only to Cobalt.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3700,8 +3718,8 @@
           }
         ],
         "residual": "none",
-        "confidence": 0.97,
-        "reasoning": "The memo names INV-1010 and the payment equals that invoice exactly, $22,731.99. It came from BILL.COM PAYABLES, which Brightpath Legal Group has paid from before.",
+        "confidence": 0.96,
+        "reasoning": "The memo cites INV-1010, and the payment matches that invoice's $22,731.99 to the cent. Brightpath Legal has paid through Bill.com before. Bill.com sends payments for many businesses, so the payer name alone doesn't prove who sent this, but the memo and the exact amount do.",
         "alternatives": []
       },
       "why": "Auto-applied.",
@@ -3733,13 +3751,13 @@
           }
         ],
         "residual": "partial",
-        "confidence": 0.88,
-        "reasoning": "This is the first of two payments on INV-1040. Redwood Row Realty sent it to their own account number with the memo \"INV-1040 1 of 2\", and $1,268.49 is half of the $2,536.99 invoice, so $1,268.50 stays open for the second payment. INV-1056 is close in amount but belongs to Marrow & Finch, so it doesn't apply.",
+        "confidence": 0.92,
+        "reasoning": "The money went to the virtual account that belongs only to Redwood Row Realty. The memo says \"INV-1040 1 of 2\", and $1,268.49 is half of INV-1040's $2,536.99, rounded down, so this is the first of two installments. The rest of INV-1040 should stay open. INV-1056 is only $2.51 away from this amount, but it belongs to a different customer (Marrow & Finch), so it's a coincidence.",
         "alternatives": [
           "inv_1056"
         ]
       },
-      "why": "Confidence 0.88 below 0.9.",
+      "why": "Residual \"partial\" needs a human.",
       "outcome": "review_good_suggestion",
       "truth": {
         "payment_id": "pay_099",
