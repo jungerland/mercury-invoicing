@@ -57,7 +57,9 @@ The model never does arithmetic, and it never moves money on its own say-so. The
 
 ## Run it
 
-Requires Node 23.6+ (runs TypeScript directly, no build step).
+To just see the demo, open `ui/index.html` in a browser. It's self-contained, so no install is needed.
+
+To reproduce the results, you need Node 23.6+ (runs TypeScript directly, no build step).
 
 ```bash
 npm install
