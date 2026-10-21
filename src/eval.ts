@@ -251,13 +251,15 @@ ${tokenLine()}
 `}`;
 
 writeFileSync(`${OUT}/report.md`, report);
-writeFileSync(
-  `${OUT}/run.json`,
+// Keep the old timestamp when nothing else changed, so reproducing the committed results leaves the tree clean.
+const runFile = `${OUT}/run.json`;
+const prev = existsSync(runFile) ? load<{ generated?: string }>(runFile) : null;
+const runJson = (generated: string | undefined) =>
   JSON.stringify(
     {
       model: MODEL,
       threshold: DEFAULT_THRESHOLD,
-      generated: new Date().toISOString(),
+      generated,
       builtin: builtinScore,
       rules: rulesScore,
       agent: RULES_ONLY ? null : agentScore,
@@ -268,6 +270,7 @@ writeFileSync(
     },
     null,
     2,
-  ),
-);
+  );
+const unchanged = prev && runJson(prev.generated) === JSON.stringify(prev, null, 2);
+writeFileSync(runFile, runJson(unchanged ? prev.generated : new Date().toISOString()));
 console.log(report.split("## By scenario")[0]);

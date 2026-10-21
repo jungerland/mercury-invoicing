@@ -16,7 +16,7 @@ const invoices = load<Invoice[]>("data/invoices.json");
 const payments = load<Payment[]>("data/payments.json");
 const truth = new Map(load<GroundTruth[]>("data/ground_truth.json").map((t) => [t.payment_id, t]));
 const cache = load<Record<string, { proposal: Proposal }>>("results/agent_cache.json");
-const run = load<{ rules: unknown; agent: unknown; actions: { payment_id: string; action: string }[]; rulesActions: { payment_id: string; action: string; outcome: string; why: string }[]; builtinActions: { payment_id: string; action: string; outcome: string }[] }>("results/run.json");
+const run = load<{ generated: string; rules: unknown; agent: unknown; actions: { payment_id: string; action: string }[]; rulesActions: { payment_id: string; action: string; outcome: string; why: string }[]; builtinActions: { payment_id: string; action: string; outcome: string }[] }>("results/run.json");
 const seed7 = load<{ builtin: unknown; rules: unknown; agent: unknown; sweep: unknown }>("results/seed7/run.json");
 const seed99 = load<{ builtin: unknown; rules: unknown; agent: unknown; sweep: unknown }>("results/seed99/run.json");
 
@@ -56,7 +56,7 @@ const rows = payments.map((p) => {
   };
 });
 
-const data = { generated: new Date().toISOString().slice(0, 10), customers: customers.length, invoices: invoices.length, rows, seed7: { builtin: seed7.builtin, rules: seed7.rules, agent: seed7.agent }, seed99: { builtin: seed99.builtin, rules: seed99.rules, agent: seed99.agent }, calls, prices: PRICES, minutes: [run, seed7, seed99].map((r) => { const s = r as unknown as Record<"builtin" | "agent", { n: number; minutes: number }>; return { n: s.agent.n, builtin: s.builtin.minutes, agent: s.agent.minutes }; }) };
+const data = { generated: run.generated.slice(0, 10), customers: customers.length, invoices: invoices.length, rows, seed7: { builtin: seed7.builtin, rules: seed7.rules, agent: seed7.agent }, seed99: { builtin: seed99.builtin, rules: seed99.rules, agent: seed99.agent }, calls, prices: PRICES, minutes: [run, seed7, seed99].map((r) => { const s = r as unknown as Record<"builtin" | "agent", { n: number; minutes: number }>; return { n: s.agent.n, builtin: s.builtin.minutes, agent: s.agent.minutes }; }) };
 const html = readFileSync("ui/template.html", "utf8").replace("/*__DATA__*/null", JSON.stringify(data));
 writeFileSync("ui/index.html", html);
 console.log(`ui/index.html written (${(html.length / 1024).toFixed(0)} KB, ${rows.length} payments)`);
