@@ -93,7 +93,7 @@ Where the difference comes from:
 ## Open questions
 
 - What share of invoice payments arrive on the real account number instead of the virtual one? That sets the size of the main-account half of this.
-- Mercury Books now uses AI to "categorize and reconcile" invoicing activity. Where should invoice-level matching live, in Invoicing or in Books, so a match made in one never fights the other? The same goes for QuickBooks, Xero and NetSuite syncs.
+- Mercury Books now uses AI to "categorize and reconcile" invoicing activity, which keeps the vendor's ledger in line with its bank account. It doesn't say whether Books also settles which invoice a payment paid and what's still owed. Where should invoice-level matching live, in Invoicing or in Books, so a match made in one never fights the other? The same goes for QuickBooks, Xero and NetSuite syncs.
 - What does Mercury do today with a virtual-account payment when two open invoices share the amount? The docs flag the problem but don't say.
 - How much better is payer identity from ACH originator IDs than from names, for main-account payments? Probably a lot, and it's a free signal.
 - What share of real invoice volume is processor payouts versus direct ACH and wire? That decides whether payout reconciliation moves up the list.
