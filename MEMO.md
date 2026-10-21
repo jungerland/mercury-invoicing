@@ -22,7 +22,7 @@ The goal is payments that match themselves to the right invoice without anyone l
 
 ## What I built
 
-A working prototype (live demo, code, eval). Code gathers evidence, a model proposes a match with a confidence and a plain-language reason, and code decides whether money moves. I measured it against two baselines on two synthetic datasets of 99 payments each:
+A working prototype (live demo, code, eval). Code gathers evidence, a model proposes a match with a confidence and a plain-language reason, and code decides whether money moves. I measured it against two baselines on three synthetic datasets of 99 payments each. The third was generated after the agent was finished, to check it wasn't tuned to the first two:
 
 - **Built-in matching:** virtual account number plus exact amount, as Mercury documents it.
 - **Rules baseline:** one I built for comparison. It uses the same evidence as the agent but only takes exact matches.
@@ -30,10 +30,10 @@ A working prototype (live demo, code, eval). Code gathers evidence, a model prop
 | | Hands-off | Wrong auto-applies | Human time per 99 payments |
 |---|---|---|---|
 | By hand | 0% | 0 | 5.0 h |
-| Built-in matching | 34–40% | 0 | 3.0–3.3 h |
-| Rules baseline | 60–61% | 0 | 1.0–1.1 h |
-| Agent + guardrails, 0.90 bar | 72–78% | 0 | ~0.2 h |
-| Agent + guardrails, 0.80 bar | 80% | 0 | ~0.2 h |
+| Built-in matching | 31–40% | 0 | 3.0–3.4 h |
+| Rules baseline | 59–61% | 0 | 1.0–1.3 h |
+| Agent + guardrails, 0.90 bar | 70–78% | 0 | 0.2–0.3 h |
+| Agent + guardrails, 0.80 bar | 78–80% | 0 | ~0.2 h |
 
 Human time uses stated assumptions: 3 min to match by hand, 15 s to confirm a correct suggestion, 20 min to unwind a wrong match.
 
@@ -41,9 +41,9 @@ About 55% of invoice payments in the data arrive on the customer's virtual accou
 
 Where the difference comes from:
 
-- **Built-in matching never handles** a wire fee, partial, overpayment, batch payment or same-amount pair, or anything sent to the main account number. Nothing flags those, so 59 to 65 of every 99 deposits sit unmatched until someone notices.
-- **The agent** applied 14 of 16 wire-fee payments, where both baselines applied none. Everything it didn't apply landed in a queue with a suggestion.
-- **Cost:** about two cents and 5 seconds per payment.
+- **Built-in matching never handles** a wire fee, partial, overpayment, batch payment or same-amount pair, or anything sent to the main account number. Nothing flags those, so 59 to 68 of every 99 deposits sit unmatched until someone notices.
+- **The agent** applied 20 of 24 wire-fee payments, where both baselines applied none. Everything it didn't apply landed in a queue with a suggestion.
+- **Cost:** about 1.4 cents and 5 seconds per payment at list price.
 
 ## Product decisions
 
@@ -53,8 +53,8 @@ Where the difference comes from:
    - **Identity:** the virtual account, a known payer, or a memo reference to the invoice.
    - **Amount:** exact, or short by a plausible bank fee.
    - **No equally good alternative:** a second open invoice at the same amount, or a second combination of invoices that adds up to the payment, sends it to a person unless the memo says which.
-4. **Partials and overpayments go to a person in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: 2 to 5 points of hands-off at the 0.90 bar.
-5. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: the agent's proposals were exactly right at every confidence level. But zero errors in 136 auto-applies only bounds the true rate below about 2.2%. Real traffic earns the right to lower it.
+4. **Partials and overpayments go to a person in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: 2 to 6 points of hands-off at the 0.90 bar.
+5. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 auto-applies only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
 6. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
 
 ## What I deprioritized, and why

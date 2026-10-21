@@ -16,15 +16,17 @@ Built as a working demo for a Senior PM, Invoicing role. The goal it answers com
 | By hand | 0% | 0 | 5.0 h |
 | Built-in: virtual account + exact amount (dataset A / B) | 40% / 34% | 0 / 0 | 3.0 h / 3.3 h |
 | Rules baseline (dataset A / B) | 61% / 60% | 0 / 0 | 1.0 h / 1.1 h |
-| Agent + guardrails (dataset A / B) | 72% / 78% | 0 / 0 | 0.2 h / 0.2 h |
+| Agent + guardrails (dataset A / B) | 71% / 78% | 0 / 0 | 0.2 h / 0.2 h |
 
-At a 0.80 bar the agent reaches 80% hands-off on both datasets, still with zero wrong auto-applies.
+At a 0.80 bar the agent reaches 79% and 80% hands-off, still with zero wrong auto-applies.
 
-**Held-out check.** Datasets A and B were the ones used while building the agent. To rule out overfitting, a third dataset (seed 99) was generated afterward and run live once, with no changes to prompts or policy. Results held: built-in 31%, rules 59%, agent 71% hands-off at the 0.90 bar (77% at 0.80), zero wrong auto-applies at every threshold. Without the guardrails in `policy.ts`, the model made one wrong auto-apply at a 0.50 bar; the guardrails caught it. Report: [results/seed99/report.md](results/seed99/report.md).
+**Held-out check.** Datasets A and B were the ones used while building the agent. To rule out overfitting, a third dataset (seed 99) was generated afterward and run live with no changes to prompts or policy. Results held: built-in 31%, rules 59%, agent 70% hands-off at the 0.90 bar (78% at 0.80), zero wrong auto-applies at every threshold. Without the guardrails in `policy.ts`, the model made one wrong auto-apply at a 0.50 bar; the guardrails caught it. Report: [results/seed99/report.md](results/seed99/report.md).
 
 "Built-in" follows Mercury's public API docs; about 55% of invoice payments in the data arrive on a virtual account number, which is an assumption. Full reports, with per-scenario breakdowns, a threshold sweep, a guardrail ablation and a calibration table: [results/report.md](results/report.md), [results/seed7/report.md](results/seed7/report.md).
 
-Cost: about $0.02 and 5 seconds per payment on Claude Opus 5.5.
+**Re-run.** All three datasets were run live a second time (2026-10-20) to record token counts. Agent hands-off moved by a point at most, and wrong auto-applies stayed at zero.
+
+Cost: about $0.014 and 5 seconds per payment on Claude Opus 5.5 at list price, with the shared system prompt cached. Runs through the `claude` CLI cost about $0.020, because the CLI also writes each payment's prompt to a 1-hour cache at twice the input price. Each cache entry stores token counts, and the demo page projects monthly cost from them.
 
 ## How it works
 
