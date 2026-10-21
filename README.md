@@ -1,10 +1,13 @@
-# Payment Auto-Match
+# Grit Remover: An unapplied cash resolver agent
 
-An agent that matches incoming bank payments to open invoices. A customer's virtual account number already matches a payment that arrives for the exact amount. This handles the rest: wire fees, partials, overpayments, batch payments, two invoices at the same amount, and payments sent to the main account number. It applies the matches it can prove and gives a person a short, explained queue for everything else.
+A customer's virtual account number already matches a payment that arrives for the exact amount. 
+
+This agent handles the rest, the grit in the system: wire fees, partials, overpayments, batch payments, two invoices at the same amount, and payments sent to the main account number. It applies the matches it can prove and gives a person a short, explained queue for everything else.
 
 Built as a working demo for a Senior PM, Invoicing role. The goal it answers comes from the job posting: incoming payments should "match themselves to the right invoice without anyone lifting a finger," using AI "without chasing hype."
 
-**Live demo:** https://claude.ai/artifact/W5w7goumjU1Hdasa35nqAR (private until shared)
+**Interactive demo:** https://claude.ai/artifact/W5w7goumjU1Hdasa35nqAR
+
 **Product memo:** [MEMO.md](MEMO.md)
 
 ## Results
@@ -78,7 +81,7 @@ The model never does arithmetic, and it never moves money on its own say-so. The
 
 ## Run it
 
-To just see the demo, open `ui/index.html` in a browser. It's self-contained, so no install is needed.
+To just see the interactive demo, open `ui/index.html` in a browser. It's self-contained, so no install is needed.
 
 To reproduce the results, you need Node 23.6+ (runs TypeScript directly, no build step).
 
