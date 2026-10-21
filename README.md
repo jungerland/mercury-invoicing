@@ -1,6 +1,6 @@
 # Payment Auto-Match
 
-An agent that matches incoming bank payments to open invoices. It applies the matches it can prove and gives a person a short, explained queue for the rest.
+An agent that matches incoming bank payments to open invoices. A customer's virtual account number already matches a payment that arrives for the exact amount. This handles the rest: wire fees, partials, overpayments, batch payments, two invoices at the same amount, and payments sent to the main account number. It applies the matches it can prove and gives a person a short, explained queue for everything else.
 
 Built as a working demo for a Senior PM, Invoicing role. The goal it answers comes from the job posting: incoming payments should "match themselves to the right invoice without anyone lifting a finger," using AI "without chasing hype."
 
@@ -9,17 +9,18 @@ Built as a working demo for a Senior PM, Invoicing role. The goal it answers com
 
 ## Results
 
-95 incoming payments against about 160 open invoices across 30 fictional businesses, on two independently generated datasets. Policy bar 0.90.
+99 incoming payments against about 165 open invoices across 30 fictional businesses, on two independently generated datasets. Policy bar 0.90.
 
 | | Hands-off | Wrong auto-applies | Human time |
 |---|---|---|---|
-| By hand | 0% | 0 | 4.8 h |
-| Rules engine (dataset A / B) | 60% / 58% | 0 / 0 | 1.0 h / 1.1 h |
-| Agent + guardrails (dataset A / B) | 69% / 75% | 0 / 0 | 0.2 h / 0.2 h |
+| By hand | 0% | 0 | 5.0 h |
+| Built-in: virtual account + exact amount (dataset A / B) | 40% / 34% | 0 / 0 | 3.0 h / 3.3 h |
+| Rules baseline (dataset A / B) | 61% / 60% | 0 / 0 | 1.0 h / 1.1 h |
+| Agent + guardrails (dataset A / B) | 72% / 78% | 0 / 0 | 0.2 h / 0.2 h |
 
-At a 0.80 bar the agent reaches 79–80% hands-off on both datasets, still with zero wrong auto-applies. Full reports, with per-scenario breakdowns, a threshold sweep, a guardrail ablation and a calibration table: [results/report.md](results/report.md), [results/seed7/report.md](results/seed7/report.md).
+At a 0.80 bar the agent reaches 80% hands-off on both datasets, still with zero wrong auto-applies. "Built-in" follows Mercury's public API docs; about 55% of invoice payments in the data arrive on a virtual account number, which is an assumption. Full reports, with per-scenario breakdowns, a threshold sweep, a guardrail ablation and a calibration table: [results/report.md](results/report.md), [results/seed7/report.md](results/seed7/report.md).
 
-Cost: about $0.017 and 5 seconds per payment on Claude Opus 5.5.
+Cost: about $0.02 and 5 seconds per payment on Claude Opus 5.5.
 
 ## How it works
 
@@ -28,7 +29,7 @@ bank payment
    │
    ▼
 1. Gather evidence (code)       src/match/candidates.ts
-   invoice numbers recovered from messy memos, known payer names,
+   which account number it arrived on, invoice numbers recovered from messy memos, known payer names,
    exact amounts, same-customer invoice combinations that sum to the deposit
    │
    ▼
@@ -39,13 +40,14 @@ bank payment
    ▼
 3. Decide (code)                src/match/policy.ts
    auto-apply only if: confident, amounts reconcile to the cent,
-   one customer, two independent signals, no partials or overpayments
+   one customer, two independent signals, nothing else fits as well,
+   no partials or overpayments
    │
    ▼
 4. Auto-apply, or queue with a suggestion
 ```
 
-The model never does arithmetic, and it never moves money on its own say-so. The rules baseline (`src/match/rules.ts`) uses the same evidence, so the comparison is fair.
+The model never does arithmetic, and it never moves money on its own say-so. The rules baseline (`src/match/rules.ts`) uses the same evidence, so the comparison is fair. The built-in baseline (`src/match/builtin.ts`) models documented virtual-account matching.
 
 ## Run it
 
@@ -70,6 +72,6 @@ DATA_DIR=data/seed7 RESULTS_DIR=results/seed7 npm run eval
 
 ## Data
 
-`src/data/generate.ts` builds a seeded, synthetic AR ledger: customers with names they have paid from before (parent companies, founders' personal accounts, AP platforms, processor payouts), open invoices, and a day's bank feed covering eleven scenarios. These are clean references, empty memos, mangled references, wire fees, batch payments, partials, other-entity payers, look-alike amounts, overpayments, memos citing the wrong invoice, and deposits that aren't invoice payments at all.
+`src/data/generate.ts` builds a seeded, synthetic AR ledger: customers with names they have paid from before (parent companies, founders' personal accounts, AP platforms, processor payouts), open invoices, and a day's bank feed covering twelve scenarios. These are clean references, empty memos, mangled references, wire fees, batch payments, partials, other-entity payers, look-alike amounts, overpayments, memos citing the wrong invoice, two open invoices at the same amount, and deposits that aren't invoice payments at all. Each payment arrives either on the customer's virtual account number or on the main account number.
 
 Every payment has a ground-truth answer and an ideal action (auto, review, or leave alone). The data is synthetic and was written by the same person who built the agent. Real bank feeds will be messier. The next step is shadow mode on real traffic.
