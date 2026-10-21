@@ -1,20 +1,22 @@
-# Payment Auto-Match: product memo
+# PRODUCT MEMO
+# Grit Remover: an unapplied cash resolver agent
 
-DRAFT. Claude wrote this from the eval results and public sources. Lines marked **[Jay: ...]** need your own judgment or experience before this goes anywhere.
+
+
 
 ## The problem
 
 Sending an invoice is half of getting paid. The other half is knowing which invoice a deposit belongs to.
 
-Mercury already solves the easy version. Each customer gets a virtual account number on their invoices, and a bank transfer to that number is marked paid when it matches an open invoice by exact amount. Mercury's API docs are clear about where that stops:
+Mercury already solves the easier scenario. Each customer gets a virtual account number on their invoices, and a bank transfer to that number is marked paid when it matches an open invoice by exact amount. Mercury's API docs are clear about where that stops:
 
-- "A short payment or an overpayment does not reconcile." Wire fees, partials and overpayments all fall out.
+- "A short payment or an overpayment does not reconcile." Wire fees, partials and overpayments all go unmatched.
 - Two open invoices for the same customer and amount "look identical when payment arrives."
 - One transfer that pays several invoices doesn't match any single invoice amount.
-- Invoice statuses are Unpaid, Processing, Paid and Cancelled. There is no partially paid.
-- Matching covers transfers to the virtual account. Larger customers often pay to the real account number, and corporate payables teams tend to set up a vendor's bank details once and keep using them.
+- Invoice statuses are Unpaid, Processing, Paid and Cancelled. There is no partially paid status, so the invoice either stays Unpaid or gets marked Paid, and both are wrong.
+- Matching covers transfers to the virtual account. Larger customers may pay to the real account number, and corporate payables teams tend to set up a vendor's bank details once and keep using them.
 
-Each miss costs a founder or bookkeeper a few minutes of hunting. Until it's done, receivables are wrong, which means reminders go to customers who already paid.
+Each miss costs a founder or bookkeeper a few minutes of hunting. Until it's done, receivables are wrong, which means reminders go to customers who already paid, which erodes trust and goodwill.
 
 The goal is payments that match themselves to the right invoice without anyone lifting a finger. The constraint is that invoices are money: a wrong match is far worse than a slow one.
 
@@ -43,7 +45,7 @@ Where the difference comes from:
 
 - **Built-in matching never handles** a wire fee, partial, overpayment, batch payment or same-amount pair, or anything sent to the main account number. Nothing flags those, so 59 to 68 of every 99 deposits sit unmatched until someone notices.
 - **The agent** applied 20 of 24 wire-fee payments, where both baselines applied none. Everything it didn't apply landed in a queue with a suggestion.
-- **Cost:** about 1.4 cents and 5 seconds per payment at list price on the most capable model, or under half a cent with the routing in decision 7.
+- **Cost:** about 1.4 cents and 5 seconds per payment at list price on the most capable model, or under half a cent with the routing noted in Decision 7 below.
 
 ## Product decisions
 
@@ -61,11 +63,9 @@ Where the difference comes from:
 ## What I deprioritized, and why
 
 - **Smarter payment reminders.** Mercury already sends reminders on a fixed schedule. Tailoring them to each customer is valuable, but only once matching is trusted. A reminder for an invoice that was already paid costs more trust than it earns.
-- **Partial-payment plans and installment tracking.** A real need, but it's a feature with its own UX, not a matching problem. The partially paid status below is the first step.
-- **Learning from reviewer corrections.** This is the obvious next step for the matcher. The review queue is the data source, so it has to exist first.
 - **Payout-level reconciliation for Stripe or Square.** One payout often covers many customers. That needs processor data, not a better matcher.
+- **Partial-payment plans and installment tracking.** A real need, but it's a feature with its own UX, not a matching problem. The partially paid status below is the first step.
 
-**[Jay: confirm or reorder these. The application asks what you deprioritized, so this list is a direct answer.]**
 
 ## What I'd build next
 
@@ -76,6 +76,7 @@ Where the difference comes from:
    - In the UK government's 2024 study, large businesses blamed administrative errors for 36% of the late payments they received, against 24% overall. The authors point to "no purchase order, no pay" policies.
 
    The check would catch a missing PO number, the wrong legal entity or the wrong recipient before the invoice goes out. It would learn each customer's rules from their replies ("please resubmit with PO number"), so every later invoice to them is right. It never moves money, which makes it a safe second AI feature.
+3. **Learning from reviewer corrections.** Every payment a person confirms or fixes in the review queue is a labeled example. Feeding those back, starting with each customer's payer names and memo habits, should shrink the queue over time. The queue has to run first, since it is the data source.
 
 ## How I'd measure it
 
@@ -93,17 +94,16 @@ Where the difference comes from:
 
 ## Open questions
 
-- What share of invoice payments arrive on the real account number instead of the virtual one? That sets the size of the main-account half of this.
 - Mercury Books now uses AI to "categorize and reconcile" invoicing activity, which keeps the vendor's ledger in line with its bank account. It doesn't say whether Books also settles which invoice a payment paid and what's still owed. Where should invoice-level matching live, in Invoicing or in Books, so a match made in one never fights the other? The same goes for QuickBooks, Xero and NetSuite syncs.
+- What share of invoice payments arrive on the real account number instead of the virtual one? That sets the size of the main-account half of this.
 - What does Mercury do today with a virtual-account payment when two open invoices share the amount? The docs flag the problem but don't say.
 - How much better is payer identity from ACH originator IDs than from names, for main-account payments? Probably a lot, and it's a free signal.
 - What share of real invoice volume is processor payouts versus direct ACH and wire? That decides whether payout reconciliation moves up the list.
 
 ## Caveats
 
-The data is synthetic and I wrote both it and the agent. Mercury's built-in behavior is modeled from its public API docs, not tested in the product, and the app may offer manual tools the docs don't describe. I did no prompt tuning against the data. The only prompt change for this version tells the model which account number the money arrived on, and the reported results are from the first full run. Real bank feeds will be messier, which is why step 1 of the rollout is shadow mode.
+The data is synthetic. I designed both it and the agent and built them with Claude Code, so the test may share my blind spots. Mercury's built-in behavior is modeled from its public API docs, not tested in the product, and the app may offer manual tools the docs don't describe. I did no prompt tuning against the data. The only prompt change for this version tells the model which account number the money arrived on, and the reported results are from the first full run. Real bank feeds will be messier, which is why step 1 of the rollout is shadow mode.
 
-**[Jay: add one line from your own experience shipping something where money moved and mistakes were costly. The posting asks for exactly that.]**
 
 ## Sources
 
