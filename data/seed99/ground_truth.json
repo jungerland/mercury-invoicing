@@ -1,0 +1,1319 @@
+[
+  {
+    "payment_id": "pay_001",
+    "scenario": "twin_amount",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1141",
+        "amount": 12493.4
+      }
+    ],
+    "residual": "none",
+    "note": "Two open invoices for Vantage Point Consulting at exactly this amount, and nothing says which. Suggest the older one; a person confirms."
+  },
+  {
+    "payment_id": "pay_002",
+    "scenario": "twin_amount",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1175",
+        "amount": 18476.4
+      }
+    ],
+    "residual": "none",
+    "note": "Two open invoices for Redwood Row Realty at exactly this amount, and nothing says which. Suggest the older one; a person confirms."
+  },
+  {
+    "payment_id": "pay_003",
+    "scenario": "multi_invoice",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1092",
+        "amount": 17774.5
+      },
+      {
+        "invoice_id": "inv_1087",
+        "amount": 10000
+      },
+      {
+        "invoice_id": "inv_1088",
+        "amount": 3597
+      }
+    ],
+    "residual": "none",
+    "note": "Pays 3 invoices in full; memo does not list them, only the sum fits."
+  },
+  {
+    "payment_id": "pay_004",
+    "scenario": "ambiguous",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1126",
+        "amount": 1200
+      }
+    ],
+    "residual": "none",
+    "note": "$1200 matches several open invoices across customers and nothing identifies the payer. Must not auto-apply."
+  },
+  {
+    "payment_id": "pay_005",
+    "scenario": "multi_invoice",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1004",
+        "amount": 7500
+      },
+      {
+        "invoice_id": "inv_1003",
+        "amount": 1919.5
+      }
+    ],
+    "residual": "none",
+    "note": "Pays 2 invoices in full; memo does not list them, only the sum fits."
+  },
+  {
+    "payment_id": "pay_006",
+    "scenario": "ambiguous",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1156",
+        "amount": 5000
+      }
+    ],
+    "residual": "none",
+    "note": "$5000 matches several open invoices across customers and nothing identifies the payer. Must not auto-apply."
+  },
+  {
+    "payment_id": "pay_007",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1019",
+        "amount": 2262
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_008",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1151",
+        "amount": 1200
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_009",
+    "scenario": "partial",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1011",
+        "amount": 6623.5
+      }
+    ],
+    "residual": "partial",
+    "note": "Partial payment. Right invoice is clear, but the user should confirm the remaining balance stays open."
+  },
+  {
+    "payment_id": "pay_010",
+    "scenario": "different_payer",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1132",
+        "amount": 2994.99
+      }
+    ],
+    "residual": "none",
+    "note": "Paid by \"PRIYA RAMAN\", a payer previously seen paying for Orchard Lane Homes."
+  },
+  {
+    "payment_id": "pay_011",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1111",
+        "amount": 20361.25
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_012",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1143",
+        "amount": 9912.4
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_013",
+    "scenario": "multi_invoice",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1078",
+        "amount": 8957
+      },
+      {
+        "invoice_id": "inv_1079",
+        "amount": 17149.4
+      }
+    ],
+    "residual": "none",
+    "note": "Pays 2 invoices in full; memo does not list them, only the sum fits."
+  },
+  {
+    "payment_id": "pay_014",
+    "scenario": "overpayment",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1071",
+        "amount": 18384.99
+      }
+    ],
+    "residual": "overpayment",
+    "note": "Pays the invoice plus extra. The user decides between a credit and a refund."
+  },
+  {
+    "payment_id": "pay_015",
+    "scenario": "twin_amount",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1176",
+        "amount": 16742.5
+      }
+    ],
+    "residual": "none",
+    "note": "Two open invoices for Brightpath Legal Group PC at this amount; the memo says which."
+  },
+  {
+    "payment_id": "pay_016",
+    "scenario": "twin_amount",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1177",
+        "amount": 13205.5
+      }
+    ],
+    "residual": "none",
+    "note": "Two open invoices for Kestrel Field Services at this amount; the memo says which."
+  },
+  {
+    "payment_id": "pay_017",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1026",
+        "amount": 13162.99
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_018",
+    "scenario": "ambiguous",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1121",
+        "amount": 2500
+      }
+    ],
+    "residual": "none",
+    "note": "$2500 matches several open invoices across customers and nothing identifies the payer. Must not auto-apply."
+  },
+  {
+    "payment_id": "pay_019",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1160",
+        "amount": 4738.4
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_020",
+    "scenario": "wrong_reference",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1138",
+        "amount": 19087.99
+      }
+    ],
+    "residual": "none",
+    "note": "Memo cites INV-1139 but the amount exactly matches INV-1138. Likely a customer typo, but a human should confirm."
+  },
+  {
+    "payment_id": "pay_021",
+    "scenario": "multi_invoice",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1056",
+        "amount": 10000
+      },
+      {
+        "invoice_id": "inv_1052",
+        "amount": 10000
+      },
+      {
+        "invoice_id": "inv_1053",
+        "amount": 15174.4
+      }
+    ],
+    "residual": "none",
+    "note": "Pays 3 invoices in full; memo lists them."
+  },
+  {
+    "payment_id": "pay_022",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1041",
+        "amount": 12430.25
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_023",
+    "scenario": "wrong_reference",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1094",
+        "amount": 10000
+      }
+    ],
+    "residual": "none",
+    "note": "Memo cites INV-1093 but the amount exactly matches INV-1094. Likely a customer typo, but a human should confirm."
+  },
+  {
+    "payment_id": "pay_024",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1090",
+        "amount": 923.4
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_025",
+    "scenario": "partial",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1110",
+        "amount": 1217.4
+      }
+    ],
+    "residual": "partial",
+    "note": "Partial payment. Right invoice is clear, but the user should confirm the remaining balance stays open."
+  },
+  {
+    "payment_id": "pay_026",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1043",
+        "amount": 17319.4
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_027",
+    "scenario": "wire_fee",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1113",
+        "amount": 14062.25
+      }
+    ],
+    "residual": "processing_fee",
+    "note": "Short by $35, a typical wire fee. Apply and write off the fee."
+  },
+  {
+    "payment_id": "pay_028",
+    "scenario": "multi_invoice",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1033",
+        "amount": 12321
+      },
+      {
+        "invoice_id": "inv_1034",
+        "amount": 12131
+      },
+      {
+        "invoice_id": "inv_1035",
+        "amount": 7901
+      }
+    ],
+    "residual": "none",
+    "note": "Pays 3 invoices in full; memo lists them."
+  },
+  {
+    "payment_id": "pay_029",
+    "scenario": "wire_fee",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1072",
+        "amount": 22346.5
+      }
+    ],
+    "residual": "processing_fee",
+    "note": "Short by $45, a typical wire fee. Apply and write off the fee."
+  },
+  {
+    "payment_id": "pay_030",
+    "scenario": "not_invoice",
+    "ideal": "no_invoice",
+    "allocations": [],
+    "residual": "none",
+    "note": "Not a customer paying an invoice. Some amounts collide with open invoices on purpose."
+  },
+  {
+    "payment_id": "pay_031",
+    "scenario": "not_invoice",
+    "ideal": "no_invoice",
+    "allocations": [],
+    "residual": "none",
+    "note": "Not a customer paying an invoice. Some amounts collide with open invoices on purpose."
+  },
+  {
+    "payment_id": "pay_032",
+    "scenario": "wire_fee",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1023",
+        "amount": 7871.5
+      }
+    ],
+    "residual": "processing_fee",
+    "note": "Short by $15, a typical wire fee. Apply and write off the fee."
+  },
+  {
+    "payment_id": "pay_033",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1102",
+        "amount": 14338.4
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_034",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1010",
+        "amount": 11133
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_035",
+    "scenario": "wire_fee",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1067",
+        "amount": 21326.99
+      }
+    ],
+    "residual": "processing_fee",
+    "note": "Short by $30, a typical wire fee. Apply and write off the fee."
+  },
+  {
+    "payment_id": "pay_036",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1020",
+        "amount": 17966.99
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_037",
+    "scenario": "different_payer",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1002",
+        "amount": 2500
+      }
+    ],
+    "residual": "none",
+    "note": "Paid by \"NWR HOLDINGS LLC\", a payer previously seen paying for Northwind Robotics, Inc.."
+  },
+  {
+    "payment_id": "pay_038",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1140",
+        "amount": 11367.99
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_039",
+    "scenario": "partial",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1065",
+        "amount": 10573.5
+      }
+    ],
+    "residual": "partial",
+    "note": "Partial payment. Right invoice is clear, but the user should confirm the remaining balance stays open."
+  },
+  {
+    "payment_id": "pay_040",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1039",
+        "amount": 12531
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_041",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1038",
+        "amount": 2900.25
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_042",
+    "scenario": "multi_invoice",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1149",
+        "amount": 687
+      },
+      {
+        "invoice_id": "inv_1147",
+        "amount": 5000
+      }
+    ],
+    "residual": "none",
+    "note": "Pays 2 invoices in full; memo does not list them, only the sum fits."
+  },
+  {
+    "payment_id": "pay_043",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1009",
+        "amount": 16955.99
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_044",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1059",
+        "amount": 16754.5
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_045",
+    "scenario": "not_invoice",
+    "ideal": "no_invoice",
+    "allocations": [],
+    "residual": "none",
+    "note": "Not a customer paying an invoice. Some amounts collide with open invoices on purpose."
+  },
+  {
+    "payment_id": "pay_046",
+    "scenario": "not_invoice",
+    "ideal": "no_invoice",
+    "allocations": [],
+    "residual": "none",
+    "note": "Not a customer paying an invoice. Some amounts collide with open invoices on purpose."
+  },
+  {
+    "payment_id": "pay_047",
+    "scenario": "ambiguous",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1022",
+        "amount": 1200
+      }
+    ],
+    "residual": "none",
+    "note": "$1200 matches several open invoices across customers and nothing identifies the payer. Must not auto-apply."
+  },
+  {
+    "payment_id": "pay_048",
+    "scenario": "not_invoice",
+    "ideal": "no_invoice",
+    "allocations": [],
+    "residual": "none",
+    "note": "Not a customer paying an invoice. Some amounts collide with open invoices on purpose."
+  },
+  {
+    "payment_id": "pay_049",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1007",
+        "amount": 9634
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_050",
+    "scenario": "wire_fee",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1069",
+        "amount": 12370.5
+      }
+    ],
+    "residual": "processing_fee",
+    "note": "Short by $45, a typical wire fee. Apply and write off the fee."
+  },
+  {
+    "payment_id": "pay_051",
+    "scenario": "overpayment",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1101",
+        "amount": 23868
+      }
+    ],
+    "residual": "overpayment",
+    "note": "Pays the invoice plus extra. The user decides between a credit and a refund."
+  },
+  {
+    "payment_id": "pay_052",
+    "scenario": "wire_fee",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1040",
+        "amount": 17577.25
+      }
+    ],
+    "residual": "processing_fee",
+    "note": "Short by $25, a typical wire fee. Apply and write off the fee."
+  },
+  {
+    "payment_id": "pay_053",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1057",
+        "amount": 10459
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_054",
+    "scenario": "overpayment",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1105",
+        "amount": 5000
+      }
+    ],
+    "residual": "overpayment",
+    "note": "Pays the invoice plus extra. The user decides between a credit and a refund."
+  },
+  {
+    "payment_id": "pay_055",
+    "scenario": "different_payer",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1013",
+        "amount": 10000
+      }
+    ],
+    "residual": "none",
+    "note": "Paid by \"BILL.COM PAYABLES\", a payer previously seen paying for Brightpath Legal Group PC."
+  },
+  {
+    "payment_id": "pay_056",
+    "scenario": "different_payer",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1058",
+        "amount": 10000
+      }
+    ],
+    "residual": "none",
+    "note": "Paid by \"LUMENARC INC\", a payer previously seen paying for Lumen Arc Software."
+  },
+  {
+    "payment_id": "pay_057",
+    "scenario": "wrong_reference",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1055",
+        "amount": 21260.4
+      }
+    ],
+    "residual": "none",
+    "note": "Memo cites INV-1052 but the amount exactly matches INV-1055. Likely a customer typo, but a human should confirm."
+  },
+  {
+    "payment_id": "pay_058",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1134",
+        "amount": 15900.4
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_059",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1068",
+        "amount": 5525
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_060",
+    "scenario": "different_payer",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1083",
+        "amount": 5000
+      }
+    ],
+    "residual": "none",
+    "note": "Paid by \"SQUARE INC PAYOUT\", a payer previously seen paying for Saltmarsh Coffee Roasters."
+  },
+  {
+    "payment_id": "pay_061",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1131",
+        "amount": 13654
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_062",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1142",
+        "amount": 10000
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_063",
+    "scenario": "overpayment",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1168",
+        "amount": 8864.4
+      }
+    ],
+    "residual": "overpayment",
+    "note": "Pays the invoice plus extra. The user decides between a credit and a refund."
+  },
+  {
+    "payment_id": "pay_064",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1167",
+        "amount": 1200
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_065",
+    "scenario": "wire_fee",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1152",
+        "amount": 12107.5
+      }
+    ],
+    "residual": "processing_fee",
+    "note": "Short by $20, a typical wire fee. Apply and write off the fee."
+  },
+  {
+    "payment_id": "pay_066",
+    "scenario": "different_payer",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1045",
+        "amount": 3557
+      }
+    ],
+    "residual": "none",
+    "note": "Paid by \"RRR ESCROW TRUST ACCT\", a payer previously seen paying for Redwood Row Realty."
+  },
+  {
+    "payment_id": "pay_067",
+    "scenario": "different_payer",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1001",
+        "amount": 13165.99
+      }
+    ],
+    "residual": "none",
+    "note": "Paid by \"NWR HOLDINGS LLC\", a payer previously seen paying for Northwind Robotics, Inc.."
+  },
+  {
+    "payment_id": "pay_068",
+    "scenario": "multi_invoice",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1161",
+        "amount": 14132
+      },
+      {
+        "invoice_id": "inv_1158",
+        "amount": 9929.25
+      },
+      {
+        "invoice_id": "inv_1159",
+        "amount": 10297
+      }
+    ],
+    "residual": "none",
+    "note": "Pays 3 invoices in full; memo lists them."
+  },
+  {
+    "payment_id": "pay_069",
+    "scenario": "wrong_reference",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1021",
+        "amount": 1200
+      }
+    ],
+    "residual": "none",
+    "note": "Memo cites INV-1020 but the amount exactly matches INV-1021. Likely a customer typo, but a human should confirm."
+  },
+  {
+    "payment_id": "pay_070",
+    "scenario": "different_payer",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1104",
+        "amount": 10000
+      }
+    ],
+    "residual": "none",
+    "note": "Paid by \"GW MEDIA HOLDINGS\", a payer previously seen paying for Glasswing Interactive."
+  },
+  {
+    "payment_id": "pay_071",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1172",
+        "amount": 6993.5
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_072",
+    "scenario": "different_payer",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1032",
+        "amount": 8671
+      }
+    ],
+    "residual": "none",
+    "note": "Paid by \"DANA OKAFOR\", a payer previously seen paying for Ferncliff Studio."
+  },
+  {
+    "payment_id": "pay_073",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1061",
+        "amount": 7500
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_074",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1014",
+        "amount": 9235.5
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_075",
+    "scenario": "wire_fee",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1169",
+        "amount": 16908
+      }
+    ],
+    "residual": "processing_fee",
+    "note": "Short by $45, a typical wire fee. Apply and write off the fee."
+  },
+  {
+    "payment_id": "pay_076",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1042",
+        "amount": 23340.5
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_077",
+    "scenario": "partial",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1135",
+        "amount": 9649.63
+      }
+    ],
+    "residual": "partial",
+    "note": "Partial payment. Right invoice is clear, but the user should confirm the remaining balance stays open."
+  },
+  {
+    "payment_id": "pay_078",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1037",
+        "amount": 13388.4
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_079",
+    "scenario": "multi_invoice",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1124",
+        "amount": 1355
+      },
+      {
+        "invoice_id": "inv_1118",
+        "amount": 3959
+      },
+      {
+        "invoice_id": "inv_1119",
+        "amount": 22144
+      }
+    ],
+    "residual": "none",
+    "note": "Pays 3 invoices in full; memo lists them."
+  },
+  {
+    "payment_id": "pay_080",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1108",
+        "amount": 7500
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_081",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1006",
+        "amount": 6557.4
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_082",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1098",
+        "amount": 13076.4
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_083",
+    "scenario": "partial",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1162",
+        "amount": 8029
+      }
+    ],
+    "residual": "partial",
+    "note": "Partial payment. Right invoice is clear, but the user should confirm the remaining balance stays open."
+  },
+  {
+    "payment_id": "pay_084",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1096",
+        "amount": 13688.99
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_085",
+    "scenario": "multi_invoice",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1099",
+        "amount": 12512.25
+      },
+      {
+        "invoice_id": "inv_1093",
+        "amount": 10640
+      },
+      {
+        "invoice_id": "inv_1095",
+        "amount": 15190.99
+      }
+    ],
+    "residual": "none",
+    "note": "Pays 3 invoices in full; memo does not list them, only the sum fits."
+  },
+  {
+    "payment_id": "pay_086",
+    "scenario": "partial",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1027",
+        "amount": 4729
+      }
+    ],
+    "residual": "partial",
+    "note": "Partial payment. Right invoice is clear, but the user should confirm the remaining balance stays open."
+  },
+  {
+    "payment_id": "pay_087",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1117",
+        "amount": 16785.99
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_088",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1081",
+        "amount": 21107
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_089",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1036",
+        "amount": 20601.25
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_090",
+    "scenario": "not_invoice",
+    "ideal": "no_invoice",
+    "allocations": [],
+    "residual": "none",
+    "note": "Not a customer paying an invoice. Some amounts collide with open invoices on purpose."
+  },
+  {
+    "payment_id": "pay_091",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1130",
+        "amount": 7956
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_092",
+    "scenario": "garbled_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1077",
+        "amount": 10000
+      }
+    ],
+    "residual": "none",
+    "note": "Reference is malformed but recoverable; amount matches exactly."
+  },
+  {
+    "payment_id": "pay_093",
+    "scenario": "no_memo",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1128",
+        "amount": 3263
+      }
+    ],
+    "residual": "none",
+    "note": "No reference, but amount is unique among open invoices and the payer is known."
+  },
+  {
+    "payment_id": "pay_094",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1086",
+        "amount": 11191
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_095",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1106",
+        "amount": 3021.5
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_096",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1146",
+        "amount": 21549.99
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_097",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1050",
+        "amount": 3929.25
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_098",
+    "scenario": "clean",
+    "ideal": "auto",
+    "allocations": [
+      {
+        "invoice_id": "inv_1133",
+        "amount": 10000
+      }
+    ],
+    "residual": "none",
+    "note": "Reference and amount both match."
+  },
+  {
+    "payment_id": "pay_099",
+    "scenario": "ambiguous",
+    "ideal": "review",
+    "allocations": [
+      {
+        "invoice_id": "inv_1091",
+        "amount": 10000
+      }
+    ],
+    "residual": "none",
+    "note": "$10000 matches several open invoices across customers and nothing identifies the payer. Must not auto-apply."
+  }
+]

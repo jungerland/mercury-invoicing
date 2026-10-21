@@ -1,0 +1,1595 @@
+[
+  {
+    "id": "inv_1001",
+    "number": "INV-1001",
+    "customer_id": "cus_001",
+    "amount": 13165.99,
+    "issued": "2026-09-01",
+    "due": "2026-10-16",
+    "status": "open"
+  },
+  {
+    "id": "inv_1002",
+    "number": "INV-1002",
+    "customer_id": "cus_001",
+    "amount": 2500,
+    "issued": "2026-09-13",
+    "due": "2026-10-13",
+    "status": "open"
+  },
+  {
+    "id": "inv_1003",
+    "number": "INV-1003",
+    "customer_id": "cus_001",
+    "amount": 1919.5,
+    "issued": "2026-09-23",
+    "due": "2026-10-23",
+    "status": "open"
+  },
+  {
+    "id": "inv_1004",
+    "number": "INV-1004",
+    "customer_id": "cus_001",
+    "amount": 7500,
+    "issued": "2026-09-24",
+    "due": "2026-10-24",
+    "status": "open"
+  },
+  {
+    "id": "inv_1005",
+    "number": "INV-1005",
+    "customer_id": "cus_001",
+    "amount": 13541.99,
+    "issued": "2026-09-12",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1006",
+    "number": "INV-1006",
+    "customer_id": "cus_002",
+    "amount": 6557.4,
+    "issued": "2026-09-07",
+    "due": "2026-10-07",
+    "status": "open"
+  },
+  {
+    "id": "inv_1007",
+    "number": "INV-1007",
+    "customer_id": "cus_002",
+    "amount": 9634,
+    "issued": "2026-09-08",
+    "due": "2026-10-08",
+    "status": "open"
+  },
+  {
+    "id": "inv_1008",
+    "number": "INV-1008",
+    "customer_id": "cus_002",
+    "amount": 21710,
+    "issued": "2026-09-26",
+    "due": "2026-10-26",
+    "status": "open"
+  },
+  {
+    "id": "inv_1009",
+    "number": "INV-1009",
+    "customer_id": "cus_002",
+    "amount": 16955.99,
+    "issued": "2026-09-09",
+    "due": "2026-10-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1010",
+    "number": "INV-1010",
+    "customer_id": "cus_002",
+    "amount": 11133,
+    "issued": "2026-09-01",
+    "due": "2026-10-01",
+    "status": "open"
+  },
+  {
+    "id": "inv_1011",
+    "number": "INV-1011",
+    "customer_id": "cus_002",
+    "amount": 13247,
+    "issued": "2026-09-23",
+    "due": "2026-11-07",
+    "status": "open"
+  },
+  {
+    "id": "inv_1012",
+    "number": "INV-1012",
+    "customer_id": "cus_002",
+    "amount": 16910,
+    "issued": "2026-09-24",
+    "due": "2026-10-24",
+    "status": "open"
+  },
+  {
+    "id": "inv_1013",
+    "number": "INV-1013",
+    "customer_id": "cus_003",
+    "amount": 10000,
+    "issued": "2026-09-03",
+    "due": "2026-10-03",
+    "status": "open"
+  },
+  {
+    "id": "inv_1014",
+    "number": "INV-1014",
+    "customer_id": "cus_003",
+    "amount": 9235.5,
+    "issued": "2026-09-27",
+    "due": "2026-10-12",
+    "status": "open"
+  },
+  {
+    "id": "inv_1015",
+    "number": "INV-1015",
+    "customer_id": "cus_003",
+    "amount": 1263.25,
+    "issued": "2026-09-18",
+    "due": "2026-10-18",
+    "status": "open"
+  },
+  {
+    "id": "inv_1016",
+    "number": "INV-1016",
+    "customer_id": "cus_003",
+    "amount": 1200,
+    "issued": "2026-09-26",
+    "due": "2026-10-11",
+    "status": "open"
+  },
+  {
+    "id": "inv_1017",
+    "number": "INV-1017",
+    "customer_id": "cus_003",
+    "amount": 19145.4,
+    "issued": "2026-09-05",
+    "due": "2026-09-20",
+    "status": "open"
+  },
+  {
+    "id": "inv_1018",
+    "number": "INV-1018",
+    "customer_id": "cus_003",
+    "amount": 16742.5,
+    "issued": "2026-09-27",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1019",
+    "number": "INV-1019",
+    "customer_id": "cus_003",
+    "amount": 2262,
+    "issued": "2026-09-27",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1020",
+    "number": "INV-1020",
+    "customer_id": "cus_004",
+    "amount": 17966.99,
+    "issued": "2026-09-28",
+    "due": "2026-10-28",
+    "status": "open"
+  },
+  {
+    "id": "inv_1021",
+    "number": "INV-1021",
+    "customer_id": "cus_004",
+    "amount": 1200,
+    "issued": "2026-09-19",
+    "due": "2026-11-03",
+    "status": "open"
+  },
+  {
+    "id": "inv_1022",
+    "number": "INV-1022",
+    "customer_id": "cus_004",
+    "amount": 1200,
+    "issued": "2026-09-12",
+    "due": "2026-09-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1023",
+    "number": "INV-1023",
+    "customer_id": "cus_004",
+    "amount": 7886.5,
+    "issued": "2026-09-11",
+    "due": "2026-09-26",
+    "status": "open"
+  },
+  {
+    "id": "inv_1024",
+    "number": "INV-1024",
+    "customer_id": "cus_004",
+    "amount": 17098,
+    "issued": "2026-09-18",
+    "due": "2026-10-18",
+    "status": "open"
+  },
+  {
+    "id": "inv_1025",
+    "number": "INV-1025",
+    "customer_id": "cus_004",
+    "amount": 16299.25,
+    "issued": "2026-09-07",
+    "due": "2026-09-22",
+    "status": "open"
+  },
+  {
+    "id": "inv_1026",
+    "number": "INV-1026",
+    "customer_id": "cus_005",
+    "amount": 13162.99,
+    "issued": "2026-09-27",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1027",
+    "number": "INV-1027",
+    "customer_id": "cus_005",
+    "amount": 18916,
+    "issued": "2026-09-30",
+    "due": "2026-11-14",
+    "status": "open"
+  },
+  {
+    "id": "inv_1028",
+    "number": "INV-1028",
+    "customer_id": "cus_005",
+    "amount": 22726.25,
+    "issued": "2026-09-07",
+    "due": "2026-10-07",
+    "status": "open"
+  },
+  {
+    "id": "inv_1029",
+    "number": "INV-1029",
+    "customer_id": "cus_005",
+    "amount": 16409,
+    "issued": "2026-09-21",
+    "due": "2026-11-05",
+    "status": "open"
+  },
+  {
+    "id": "inv_1030",
+    "number": "INV-1030",
+    "customer_id": "cus_005",
+    "amount": 1472.99,
+    "issued": "2026-09-04",
+    "due": "2026-10-19",
+    "status": "open"
+  },
+  {
+    "id": "inv_1031",
+    "number": "INV-1031",
+    "customer_id": "cus_005",
+    "amount": 9575.99,
+    "issued": "2026-10-01",
+    "due": "2026-11-15",
+    "status": "open"
+  },
+  {
+    "id": "inv_1032",
+    "number": "INV-1032",
+    "customer_id": "cus_005",
+    "amount": 8671,
+    "issued": "2026-09-09",
+    "due": "2026-09-24",
+    "status": "open"
+  },
+  {
+    "id": "inv_1033",
+    "number": "INV-1033",
+    "customer_id": "cus_006",
+    "amount": 12321,
+    "issued": "2026-09-24",
+    "due": "2026-10-24",
+    "status": "open"
+  },
+  {
+    "id": "inv_1034",
+    "number": "INV-1034",
+    "customer_id": "cus_006",
+    "amount": 12131,
+    "issued": "2026-09-25",
+    "due": "2026-10-25",
+    "status": "open"
+  },
+  {
+    "id": "inv_1035",
+    "number": "INV-1035",
+    "customer_id": "cus_006",
+    "amount": 7901,
+    "issued": "2026-09-03",
+    "due": "2026-09-18",
+    "status": "open"
+  },
+  {
+    "id": "inv_1036",
+    "number": "INV-1036",
+    "customer_id": "cus_006",
+    "amount": 20601.25,
+    "issued": "2026-09-27",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1037",
+    "number": "INV-1037",
+    "customer_id": "cus_007",
+    "amount": 13388.4,
+    "issued": "2026-09-07",
+    "due": "2026-10-07",
+    "status": "open"
+  },
+  {
+    "id": "inv_1038",
+    "number": "INV-1038",
+    "customer_id": "cus_007",
+    "amount": 2900.25,
+    "issued": "2026-09-02",
+    "due": "2026-10-02",
+    "status": "open"
+  },
+  {
+    "id": "inv_1039",
+    "number": "INV-1039",
+    "customer_id": "cus_007",
+    "amount": 12531,
+    "issued": "2026-09-11",
+    "due": "2026-10-11",
+    "status": "open"
+  },
+  {
+    "id": "inv_1040",
+    "number": "INV-1040",
+    "customer_id": "cus_007",
+    "amount": 17602.25,
+    "issued": "2026-09-28",
+    "due": "2026-11-12",
+    "status": "open"
+  },
+  {
+    "id": "inv_1041",
+    "number": "INV-1041",
+    "customer_id": "cus_007",
+    "amount": 12430.25,
+    "issued": "2026-09-28",
+    "due": "2026-10-28",
+    "status": "open"
+  },
+  {
+    "id": "inv_1042",
+    "number": "INV-1042",
+    "customer_id": "cus_008",
+    "amount": 23340.5,
+    "issued": "2026-09-18",
+    "due": "2026-11-02",
+    "status": "open"
+  },
+  {
+    "id": "inv_1043",
+    "number": "INV-1043",
+    "customer_id": "cus_008",
+    "amount": 17319.4,
+    "issued": "2026-09-01",
+    "due": "2026-09-16",
+    "status": "open"
+  },
+  {
+    "id": "inv_1044",
+    "number": "INV-1044",
+    "customer_id": "cus_008",
+    "amount": 18476.4,
+    "issued": "2026-09-15",
+    "due": "2026-10-15",
+    "status": "open"
+  },
+  {
+    "id": "inv_1045",
+    "number": "INV-1045",
+    "customer_id": "cus_008",
+    "amount": 3557,
+    "issued": "2026-09-16",
+    "due": "2026-10-16",
+    "status": "open"
+  },
+  {
+    "id": "inv_1046",
+    "number": "INV-1046",
+    "customer_id": "cus_009",
+    "amount": 10000,
+    "issued": "2026-09-04",
+    "due": "2026-10-04",
+    "status": "open"
+  },
+  {
+    "id": "inv_1047",
+    "number": "INV-1047",
+    "customer_id": "cus_009",
+    "amount": 16426,
+    "issued": "2026-09-05",
+    "due": "2026-10-05",
+    "status": "open"
+  },
+  {
+    "id": "inv_1048",
+    "number": "INV-1048",
+    "customer_id": "cus_009",
+    "amount": 17995.25,
+    "issued": "2026-09-11",
+    "due": "2026-10-11",
+    "status": "open"
+  },
+  {
+    "id": "inv_1049",
+    "number": "INV-1049",
+    "customer_id": "cus_009",
+    "amount": 7500,
+    "issued": "2026-09-13",
+    "due": "2026-09-28",
+    "status": "open"
+  },
+  {
+    "id": "inv_1050",
+    "number": "INV-1050",
+    "customer_id": "cus_009",
+    "amount": 3929.25,
+    "issued": "2026-09-02",
+    "due": "2026-10-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1051",
+    "number": "INV-1051",
+    "customer_id": "cus_009",
+    "amount": 7500,
+    "issued": "2026-09-13",
+    "due": "2026-09-28",
+    "status": "open"
+  },
+  {
+    "id": "inv_1052",
+    "number": "INV-1052",
+    "customer_id": "cus_010",
+    "amount": 10000,
+    "issued": "2026-09-26",
+    "due": "2026-10-26",
+    "status": "open"
+  },
+  {
+    "id": "inv_1053",
+    "number": "INV-1053",
+    "customer_id": "cus_010",
+    "amount": 15174.4,
+    "issued": "2026-09-12",
+    "due": "2026-09-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1054",
+    "number": "INV-1054",
+    "customer_id": "cus_010",
+    "amount": 3842,
+    "issued": "2026-09-23",
+    "due": "2026-10-23",
+    "status": "open"
+  },
+  {
+    "id": "inv_1055",
+    "number": "INV-1055",
+    "customer_id": "cus_010",
+    "amount": 21260.4,
+    "issued": "2026-09-21",
+    "due": "2026-10-06",
+    "status": "open"
+  },
+  {
+    "id": "inv_1056",
+    "number": "INV-1056",
+    "customer_id": "cus_010",
+    "amount": 10000,
+    "issued": "2026-09-11",
+    "due": "2026-10-26",
+    "status": "open"
+  },
+  {
+    "id": "inv_1057",
+    "number": "INV-1057",
+    "customer_id": "cus_010",
+    "amount": 10459,
+    "issued": "2026-09-29",
+    "due": "2026-10-29",
+    "status": "open"
+  },
+  {
+    "id": "inv_1058",
+    "number": "INV-1058",
+    "customer_id": "cus_010",
+    "amount": 10000,
+    "issued": "2026-09-20",
+    "due": "2026-11-04",
+    "status": "open"
+  },
+  {
+    "id": "inv_1059",
+    "number": "INV-1059",
+    "customer_id": "cus_011",
+    "amount": 16754.5,
+    "issued": "2026-09-12",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1060",
+    "number": "INV-1060",
+    "customer_id": "cus_011",
+    "amount": 21094.99,
+    "issued": "2026-09-25",
+    "due": "2026-10-10",
+    "status": "open"
+  },
+  {
+    "id": "inv_1061",
+    "number": "INV-1061",
+    "customer_id": "cus_011",
+    "amount": 7500,
+    "issued": "2026-09-13",
+    "due": "2026-09-28",
+    "status": "open"
+  },
+  {
+    "id": "inv_1062",
+    "number": "INV-1062",
+    "customer_id": "cus_011",
+    "amount": 1200,
+    "issued": "2026-09-13",
+    "due": "2026-09-28",
+    "status": "open"
+  },
+  {
+    "id": "inv_1063",
+    "number": "INV-1063",
+    "customer_id": "cus_011",
+    "amount": 11998.5,
+    "issued": "2026-09-09",
+    "due": "2026-10-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1064",
+    "number": "INV-1064",
+    "customer_id": "cus_011",
+    "amount": 15401,
+    "issued": "2026-09-17",
+    "due": "2026-10-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1065",
+    "number": "INV-1065",
+    "customer_id": "cus_011",
+    "amount": 21146.99,
+    "issued": "2026-09-22",
+    "due": "2026-11-06",
+    "status": "open"
+  },
+  {
+    "id": "inv_1066",
+    "number": "INV-1066",
+    "customer_id": "cus_012",
+    "amount": 9323.25,
+    "issued": "2026-09-17",
+    "due": "2026-11-01",
+    "status": "open"
+  },
+  {
+    "id": "inv_1067",
+    "number": "INV-1067",
+    "customer_id": "cus_012",
+    "amount": 21356.99,
+    "issued": "2026-09-08",
+    "due": "2026-10-08",
+    "status": "open"
+  },
+  {
+    "id": "inv_1068",
+    "number": "INV-1068",
+    "customer_id": "cus_012",
+    "amount": 5525,
+    "issued": "2026-09-08",
+    "due": "2026-10-08",
+    "status": "open"
+  },
+  {
+    "id": "inv_1069",
+    "number": "INV-1069",
+    "customer_id": "cus_012",
+    "amount": 12415.5,
+    "issued": "2026-09-02",
+    "due": "2026-10-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1070",
+    "number": "INV-1070",
+    "customer_id": "cus_012",
+    "amount": 4916,
+    "issued": "2026-09-24",
+    "due": "2026-10-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1071",
+    "number": "INV-1071",
+    "customer_id": "cus_012",
+    "amount": 18384.99,
+    "issued": "2026-09-05",
+    "due": "2026-09-20",
+    "status": "open"
+  },
+  {
+    "id": "inv_1072",
+    "number": "INV-1072",
+    "customer_id": "cus_013",
+    "amount": 22391.5,
+    "issued": "2026-09-26",
+    "due": "2026-10-26",
+    "status": "open"
+  },
+  {
+    "id": "inv_1073",
+    "number": "INV-1073",
+    "customer_id": "cus_013",
+    "amount": 20795.99,
+    "issued": "2026-09-19",
+    "due": "2026-10-04",
+    "status": "open"
+  },
+  {
+    "id": "inv_1074",
+    "number": "INV-1074",
+    "customer_id": "cus_013",
+    "amount": 17055.5,
+    "issued": "2026-09-29",
+    "due": "2026-10-29",
+    "status": "open"
+  },
+  {
+    "id": "inv_1075",
+    "number": "INV-1075",
+    "customer_id": "cus_013",
+    "amount": 21923.99,
+    "issued": "2026-09-17",
+    "due": "2026-10-02",
+    "status": "open"
+  },
+  {
+    "id": "inv_1076",
+    "number": "INV-1076",
+    "customer_id": "cus_013",
+    "amount": 6515.4,
+    "issued": "2026-10-01",
+    "due": "2026-10-31",
+    "status": "open"
+  },
+  {
+    "id": "inv_1077",
+    "number": "INV-1077",
+    "customer_id": "cus_013",
+    "amount": 10000,
+    "issued": "2026-09-04",
+    "due": "2026-09-19",
+    "status": "open"
+  },
+  {
+    "id": "inv_1078",
+    "number": "INV-1078",
+    "customer_id": "cus_014",
+    "amount": 8957,
+    "issued": "2026-09-25",
+    "due": "2026-10-10",
+    "status": "open"
+  },
+  {
+    "id": "inv_1079",
+    "number": "INV-1079",
+    "customer_id": "cus_014",
+    "amount": 17149.4,
+    "issued": "2026-09-25",
+    "due": "2026-11-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1080",
+    "number": "INV-1080",
+    "customer_id": "cus_014",
+    "amount": 10191,
+    "issued": "2026-09-12",
+    "due": "2026-10-12",
+    "status": "open"
+  },
+  {
+    "id": "inv_1081",
+    "number": "INV-1081",
+    "customer_id": "cus_014",
+    "amount": 21107,
+    "issued": "2026-09-25",
+    "due": "2026-10-10",
+    "status": "open"
+  },
+  {
+    "id": "inv_1082",
+    "number": "INV-1082",
+    "customer_id": "cus_014",
+    "amount": 18290.99,
+    "issued": "2026-09-02",
+    "due": "2026-09-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1083",
+    "number": "INV-1083",
+    "customer_id": "cus_015",
+    "amount": 5000,
+    "issued": "2026-09-14",
+    "due": "2026-09-29",
+    "status": "open"
+  },
+  {
+    "id": "inv_1084",
+    "number": "INV-1084",
+    "customer_id": "cus_015",
+    "amount": 10734.5,
+    "issued": "2026-09-01",
+    "due": "2026-10-01",
+    "status": "open"
+  },
+  {
+    "id": "inv_1085",
+    "number": "INV-1085",
+    "customer_id": "cus_015",
+    "amount": 2500,
+    "issued": "2026-09-25",
+    "due": "2026-10-25",
+    "status": "open"
+  },
+  {
+    "id": "inv_1086",
+    "number": "INV-1086",
+    "customer_id": "cus_015",
+    "amount": 11191,
+    "issued": "2026-09-30",
+    "due": "2026-10-30",
+    "status": "open"
+  },
+  {
+    "id": "inv_1087",
+    "number": "INV-1087",
+    "customer_id": "cus_016",
+    "amount": 10000,
+    "issued": "2026-09-17",
+    "due": "2026-10-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1088",
+    "number": "INV-1088",
+    "customer_id": "cus_016",
+    "amount": 3597,
+    "issued": "2026-09-05",
+    "due": "2026-10-20",
+    "status": "open"
+  },
+  {
+    "id": "inv_1089",
+    "number": "INV-1089",
+    "customer_id": "cus_016",
+    "amount": 10315.4,
+    "issued": "2026-09-09",
+    "due": "2026-10-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1090",
+    "number": "INV-1090",
+    "customer_id": "cus_016",
+    "amount": 923.4,
+    "issued": "2026-09-09",
+    "due": "2026-10-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1091",
+    "number": "INV-1091",
+    "customer_id": "cus_016",
+    "amount": 10000,
+    "issued": "2026-09-04",
+    "due": "2026-09-19",
+    "status": "open"
+  },
+  {
+    "id": "inv_1092",
+    "number": "INV-1092",
+    "customer_id": "cus_016",
+    "amount": 17774.5,
+    "issued": "2026-09-02",
+    "due": "2026-09-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1093",
+    "number": "INV-1093",
+    "customer_id": "cus_017",
+    "amount": 10640,
+    "issued": "2026-09-21",
+    "due": "2026-10-06",
+    "status": "open"
+  },
+  {
+    "id": "inv_1094",
+    "number": "INV-1094",
+    "customer_id": "cus_017",
+    "amount": 10000,
+    "issued": "2026-09-02",
+    "due": "2026-10-02",
+    "status": "open"
+  },
+  {
+    "id": "inv_1095",
+    "number": "INV-1095",
+    "customer_id": "cus_017",
+    "amount": 15190.99,
+    "issued": "2026-09-27",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1096",
+    "number": "INV-1096",
+    "customer_id": "cus_017",
+    "amount": 13688.99,
+    "issued": "2026-10-01",
+    "due": "2026-10-31",
+    "status": "open"
+  },
+  {
+    "id": "inv_1097",
+    "number": "INV-1097",
+    "customer_id": "cus_017",
+    "amount": 10000,
+    "issued": "2026-09-06",
+    "due": "2026-10-21",
+    "status": "open"
+  },
+  {
+    "id": "inv_1098",
+    "number": "INV-1098",
+    "customer_id": "cus_017",
+    "amount": 13076.4,
+    "issued": "2026-09-25",
+    "due": "2026-10-25",
+    "status": "open"
+  },
+  {
+    "id": "inv_1099",
+    "number": "INV-1099",
+    "customer_id": "cus_017",
+    "amount": 12512.25,
+    "issued": "2026-09-30",
+    "due": "2026-10-30",
+    "status": "open"
+  },
+  {
+    "id": "inv_1100",
+    "number": "INV-1100",
+    "customer_id": "cus_018",
+    "amount": 19152.4,
+    "issued": "2026-09-21",
+    "due": "2026-10-06",
+    "status": "open"
+  },
+  {
+    "id": "inv_1101",
+    "number": "INV-1101",
+    "customer_id": "cus_018",
+    "amount": 23868,
+    "issued": "2026-09-01",
+    "due": "2026-09-16",
+    "status": "open"
+  },
+  {
+    "id": "inv_1102",
+    "number": "INV-1102",
+    "customer_id": "cus_018",
+    "amount": 14338.4,
+    "issued": "2026-09-16",
+    "due": "2026-10-01",
+    "status": "open"
+  },
+  {
+    "id": "inv_1103",
+    "number": "INV-1103",
+    "customer_id": "cus_018",
+    "amount": 16532,
+    "issued": "2026-09-30",
+    "due": "2026-11-14",
+    "status": "open"
+  },
+  {
+    "id": "inv_1104",
+    "number": "INV-1104",
+    "customer_id": "cus_018",
+    "amount": 10000,
+    "issued": "2026-10-01",
+    "due": "2026-10-31",
+    "status": "open"
+  },
+  {
+    "id": "inv_1105",
+    "number": "INV-1105",
+    "customer_id": "cus_018",
+    "amount": 5000,
+    "issued": "2026-09-20",
+    "due": "2026-10-20",
+    "status": "open"
+  },
+  {
+    "id": "inv_1106",
+    "number": "INV-1106",
+    "customer_id": "cus_018",
+    "amount": 3021.5,
+    "issued": "2026-09-09",
+    "due": "2026-10-24",
+    "status": "open"
+  },
+  {
+    "id": "inv_1107",
+    "number": "INV-1107",
+    "customer_id": "cus_019",
+    "amount": 20903,
+    "issued": "2026-09-07",
+    "due": "2026-10-07",
+    "status": "open"
+  },
+  {
+    "id": "inv_1108",
+    "number": "INV-1108",
+    "customer_id": "cus_019",
+    "amount": 7500,
+    "issued": "2026-09-12",
+    "due": "2026-10-12",
+    "status": "open"
+  },
+  {
+    "id": "inv_1109",
+    "number": "INV-1109",
+    "customer_id": "cus_019",
+    "amount": 6112,
+    "issued": "2026-09-26",
+    "due": "2026-10-26",
+    "status": "open"
+  },
+  {
+    "id": "inv_1110",
+    "number": "INV-1110",
+    "customer_id": "cus_019",
+    "amount": 3043.5,
+    "issued": "2026-09-01",
+    "due": "2026-10-01",
+    "status": "open"
+  },
+  {
+    "id": "inv_1111",
+    "number": "INV-1111",
+    "customer_id": "cus_019",
+    "amount": 20361.25,
+    "issued": "2026-09-10",
+    "due": "2026-10-10",
+    "status": "open"
+  },
+  {
+    "id": "inv_1112",
+    "number": "INV-1112",
+    "customer_id": "cus_020",
+    "amount": 13327.25,
+    "issued": "2026-09-26",
+    "due": "2026-10-26",
+    "status": "open"
+  },
+  {
+    "id": "inv_1113",
+    "number": "INV-1113",
+    "customer_id": "cus_020",
+    "amount": 14097.25,
+    "issued": "2026-09-26",
+    "due": "2026-10-26",
+    "status": "open"
+  },
+  {
+    "id": "inv_1114",
+    "number": "INV-1114",
+    "customer_id": "cus_020",
+    "amount": 716.5,
+    "issued": "2026-09-18",
+    "due": "2026-10-18",
+    "status": "open"
+  },
+  {
+    "id": "inv_1115",
+    "number": "INV-1115",
+    "customer_id": "cus_020",
+    "amount": 13205.5,
+    "issued": "2026-09-02",
+    "due": "2026-09-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1116",
+    "number": "INV-1116",
+    "customer_id": "cus_020",
+    "amount": 833.99,
+    "issued": "2026-09-21",
+    "due": "2026-10-21",
+    "status": "open"
+  },
+  {
+    "id": "inv_1117",
+    "number": "INV-1117",
+    "customer_id": "cus_020",
+    "amount": 16785.99,
+    "issued": "2026-09-14",
+    "due": "2026-10-29",
+    "status": "open"
+  },
+  {
+    "id": "inv_1118",
+    "number": "INV-1118",
+    "customer_id": "cus_021",
+    "amount": 3959,
+    "issued": "2026-09-09",
+    "due": "2026-10-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1119",
+    "number": "INV-1119",
+    "customer_id": "cus_021",
+    "amount": 22144,
+    "issued": "2026-09-01",
+    "due": "2026-10-01",
+    "status": "open"
+  },
+  {
+    "id": "inv_1120",
+    "number": "INV-1120",
+    "customer_id": "cus_021",
+    "amount": 21561.99,
+    "issued": "2026-09-07",
+    "due": "2026-10-07",
+    "status": "open"
+  },
+  {
+    "id": "inv_1121",
+    "number": "INV-1121",
+    "customer_id": "cus_021",
+    "amount": 2500,
+    "issued": "2026-09-01",
+    "due": "2026-10-01",
+    "status": "open"
+  },
+  {
+    "id": "inv_1122",
+    "number": "INV-1122",
+    "customer_id": "cus_021",
+    "amount": 10000,
+    "issued": "2026-09-01",
+    "due": "2026-09-16",
+    "status": "open"
+  },
+  {
+    "id": "inv_1123",
+    "number": "INV-1123",
+    "customer_id": "cus_021",
+    "amount": 19511,
+    "issued": "2026-09-03",
+    "due": "2026-09-18",
+    "status": "open"
+  },
+  {
+    "id": "inv_1124",
+    "number": "INV-1124",
+    "customer_id": "cus_021",
+    "amount": 1355,
+    "issued": "2026-09-01",
+    "due": "2026-10-16",
+    "status": "open"
+  },
+  {
+    "id": "inv_1125",
+    "number": "INV-1125",
+    "customer_id": "cus_022",
+    "amount": 10594.5,
+    "issued": "2026-09-26",
+    "due": "2026-11-10",
+    "status": "open"
+  },
+  {
+    "id": "inv_1126",
+    "number": "INV-1126",
+    "customer_id": "cus_022",
+    "amount": 1200,
+    "issued": "2026-09-03",
+    "due": "2026-10-03",
+    "status": "open"
+  },
+  {
+    "id": "inv_1127",
+    "number": "INV-1127",
+    "customer_id": "cus_022",
+    "amount": 4502,
+    "issued": "2026-09-23",
+    "due": "2026-10-23",
+    "status": "open"
+  },
+  {
+    "id": "inv_1128",
+    "number": "INV-1128",
+    "customer_id": "cus_022",
+    "amount": 3263,
+    "issued": "2026-09-12",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1129",
+    "number": "INV-1129",
+    "customer_id": "cus_022",
+    "amount": 14236,
+    "issued": "2026-09-15",
+    "due": "2026-10-15",
+    "status": "open"
+  },
+  {
+    "id": "inv_1130",
+    "number": "INV-1130",
+    "customer_id": "cus_022",
+    "amount": 7956,
+    "issued": "2026-09-30",
+    "due": "2026-11-14",
+    "status": "open"
+  },
+  {
+    "id": "inv_1131",
+    "number": "INV-1131",
+    "customer_id": "cus_023",
+    "amount": 13654,
+    "issued": "2026-09-19",
+    "due": "2026-10-19",
+    "status": "open"
+  },
+  {
+    "id": "inv_1132",
+    "number": "INV-1132",
+    "customer_id": "cus_023",
+    "amount": 2994.99,
+    "issued": "2026-09-12",
+    "due": "2026-09-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1133",
+    "number": "INV-1133",
+    "customer_id": "cus_023",
+    "amount": 10000,
+    "issued": "2026-09-17",
+    "due": "2026-10-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1134",
+    "number": "INV-1134",
+    "customer_id": "cus_023",
+    "amount": 15900.4,
+    "issued": "2026-09-30",
+    "due": "2026-10-30",
+    "status": "open"
+  },
+  {
+    "id": "inv_1135",
+    "number": "INV-1135",
+    "customer_id": "cus_023",
+    "amount": 19299.25,
+    "issued": "2026-09-10",
+    "due": "2026-10-10",
+    "status": "open"
+  },
+  {
+    "id": "inv_1136",
+    "number": "INV-1136",
+    "customer_id": "cus_023",
+    "amount": 5368.25,
+    "issued": "2026-09-24",
+    "due": "2026-10-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1137",
+    "number": "INV-1137",
+    "customer_id": "cus_023",
+    "amount": 2730.99,
+    "issued": "2026-10-01",
+    "due": "2026-10-31",
+    "status": "open"
+  },
+  {
+    "id": "inv_1138",
+    "number": "INV-1138",
+    "customer_id": "cus_024",
+    "amount": 19087.99,
+    "issued": "2026-09-19",
+    "due": "2026-10-19",
+    "status": "open"
+  },
+  {
+    "id": "inv_1139",
+    "number": "INV-1139",
+    "customer_id": "cus_024",
+    "amount": 1200,
+    "issued": "2026-09-15",
+    "due": "2026-10-15",
+    "status": "open"
+  },
+  {
+    "id": "inv_1140",
+    "number": "INV-1140",
+    "customer_id": "cus_024",
+    "amount": 11367.99,
+    "issued": "2026-09-25",
+    "due": "2026-10-25",
+    "status": "open"
+  },
+  {
+    "id": "inv_1141",
+    "number": "INV-1141",
+    "customer_id": "cus_024",
+    "amount": 12493.4,
+    "issued": "2026-09-02",
+    "due": "2026-09-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1142",
+    "number": "INV-1142",
+    "customer_id": "cus_025",
+    "amount": 10000,
+    "issued": "2026-09-28",
+    "due": "2026-11-12",
+    "status": "open"
+  },
+  {
+    "id": "inv_1143",
+    "number": "INV-1143",
+    "customer_id": "cus_025",
+    "amount": 9912.4,
+    "issued": "2026-09-22",
+    "due": "2026-11-06",
+    "status": "open"
+  },
+  {
+    "id": "inv_1144",
+    "number": "INV-1144",
+    "customer_id": "cus_025",
+    "amount": 16641.4,
+    "issued": "2026-09-22",
+    "due": "2026-10-22",
+    "status": "open"
+  },
+  {
+    "id": "inv_1145",
+    "number": "INV-1145",
+    "customer_id": "cus_025",
+    "amount": 3166,
+    "issued": "2026-09-17",
+    "due": "2026-10-17",
+    "status": "open"
+  },
+  {
+    "id": "inv_1146",
+    "number": "INV-1146",
+    "customer_id": "cus_025",
+    "amount": 21549.99,
+    "issued": "2026-09-17",
+    "due": "2026-10-02",
+    "status": "open"
+  },
+  {
+    "id": "inv_1147",
+    "number": "INV-1147",
+    "customer_id": "cus_026",
+    "amount": 5000,
+    "issued": "2026-09-12",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1148",
+    "number": "INV-1148",
+    "customer_id": "cus_026",
+    "amount": 8506.4,
+    "issued": "2026-09-22",
+    "due": "2026-11-06",
+    "status": "open"
+  },
+  {
+    "id": "inv_1149",
+    "number": "INV-1149",
+    "customer_id": "cus_026",
+    "amount": 687,
+    "issued": "2026-09-12",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1150",
+    "number": "INV-1150",
+    "customer_id": "cus_026",
+    "amount": 10000,
+    "issued": "2026-09-14",
+    "due": "2026-09-29",
+    "status": "open"
+  },
+  {
+    "id": "inv_1151",
+    "number": "INV-1151",
+    "customer_id": "cus_026",
+    "amount": 1200,
+    "issued": "2026-09-28",
+    "due": "2026-10-13",
+    "status": "open"
+  },
+  {
+    "id": "inv_1152",
+    "number": "INV-1152",
+    "customer_id": "cus_026",
+    "amount": 12127.5,
+    "issued": "2026-09-05",
+    "due": "2026-10-05",
+    "status": "open"
+  },
+  {
+    "id": "inv_1153",
+    "number": "INV-1153",
+    "customer_id": "cus_026",
+    "amount": 11369.5,
+    "issued": "2026-09-02",
+    "due": "2026-10-02",
+    "status": "open"
+  },
+  {
+    "id": "inv_1154",
+    "number": "INV-1154",
+    "customer_id": "cus_027",
+    "amount": 19405.5,
+    "issued": "2026-09-27",
+    "due": "2026-11-11",
+    "status": "open"
+  },
+  {
+    "id": "inv_1155",
+    "number": "INV-1155",
+    "customer_id": "cus_027",
+    "amount": 833.4,
+    "issued": "2026-09-05",
+    "due": "2026-10-20",
+    "status": "open"
+  },
+  {
+    "id": "inv_1156",
+    "number": "INV-1156",
+    "customer_id": "cus_027",
+    "amount": 5000,
+    "issued": "2026-09-21",
+    "due": "2026-10-21",
+    "status": "open"
+  },
+  {
+    "id": "inv_1157",
+    "number": "INV-1157",
+    "customer_id": "cus_027",
+    "amount": 7397.25,
+    "issued": "2026-09-11",
+    "due": "2026-09-26",
+    "status": "open"
+  },
+  {
+    "id": "inv_1158",
+    "number": "INV-1158",
+    "customer_id": "cus_028",
+    "amount": 9929.25,
+    "issued": "2026-09-09",
+    "due": "2026-10-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1159",
+    "number": "INV-1159",
+    "customer_id": "cus_028",
+    "amount": 10297,
+    "issued": "2026-09-13",
+    "due": "2026-10-13",
+    "status": "open"
+  },
+  {
+    "id": "inv_1160",
+    "number": "INV-1160",
+    "customer_id": "cus_028",
+    "amount": 4738.4,
+    "issued": "2026-09-22",
+    "due": "2026-11-06",
+    "status": "open"
+  },
+  {
+    "id": "inv_1161",
+    "number": "INV-1161",
+    "customer_id": "cus_028",
+    "amount": 14132,
+    "issued": "2026-09-14",
+    "due": "2026-10-14",
+    "status": "open"
+  },
+  {
+    "id": "inv_1162",
+    "number": "INV-1162",
+    "customer_id": "cus_028",
+    "amount": 16058,
+    "issued": "2026-09-10",
+    "due": "2026-09-25",
+    "status": "open"
+  },
+  {
+    "id": "inv_1163",
+    "number": "INV-1163",
+    "customer_id": "cus_029",
+    "amount": 19204,
+    "issued": "2026-09-15",
+    "due": "2026-10-30",
+    "status": "open"
+  },
+  {
+    "id": "inv_1164",
+    "number": "INV-1164",
+    "customer_id": "cus_029",
+    "amount": 14303.25,
+    "issued": "2026-09-20",
+    "due": "2026-10-20",
+    "status": "open"
+  },
+  {
+    "id": "inv_1165",
+    "number": "INV-1165",
+    "customer_id": "cus_029",
+    "amount": 7500,
+    "issued": "2026-09-13",
+    "due": "2026-10-13",
+    "status": "open"
+  },
+  {
+    "id": "inv_1166",
+    "number": "INV-1166",
+    "customer_id": "cus_029",
+    "amount": 8003.5,
+    "issued": "2026-09-04",
+    "due": "2026-10-04",
+    "status": "open"
+  },
+  {
+    "id": "inv_1167",
+    "number": "INV-1167",
+    "customer_id": "cus_029",
+    "amount": 1200,
+    "issued": "2026-09-09",
+    "due": "2026-10-09",
+    "status": "open"
+  },
+  {
+    "id": "inv_1168",
+    "number": "INV-1168",
+    "customer_id": "cus_030",
+    "amount": 8864.4,
+    "issued": "2026-09-22",
+    "due": "2026-10-22",
+    "status": "open"
+  },
+  {
+    "id": "inv_1169",
+    "number": "INV-1169",
+    "customer_id": "cus_030",
+    "amount": 16953,
+    "issued": "2026-09-30",
+    "due": "2026-10-15",
+    "status": "open"
+  },
+  {
+    "id": "inv_1170",
+    "number": "INV-1170",
+    "customer_id": "cus_030",
+    "amount": 4638.4,
+    "issued": "2026-09-13",
+    "due": "2026-10-13",
+    "status": "open"
+  },
+  {
+    "id": "inv_1171",
+    "number": "INV-1171",
+    "customer_id": "cus_030",
+    "amount": 4482.25,
+    "issued": "2026-09-27",
+    "due": "2026-10-27",
+    "status": "open"
+  },
+  {
+    "id": "inv_1172",
+    "number": "INV-1172",
+    "customer_id": "cus_030",
+    "amount": 6993.5,
+    "issued": "2026-09-11",
+    "due": "2026-10-11",
+    "status": "open"
+  },
+  {
+    "id": "inv_1173",
+    "number": "INV-1173",
+    "customer_id": "cus_030",
+    "amount": 10273.4,
+    "issued": "2026-09-02",
+    "due": "2026-10-02",
+    "status": "open"
+  },
+  {
+    "id": "inv_1174",
+    "number": "INV-1174",
+    "customer_id": "cus_024",
+    "amount": 12493.4,
+    "issued": "2026-09-04",
+    "due": "2026-10-04",
+    "status": "open"
+  },
+  {
+    "id": "inv_1175",
+    "number": "INV-1175",
+    "customer_id": "cus_008",
+    "amount": 18476.4,
+    "issued": "2026-09-02",
+    "due": "2026-10-02",
+    "status": "open"
+  },
+  {
+    "id": "inv_1176",
+    "number": "INV-1176",
+    "customer_id": "cus_003",
+    "amount": 16742.5,
+    "issued": "2026-09-23",
+    "due": "2026-10-23",
+    "status": "open"
+  },
+  {
+    "id": "inv_1177",
+    "number": "INV-1177",
+    "customer_id": "cus_020",
+    "amount": 13205.5,
+    "issued": "2026-09-12",
+    "due": "2026-10-12",
+    "status": "open"
+  }
+]
