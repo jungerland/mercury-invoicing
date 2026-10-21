@@ -1,14 +1,27 @@
 # Grit Remover: An unapplied cash resolver agent
 
-A customer's virtual account number already matches a payment that arrives for the exact amount. 
-
-This agent handles the rest, the grit in the system: wire fees, partials, overpayments, batch payments, two invoices at the same amount, and payments sent to the main account number. It applies the matches it can prove and gives a person a short, explained queue for everything else.
+An agent that matches the incoming payments Mercury's built-in matching leaves behind, the grit in the system. It applies the matches it can prove and gives a person a short, explained queue for everything else.
 
 Built as a working demo for a Senior PM, Invoicing role. The goal it answers comes from the job posting: incoming payments should "match themselves to the right invoice without anyone lifting a finger," using AI "without chasing hype."
 
 **Interactive demo:** https://claude.ai/artifact/W5w7goumjU1Hdasa35nqAR
 
 **Product memo:** [MEMO.md](MEMO.md)
+
+## The problem
+
+Sending an invoice is half of getting paid. The other half is knowing which invoice a deposit belongs to.
+
+Mercury matches a payment automatically when it arrives on the customer's virtual account number for the exact amount. Everything else waits for a person:
+
+- Wire fees, partials and overpayments, since a short or over payment doesn't reconcile.
+- Two open invoices for the same customer and amount.
+- One transfer that pays several invoices.
+- Payments sent to the main account number, which larger customers' payables teams may use.
+
+Until someone matches them, receivables are wrong and reminders go to customers who already paid. Small business owners live and die by cash flow, and a payment that sits unmatched feels like money they still don't have.
+
+The full case, with product decisions and what's next, is in the [memo](MEMO.md).
 
 ## Results
 
