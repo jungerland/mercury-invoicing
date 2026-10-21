@@ -1,8 +1,6 @@
-# PRODUCT MEMO
+**PRODUCT MEMO**
+
 # Grit Remover: an unapplied cash resolver agent
-
-
-
 
 ## The problem
 
