@@ -18,7 +18,11 @@ Built as a working demo for a Senior PM, Invoicing role. The goal it answers com
 | Rules baseline (dataset A / B) | 61% / 60% | 0 / 0 | 1.0 h / 1.1 h |
 | Agent + guardrails (dataset A / B) | 72% / 78% | 0 / 0 | 0.2 h / 0.2 h |
 
-At a 0.80 bar the agent reaches 80% hands-off on both datasets, still with zero wrong auto-applies. "Built-in" follows Mercury's public API docs; about 55% of invoice payments in the data arrive on a virtual account number, which is an assumption. Full reports, with per-scenario breakdowns, a threshold sweep, a guardrail ablation and a calibration table: [results/report.md](results/report.md), [results/seed7/report.md](results/seed7/report.md).
+At a 0.80 bar the agent reaches 80% hands-off on both datasets, still with zero wrong auto-applies.
+
+**Held-out check.** Datasets A and B were the ones used while building the agent. To rule out overfitting, a third dataset (seed 99) was generated afterward and run live once, with no changes to prompts or policy. Results held: built-in 31%, rules 59%, agent 71% hands-off at the 0.90 bar (77% at 0.80), zero wrong auto-applies at every threshold. Without the guardrails in `policy.ts`, the model made one wrong auto-apply at a 0.50 bar; the guardrails caught it. Report: [results/seed99/report.md](results/seed99/report.md).
+
+"Built-in" follows Mercury's public API docs; about 55% of invoice payments in the data arrive on a virtual account number, which is an assumption. Full reports, with per-scenario breakdowns, a threshold sweep, a guardrail ablation and a calibration table: [results/report.md](results/report.md), [results/seed7/report.md](results/seed7/report.md).
 
 Cost: about $0.02 and 5 seconds per payment on Claude Opus 5.5.
 
@@ -59,7 +63,7 @@ npm run eval        # scores rules + agent, writes results/report.md
 npm run ui          # bakes results into ui/index.html
 ```
 
-Agent responses are cached in `results/agent_cache.json`, so `npm run eval` reproduces the committed reports without calling a model. Delete the cache to re-run live.
+Agent responses are cached in `results/agent_cache.json`, so `npm run eval` reproduces the committed reports without calling a model. That checks the scoring, not the agent. To test the agent live, point `RESULTS_DIR` at an empty folder (`--limit 12` makes a quick smoke test, about $0.25).
 
 The agent calls Claude through the Anthropic SDK when `ANTHROPIC_API_KEY` is set. Otherwise it falls back to the local `claude` CLI in headless mode.
 
