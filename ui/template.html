@@ -76,6 +76,12 @@ header { display: grid; gap: 12px; }
 .slider output { font: 600 1.4rem/1 var(--font-num); font-variant-numeric: tabular-nums; min-width: 3.2ch; text-align: right; }
 .toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--muted); cursor: pointer; }
 .toggle input { accent-color: var(--accent); }
+.toggle.switch { color: var(--ink); font-weight: 500; font-size: 0.9rem; }
+.toggle.switch input { appearance: none; -webkit-appearance: none; margin: 0; width: 36px; height: 20px; border-radius: 999px; background: var(--line); position: relative; cursor: pointer; flex: none; transition: background 0.15s; }
+.toggle.switch input::before { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,0.25); transition: transform 0.15s; }
+.toggle.switch input:checked { background: var(--accent); }
+.toggle.switch input:checked::before { transform: translateX(16px); }
+.toggle.switch input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* Pipeline */
 .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; list-style: none; margin: 0; padding: 0; counter-reset: step; }
@@ -182,7 +188,7 @@ footer { color: var(--muted); font-size: 0.8rem; display: grid; gap: 6px; border
         <input type="range" id="th" min="0.5" max="0.99" step="0.01" value="0.9" aria-label="Auto-apply confidence threshold">
         <output id="th-out" for="th">0.90</output>
       </div>
-      <label class="toggle"><input type="checkbox" id="guard" checked> Code guardrails on</label>
+      <label class="toggle switch"><input type="checkbox" role="switch" id="guard" checked> Code guardrails on</label>
     </div>
   </section>
 
@@ -340,7 +346,7 @@ function renderFindings() {
     ["The agent takes the rest from 40% to 72%", "With the same evidence, the agent handled 72% with no one touching it (78% on the second set), and nothing went unnoticed: whatever it didn't apply landed in the queue with a suggestion. It applied 14 of 16 wire-fee payments across both sets, where built-in matching and the rules baseline applied none. The rules baseline I built for comparison reached 60 to 61%. It costs about two cents and 5 seconds per payment."],
     ["No wrong matches, on two separate test sets", `The page shows the first test set. I generated a second with different customers, invoices and payments. The results held: built-in matching handled ${Math.round(s7.builtin.autoRate * 100)}% on its own, rules ${Math.round(s7.rules.autoRate * 100)}%, the agent ${Math.round(s7.agent.autoRate * 100)}%, and none put money on the wrong invoice. That's 136 automatic matches by the agent without an error. It doesn't prove the error rate is zero, only that it's likely under 2.2%. Showing the under-0.1% you'd want in production takes about 3,000 error-free matches, which is what a trial run on real payments is for.`],
     ["Confidence is cautious, which is the safe direction", "Every proposal the agent made was exactly right on both sets, at every confidence level. It hedged where it should: on batch payments with no memo, and on the same-amount pairs where nothing says which invoice was paid (0.50 to 0.55). At a 0.80 bar it reaches 80% on both sets with no errors. The bar can probably come down once real data confirms it."],
-    ["Guardrails cost a little, and this run they caught nothing", "The guardrails are code checks that must pass before money moves, however confident the agent is. Switch them off with the toggle above to see what they cost: at the 0.90 bar, 2 to 5 more payments out of every 100 would go through on their own. Those are partial payments, which I send to a person on purpose so the customer confirms what stays open. In this run the agent made no mistake for them to catch, even at a 0.50 bar (an earlier version of this test caught one). They're insurance for the case real bank traffic will eventually bring."],
+    ["Guardrails cost a little, and this run they caught nothing", "The guardrails are code checks that must pass before money moves, however confident the agent is. Turn off the \"Code guardrails on\" switch under the Auto-apply bar slider to see what they cost: at the 0.90 bar, 2 to 5 more payments out of every 100 would go through on their own. Those are partial payments, which I send to a person on purpose so the customer confirms what stays open. In this run the agent made no mistake for them to catch, even at a 0.50 bar (an earlier version of this test caught one). They're insurance for the case real bank traffic will eventually bring."],
     ["What I would build next", "A partially paid invoice status, since today an invoice can only be unpaid, processing, paid or cancelled. Then a check before an invoice is sent that learns each customer's payables rules from their replies (PO numbers, legal entity, who to send it to), to stop late payments before they start. And agree with the accounting team on where invoice-level matching lives, so the two never disagree."],
   ];
   $("findings").innerHTML = items.map(([h, p]) => `<div class="finding"><h3>${h}</h3><p>${p}</p></div>`).join("");
