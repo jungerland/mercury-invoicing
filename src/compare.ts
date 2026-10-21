@@ -2,7 +2,7 @@
 // Opus answers come from results/{,seed7,seed99}; other models from results/models/<model>/<seed>.
 // Each strategy runs every payment through the same policy and scoring as eval.ts.
 //
-// Usage: node src/compare.ts   (writes results/models/report.md)
+// Usage: node src/compare.ts [seed ...]   (default seed42 seed7 seed99; writes results/models/report[-<seeds>].md)
 
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { gatherEvidence, type Evidence } from "./match/candidates.ts";
@@ -13,11 +13,10 @@ import { PRICES, type Usage } from "./llm.ts";
 import type { Action, Customer, GroundTruth, Invoice, Payment, Proposal } from "./types.ts";
 
 const load = <T>(f: string): T => JSON.parse(readFileSync(f, "utf8"));
-const SEEDS = [
-  { name: "seed42", data: "data", opus: "results" },
-  { name: "seed7", data: "data/seed7", opus: "results/seed7" },
-  { name: "seed99", data: "data/seed99", opus: "results/seed99" },
-];
+const args = process.argv.slice(2);
+const SEEDS = (args.length ? args : ["seed42", "seed7", "seed99"]).map((name) =>
+  name === "seed42" ? { name, data: "data", opus: "results" } : { name, data: `data/${name}`, opus: `results/${name}` },
+);
 const MODELS = ["opus", "sonnet", "haiku"] as const;
 type Model = (typeof MODELS)[number];
 type Entry = { proposal: Proposal; usage: Usage };
@@ -116,7 +115,7 @@ const label = (s: Step[]) => s.map((x) => { const [m, bar] = x.split("@"); retur
 const callsText = (r: Result) => (Object.entries(r.calls) as [Model, number][]).map(([m, c]) => `${m} ${pct(c / r.n)}`).join(", ") || "none";
 const row = (steps: Step[], th = DEFAULT_THRESHOLD) => {
   const r = run(steps, th);
-  const bySeed = SEEDS.map((s) => pct(run(steps, th, true, pays.filter((x) => x.seed === s.name)).counts.correct_auto / (pays.length / 3)));
+  const bySeed = SEEDS.map((s) => pct(run(steps, th, true, pays.filter((x) => x.seed === s.name)).counts.correct_auto / (pays.length / SEEDS.length)));
   return `| ${label(steps)} | ${pct(r.counts.correct_auto / r.n)} | ${bySeed.join(" / ")} | ${r.counts.wrong_auto} | ${(r.minutes / 60 / SEEDS.length).toFixed(2)} h | ${callsText(r)} | ${usd(r.cost / r.n)} |`;
 };
 
@@ -151,7 +150,7 @@ Cost is per payment at list price, assuming production caching (shared system pr
 
 ## Strategies
 
-| Strategy | Hands-off | By set (42 / 7 / 99) | Wrong auto-applies | Human time per 99 | Payments sent to each model | Model cost per payment |
+| Strategy | Hands-off | By set (${SEEDS.map((s) => s.name.replace("seed", "")).join(" / ")}) | Wrong auto-applies | Human time per 99 | Payments sent to each model | Model cost per payment |
 |---|---|---|---|---|---|---|
 ${strategies.map((s) => row(s)).join("\n")}
 
@@ -171,5 +170,5 @@ ${models.map((m) => {
 ${models.map((m) => `| ${m} | ${calibration(m).join(" | ")} |`).join("\n")}
 `;
 
-writeFileSync("results/models/report.md", report);
+writeFileSync(`results/models/report${args.length ? `-${args.join("-")}` : ""}.md`, report);
 console.log(report);
