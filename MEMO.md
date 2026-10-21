@@ -18,7 +18,7 @@ Each miss costs a founder or bookkeeper a few minutes of hunting. Until it's don
 
 The goal is payments that match themselves to the right invoice without anyone lifting a finger. The constraint is that invoices are money: a wrong match is far worse than a slow one.
 
-**[Jay: one sentence on why this problem matters to you, or where you've seen it.]**
+Small business owners live and die by cash flow, and a payment that arrived but sits unmatched feels to them like money they still don't have.
 
 ## What I built
 
