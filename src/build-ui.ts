@@ -7,6 +7,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { gatherEvidence } from "./match/candidates.ts";
 import { decide } from "./match/policy.ts";
+import { PRICES, type Usage } from "./llm.ts";
 import type { Customer, GroundTruth, Invoice, Payment, Proposal } from "./types.ts";
 
 const load = <T>(f: string): T => JSON.parse(readFileSync(f, "utf8"));
@@ -18,6 +19,18 @@ const cache = load<Record<string, { proposal: Proposal }>>("results/agent_cache.
 const run = load<{ rules: unknown; agent: unknown; actions: { payment_id: string; action: string }[]; rulesActions: { payment_id: string; action: string; outcome: string; why: string }[]; builtinActions: { payment_id: string; action: string; outcome: string }[] }>("results/run.json");
 const seed7 = load<{ builtin: unknown; rules: unknown; agent: unknown; sweep: unknown }>("results/seed7/run.json");
 const seed99 = load<{ builtin: unknown; rules: unknown; agent: unknown; sweep: unknown }>("results/seed99/run.json");
+
+// Token counts for every agent call across the three test sets, for the cost panel. The CLI writes
+// the whole prompt to cache; production would cache only the shared system prompt, so cache writes
+// are counted here as plain input. "builtin" marks payments built-in matching already applied.
+const calls = ["results", "results/seed7", "results/seed99"].flatMap((dir) => {
+  const c = load<Record<string, { usage: Usage }>>(`${dir}/agent_cache.json`);
+  const b = load<{ builtinActions: { payment_id: string; action: string }[] }>(`${dir}/run.json`).builtinActions;
+  return b.map(({ payment_id, action }) => {
+    const u = c[payment_id].usage;
+    return { input: u.input + u.cache_write_5m + u.cache_write_1h, cache_read: u.cache_read, output: u.output, builtin: action === "auto_apply" };
+  });
+});
 
 const custName = new Map(customers.map((c) => [c.id, c.name]));
 const inv = (id: string) => {
@@ -43,7 +56,7 @@ const rows = payments.map((p) => {
   };
 });
 
-const data = { generated: new Date().toISOString().slice(0, 10), customers: customers.length, invoices: invoices.length, rows, seed7: { builtin: seed7.builtin, rules: seed7.rules, agent: seed7.agent }, seed99: { builtin: seed99.builtin, rules: seed99.rules, agent: seed99.agent } };
+const data = { generated: new Date().toISOString().slice(0, 10), customers: customers.length, invoices: invoices.length, rows, seed7: { builtin: seed7.builtin, rules: seed7.rules, agent: seed7.agent }, seed99: { builtin: seed99.builtin, rules: seed99.rules, agent: seed99.agent }, calls, prices: PRICES, minutes: [run, seed7, seed99].map((r) => { const s = r as unknown as Record<"builtin" | "agent", { n: number; minutes: number }>; return { n: s.agent.n, builtin: s.builtin.minutes, agent: s.agent.minutes }; }) };
 const html = readFileSync("ui/template.html", "utf8").replace("/*__DATA__*/null", JSON.stringify(data));
 writeFileSync("ui/index.html", html);
 console.log(`ui/index.html written (${(html.length / 1024).toFixed(0)} KB, ${rows.length} payments)`);
