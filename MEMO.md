@@ -43,7 +43,7 @@ Where the difference comes from:
 
 - **Built-in matching never handles** a wire fee, partial, overpayment, batch payment or same-amount pair, or anything sent to the main account number. Nothing flags those, so 59 to 68 of every 99 deposits sit unmatched until someone notices.
 - **The agent** applied 20 of 24 wire-fee payments, where both baselines applied none. Everything it didn't apply landed in a queue with a suggestion.
-- **Cost:** about 1.4 cents and 5 seconds per payment at list price.
+- **Cost:** about 1.4 cents and 5 seconds per payment at list price on the most capable model, or under half a cent with the routing in decision 7.
 
 ## Product decisions
 
@@ -56,6 +56,7 @@ Where the difference comes from:
 4. **Partials and overpayments go to a person in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: 2 to 6 points of hands-off at the 0.90 bar.
 5. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 auto-applies only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
 6. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
+7. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more hands-off. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
 
 ## What I deprioritized, and why
 

@@ -28,6 +28,27 @@ At a 0.80 bar the agent reaches 79% and 80% hands-off, still with zero wrong aut
 
 Cost: about $0.014 and 5 seconds per payment on Claude Opus 5.5 at list price, with the shared system prompt cached. Runs through the `claude` CLI cost about $0.020, because the CLI also writes each payment's prompt to a 1-hour cache at twice the input price. Each cache entry stores token counts, and the demo page projects monthly cost from them.
 
+## Choosing a model
+
+Not every payment needs the most capable model. Sonnet and Haiku were run on the same three datasets, and `src/compare.ts` scores routing setups from the cached answers, with no model calls. Each setup tries its steps in order and stops at the first one that settles the payment. Guardrails were on for all of them, and none made a wrong auto-apply. Costs are per incoming payment, with production caching.
+
+| Setup | Hands-off | Model cost per payment | Human time per 99 payments |
+|---|---|---|---|
+| Opus on every payment | 73% | $0.0137 | 0.20 h |
+| Built-in, then Opus | 75% | $0.0099 | 0.18 h |
+| Built-in, rules, then Opus | 77% | $0.0058 | 0.18 h |
+| Built-in, rules, then Sonnet | 76% | $0.0026 | 0.18 h |
+| Built-in, rules, then Haiku (bar 0.80) | 80% | $0.0002 | 0.31 h |
+| **Built-in, rules, Haiku (bar 0.80), then Opus** | **80%** | **$0.0036** | **0.17 h** |
+
+- **Rules go first.** They are free and settle about a third of payments without error, so the model only sees what's left.
+- **Sonnet matches Opus** within about a point at under half the price.
+- **Haiku is accurate but underconfident.** From 0.70 to 0.89 confidence it was right on 111 of 111 proposals, so it gets a 0.80 bar. On its own it leaves 9 of 297 payments in review with no useful suggestion. Escalating to Opus whenever Haiku isn't sure fixes that, and Opus then sees only 20% of payments.
+- **Held out.** The 0.80 bar was picked after seeing these results, so a fourth dataset (seed 314) was generated afterward and run live on Haiku and Opus. The recommended setup held: 78% hands-off, zero wrong auto-applies, $0.0041 per payment. Report: [results/models/report-seed314.md](results/models/report-seed314.md).
+- **Guardrails matter more for smaller models.** Without them, at a 0.50 bar, Opus and Haiku each made 1 wrong auto-apply and Sonnet made 3.
+
+Full comparison: [results/models/report.md](results/models/report.md). To run another model: `MATCHER_MODEL=claude-haiku-5-5 RESULTS_DIR=results/models/haiku/seed42 npm run eval`, then `node src/compare.ts`.
+
 ## How it works
 
 ```
