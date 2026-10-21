@@ -2,7 +2,7 @@
 // with a confidence and a one-line explanation a business owner can read.
 
 import { z } from "zod";
-import { structured } from "../llm.ts";
+import { structured, type Usage } from "../llm.ts";
 import type { Customer, Invoice, Payment, Proposal } from "../types.ts";
 import type { Evidence } from "./candidates.ts";
 
@@ -66,7 +66,7 @@ export function buildPrompt(p: Payment, ev: Evidence, customers: Customer[]): st
   ].join("\n");
 }
 
-export async function agentMatch(p: Payment, ev: Evidence, customers: Customer[]): Promise<{ proposal: Proposal; costUsd: number | null }> {
-  const { data, costUsd } = await structured(SYSTEM, buildPrompt(p, ev, customers), ProposalSchema);
-  return { proposal: { payment_id: p.id, ...data }, costUsd };
+export async function agentMatch(p: Payment, ev: Evidence, customers: Customer[]): Promise<{ proposal: Proposal; costUsd: number | null; usage: Usage }> {
+  const { data, costUsd, usage } = await structured(SYSTEM, buildPrompt(p, ev, customers), ProposalSchema);
+  return { proposal: { payment_id: p.id, ...data }, costUsd, usage };
 }

@@ -3,6 +3,7 @@
 //
 // Usage: [DATA_DIR=data RESULTS_DIR=results] node src/eval.ts [--limit N] [--concurrency N] [--rules-only]
 // Agent responses are cached in $RESULTS_DIR/agent_cache.json; delete it to re-run.
+// Entries cached before token counts were recorded are re-run so every entry has them.
 
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -11,7 +12,7 @@ import { gatherEvidence, type Evidence } from "./match/candidates.ts";
 import { decide, DEFAULT_THRESHOLD } from "./match/policy.ts";
 import { builtinMatch } from "./match/builtin.ts";
 import { rulesMatch } from "./match/rules.ts";
-import { backend, MODEL } from "./llm.ts";
+import { backend, MODEL, type Usage } from "./llm.ts";
 import type { Action, Customer, GroundTruth, Invoice, Payment, Proposal } from "./types.ts";
 
 const arg = (name: string) => {
@@ -32,7 +33,7 @@ const truth = new Map(load<GroundTruth[]>(`${DATA}/ground_truth.json`).map((t) =
 
 mkdirSync(OUT, { recursive: true });
 const CACHE_FILE = `${OUT}/agent_cache.json`;
-type CacheEntry = { key: string; proposal: Proposal; costUsd: number | null; ms: number };
+type CacheEntry = { key: string; proposal: Proposal; costUsd: number | null; usage?: Usage; ms: number };
 const cache: Record<string, CacheEntry> = existsSync(CACHE_FILE) ? load(CACHE_FILE) : {};
 
 const evidence = new Map<string, Evidence>(payments.map((p) => [p.id, gatherEvidence(p, customers, invoices)]));
@@ -47,11 +48,11 @@ async function runAgent(): Promise<Map<string, Proposal>> {
     for (let p = queue.shift(); p; p = queue.shift()) {
       const ev = evidence.get(p.id)!;
       const key = createHash("sha256").update(MODEL + SYSTEM + buildPrompt(p, ev, customers)).digest("hex").slice(0, 16);
-      if (cache[p.id]?.key !== key) {
+      if (cache[p.id]?.key !== key || !cache[p.id].usage) {
         const t0 = Date.now();
         try {
-          const { proposal, costUsd } = await agentMatch(p, ev, customers);
-          cache[p.id] = { key, proposal, costUsd, ms: Date.now() - t0 };
+          const { proposal, costUsd, usage } = await agentMatch(p, ev, customers);
+          cache[p.id] = { key, proposal, costUsd, usage, ms: Date.now() - t0 };
           writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2));
         } catch (e) {
           failures++;
@@ -182,6 +183,13 @@ const costs = Object.values(cache).filter((c) => payments.some((p) => p.id && ca
 const totalCost = costs.reduce((s, c) => s + (c.costUsd ?? 0), 0);
 const avgMs = costs.length ? costs.reduce((s, c) => s + c.ms, 0) / costs.length : 0;
 
+function tokenLine(): string {
+  const us = costs.map((c) => c.usage).filter((u): u is Usage => !!u);
+  if (!us.length) return "";
+  const avg = (f: (u: Usage) => number) => Math.round(us.reduce((s, u) => s + f(u), 0) / us.length).toLocaleString("en-US");
+  return `Average tokens per call: ${avg((u) => u.input)} input, ${avg((u) => u.cache_write_5m + u.cache_write_1h)} written to cache, ${avg((u) => u.cache_read)} read from cache, ${avg((u) => u.output)} output (including thinking).`;
+}
+
 const report = `# Eval results
 
 ${payments.length} incoming payments against ${invoices.length} open invoices across ${customers.length} customers. Synthetic data from \`${DATA}/\`. Model: \`${MODEL}\` via ${backend()}. Policy threshold: ${DEFAULT_THRESHOLD}.
@@ -239,6 +247,7 @@ ${agentActions
 ## Cost and latency
 
 ${costs.length} agent calls, ${totalCost ? `$${totalCost.toFixed(2)} total at list price ($${(totalCost / costs.length).toFixed(3)} per payment)` : "cost not reported by this backend"}, average ${(avgMs / 1000).toFixed(1)} s per call.
+${tokenLine()}
 `}`;
 
 writeFileSync(`${OUT}/report.md`, report);
