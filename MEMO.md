@@ -53,7 +53,7 @@ Where the difference comes from:
 
 - **Built-in matching never handles** the cases noted in The problem section (a wire fee, etc.), and nothing flags them, so 59–68 of every 99 deposits sit unmatched until someone notices.
 - **The agent** applied 20 of 24 wire-fee payments, where both baselines applied none. Everything it didn't apply landed in a queue with a suggestion.
-- **Cost:** about 1.4 cents and 5 seconds per payment at list price on the most capable model, or under half a cent with the routing noted in Decision 7 below.
+- **Cost:** about 1.4 cents and 5 seconds per payment at list price on the most capable model, or under half a cent when cheaper steps handle the easy payments first (Decision 7).
 
 ## Product decisions
 
@@ -63,10 +63,10 @@ Where the difference comes from:
    - **Identity:** the virtual account, a known payer, or a memo reference to the invoice.
    - **Amount:** this is either exact, or is short by a plausible bank fee.
    - **No equally good alternative:** if another invoice, or another group of invoices, fits the payment just as well, it goes to human review unless the payment's memo field names the invoice.
-1. **Partials and overpayments go to human review in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: about 2 to 6 of every 100 payments that the agent could otherwise have applied go to human review.
-2. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 automatic matches only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
-3. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
-4. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more handled automatically. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
+4. **Partials and overpayments go to human review in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: about 2 to 6 of every 100 payments that the agent could otherwise have applied go to human review.
+5. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 automatic matches only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
+6. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
+7. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more handled automatically. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
 
 ## What I deprioritized, and why
 
