@@ -43,15 +43,15 @@ All three ran on the same three sets of 99 generated payments. I generated the t
 | Agent + guardrails, 0.90 bar | 70–78%                | 0                       | 0.2–0.3 h                  |
 | Agent + guardrails, 0.80 bar | 78–80%                | 0                       | ~0.2 h                     |
 
-Handled automatically means resolved correctly with no person involved: applied to the right invoice, or correctly left alone because it wasn't an invoice payment (a Stripe payout, say).
+Handled automatically means resolved correctly with no human review: applied to the right invoice, or correctly left alone because it wasn't an invoice payment (ex: a Stripe payout).
 
 Human time uses stated assumptions: 3 min to match by hand, 15 s to confirm a correct suggestion, 20 min to unwind a wrong match.
 
-About 55% of invoice payments in the data arrive on the customer's virtual account number. That percentage is my assumption. Mercury knows the real number, and that will inform how big this opportunity is. The fewer payments that use the virtual account, the more built-in matching misses.
+About 55% of invoice payments in the data arrive on the customer's virtual account number. That percentage is my assumption. Mercury knows the real number, and that will inform how big this opportunity is. The fewer payments that use the virtual account, the more that built-in matching misses.
 
 Where the difference comes from:
 
-- **Built-in matching never handles** a wire fee, a partial or overpayment, a transfer covering several invoices, two invoices at the same amount, or anything sent to the main account number, and nothing flags them, so 59 to 68 of every 99 deposits sit unmatched until someone notices.
+- **Built-in matching never handles**  the cases noted in The Problem section (a wire fee, etc), and nothing flags them, so 59 - 68 of every 99 deposits sit unmatched until someone notices.
 - **The agent** applied 20 of 24 wire-fee payments, where both baselines applied none. Everything it didn't apply landed in a queue with a suggestion.
 - **Cost:** about 1.4 cents and 5 seconds per payment at list price on the most capable model, or under half a cent with the routing noted in Decision 7 below.
 
