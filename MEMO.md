@@ -8,7 +8,7 @@ Mercury gives each customer their own virtual account number to pay invoices int
 
 Sending an invoice is half of getting paid. The other half is knowing which invoice a deposit belongs to.
 
-Mercury already solves the easier scenario. Each customer gets a virtual account number on their invoices, and a bank transfer to that number is marked paid when it matches an open invoice by exact amount. Mercury's API docs are clear about where that stops:
+Mercury already solves the easier scenario: the exact-amount match on a virtual account. Its API docs are clear about where that stops:
 
 - "A short payment or an overpayment does not reconcile." Wire fees, partials and overpayments all go unmatched.
 - Two open invoices for the same customer and amount "look identical when payment arrives."
