@@ -51,7 +51,7 @@ About 55% of invoice payments in the data arrive on the customer's virtual accou
 
 Where the difference comes from:
 
-- **Built-in matching never handles**  the cases noted in The Problem section (a wire fee, etc), and nothing flags them, so 59 - 68 of every 99 deposits sit unmatched until someone notices.
+- **Built-in matching never handles** the cases noted in The problem section (a wire fee, etc.), and nothing flags them, so 59–68 of every 99 deposits sit unmatched until someone notices.
 - **The agent** applied 20 of 24 wire-fee payments, where both baselines applied none. Everything it didn't apply landed in a queue with a suggestion.
 - **Cost:** about 1.4 cents and 5 seconds per payment at list price on the most capable model, or under half a cent with the routing noted in Decision 7 below.
 
