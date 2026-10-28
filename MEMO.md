@@ -2,7 +2,7 @@
 
 # Grit Remover: an unapplied cash resolver agent
 
-Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took the percentage of payments handled automatically from 31–40% to 70–78%, with zero wrong auto-applies, for a cost of under half a cent per payment.
+Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took the percentage of payments handled automatically from 31–40% to 70–78%, with zero wrong automatic matches, for a cost of under half a cent per payment.
 
 ## The problem
 
@@ -35,13 +35,13 @@ The rules baseline is there to show what the model adds. It sees the same eviden
 
 All three ran on the same three sets of 99 generated payments. I generated the third set after the agent was finished, so I couldn't have unintentionally adjusted the agent to fit those payments. The results held up on the third set too.
 
-|                              | Handled automatically | Wrong auto-applies | Human time per 99 payments |
-| ---------------------------- | --------------------- | ------------------ | -------------------------- |
-| By hand                      | 0%                    | 0                  | 5.0 h                      |
-| Built-in matching            | 31–40%                | 0                  | 3.0–3.4 h                  |
-| Rules baseline               | 59–61%                | 0                  | 1.0–1.3 h                  |
-| Agent + guardrails, 0.90 bar | 70–78%                | 0                  | 0.2–0.3 h                  |
-| Agent + guardrails, 0.80 bar | 78–80%                | 0                  | ~0.2 h                     |
+|                              | Handled automatically | Wrong automatic matches | Human time per 99 payments |
+| ---------------------------- | --------------------- | ----------------------- | -------------------------- |
+| By hand                      | 0%                    | 0                       | 5.0 h                      |
+| Built-in matching            | 31–40%                | 0                       | 3.0–3.4 h                  |
+| Rules baseline               | 59–61%                | 0                       | 1.0–1.3 h                  |
+| Agent + guardrails, 0.90 bar | 70–78%                | 0                       | 0.2–0.3 h                  |
+| Agent + guardrails, 0.80 bar | 78–80%                | 0                       | ~0.2 h                     |
 
 Handled automatically means resolved correctly with no person involved: applied to the right invoice, or correctly left alone because it wasn't an invoice payment (a Stripe payout, say).
 
@@ -58,13 +58,13 @@ Where the difference comes from:
 ## Product decisions
 
 1. **Build on the virtual account number, don't replace it.** A deposit to a customer's virtual account identifies the payer for certain. The agent treats that as its identity signal and only has to work out which invoice and how much.
-2. **The model suggests a match, code decides whether a payment is applied.** The model is good at judgment (is "RE: 1128 services" a reference? is NWR Holdings the parent of Northwind?). It is the wrong place for arithmetic or for the final say on marking an invoice paid. Code reconciles every amount to the cent and enforces the rules below. This also makes every auto-apply explainable after the fact.
+2. **The model suggests a match, code decides whether a payment is applied.** The model is good at judgment (is "RE: 1128 services" a reference? is NWR Holdings the parent of Northwind?). It is the wrong place for arithmetic or for the final say on marking an invoice paid. Code reconciles every amount to the cent and enforces the rules below. This also makes every automatic match explainable after the fact.
 3. **Three conditions must hold before a payment is applied automatically.**
    - **Identity:** the virtual account, a known payer, or a memo reference to the invoice.
    - **Amount:** this is either exact, or is short by a plausible bank fee.
    - **No equally good alternative:** if another invoice, or another group of invoices, fits the payment just as well, it goes to human review unless the payment's memo field names the invoice.
 1. **Partials and overpayments go to human review in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: about 2 to 6 of every 100 payments that the agent could otherwise have applied go to human review.
-2. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 auto-applies only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
+2. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 automatic matches only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
 3. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
 4. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more handled automatically. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
 
@@ -85,7 +85,7 @@ Where the difference comes from:
 ## How I'd measure it
 
 - **North star:** the percentage of incoming invoice payments applied to the right invoice automatically, with no human review.
-- **Guardrail:** the wrong auto-apply rate, meaning the percentage of automatic matches that turn out to be wrong. This is the number that must not go up as the north star does. In production, no one confirms which invoice a payment was really for, so wrong matches only surface when someone notices: a customer undoes a match, or contacts support about one. Target: under 0.1%, or 1 in every 1,000 automatic matches, reviewed weekly. The eval can't prove the 0.1% target. Zero errors in 198 automatic matches only shows the rate is below about 1.5%, so shadow mode has to confirm it.
+- **Guardrail:** the wrong-match rate, meaning the percentage of automatic matches that turn out to be wrong. This is the number that must not go up as the north star does. In production, no one confirms which invoice a payment was really for, so wrong matches only surface when someone notices: a customer undoes a match, or contacts support about one. Target: under 0.1%, or 1 in every 1,000 automatic matches, reviewed weekly. However, the eval can't prove the 0.1% target. Zero errors in 198 automatic matches only shows the rate is below about 1.5%, so shadow mode has to confirm it.
 - **Inputs:** review-queue size per customer per week, time from deposit to reconciled, and suggestion acceptance rate.
 - **Business:** the posting's metrics (Invoicing active users, feature adoption, retention). Retention should be cut by whether a customer's receivables stay accurate without work.
 
@@ -93,7 +93,7 @@ Where the difference comes from:
 
 1. **Shadow mode.** Run on real deposits and log proposals without acting. Score them against what customers actually do. This replaces my synthetic eval with a real one.
 2. **Suggest only.** Show the match and the reason in the existing flow, with one-click apply. Track acceptance.
-3. **Auto-apply for the clearest cohort.** Wire fees on the virtual account first, then exact reference plus exact amount on the main account, then batch payments. Every auto-apply gets one-click undo.
+3. **Auto-apply for the clearest cohort.** Wire fees on the virtual account first, then exact reference plus exact amount on the main account, then batch payments. Every automatic match gets one-click undo.
 4. **Lower the bar** as reversal data allows.
 
 ## Open questions
