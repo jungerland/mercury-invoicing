@@ -186,12 +186,12 @@ footer a { color: var(--accent); }
 
   <section class="control" aria-labelledby="h-th">
     <div style="display:grid;gap:6px;min-width:0">
-      <h2 id="h-th">Auto-apply bar</h2>
-      <p>How sure the agent must be before a payment is applied to an invoice without a person looking. This is a product decision. Lower it and more payments reconcile themselves; the code guardrails still have to agree either way.</p>
+      <h2 id="h-th">Confidence bar</h2>
+      <p>How sure the agent must be before it matches a payment automatically, with no human review. This is a product decision. Lower it and more payments are applied automatically. The code guardrails still have to agree either way.</p>
     </div>
     <div class="slider">
       <div class="slider-row">
-        <input type="range" id="th" min="0.5" max="0.99" step="0.01" value="0.9" aria-label="Auto-apply confidence threshold">
+        <input type="range" id="th" min="0.5" max="0.99" step="0.01" value="0.9" aria-label="Confidence bar">
         <output id="th-out" for="th">0.90</output>
       </div>
       <label class="toggle switch"><input type="checkbox" role="switch" id="guard" checked> Code guardrails on</label>
@@ -202,9 +202,9 @@ footer a { color: var(--accent); }
     <h2 id="h-how">How a payment flows</h2>
     <ol class="steps">
       <li><span class="who">Code</span><h3>Gather evidence</h3><p>Note which account number the money arrived on, recover invoice numbers from messy memos, match the payer against names this customer has paid from before, find exact amounts and invoice combinations that sum to the deposit.</p></li>
-      <li class="model"><span class="who">Model</span><h3>Propose</h3><p>Decide what the payment is: which invoices, any fee or partial, a calibrated confidence, and one sentence a business owner can read.</p></li>
-      <li><span class="who">Code</span><h3>Decide</h3><p>Auto-apply only if amounts reconcile to the cent, one customer, two independent signals (payer and reference or amount), nothing else fits as well, and no partials or overpayments.</p></li>
-      <li><span class="who">Product</span><h3>Act</h3><p>Apply and log it, or put it in the queue with the suggested match and the reason it stopped.</p></li>
+      <li class="model"><span class="who">Model</span><h3>Suggest</h3><p>Decide what the payment is: which invoices, any fee or partial, a calibrated confidence, and one sentence a business owner can read.</p></li>
+      <li><span class="who">Code</span><h3>Decide</h3><p>Check that every amount adds up to the cent. Apply automatically only when three conditions hold: identity (virtual account, known payer, or a memo reference), an amount that is exact or short by a plausible bank fee, and no equally good alternative. Partials and overpayments always go to human review.</p></li>
+      <li><span class="who">Product</span><h3>Act</h3><p>Apply and log it, or send it to human review with the suggested match and the reason it stopped.</p></li>
     </ol>
   </section>
 
@@ -246,7 +246,7 @@ footer a { color: var(--accent); }
   </section>
 
   <footer>
-    <p>Synthetic data: 30 fictional businesses across tech, professional services and real estate, with payments written to stress the cases that break rules (mangled memos, wire fees, batch payments, parent-company payers, look-alike amounts, refunds and transfers). About 55% of invoice payments arrive on the customer's virtual account number; that share is an assumption, and real traffic sets it. Built-in matching follows the publicly documented behavior: exact amount on the virtual account, with short payments and overpayments left unreconciled. Real bank feeds are messier; the next step is shadow mode on real traffic.</p>
+    <p>Synthetic data: 30 fictional businesses across tech, professional services and real estate, with payments written to stress the cases that break rules (mangled memos, wire fees, batch payments, parent-company payers, look-alike amounts, refunds and transfers). About 55% of invoice payments arrive on the customer's virtual account number. That percentage is my assumption; Mercury knows the real number. Built-in matching follows the publicly documented behavior: exact amount on the virtual account, with short payments and overpayments left unreconciled. Real bank feeds are messier; the next step is shadow mode on real traffic.</p>
     <p>Built by Jay Ungerland as a working demo for an invoicing product role. Not affiliated with or endorsed by any bank or fintech company. The deposits and eval results show Claude Opus 5.5's answers. The cost section also measures Claude Haiku and Sonnet, alone and with Haiku escalating to Opus. Run date <span id="gen"></span>.</p>
     <p>Code, eval and product memo: <a href="https://github.com/jungerland/mercury-invoicing" target="_blank" rel="noopener">github.com/jungerland/mercury-invoicing</a></p>
   </footer>
@@ -297,19 +297,19 @@ function renderCompare(agent) {
   const col = (title, sub, t, cls = "") => `
     <div class="col ${cls}">
       <h3>${title}<small>${sub}</small></h3>
-      <div class="metric"><b>${Math.round(t.hands * 100)}%</b><span>reconciled with no one touching it</span></div>
-      <div class="metric ${t.c.wrong_auto ? "bad" : ""}"><b>${t.c.wrong_auto}</b><span>applied to the wrong invoice</span></div>
-      <div class="metric"><b>${fmtHours(t.minutes)}</b><span>of someone's time</span></div>
+      <div class="metric"><b>${Math.round(t.hands * 100)}%</b><span>handled automatically</span></div>
+      <div class="metric ${t.c.wrong_auto ? "bad" : ""}"><b>${t.c.wrong_auto}</b><span>wrong automatic matches</span></div>
+      <div class="metric"><b>${fmtHours(t.minutes)}</b><span>human time</span></div>
     </div>`;
   $("compare").innerHTML =
     col("Built-in matching", `Virtual account number plus exact amount. By hand, all ${n} would take ${fmtHours(n * MANUAL_MIN)}`, builtin) +
-    col("Rules baseline", "Built for comparison: exact reference, or exact amount from a known payer", rules) +
-    col("Agent + guardrails", `At the current bar of ${(+$("th").value).toFixed(2)}${$("guard").checked ? "" : ", guardrails off"}`, agent, "agent");
+    col("Rules baseline", "Built for comparison: same evidence as the agent, exact matches only, no fee tolerance or multi-invoice combinations", rules) +
+    col("Agent + guardrails", `At a confidence bar of ${(+$("th").value).toFixed(2)}${$("guard").checked ? "" : ", guardrails off"}`, agent, "agent");
 }
 
-const PILL = { auto_apply: ["auto", "Auto-applied"], review: ["review", "Needs review"], leave_unmatched: ["left", "Not an invoice payment"] };
+const PILL = { auto_apply: ["auto", "Matched automatically"], review: ["review", "Needs review"], leave_unmatched: ["left", "Not an invoice payment"] };
 const GRADE = {
-  correct_auto: ["ok", "Correct, hands-off"], wrong_auto: ["bad", "Wrong auto-apply"], skipped: ["bad", "Missed"],
+  correct_auto: ["ok", "Correct, handled automatically"], wrong_auto: ["bad", "Wrong automatic match"], skipped: ["bad", "Missed"],
   review_good: ["ok", "Right suggestion"], review_shortlist: ["ok", "Right shortlist"], review_none: ["meh", "No useful suggestion"],
 };
 const SCEN = { clean: "Clean reference", no_memo: "No memo", garbled_memo: "Mangled reference", wire_fee: "Wire fee deducted", multi_invoice: "Pays several invoices", partial: "Partial payment", different_payer: "Paid by another entity", ambiguous: "Look-alike amount, no payer", overpayment: "Overpaid", wrong_reference: "Memo cites the wrong invoice", twin_amount: "Two invoices, same amount", not_invoice: "Not an invoice payment" };
@@ -346,7 +346,7 @@ function rowHtml(r, action, oc, th) {
         <dt>Why it ${action === "auto_apply" ? "went through" : action === "review" ? "stopped" : "was left alone"}</dt>
         <dd>${action === "auto_apply" ? (p.residual === "processing_fee" ? `Every check passed; the ${usd(p.allocations.reduce((s, a) => s + a.amount, 0) - r.amount)} shortfall is booked as a bank fee.` : "Every check passed.") : action === "leave_unmatched" ? "The agent is confident this is not a customer paying an invoice." : p.decision === "unsure" ? "The agent could not narrow it to one answer." : p.confidence < th ? `Confidence ${p.confidence.toFixed(2)} is under the bar of ${th.toFixed(2)}.` : esc(r.guardrail_reason ?? "Guardrail")}</dd>
         <dt>Also worth a look</dt><dd>${alts}</dd>
-        ${showKey ? `<dt>Answer key</dt><dd>${esc(SCEN[r.truth.scenario])}. ${esc(r.truth.note)}</dd><dt>Built-in matching</dt><dd>${r.builtin.action === "auto_apply" ? "Matched" : r.truth.ideal === "no_invoice" ? "Left alone" : "Not matched; waits until someone finds it"}</dd><dt>Rules baseline</dt><dd>${r.rules.action === "auto_apply" ? "Auto-applied" : r.rules.action === "review" ? "Sent to review" : "Left alone"}</dd>` : ""}
+        ${showKey ? `<dt>Answer key</dt><dd>${esc(SCEN[r.truth.scenario])}. ${esc(r.truth.note)}</dd><dt>Built-in matching</dt><dd>${r.builtin.action === "auto_apply" ? "Matched" : r.truth.ideal === "no_invoice" ? "Left alone" : "Not matched; waits until someone finds it"}</dd><dt>Rules baseline</dt><dd>${r.rules.action === "auto_apply" ? "Matched automatically" : r.rules.action === "review" ? "Sent to review" : "Left alone"}</dd>` : ""}
       </dl>
       ${action === "review" && !isConfirmed && p.allocations.length ? `<div class="actions"><button class="btn primary" data-confirm="${r.id}">Apply ${p.allocations.length > 1 ? "these invoices" : esc(p.allocations[0].number)}</button></div>` : ""}
     </div>
@@ -362,7 +362,7 @@ function render() {
 
   const groups = { review: rows.filter((x) => x.action === "review" && !confirmed.has(x.r.id)), auto: rows.filter((x) => x.action === "auto_apply"), left: rows.filter((x) => x.action === "leave_unmatched"), all: rows };
   if (confirmed.size) groups.review.push(...rows.filter((x) => x.action === "review" && confirmed.has(x.r.id)));
-  const labels = { review: "Needs review", auto: "Auto-applied", left: "Not invoice payments", all: "All" };
+  const labels = { review: "Needs review", auto: "Matched automatically", left: "Not invoice payments", all: "All" };
   $("tabs").innerHTML = Object.keys(labels).map((k) => `<button class="tab" role="tab" aria-selected="${k === tab}" data-tab="${k}">${labels[k]}<span class="count">${k === "review" ? groups.review.length - confirmed.size : groups[k].length}</span></button>`).join("");
   const list = groups[tab];
   $("list").innerHTML = list.length ? list.map((x) => rowHtml(x.r, x.action, x.oc, th)).join("") : `<p class="empty">Nothing here at this bar.</p>`;
@@ -383,10 +383,10 @@ function renderCost() {
   const col = (title, sub, metrics, cls = "") => `<div class="col ${cls}"><h3>${title}<small>${sub}</small></h3>${metrics.map(([b, s]) => `<div class="metric"><b>${b}</b><span>${s}</span></div>`).join("")}</div>`;
   $("cost-out").innerHTML =
     col("Model cost", `Of all incoming payments: ${sent}`, [[usd(monthly), "a month"], [usd(st.cost), `per incoming payment; the most any single one cost was ${usd(st.maxCost)}`]]) +
-    col("Time saved", `${Math.round(st.handsOff * 100)}% hands-off with ${st.wrong ? st.wrong + " wrong" : "no wrong"} matches, against ${Math.round(base.handsOff * 100)}% for built-in matching alone`, [[`${hours.toFixed(1)} h`, "a month"], [usd(hours * rate), `of bookkeeper time at $${rate} an hour`]]) +
+    col("Time saved", `${Math.round(st.handsOff * 100)}% handled automatically with ${st.wrong ? st.wrong + " wrong" : "no wrong"} matches, against ${Math.round(base.handsOff * 100)}% for built-in matching alone`, [[`${hours.toFixed(1)} h`, "a month"], [usd(hours * rate), `of bookkeeper time at $${rate} an hour`]]) +
     col("Return", "Time saved per dollar of model cost", [[monthly ? `${Math.round((hours * rate) / monthly).toLocaleString("en-US")}×` : "-", "value of time saved, divided by model cost"]], "agent");
   const notes = {
-    "builtin,rules,haiku@0.8,opus": "Haiku settles what it can at a 0.80 bar, because its confidence runs low: from 0.70 to 0.89 it was right on 111 of 111 proposals. Anything it isn't sure of goes to Opus. I picked that bar after seeing these results, so I tested it on a fourth set generated afterward: 78% hands-off, no wrong matches, $0.0041 per payment.",
+    "builtin,rules,haiku@0.8,opus": "Haiku settles what it can at a 0.80 bar, because its confidence runs low: from 0.70 to 0.89 it was right on 111 of 111 suggested matches. Anything it isn't sure of goes to Opus. I picked that bar after seeing these results, so I tested it on a fourth set generated afterward: 78% handled automatically, no wrong matches, $0.0041 per payment.",
     "builtin,rules,haiku@0.8": "The cheapest setup, but Haiku leaves 9 of 297 payments in the queue with no useful suggestion, so someone has to find those by hand. Sending them on to Opus fixes that for about a third of a cent per payment.",
     "builtin,rules,sonnet": "Sonnet matched Opus within about a point on every test set, at under half the price.",
   };
@@ -397,12 +397,12 @@ function renderFindings() {
   const s7 = DATA.seed7, s99 = DATA.seed99;
   const pct = (m) => Math.round(m.autoRate * 100);
   const items = [
-    ["Virtual account numbers handle the easy part", "Built-in matching handled 40% of this day's deposits with no one touching it (34% and 31% on the other two test sets), with no errors. It never matched a wire fee, partial, overpayment, batch payment or same-amount pair, or any payment sent to the main account number. Nothing flags those: 59 of 99 deposits here sit unmatched until someone notices."],
-    ["The agent takes the rest from 40% to 71%", "With the same evidence, the agent handled 71% with no one touching it (78% and 70% on the other two sets), and nothing went unnoticed: whatever it didn't apply landed in the queue with a suggestion. It applied 20 of 24 wire-fee payments across all three sets, where built-in matching and the rules baseline applied none. The rules baseline I built for comparison reached 59 to 61%. Opus on every payment costs about 1.4 cents and 5 seconds each. Letting rules and the cheaper Haiku go first brings that to about 0.4 cents, with no loss (see the cost section below)."],
-    ["No wrong matches, on three separate test sets", `The page shows the first test set. I generated a second with different customers, invoices and payments, and the results held: built-in matching handled ${pct(s7.builtin)}% on its own, rules ${pct(s7.rules)}%, the agent ${pct(s7.agent)}%. Then, with the agent finished, I generated a third set I had never looked at and ran it without changing anything: built-in ${pct(s99.builtin)}%, rules ${pct(s99.rules)}%, the agent ${pct(s99.agent)}%. None of them put money on the wrong invoice, and running all three sets a second time moved the agent's numbers by a point at most. That's 198 automatic matches by the agent without an error. It doesn't prove the error rate is zero, only that it's likely below about 1.5%. Showing the under-0.1% you'd want in production takes about 3,000 error-free matches, which is what a trial run on real payments is for.`],
-    ["Confidence is cautious, which is the safe direction", "Every proposal the agent made at 0.70 or above was exactly right, on all three sets. It hedged where it should: on batch payments with no memo, and on the same-amount pairs where nothing says which invoice was paid (0.50 to 0.55). Its one wrong proposal in 276 was one of those: a batch payment where either of two $10,000 invoices fit. It picked the older one at 0.55, said why, and named the right one as the alternative. At a 0.80 bar it reaches 78 to 80% on all three sets, with no errors. The bar can probably come down once real data confirms it."],
-    ["Guardrails cost a little, and they earn it","The guardrails are code checks that must pass before a payment is applied, however confident the agent is. Turn off the \"Code guardrails on\" switch under the Auto-apply bar slider to see what they cost: at the 0.90 bar, 2 to 6 more payments out of every 100 would go through on their own. Those are partial payments, which I send to a person on purpose so the customer confirms what stays open. On the third set they earned their keep: at a 0.50 bar, the batch-payment guess above would have gone onto the wrong invoice without them. The code saw that two combinations of invoices fit the amount and sent it to a person instead. That's the case real bank traffic will bring more of."],
-    ["What I would build next", "A partially paid invoice status, since today an invoice can only be unpaid, processing, paid or cancelled. Then a check before an invoice is sent that learns each customer's payables rules from their replies (PO numbers, legal entity, who to send it to), to stop late payments before they start. And agree with the accounting team on where invoice-level matching lives, so the two never disagree."],
+    ["Virtual account numbers handle the easy part", "Built-in matching handled 40% of this day's deposits automatically (34% and 31% on the other two test sets), with no errors. It never matched a wire fee, partial, overpayment, batch payment or same-amount pair, or any payment sent to the main account number. Nothing flags those: 59 of 99 deposits here sit unmatched until someone notices."],
+    ["The agent takes the rest from 40% to 71%", "With the same evidence, the agent handled 71% automatically (78% and 70% on the other two sets), and nothing went unnoticed: whatever it didn't apply went to human review with a suggested match. It applied 20 of 24 wire-fee payments across all three sets, where built-in matching and the rules baseline applied none. The rules baseline I built for comparison reached 59 to 61%. Opus on every payment costs about 1.4 cents and 5 seconds each. Letting rules and the cheaper Haiku go first brings that to about 0.4 cents, with no loss (see the cost section below)."],
+    ["No wrong matches, on three separate test sets", `The page shows the first test set. I generated a second with different customers, invoices and payments, and the results held: built-in matching handled ${pct(s7.builtin)}% on its own, rules ${pct(s7.rules)}%, the agent ${pct(s7.agent)}%. Then, with the agent finished, I generated a third set I had never looked at and ran it without changing anything: built-in ${pct(s99.builtin)}%, rules ${pct(s99.rules)}%, the agent ${pct(s99.agent)}%. None of them applied a payment to the wrong invoice, and running all three sets a second time moved the agent's numbers by a point at most. That's 198 automatic matches by the agent without an error. It doesn't prove the error rate is zero, only that it's likely below about 1.5%. Showing the under-0.1% you'd want in production takes about 3,000 error-free matches, which is what shadow mode on real payments is for.`],
+    ["Confidence is cautious, which is the safe direction", "Every suggested match at 0.70 confidence or above was exactly right, on all three sets. The agent hedged where it should: on batch payments with no memo, and on the same-amount pairs where nothing says which invoice was paid (0.50 to 0.55). Its one wrong suggested match in 276 was one of those: a batch payment where either of two $10,000 invoices fit. It picked the older one at 0.55, said why, and named the right one as the alternative. At a 0.80 confidence bar it reaches 78 to 80% on all three sets, with no errors. The bar can probably come down once real data confirms it."],
+    ["Guardrails cost a little, and they earn it","The guardrails are code checks that must pass before a payment is applied, however confident the agent is. Turn off the \"Code guardrails on\" switch under the Confidence bar slider to see what they cost: at the 0.90 bar, about 2 to 6 of every 100 payments that the agent could otherwise have applied go to human review instead. Those are partial payments, which I send to human review on purpose so the customer confirms what stays open. On the third set the guardrails earned their keep: at a 0.50 bar, the batch-payment guess above would have gone onto the wrong invoice without them. The code saw that another group of invoices fit the payment just as well and sent it to human review instead. That's the case real bank traffic will bring more of."],
+    ["What I would build next", "A partially paid invoice status, since today an invoice can only be unpaid, processing, paid or cancelled. It fixes how receivables look, and the matcher needs it to record a partial payment correctly. Then a check before an invoice is sent that catches a missing PO number, the wrong legal entity or the wrong recipient, and learns each customer's payables rules from their replies, to stop late payments before they start. And learning from reviewer corrections: every payment a person confirms or fixes in human review is a labeled example, so the review queue should shrink over time."],
   ];
   $("findings").innerHTML = items.map(([h, p]) => `<div class="finding"><h3>${h}</h3><p>${p}</p></div>`).join("");
 }
