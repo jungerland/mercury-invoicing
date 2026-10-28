@@ -104,7 +104,7 @@ Where the difference comes from:
 - Mercury Books now uses AI to "categorize and reconcile" invoicing activity, which keeps the vendor's ledger in line with its bank account. It doesn't say whether Books also settles which invoice a payment paid and what's still owed. Where should invoice-level matching live, in Invoicing or in Books, so a match made in one never fights the other? The same goes for QuickBooks, Xero and NetSuite syncs.
 - What percentage of invoice payments arrive on the main account number instead of the virtual one? That decides how much of this opportunity comes from main-account payments.
 - What does Mercury do today with a virtual-account payment when two open invoices share the amount? The docs flag the problem but don't say.
-- For payments to the main account, how much better could the ACH company ID identify the payer than their name? Every ACH payment carries an ID for the sending company, and Mercury already receives it, so it costs nothing to use.
+- For main-account payments, how much better is deriving payer identity from ACH company IDs than from payer names? Every ACH payment carries an ID for the sending company, and Mercury already receives it, so it costs nothing to use.
 
 ## Caveats
 
