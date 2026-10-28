@@ -2,7 +2,7 @@
 
 # Grit Remover: an unapplied cash resolver agent
 
-Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took the percentage of payments handled automatically from 31–40% to 70–78%, with zero wrong automatic matches, for a cost of under half a cent per payment.
+Mercury gives each customer their own virtual account number to pay invoices into. When a payment arrives at that number for exactly the invoice amount, Mercury marks the invoice paid automatically. Every other payment has to be matched by hand. I built an agent for those payments. On synthetic data it took the percentage of payments handled automatically from 31–40% to 70–78%, with zero wrong automatic matches, for a cost of under half a cent per payment.
 
 ## The problem
 
