@@ -2,6 +2,8 @@
 
 # Grit Remover: an unapplied cash resolver agent
 
+Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took hands-off matching from 31–40% to 70–78%, with zero wrong auto-applies, for under half a cent per payment.
+
 ## The problem
 
 Sending an invoice is half of getting paid. The other half is knowing which invoice a deposit belongs to.
