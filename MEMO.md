@@ -70,7 +70,7 @@ Where the difference comes from:
 
 ## What I deprioritized, and why
 
-- **Smarter payment reminders.** Mercury already sends reminders on a fixed schedule. Tailoring them to each customer is valuable, but only once matching is trusted. A reminder for an invoice that was already paid costs more trust than it earns.
+- **Smarter payment reminders.** Mercury already sends reminders on a fixed schedule. Tailoring them to each customer is valuable, but only once matching is trusted. Until then, a reminder might go to a customer who already paid, which makes the business look disorganized and erodes trust.
 - **Payout-level reconciliation for Stripe or Square.** One payout often covers many customers. That needs processor data, not a better matcher.
 - **Partial-payment plans and installment tracking.** A real need, but it's a feature with its own UX, not a matching problem. The partially paid status below is the first step.
 
