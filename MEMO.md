@@ -58,7 +58,7 @@ Where the difference comes from:
 ## Product decisions
 
 1. **Build on the virtual account number, don't replace it.** A deposit to a customer's virtual account identifies the payer for certain. The agent treats that as its identity signal and only has to work out which invoice and how much.
-2. **The model suggests a match, code decides whether a payment is applied.** The model is good at judgment (is "RE: 1128 services" a reference? is NWR Holdings the parent of Northwind?). It is the wrong place for arithmetic or for the final say on marking an invoice paid. Code reconciles every amount to the cent and enforces the rules below. This also makes every automatic match explainable after the fact.
+2. **The model suggests a match, code decides whether a payment is applied.** The model is good at judgment (is "RE: 1128 services" a reference? is NWR Holdings the parent of Northwind?). It is the wrong place for arithmetic or for the final say on marking an invoice paid. Code checks that every amount adds up to the cent and enforces the conditions in Decisions 3 and 4. This also makes every automatic match explainable after the fact.
 3. **Three conditions must hold before a payment is applied automatically.**
    - **Identity:** the virtual account, a known payer, or a memo reference to the invoice.
    - **Amount:** this is either exact, or is short by a plausible bank fee.
