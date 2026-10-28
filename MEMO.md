@@ -39,7 +39,7 @@ All three ran on the same three sets of 99 generated payments. I generated the t
 | --------------------------------------- | --------------------- | ----------------------- | -------------------------- |
 | By hand                                 | 0%                    | 0                       | 5.0 h                      |
 | Built-in matching                       | 31–40%                | 0                       | 3.0–3.4 h                  |
-| Rules baseline               | 59–61%                | 0                       | 1.0–1.3 h                  |
+| Rules baseline                          | 59–61%                | 0                       | 1.0–1.3 h                  |
 | Agent + guardrails, 0.90 confidence bar | 70–78%                | 0                       | 0.2–0.3 h                  |
 | Agent + guardrails, 0.80 confidence bar | 78–80%                | 0                       | ~0.2 h                     |
 
