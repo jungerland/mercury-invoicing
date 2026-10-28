@@ -2,7 +2,7 @@
 
 # Grit Remover: an unapplied cash resolver agent
 
-Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took the share of payments handled automatically from 31–40% to 70–78%, with zero wrong auto-applies, for a cost of under half a cent per payment.
+Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took the percentage of payments handled automatically from 31–40% to 70–78%, with zero wrong auto-applies, for a cost of under half a cent per payment.
 
 ## The problem
 
@@ -84,7 +84,7 @@ Where the difference comes from:
 
 ## How I'd measure it
 
-- **North star:** the share of incoming invoice payments reconciled with no human touch.
+- **North star:** the percentage of incoming invoice payments applied to the right invoice automatically, with no person involved.
 - **Guardrail:** wrong auto-apply rate, measured by reversals and support contacts. Target under 0.1%, reviewed weekly.
 - **Inputs:** review-queue size per customer per week, time from deposit to reconciled, and suggestion acceptance rate.
 - **Business:** the posting's metrics (Invoicing active users, feature adoption, retention). Retention should be cut by whether a customer's receivables stay accurate without work.
@@ -99,7 +99,7 @@ Where the difference comes from:
 ## Open questions
 
 - Mercury Books now uses AI to "categorize and reconcile" invoicing activity, which keeps the vendor's ledger in line with its bank account. It doesn't say whether Books also settles which invoice a payment paid and what's still owed. Where should invoice-level matching live, in Invoicing or in Books, so a match made in one never fights the other? The same goes for QuickBooks, Xero and NetSuite syncs.
-- What share of invoice payments arrive on the real account number instead of the virtual one? That sets the size of the main-account half of this.
+- What percentage of invoice payments arrive on the real account number instead of the virtual one? That sets the size of the main-account half of this.
 - What does Mercury do today with a virtual-account payment when two open invoices share the amount? The docs flag the problem but don't say.
 - How much better is payer identity from ACH originator IDs than from names, for main-account payments? Probably a lot, and it's a free signal.
 
