@@ -2,7 +2,7 @@
 
 # Grit Remover: an unapplied cash resolver agent
 
-Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took hands-off matching from 31–40% to 70–78%, with zero wrong auto-applies, for under half a cent per payment.
+Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took hands-off matching from 31–40% to 70–78%, with zero wrong auto-applies, for a cost of under half a cent per payment.
 
 ## The problem
 
@@ -16,26 +16,32 @@ Mercury already solves the easier scenario. Each customer gets a virtual account
 - Invoice statuses are Unpaid, Processing, Paid and Cancelled. There is no partially paid status, so the invoice either stays Unpaid or gets marked Paid, and both are wrong.
 - Matching covers transfers to the virtual account. Larger customers may pay to the real account number, and corporate payables teams tend to set up a vendor's bank details once and keep using them.
 
-Each miss costs a founder or bookkeeper a few minutes of hunting. Until it's done, receivables are wrong, which means reminders go to customers who already paid, which erodes trust and goodwill.
+Each miss costs a founder or bookkeeper a few minutes of hunting. Until it's done, receivables are wrong and reminders may go to customers who already paid. To a small business owner, a payment that arrived but sits unmatched can feel like money they still don't have.
 
 The goal is payments that match themselves to the right invoice without anyone lifting a finger. The constraint is that invoices are money: a wrong match is far worse than a slow one.
 
-Small business owners live and die by cash flow, and a payment that arrived but sits unmatched feels to them like money they still don't have.
-
 ## What I built
 
-A working prototype with an eval. Try the [interactive demo](https://claude.ai/artifact/W5w7goumjU1Hdasa35nqAR), or see the [code and full results](https://github.com/jungerland/mercury-invoicing). Code gathers evidence, a model proposes a match with a confidence and a plain-language reason, and code decides whether money moves. I measured it against two baselines on three synthetic datasets of 99 payments each. The third was generated after the agent was finished, to check it wasn't tuned to the first two:
+A working prototype with an eval. Try the [interactive demo](https://claude.ai/artifact/W5w7goumjU1Hdasa35nqAR), or see the [code and full results](https://github.com/jungerland/mercury-invoicing).
+
+Deterministic code gathers evidence, a model proposes a match with a confidence level and a plain-language reason, and the code decides whether a payment gets applied.
+
+I measured the agent's performance against two other ways of matching payments:
 
 - **Built-in matching:** virtual account number plus exact amount, as Mercury documents it.
-- **Rules baseline:** one I built for comparison. It uses the same evidence as the agent but only takes exact matches.
+- **Rules baseline:** deterministic code I built for comparison. It uses the same evidence as the agent but only applies exact matches, with no fee tolerance or multi-invoice combinations.
 
-| | Hands-off | Wrong auto-applies | Human time per 99 payments |
-|---|---|---|---|
-| By hand | 0% | 0 | 5.0 h |
-| Built-in matching | 31–40% | 0 | 3.0–3.4 h |
-| Rules baseline | 59–61% | 0 | 1.0–1.3 h |
-| Agent + guardrails, 0.90 bar | 70–78% | 0 | 0.2–0.3 h |
-| Agent + guardrails, 0.80 bar | 78–80% | 0 | ~0.2 h |
+The rules baseline is there to show what the model adds. It sees the same evidence as the agent with no model involved, so the gap between the two is the model's contribution, not better evidence.
+
+All three ran on the same three sets of 99 generated payments. I generated the third set after the agent was finished, so I couldn't have unintentionally adjusted the agent to fit those payments. The results held up on the third set too.
+
+|                              | Hands-off | Wrong auto-applies | Human time per 99 payments |
+| ---------------------------- | --------- | ------------------ | -------------------------- |
+| By hand                      | 0%        | 0                  | 5.0 h                      |
+| Built-in matching            | 31–40%    | 0                  | 3.0–3.4 h                  |
+| Rules baseline               | 59–61%    | 0                  | 1.0–1.3 h                  |
+| Agent + guardrails, 0.90 bar | 70–78%    | 0                  | 0.2–0.3 h                  |
+| Agent + guardrails, 0.80 bar | 78–80%    | 0                  | ~0.2 h                     |
 
 Human time uses stated assumptions: 3 min to match by hand, 15 s to confirm a correct suggestion, 20 min to unwind a wrong match.
 
@@ -43,22 +49,22 @@ About 55% of invoice payments in the data arrive on the customer's virtual accou
 
 Where the difference comes from:
 
-- **Built-in matching never handles** a wire fee, partial, overpayment, batch payment or same-amount pair, or anything sent to the main account number. Nothing flags those, so 59 to 68 of every 99 deposits sit unmatched until someone notices.
+- **Built-in matching never handles** the cases listed above, and nothing flags them, so 59 to 68 of every 99 deposits sit unmatched until someone notices.
 - **The agent** applied 20 of 24 wire-fee payments, where both baselines applied none. Everything it didn't apply landed in a queue with a suggestion.
 - **Cost:** about 1.4 cents and 5 seconds per payment at list price on the most capable model, or under half a cent with the routing noted in Decision 7 below.
 
 ## Product decisions
 
 1. **Build on the virtual account number, don't replace it.** A deposit to a customer's virtual account identifies the payer for certain. The agent treats that as its identity signal and only has to work out which invoice and how much.
-2. **The model suggests a match, code decides whether money moves.** The model is good at judgment (is "RE: 1128 services" a reference? is NWR Holdings the parent of Northwind?). It is the wrong place for arithmetic or for the final say on moving money. Code reconciles every amount to the cent and enforces the rules below. This also makes every auto-apply explainable after the fact.
-3. **Two independent signals before money moves, and nothing else fits as well.**
+2. **The model suggests a match, code decides whether a payment is applied.** The model is good at judgment (is "RE: 1128 services" a reference? is NWR Holdings the parent of Northwind?). It is the wrong place for arithmetic or for the final say on marking an invoice paid. Code reconciles every amount to the cent and enforces the rules below. This also makes every auto-apply explainable after the fact.
+3. **Two independent signals before a payment is applied, and nothing else fits as well.**
    - **Identity:** the virtual account, a known payer, or a memo reference to the invoice.
-   - **Amount:** exact, or short by a plausible bank fee.
-   - **No equally good alternative:** a second open invoice at the same amount, or a second combination of invoices that adds up to the payment, sends it to a person unless the memo says which.
-4. **Partials and overpayments go to a person in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: 2 to 6 points of hands-off at the 0.90 bar.
-5. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 auto-applies only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
-6. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
-7. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more hands-off. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
+   - **Amount:** this is either exact, or is short by a plausible bank fee.
+   - **No equally good alternative:** a second open invoice at the same amount, or a second combination of invoices that adds up to the payment, sends it to human review unless the memo says which.
+1. **Partials and overpayments go to a person in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: 2 to 6 points of hands-off at the 0.90 bar.
+2. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 auto-applies only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
+3. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
+4. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more hands-off. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
 
 ## What I deprioritized, and why
 
@@ -66,21 +72,17 @@ Where the difference comes from:
 - **Payout-level reconciliation for Stripe or Square.** One payout often covers many customers. That needs processor data, not a better matcher.
 - **Partial-payment plans and installment tracking.** A real need, but it's a feature with its own UX, not a matching problem. The partially paid status below is the first step.
 
-
 ## What I'd build next
 
 1. **A partially paid invoice status.** It's a small change, it fixes how receivables look, and the matcher needs it to post a partial payment correctly.
-2. **A check before an invoice is sent.** When startups bill larger companies, invoices often stall in the customer's payables team. The public data is directional, not decisive:
-   - Customer cash flow is the most-cited cause of late payment in every independent survey. No invoicing feature fixes that.
-   - In Atradius's 2017 survey, about a quarter of US suppliers cited invoices sent to the wrong person (26.7%) or with incorrect information (23.8%).
-   - In the UK government's 2024 study, large businesses blamed administrative errors for 36% of the late payments they received, against 24% overall. The authors point to "no purchase order, no pay" policies.
+2. **A check before an invoice is sent.** When startups bill larger companies, invoices often stall in the customer's payables team. The public data is directional, not decisive. Customer cash flow is the most-cited cause of late payment, and no invoicing feature fixes that. But about a quarter of US suppliers cite invoices sent to the wrong person (26.7%) or with incorrect information (23.8%) (Atradius, 2017), and UK large businesses blame administrative errors for 36% of their late payments, against 24% overall, pointing to "no purchase order, no pay" policies (UK government, 2024).
 
    The check would catch a missing PO number, the wrong legal entity or the wrong recipient before the invoice goes out. It would learn each customer's rules from their replies ("please resubmit with PO number"), so every later invoice to them is right. It never moves money, which makes it a safe second AI feature.
 3. **Learning from reviewer corrections.** Every payment a person confirms or fixes in the review queue is a labeled example. Feeding those back, starting with each customer's payer names and memo habits, should shrink the queue over time. The queue has to run first, since it is the data source.
 
 ## How I'd measure it
 
-- **North star:** share of incoming invoice payments reconciled with no human touch.
+- **North star:** the share of incoming invoice payments reconciled with no human touch.
 - **Guardrail:** wrong auto-apply rate, measured by reversals and support contacts. Target under 0.1%, reviewed weekly.
 - **Inputs:** review-queue size per customer per week, time from deposit to reconciled, and suggestion acceptance rate.
 - **Business:** the posting's metrics (Invoicing active users, feature adoption, retention). Retention should be cut by whether a customer's receivables stay accurate without work.
@@ -98,12 +100,10 @@ Where the difference comes from:
 - What share of invoice payments arrive on the real account number instead of the virtual one? That sets the size of the main-account half of this.
 - What does Mercury do today with a virtual-account payment when two open invoices share the amount? The docs flag the problem but don't say.
 - How much better is payer identity from ACH originator IDs than from names, for main-account payments? Probably a lot, and it's a free signal.
-- What share of real invoice volume is processor payouts versus direct ACH and wire? That decides whether payout reconciliation moves up the list.
 
 ## Caveats
 
 The data is synthetic. I designed both it and the agent and built them with Claude Code, so the test may share my blind spots. Mercury's built-in behavior is modeled from its public API docs, not tested in the product, and the app may offer manual tools the docs don't describe. I did no prompt tuning against the data. The only prompt change for this version tells the model which account number the money arrived on, and the reported results are from the first full run. Real bank feeds will be messier, which is why step 1 of the rollout is shadow mode.
-
 
 ## Sources
 
