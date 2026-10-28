@@ -86,14 +86,17 @@ Where the difference comes from:
 
 - **North star:** the percentage of incoming invoice payments applied to the right invoice automatically, with no human review.
 - **Guardrail:** the wrong-match rate, meaning the percentage of automatic matches that turn out to be wrong. This is the number that must not go up as the north star does. In production, wrong matches only surface when someone notices: a customer undoes a match, or contacts support about one. Target: under 0.1%, or 1 in every 1,000 automatic matches, reviewed weekly. However, the eval can't prove the 0.1% target. Zero errors in 198 automatic matches only shows the rate is below about 1.5%, so shadow mode has to confirm it.
-- **Inputs:** review-queue size per customer per week, time from deposit to reconciled, and suggestion acceptance rate.
+- **Inputs:** the numbers the team can move week to week that drive the north star.
+  - **Review queue per customer:** how many payments each customer has to check by hand each week. It should shrink over time.
+  - **Time to apply:** how long a payment waits between arriving and being applied to an invoice, whether by the agent or by human review.
+  - **Suggestion acceptance:** how often a reviewer accepts the agent's suggested match without changing it. A high rate for a kind of payment, like one short by a bank wire fee, means it's ready to be matched automatically.
 - **Business:** the posting's metrics (Invoicing active users, feature adoption, retention). Retention should be cut by whether a customer's receivables stay accurate without work.
 
 ## How I'd roll it out
 
 1. **Shadow mode.** Run on real deposits and log proposals without acting. Score them against what customers actually do. This replaces my synthetic eval with a real one.
 2. **Suggest only.** Show the match and the reason in the existing flow, with one-click apply. Track acceptance.
-3. **Auto-apply for the clearest cohort.** Wire fees on the virtual account first, then exact reference plus exact amount on the main account, then batch payments. Every automatic match gets one-click undo.
+3. **Match automatically for the clearest cases first.** Start with payments short by a wire fee on the customer's virtual account, then payments to the main account whose memo field names the invoice and matches its amount exactly, then single transfers covering several invoices. Every automatic match gets one-click undo.
 4. **Lower the bar** as reversal data allows.
 
 ## Open questions
