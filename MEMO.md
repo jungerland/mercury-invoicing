@@ -85,7 +85,7 @@ Where the difference comes from:
 ## How I'd measure it
 
 - **North star:** the percentage of incoming invoice payments applied to the right invoice automatically, with no human review.
-- **Guardrail:** the wrong-match rate, meaning the percentage of automatic matches that turn out to be wrong. This is the number that must not go up as the north star does. In production, no one confirms which invoice a payment was really for, so wrong matches only surface when someone notices: a customer undoes a match, or contacts support about one. Target: under 0.1%, or 1 in every 1,000 automatic matches, reviewed weekly. However, the eval can't prove the 0.1% target. Zero errors in 198 automatic matches only shows the rate is below about 1.5%, so shadow mode has to confirm it.
+- **Guardrail:** the wrong-match rate, meaning the percentage of automatic matches that turn out to be wrong. This is the number that must not go up as the north star does. In production, wrong matches only surface when someone notices: a customer undoes a match, or contacts support about one. Target: under 0.1%, or 1 in every 1,000 automatic matches, reviewed weekly. However, the eval can't prove the 0.1% target. Zero errors in 198 automatic matches only shows the rate is below about 1.5%, so shadow mode has to confirm it.
 - **Inputs:** review-queue size per customer per week, time from deposit to reconciled, and suggestion acceptance rate.
 - **Business:** the posting's metrics (Invoicing active users, feature adoption, retention). Retention should be cut by whether a customer's receivables stay accurate without work.
 
