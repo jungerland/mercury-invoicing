@@ -19,7 +19,7 @@ Mercury matches a payment automatically when it arrives on the customer's virtua
 - One transfer that pays several invoices.
 - Payments sent to the main account number, which larger customers' payables teams may use.
 
-Until someone matches them, receivables are wrong and reminders go to customers who already paid. Small business owners live and die by cash flow, and a payment that sits unmatched feels like money they still don't have.
+Until someone matches them, receivables are wrong and reminders may go to customers who already paid. To a small business owner, a payment that arrived but sits unmatched can feel like money they still don't have.
 
 The full case, with product decisions and what's next, is in the [memo](MEMO.md).
 
@@ -27,28 +27,30 @@ The full case, with product decisions and what's next, is in the [memo](MEMO.md)
 
 99 incoming payments against about 165 open invoices across 30 fictional businesses, on two independently generated datasets. Policy bar 0.90.
 
-| | Hands-off | Wrong auto-applies | Human time |
+| | Handled automatically | Wrong automatic matches | Human time |
 |---|---|---|---|
 | By hand | 0% | 0 | 5.0 h |
 | Built-in: virtual account + exact amount (dataset A / B) | 40% / 34% | 0 / 0 | 3.0 h / 3.3 h |
 | Rules baseline (dataset A / B) | 61% / 60% | 0 / 0 | 1.0 h / 1.1 h |
 | Agent + guardrails (dataset A / B) | 71% / 78% | 0 / 0 | 0.2 h / 0.2 h |
 
-At a 0.80 bar the agent reaches 79% and 80% hands-off, still with zero wrong auto-applies.
+At a 0.80 bar the agent reaches 79% and 80% handled automatically, still with zero wrong automatic matches.
 
-**Held-out check.** Datasets A and B were the ones used while building the agent. To rule out overfitting, a third dataset (seed 99) was generated afterward and run live with no changes to prompts or policy. Results held: built-in 31%, rules 59%, agent 70% hands-off at the 0.90 bar (78% at 0.80), zero wrong auto-applies at every threshold. Without the guardrails in `policy.ts`, the model made one wrong auto-apply at a 0.50 bar; the guardrails caught it. Report: [results/seed99/report.md](results/seed99/report.md).
+Handled automatically means resolved correctly with no human review: applied to the right invoice, or correctly left alone because it wasn't an invoice payment (ex: a Stripe payout).
 
-"Built-in" follows Mercury's public API docs; about 55% of invoice payments in the data arrive on a virtual account number, which is an assumption. Full reports, with per-scenario breakdowns, a threshold sweep, a guardrail ablation and a calibration table: [results/report.md](results/report.md), [results/seed7/report.md](results/seed7/report.md).
+**Held-out check.** Datasets A and B were the ones used while building the agent. A third dataset (seed 99) was generated after the agent was finished, so I couldn't have unintentionally adjusted the agent to fit those payments. It was run live with no changes to prompts or policy. Results held: built-in 31%, rules 59%, agent 70% handled automatically at the 0.90 bar (78% at 0.80), zero wrong automatic matches at every threshold. Without the guardrails in `policy.ts`, the model made one wrong automatic match at a 0.50 bar; the guardrails caught it. Report: [results/seed99/report.md](results/seed99/report.md).
 
-**Re-run.** All three datasets were run live a second time (2026-10-20) to record token counts. Agent hands-off moved by a point at most, and wrong auto-applies stayed at zero.
+"Built-in" follows Mercury's public API docs; about 55% of invoice payments in the data arrive on a virtual account number, which is an assumption. The fewer payments that use the virtual account, the more that built-in matching misses. Full reports, with per-scenario breakdowns, a threshold sweep, a guardrail ablation and a calibration table: [results/report.md](results/report.md), [results/seed7/report.md](results/seed7/report.md).
+
+**Re-run.** All three datasets were run live a second time (2026-10-20) to record token counts. Agent handled-automatically rates moved by a point at most, and wrong automatic matches stayed at zero.
 
 Cost: about $0.014 and 5 seconds per payment on Claude Opus 5.5 at list price, with the shared system prompt cached. Runs through the `claude` CLI cost about $0.020, because the CLI also writes each payment's prompt to a 1-hour cache at twice the input price. Each cache entry stores token counts, and the demo page projects monthly cost from them.
 
 ## Choosing a model
 
-Not every payment needs the most capable model. Sonnet and Haiku were run on the same three datasets, and `src/compare.ts` scores routing setups from the cached answers, with no model calls. Each setup tries its steps in order and stops at the first one that settles the payment. Guardrails were on for all of them, and none made a wrong auto-apply. Costs are per incoming payment, with production caching.
+Not every payment needs the most capable model. Sonnet and Haiku were run on the same three datasets, and `src/compare.ts` scores routing setups from the cached answers, with no model calls. Each setup tries its steps in order and stops at the first one that settles the payment. Guardrails were on for all of them, and none made a wrong automatic match. Costs are per incoming payment, with production caching.
 
-| Setup | Hands-off | Model cost per payment | Human time per 99 payments |
+| Setup | Handled automatically | Model cost per payment | Human time per 99 payments |
 |---|---|---|---|
 | Opus on every payment | 73% | $0.0137 | 0.20 h |
 | Built-in, then Opus | 75% | $0.0099 | 0.18 h |
@@ -60,8 +62,8 @@ Not every payment needs the most capable model. Sonnet and Haiku were run on the
 - **Rules go first.** They are free and settle about a third of payments without error, so the model only sees what's left.
 - **Sonnet matches Opus** within about a point at under half the price.
 - **Haiku is accurate but underconfident.** From 0.70 to 0.89 confidence it was right on 111 of 111 proposals, so it gets a 0.80 bar. On its own it leaves 9 of 297 payments in review with no useful suggestion. Escalating to Opus whenever Haiku isn't sure fixes that, and Opus then sees only 20% of payments.
-- **Held out.** The 0.80 bar was picked after seeing these results, so a fourth dataset (seed 314) was generated afterward and run live on Haiku and Opus. The recommended setup held: 78% hands-off, zero wrong auto-applies, $0.0041 per payment. Report: [results/models/report-seed314.md](results/models/report-seed314.md).
-- **Guardrails matter more for smaller models.** Without them, at a 0.50 bar, Opus and Haiku each made 1 wrong auto-apply and Sonnet made 3.
+- **Held out.** The 0.80 bar was picked after seeing these results, so a fourth dataset (seed 314) was generated afterward and run live on Haiku and Opus. The recommended setup held: 78% handled automatically, zero wrong automatic matches, $0.0041 per payment. Report: [results/models/report-seed314.md](results/models/report-seed314.md).
+- **Guardrails matter more for smaller models.** Without them, at a 0.50 bar, Opus and Haiku each made 1 wrong automatic match and Sonnet made 3.
 
 Full comparison: [results/models/report.md](results/models/report.md). To run another model: `MATCHER_MODEL=claude-haiku-5-5 RESULTS_DIR=results/models/haiku/seed42 npm run eval`, then `node src/compare.ts`.
 
@@ -90,7 +92,7 @@ bank payment
 4. Auto-apply, or queue with a suggestion
 ```
 
-The model never does arithmetic, and it never moves money on its own say-so. The rules baseline (`src/match/rules.ts`) uses the same evidence, so the comparison is fair. The built-in baseline (`src/match/builtin.ts`) models documented virtual-account matching.
+The model never does arithmetic, and it never decides on its own whether a payment is applied. The rules baseline (`src/match/rules.ts`) uses the same evidence as the agent with no model involved, and only applies exact matches, with no fee tolerance or multi-invoice combinations. The gap between the two is the model's contribution, not better evidence. The built-in baseline (`src/match/builtin.ts`) models documented virtual-account matching.
 
 ## Run it
 
