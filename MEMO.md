@@ -47,7 +47,7 @@ Handled automatically means resolved correctly with no person involved: applied 
 
 Human time uses stated assumptions: 3 min to match by hand, 15 s to confirm a correct suggestion, 20 min to unwind a wrong match.
 
-About 55% of invoice payments in the data arrive on the customer's virtual account number. That share is my assumption. Mercury knows the real number, and it decides how big this opportunity is.
+About 55% of invoice payments in the data arrive on the customer's virtual account number. That percentage is my assumption. Mercury knows the real number, and that will inform how big this opportunity is. The fewer payments that use the virtual account, the more built-in matching misses.
 
 Where the difference comes from:
 
