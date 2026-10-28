@@ -59,10 +59,10 @@ Where the difference comes from:
 
 1. **Build on the virtual account number, don't replace it.** A deposit to a customer's virtual account identifies the payer for certain. The agent treats that as its identity signal and only has to work out which invoice and how much.
 2. **The model suggests a match, code decides whether a payment is applied.** The model is good at judgment (is "RE: 1128 services" a reference? is NWR Holdings the parent of Northwind?). It is the wrong place for arithmetic or for the final say on marking an invoice paid. Code reconciles every amount to the cent and enforces the rules below. This also makes every auto-apply explainable after the fact.
-3. **Two independent signals before a payment is applied, and nothing else fits as well.**
+3. **Three conditions must hold before a payment is applied automatically.**
    - **Identity:** the virtual account, a known payer, or a memo reference to the invoice.
    - **Amount:** this is either exact, or is short by a plausible bank fee.
-   - **No equally good alternative:** a second open invoice at the same amount, or a second combination of invoices that adds up to the payment, sends it to human review unless the memo says which.
+   - **No equally good alternative:** if another invoice, or another group of invoices, fits the payment just as well, it goes to human review unless the payment's memo field names the invoice.
 1. **Partials and overpayments go to a person in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: 2 to 6 points of automatic handling at the 0.90 bar.
 2. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 auto-applies only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
 3. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
@@ -84,7 +84,7 @@ Where the difference comes from:
 
 ## How I'd measure it
 
-- **North star:** the percentage of incoming invoice payments applied to the right invoice automatically, with no person involved.
+- **North star:** the percentage of incoming invoice payments applied to the right invoice automatically, with no human review.
 - **Guardrail:** wrong auto-apply rate, measured by reversals and support contacts. Target under 0.1%, reviewed weekly.
 - **Inputs:** review-queue size per customer per week, time from deposit to reconciled, and suggestion acceptance rate.
 - **Business:** the posting's metrics (Invoicing active users, feature adoption, retention). Retention should be cut by whether a customer's receivables stay accurate without work.
