@@ -64,7 +64,7 @@ Where the difference comes from:
    - **Amount:** this is either exact, or is short by a plausible bank fee.
    - **No equally good alternative:** if another invoice, or another group of invoices, fits the payment just as well, it goes to human review unless the payment's memo field names the invoice.
 4. **Partials and overpayments go to human review in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: about 2 to 6 of every 100 payments that the agent could otherwise have applied go to human review.
-5. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 automatic matches only bounds the true rate below about 1.5%. Real traffic in shadow mode earns the right to lower it.
+5. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every suggested match at 0.70 confidence or above was exactly right. But zero errors in 198 automatic matches only bounds the true rate below about 1.5%. Real traffic in shadow mode earns the right to lower it.
 6. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
 7. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more handled automatically. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
 
@@ -89,12 +89,12 @@ Where the difference comes from:
 - **Inputs:** the numbers the team can move week to week that drive the north star.
   - **Review queue per customer:** how many payments each customer has to check by hand each week. It should shrink over time.
   - **Time to apply:** how long a payment waits between arriving and being applied to an invoice, whether by the agent or by human review.
-  - **Suggestion acceptance:** how often a reviewer accepts the agent's suggested match without changing it. A high rate for a kind of payment, like one short by a bank wire fee, means it's ready to be matched automatically.
+  - **Suggestion acceptance:** how often a reviewer accepts the agent's suggested match without changing it. A high acceptance rate for a kind of payment, like one short by a bank wire fee, means it's ready to be matched automatically.
 - **Business:** the metrics the Invoicing role is measured on: active users, feature adoption, and retention. I'd compare retention for two groups: customers whose payments get matched to invoices without manual work, and customers who still match payments by hand. If the first group stays longer, the feature is keeping customers.
 
 ## How I'd roll it out
 
-1. **Shadow mode.** Run on real deposits and log proposals without acting. Score them against what customers actually do. This replaces my synthetic eval with a real one.
+1. **Shadow mode.** Run on real deposits and record the agent's suggested matches without applying any. Score them against what customers actually do. This replaces my synthetic eval with a real one.
 2. **Suggest only.** Show the match and the reason in the existing flow, with one-click apply. Track acceptance.
 3. **Match automatically for the clearest cases first.** Start with payments short by a wire fee on the customer's virtual account, then payments to the main account whose memo field names the invoice and matches its amount exactly, then single transfers covering several invoices. Every automatic match gets one-click undo.
 4. **Lower the bar** as reversal data allows.
