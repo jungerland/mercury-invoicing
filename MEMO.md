@@ -108,7 +108,7 @@ Where the difference comes from:
 
 ## Caveats
 
-The data is synthetic. I designed both it and the agent and built them with Claude Code, so the test may share my blind spots. Mercury's built-in behavior is modeled from its public API docs, not tested in the product, and the app may offer manual tools the docs don't describe. I did no prompt tuning against the data. The only prompt change for this version tells the model which account number the money arrived on, and the reported results are from the first full run. Real bank feeds will be messier, which is why step 1 of the rollout is shadow mode.
+The data is synthetic. I designed both it and the agent and built them with Claude Code, so the test may share my blind spots. Mercury's built-in behavior is modeled from its public API docs, not tested in the product, and the app may offer manual tools the docs don't describe. I didn't adjust the model's instructions to fix mistakes I saw in the test results. The only change for this version tells the model which account number the money arrived on, and the reported results are from the first full run. Real bank feeds will be messier, which is why step 1 of the rollout is shadow mode.
 
 ## Sources
 
