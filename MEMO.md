@@ -35,13 +35,13 @@ The rules baseline is there to show what the model adds. It sees the same eviden
 
 All three ran on the same three sets of 99 generated payments. I generated the third set after the agent was finished, so I couldn't have unintentionally adjusted the agent to fit those payments. The results held up on the third set too.
 
-|                              | Handled automatically | Wrong automatic matches | Human time per 99 payments |
-| ---------------------------- | --------------------- | ----------------------- | -------------------------- |
-| By hand                      | 0%                    | 0                       | 5.0 h                      |
-| Built-in matching            | 31–40%                | 0                       | 3.0–3.4 h                  |
+|                                         | Handled automatically | Wrong automatic matches | Human time per 99 payments |
+| --------------------------------------- | --------------------- | ----------------------- | -------------------------- |
+| By hand                                 | 0%                    | 0                       | 5.0 h                      |
+| Built-in matching                       | 31–40%                | 0                       | 3.0–3.4 h                  |
 | Rules baseline               | 59–61%                | 0                       | 1.0–1.3 h                  |
-| Agent + guardrails, 0.90 bar | 70–78%                | 0                       | 0.2–0.3 h                  |
-| Agent + guardrails, 0.80 bar | 78–80%                | 0                       | ~0.2 h                     |
+| Agent + guardrails, 0.90 confidence bar | 70–78%                | 0                       | 0.2–0.3 h                  |
+| Agent + guardrails, 0.80 confidence bar | 78–80%                | 0                       | ~0.2 h                     |
 
 Handled automatically means resolved correctly with no human review: applied to the right invoice, or correctly left alone because it wasn't an invoice payment (ex: a Stripe payout).
 
@@ -64,7 +64,7 @@ Where the difference comes from:
    - **Amount:** this is either exact, or is short by a plausible bank fee.
    - **No equally good alternative:** if another invoice, or another group of invoices, fits the payment just as well, it goes to human review unless the payment's memo field names the invoice.
 4. **Partials and overpayments go to human review in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: about 2 to 6 of every 100 payments that the agent could otherwise have applied go to human review.
-5. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every suggested match at 0.70 confidence or above was exactly right. But zero errors in 198 automatic matches only bounds the true rate below about 1.5%. Real traffic in shadow mode earns the right to lower it.
+5. **The confidence bar is a product dial, not a model setting.** It sets how sure the agent must be before it matches a payment automatically. Launch at 0.90. The eval suggests 0.80 is safe: every suggested match at 0.70 confidence or above was exactly right. But zero errors in 198 automatic matches only bounds the true rate below about 1.5%. Real traffic in shadow mode earns the right to lower it.
 6. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
 7. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more handled automatically. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
 
@@ -97,7 +97,7 @@ Where the difference comes from:
 1. **Shadow mode.** Run on real deposits and record the agent's suggested matches without applying any. Score them against what customers actually do. This replaces my synthetic eval with a real one.
 2. **Suggest only.** Show the match and the reason in the existing flow, with one-click apply. Track acceptance.
 3. **Match automatically for the clearest cases first.** Start with payments short by a wire fee on the customer's virtual account, then payments to the main account whose memo field names the invoice and matches its amount exactly, then single transfers covering several invoices. Every automatic match gets one-click undo.
-4. **Lower the bar** as reversal data allows.
+4. **Lower the confidence bar** from 0.90 toward 0.80, as long as customers rarely undo automatic matches and the wrong-match rate stays under the 0.1% target.
 
 ## Open questions
 
