@@ -90,7 +90,7 @@ Where the difference comes from:
   - **Review queue per customer:** how many payments each customer has to check by hand each week. It should shrink over time.
   - **Time to apply:** how long a payment waits between arriving and being applied to an invoice, whether by the agent or by human review.
   - **Suggestion acceptance:** how often a reviewer accepts the agent's suggested match without changing it. A high rate for a kind of payment, like one short by a bank wire fee, means it's ready to be matched automatically.
-- **Business:** the posting's metrics (Invoicing active users, feature adoption, retention). Retention should be cut by whether a customer's receivables stay accurate without work.
+- **Business:** the metrics the Invoicing role is measured on: active users, feature adoption, and retention. I'd compare retention for two groups: customers whose payments get matched to invoices without manual work, and customers who still match payments by hand. If the first group stays longer, the feature is keeping customers.
 
 ## How I'd roll it out
 
