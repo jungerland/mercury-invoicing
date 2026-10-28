@@ -2,7 +2,7 @@
 
 # Grit Remover: an unapplied cash resolver agent
 
-Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took hands-off matching from 31–40% to 70–78%, with zero wrong auto-applies, for a cost of under half a cent per payment.
+Mercury marks an invoice paid only when a transfer hits the customer's virtual account at the exact amount. I built an agent for the payments it leaves behind. On synthetic data it took the share of payments handled automatically from 31–40% to 70–78%, with zero wrong auto-applies, for a cost of under half a cent per payment.
 
 ## The problem
 
@@ -35,13 +35,15 @@ The rules baseline is there to show what the model adds. It sees the same eviden
 
 All three ran on the same three sets of 99 generated payments. I generated the third set after the agent was finished, so I couldn't have unintentionally adjusted the agent to fit those payments. The results held up on the third set too.
 
-|                              | Hands-off | Wrong auto-applies | Human time per 99 payments |
-| ---------------------------- | --------- | ------------------ | -------------------------- |
-| By hand                      | 0%        | 0                  | 5.0 h                      |
-| Built-in matching            | 31–40%    | 0                  | 3.0–3.4 h                  |
-| Rules baseline               | 59–61%    | 0                  | 1.0–1.3 h                  |
-| Agent + guardrails, 0.90 bar | 70–78%    | 0                  | 0.2–0.3 h                  |
-| Agent + guardrails, 0.80 bar | 78–80%    | 0                  | ~0.2 h                     |
+|                              | Handled automatically | Wrong auto-applies | Human time per 99 payments |
+| ---------------------------- | --------------------- | ------------------ | -------------------------- |
+| By hand                      | 0%                    | 0                  | 5.0 h                      |
+| Built-in matching            | 31–40%                | 0                  | 3.0–3.4 h                  |
+| Rules baseline               | 59–61%                | 0                  | 1.0–1.3 h                  |
+| Agent + guardrails, 0.90 bar | 70–78%                | 0                  | 0.2–0.3 h                  |
+| Agent + guardrails, 0.80 bar | 78–80%                | 0                  | ~0.2 h                     |
+
+Handled automatically means resolved correctly with no person involved: applied to the right invoice, or correctly left alone because it wasn't an invoice payment (a Stripe payout, say).
 
 Human time uses stated assumptions: 3 min to match by hand, 15 s to confirm a correct suggestion, 20 min to unwind a wrong match.
 
@@ -61,10 +63,10 @@ Where the difference comes from:
    - **Identity:** the virtual account, a known payer, or a memo reference to the invoice.
    - **Amount:** this is either exact, or is short by a plausible bank fee.
    - **No equally good alternative:** a second open invoice at the same amount, or a second combination of invoices that adds up to the payment, sends it to human review unless the memo says which.
-1. **Partials and overpayments go to a person in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: 2 to 6 points of hands-off at the 0.90 bar.
+1. **Partials and overpayments go to a person in v1.** These aren't hard to match. The customer has a choice to make: keep the overpayment as a credit or refund it, and confirm what stays open. I measured what this costs: 2 to 6 points of automatic handling at the 0.90 bar.
 2. **The auto-apply bar is a product dial, not a model setting.** Launch at 0.90. The eval suggests 0.80 is safe: every proposal at 0.70 confidence or above was exactly right. But zero errors in 198 auto-applies only bounds the true rate below about 1.5%. Real traffic earns the right to lower it.
 3. **"Can't tell, it's one of these" is a good answer.** For truly ambiguous deposits, a shortlist with a reason ("check the deposit image") beats a guess.
-4. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more hands-off. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
+4. **Start cheap, and escalate only when unsure.** Free rules settle the obvious payments first. A small, cheap model (Haiku) takes the rest, and only what it isn't sure of goes to the most capable one (Opus). That cut model cost per payment from 1.4 cents to under half a cent, with no wrong matches and slightly more handled automatically. It held on a fourth test set I generated afterward. Where the expensive judgment gets spent is a product decision, and it's what keeps the feature cheap enough to offer every customer.
 
 ## What I deprioritized, and why
 
