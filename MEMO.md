@@ -16,7 +16,7 @@ Mercury already solves the easier scenario: the exact-amount match on a virtual 
 - Invoice statuses are Unpaid, Processing, Paid and Cancelled. There is no partially paid status, so the invoice either stays Unpaid or gets marked Paid, and both are wrong.
 - Matching covers transfers to the virtual account. Larger customers may pay to the real account number, and corporate payables teams tend to set up a vendor's bank details once and keep using them.
 
-Each miss costs a founder or bookkeeper a few minutes of hunting. Until it's done, receivables are wrong and reminders may go to customers who already paid. To a small business owner, a payment that arrived but sits unmatched can feel like money they still don't have.
+Each unmatched payment costs a founder or bookkeeper a few minutes of hunting. Until it's done, receivables are wrong and reminders may go to customers who already paid. To a small business owner, a payment that arrived but sits unmatched can feel like money they still don't have.
 
 The goal is payments that match themselves to the right invoice without anyone lifting a finger. The constraint is that invoices are money: a wrong match is far worse than a slow one.
 
